@@ -1,0 +1,1892 @@
+---
+redirect_from:
+  - "08-04-hypothesis-inference"
+interact_link: content/08_04-hypothesis_inference.ipynb
+kernel_name: conda-env-anaconda-py
+has_widgets: false
+title: |-
+  Hypothesis Inference
+prev_page:
+  url: /08_03-probability.html
+  title: |-
+    Probability
+next_page:
+  url: /08_05-gradient_descent.html
+  title: |-
+    Gradient Descent
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Statistical-Hypothesis-Testing">Statistical Hypothesis Testing<a class="anchor-link" href="#Statistical-Hypothesis-Testing"> </a></h1><p><img align="left" style="padding-right:10px;" width ="200px" src="./img/stats/preface2.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The statistics of hypothesis can be thought of as observations of random variables from known distributions,</p>
+<ul>
+<li>which allows us to make statements about how likely those assumptions are to hold.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>H1: data scientists prefer Python to R. </li>
+<li>H2: people tends to jump onto the bandwagon of collective gatekeepers.</li>
+<li>H3: media agenda determines the public agenda. </li>
+<li>H4: the rich people can better use mobile phone compared with the poor. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-logic-of-falsification">The logic of falsification<a class="anchor-link" href="#The-logic-of-falsification"> </a></h2><p>证伪的逻辑</p>
+<ul>
+<li><strong>Null hypothesis H0</strong> represents some default position </li>
+<li><p><strong>Alternative hypothesis H1</strong></p>
+<ul>
+<li>We use statistics to decide whether we can <strong>reject H0</strong> as false or not.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font size="7" color="red">We do not prove (just support)</font> alternative hypothesis;</p>
+<p><font size="7" color="green">We just support</font> alternative hypothesis when we reject the null hypothesis.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img align="left" width = 150px style="padding-right:5px;" src="./img/stats/bear.png"></p>
+<h2 id="Example:-Flipping-a-Coin">Example: Flipping a Coin<a class="anchor-link" href="#Example:-Flipping-a-Coin"> </a></h2><p>Imagine we have a coin and we want to test whether it’s fair.</p>
+<p><strong>Null hypothesis H0</strong>: The coin is fair.</p>
+<ul>
+<li>The probability of landing heads is 0.5</li>
+<li>The alternative hypothesis p ≠ 0.5</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Each coin flip is a Bernoulli trial,</p>
+<ul>
+<li>X is a Binomial(n,p) random variable</li>
+<li>we can approximate X using the normal distribution:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">probability</span> <span class="k">import</span> <span class="n">normal_cdf</span><span class="p">,</span> <span class="n">inverse_normal_cdf</span>
+<span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">random</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">normal_approximation_to_binomial</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;finds mu and sigma corresponding to a Binomial(n, p)&quot;&quot;&quot;</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">n</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Whenever a random variable follows a normal distribution, we can use <strong>normal_cdf</strong> to figure out the probability that its realized value lies within (or outside) a particular interval:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># the normal cdf _is_ the probability the variable is below a threshold</span>
+<span class="n">normal_probability_below</span> <span class="o">=</span> <span class="n">normal_cdf</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># it&#39;s above the threshold if it&#39;s not below the threshold</span>
+<span class="k">def</span> <span class="nf">normal_probability_above</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">normal_cdf</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># it&#39;s between if it&#39;s less than hi, but not less than lo</span>
+<span class="k">def</span> <span class="nf">normal_probability_between</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">normal_cdf</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">-</span> <span class="n">normal_cdf</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># it&#39;s outside if it&#39;s not between</span>
+<span class="k">def</span> <span class="nf">normal_probability_outside</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">normal_probability_between</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lower-and-Upper-Bunds-&#19978;&#12289;&#19979;&#36793;&#30028;">Lower and Upper Bunds &#19978;&#12289;&#19979;&#36793;&#30028;<a class="anchor-link" href="#Lower-and-Upper-Bunds-&#19978;&#12289;&#19979;&#36793;&#30028;"> </a></h2><p>We can also find either the nontail region or the (symmetric) interval around the mean that accounts for a certain level of likelihood.</p>
+<p>For example, if we want to find an interval centered at the mean and containing 60% probability</p>
+<ul>
+<li>we find the cutoffs where the upper and lower tails each contain 20% of the probability (leaving 60%):</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">normal_upper_bound</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns the z for which P(Z &lt;= z) = probability&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">inverse_normal_cdf</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">normal_lower_bound</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns the z for which P(Z &gt;= z) = probability&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">inverse_normal_cdf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">probability</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">normal_two_sided_bounds</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns the symmetric (about the mean) bounds</span>
+<span class="sd">    that contain the specified probability&quot;&quot;&quot;</span>
+    <span class="n">tail_probability</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">probability</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># upper bound should have tail_probability above it</span>
+    <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">normal_lower_bound</span><span class="p">(</span><span class="n">tail_probability</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+    <span class="c1"># lower bound should have tail_probability below it</span>
+    <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">normal_upper_bound</span><span class="p">(</span><span class="n">tail_probability</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In particular, when we choose to flip the coin n = 1000 times. 
+If our hypothesis of fairness is true,</p>
+<ul>
+<li>X should be distributed approximately normally <ul>
+<li>with mean 500 and</li>
+<li>standard deviation 15.8</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>15.811388300841896</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mu_0</span><span class="p">,</span> <span class="n">sigma_0</span> <span class="o">=</span> <span class="n">normal_approximation_to_binomial</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu_0&quot;</span><span class="p">,</span> <span class="n">mu_0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sigma_0&quot;</span><span class="p">,</span> <span class="n">sigma_0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>mu_0 500.0
+sigma_0 15.811388300841896
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Type-1-Error-and-Type-2-Error">Type 1 Error and Type 2 Error<a class="anchor-link" href="#Type-1-Error-and-Type-2-Error"> </a></h1><p>对于原假设H0，容易犯的两类错误：Type 1“弃真”或 Type 2“纳伪”？</p>
+<p>We need to make a decision about <strong>significance</strong>:
+<font size = '6' color = 'red'>How willing we are to make a **type 1 error** (“false positive”), in which we reject H0 even though it’s true.</font></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Assuming <strong>p</strong> really equals 0.5 (i.e., H0 is true), there is just a 5% chance we observe an X that lies outside this interval, which is the exact significance we wanted.</p>
+<p>if H0 is true, approximately 19 times out of 20, this test will give the correct result.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;normal_two_sided_bounds(0.95, mu_0, sigma_0)&quot;</span><span class="p">)</span>
+<span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="n">normal_two_sided_bounds</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">mu_0</span><span class="p">,</span> <span class="n">sigma_0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;power of a test&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;95% bounds based on assumption p is 0.5&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lo&quot;</span><span class="p">,</span> <span class="n">lo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>normal_two_sided_bounds(0.95, mu_0, sigma_0)
+power of a test
+95% bounds based on assumption p is 0.5
+lo 469.01026640487555
+hi 530.9897335951244
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Power-of-a-test">Power of a test<a class="anchor-link" href="#Power-of-a-test"> </a></h3><ul>
+<li>the probability of not making a type 2 error, </li>
+<li>in which we fail to reject H0 even though it’s false. </li>
+</ul>
+<p>Let’s check what happens if p is really 0.55:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;actual mu and sigma based on p = 0.55&quot;</span><span class="p">)</span>
+<span class="n">mu_1</span><span class="p">,</span> <span class="n">sigma_1</span> <span class="o">=</span> <span class="n">normal_approximation_to_binomial</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mu_1&quot;</span><span class="p">,</span> <span class="n">mu_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sigma_1&quot;</span><span class="p">,</span> <span class="n">sigma_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now, the coin is slightly biased toward heads.&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>actual mu and sigma based on p = 0.55
+mu_1 550.0
+sigma_1 15.732132722552274
+Now the coin is slightly biased toward heads.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># a type 2 error means we fail to reject the null hypothesis</span>
+<span class="c1"># which will happen when X is still in our original interval</span>
+<span class="n">type_2_probability</span> <span class="o">=</span> <span class="n">normal_probability_between</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">mu_1</span><span class="p">,</span> <span class="n">sigma_1</span><span class="p">)</span>
+<span class="n">power</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">type_2_probability</span> <span class="c1"># 0.887</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;type 2 probability&quot;</span><span class="p">,</span> <span class="n">type_2_probability</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;power&quot;</span><span class="p">,</span> <span class="n">power</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>type 2 probability 0.0636203880618903
+power 0.9363796119381097
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="One-sided-test">One-sided test<a class="anchor-link" href="#One-sided-test"> </a></h3><p>Assume that:</p>
+<p><strong>null hypothesis</strong> H0 was that <code>the coin is not biased toward heads, or that p ≤ 0.5.</code></p>
+<p>In that case we want a one-sided test that rejects the null hypothesis when X is much larger than 500 but not when X is smaller than 500.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;one-sided test&quot;</span><span class="p">)</span>
+<span class="n">hi</span> <span class="o">=</span> <span class="n">normal_upper_bound</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">mu_0</span><span class="p">,</span> <span class="n">sigma_0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span> <span class="c1"># is 526 (&lt; 531, since we need more probability in the upper tail)</span>
+<span class="n">type_2_probability</span> <span class="o">=</span> <span class="n">normal_probability_below</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">mu_1</span><span class="p">,</span> <span class="n">sigma_1</span><span class="p">)</span>
+<span class="n">power</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">type_2_probability</span> <span class="c1"># = 0.936</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;type 2 probability&quot;</span><span class="p">,</span> <span class="n">type_2_probability</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;power&quot;</span><span class="p">,</span> <span class="n">power</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>one-sided test
+hi 526.0073585242053
+type 2 probability 0.06362051966928273
+power 0.9363794803307173
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is a <strong>more powerful</strong> test, since</p>
+<ul>
+<li>it no longer rejects H0 when X is below 469<ul>
+<li>which is very unlikely to happen if H1 is true</li>
+</ul>
+</li>
+<li>it instead rejects H0 when X is between 526 and 531 <ul>
+<li>which is somewhat likely to happen if H1 is true</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">two_sided_p_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">mu</span><span class="p">:</span>
+        <span class="c1"># if x is greater than the mean, the tail is above x</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">normal_probability_above</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># if x is less than the mean, the tail is below x</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">normal_probability_below</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If we were to see 530 heads, we would compute:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;two_sided_p_value(529.5, mu_0, sigma_0) is &quot;</span><span class="p">,</span> \
+      <span class="n">two_sided_p_value</span><span class="p">(</span><span class="mf">529.5</span><span class="p">,</span> <span class="n">mu_0</span><span class="p">,</span> <span class="n">sigma_0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>two_sided_p_value(529.5, mu_0, sigma_0) is  0.06207721579598857
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Why did we use 529.5 instead of 530? </strong></p>
+<ul>
+<li>This is what’s called a <a href="https://en.wikipedia.org/wiki/Continuity_correction#Binomial">continuity correction</a>. 连续性校正</li>
+<li><code>normal_probability_between(529.5, 530.5, mu_0, sigma_0)</code> is a better estimate of the probability of seeing 530 heads than <code>normal_probabil ity_between(530, 531, mu_0, sigma_0)</code> is.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One way to convince yourself that this is a sensible estimate is with a simulation:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">count_extreme_values</span><span class="p">():</span>
+    <span class="n">extreme_value_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">):</span>
+        <span class="n">num_heads</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="mi">0</span>    <span class="c1"># count # of heads</span>
+                        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>                <span class="c1"># in 1000 flips</span>
+        <span class="k">if</span> <span class="n">num_heads</span> <span class="o">&gt;=</span> <span class="mi">530</span> <span class="ow">or</span> <span class="n">num_heads</span> <span class="o">&lt;=</span> <span class="mi">470</span><span class="p">:</span>             <span class="c1"># and count how often</span>
+            <span class="n">extreme_value_count</span> <span class="o">+=</span> <span class="mi">1</span>                         <span class="c1"># the # is &#39;extreme&#39;</span>
+
+    <span class="k">return</span> <span class="n">extreme_value_count</span> <span class="o">/</span> <span class="mi">100000</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">count_extreme_values</span><span class="p">()</span> <span class="c1"># 0.062</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.06118</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since the p-value is greater than our 5% significance, we don’t reject the null.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;two_sided_p_value(531.5, mu_0, sigma_0) is &quot;</span><span class="p">,</span>\
+      <span class="n">two_sided_p_value</span><span class="p">(</span><span class="mf">531.5</span><span class="p">,</span> <span class="n">mu_0</span><span class="p">,</span> <span class="n">sigma_0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>two_sided_p_value(531.5, mu_0, sigma_0) is  0.046345287837786575
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is smaller than the 5% significance, and we would reject the null.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For our one-sided test, if we saw 525 heads we would compute:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">upper_p_value</span> <span class="o">=</span> <span class="n">normal_probability_above</span>
+<span class="n">lower_p_value</span> <span class="o">=</span> <span class="n">normal_probability_below</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">upper_p_value</span><span class="p">(</span><span class="mf">524.5</span><span class="p">,</span> <span class="n">mu_0</span><span class="p">,</span> <span class="n">sigma_0</span><span class="p">)</span> <span class="c1"># 0.061</span>
+<span class="c1"># wouldn’t reject the null.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.06062885772582083</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For our one-sided test, if we saw 527 heads we would compute:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">upper_p_value</span><span class="p">(</span><span class="mf">526.5</span><span class="p">,</span> <span class="n">mu_0</span><span class="p">,</span> <span class="n">sigma_0</span><span class="p">)</span> <span class="c1"># 0.047</span>
+<span class="c1"># we would reject the null.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.04686839508859242</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img align="left" style="padding-right:10px;" src="./img/stats/danger.png"></p>
+<p>Make sure your <strong>data is roughly normally distributed</strong> before using normal_probability_above to compute p-values.</p>
+<ul>
+<li>There are various statistical tests for normality, </li>
+<li>but even plotting the data is a good start.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Confidence-Intervals">Confidence Intervals<a class="anchor-link" href="#Confidence-Intervals"> </a></h1><blockquote><p>to construct a confidence interval around the observed value of the parameter.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example</strong></p>
+<p>We can estimate the probability of the unfair coin by looking at the average value of the Bernoulli variables corresponding to each flip</p>
+<ul>
+<li>1 if heads, </li>
+<li>0 if tails. </li>
+</ul>
+<p>If we observe 525 heads out of 1,000 flips, then we estimate <code>p equals 0.525</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How confident can we be about this estimate?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we knew the exact value of p, the <code>central limit theorem</code> tells us</p>
+<blockquote><p>the average of those Bernoulli variables should be approximately normal, with mean p and standard deviation $\sigma = \sqrt{p(1 - p) / 1000}$:</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p_hat</span> <span class="o">=</span> <span class="mi">525</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">p_hat</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_hat</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_hat</span><span class="p">)</span><span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># 0.0158</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.525 0.015791611697353755
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>we are “95% confident” that the following interval contains the true parameter p:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_two_sided_bounds</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(0.4940490278129096, 0.5559509721870904)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img align="left" style="padding-right:10px;" src="./img/stats/bird.png">
+if you were to repeat the experiment many times, 95% of the time the “true” parameter (which is the same every time) would lie within the observed confidence interval (which might be different every time).</p>
+<p>we do not conclude that the coin is unfair, since 0.5 falls within our confidence interval.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If instead we’d seen 540 heads, then we’d have:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p_hat</span> <span class="o">=</span> <span class="mi">540</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">p_hat</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_hat</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_hat</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">normal_two_sided_bounds</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.54 0.015760710643876435 (0.5091095927295919, 0.5708904072704082)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here, “fair coin” doesn’t lie in the confidence interval.</p>
+<ul>
+<li>The “fair coin” hypothesis doesn’t pass a test that you’d expect it to pass 95% of the time if it were true.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="P-hacking-P&#20540;&#25805;&#32437;">P-hacking P&#20540;&#25805;&#32437;<a class="anchor-link" href="#P-hacking-P&#20540;&#25805;&#32437;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Test enough hypotheses against your data set, and one of them will almost certainly appear significant. </li>
+<li>Remove the right outliers, and you can probably get your p value below 0.05.</li>
+</ul>
+<p><img align="left" style="padding-right:10px;" src="./img/stats/danger.png"></p>
+<p>P-hacking是科研人员不断的尝试统计计算直到p&lt;.05，当然有时这可能是无意识的。</p>
+<ul>
+<li>最早应该是美国宾夕法尼亚大学的Simmons等人提出来的。</li>
+<li>P-hacking 按照字面的意思来看是「P值黑客]，但是实际上的意思是「P值篡改」或者「P值操纵」。</li>
+<li>P-hacking危害很明显，那就是很容易引起假阳性，导致实验的不可重复性</li>
+</ul>
+<blockquote><p>Simmons JP, Nelson LD, Simonshohn U. False-positive psychology: undisclosed flexibility in data collection and analysis allows presenting anything as significant. Psychol Sci. 2011 Nov;22(11):1359-66.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">run_experiment</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;flip a fair coin 1000 times, True = heads, False = tails&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">reject_fairness</span><span class="p">(</span><span class="n">experiment</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;using the 5% significance levels&quot;&quot;&quot;</span>
+    <span class="n">num_heads</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">flip</span> <span class="k">for</span> <span class="n">flip</span> <span class="ow">in</span> <span class="n">experiment</span> <span class="k">if</span> <span class="n">flip</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">num_heads</span> <span class="o">&lt;</span> <span class="mi">469</span> <span class="ow">or</span> <span class="n">num_heads</span> <span class="o">&gt;</span> <span class="mi">531</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P-hacking&quot;</span><span class="p">)</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">experiments</span> <span class="o">=</span> <span class="p">[</span><span class="n">run_experiment</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+<span class="n">num_rejections</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">experiment</span>
+                      <span class="k">for</span> <span class="n">experiment</span> <span class="ow">in</span> <span class="n">experiments</span>
+                      <span class="k">if</span> <span class="n">reject_fairness</span><span class="p">(</span><span class="n">experiment</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num_rejections</span><span class="p">)</span> <span class="c1"># 46</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>P-hacking
+46
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img align="left" style="padding-right:10px;" src="./img/stats/bird.png"></p>
+<ul>
+<li>you should determine your hypotheses before looking at the data, </li>
+<li>you should clean your data without the hypotheses in mind, and </li>
+<li>you should keep in mind that p-values are not substitutes for common sense. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img align="left" width = 100px style="padding-right:5px;" src="./img/stats/bear.png"></p>
+<h1 id="Example:-Running-an-A/B-Test">Example: Running an A/B Test<a class="anchor-link" href="#Example:-Running-an-A/B-Test"> </a></h1><p>To help choosing between advertisement A (“tastes great!”) and advertisement B (“less bias!”).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If 990 out of 1,000 A-viewers click their ad while only 10 out of 1,000 B-viewers click their ad, you can be pretty confident that A is the better ad.</p>
+<p>But what if the differences are not so stark?</p>
+<ul>
+<li>Here’s where you’d use statistical inference.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let’s say that $N_A$ people see ad A, and that $n_A$ of them click it.</p>
+<ul>
+<li>We can think of each ad view as a Bernoulli trial <ul>
+<li>where $p_A$ is the probability that someone clicks ad A. </li>
+</ul>
+</li>
+</ul>
+<p>$\frac{n_A}{N_A}$ is approximately a normal random variable with mean $p_A$ and standard deviation $\sigma_A$</p>
+$$\sigma_A = \sqrt \frac{P_A(1-P_A)}{N_A}$$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Similarly,</p>
+$$\sigma_B = \sqrt \frac{P_B(1-P_B)}{N_B}$$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># running an A/B test</span>
+<span class="k">def</span> <span class="nf">estimated_parameters</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">N</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">sigma</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we assume those two normals are independent (which seems reasonable, since the individual Bernoulli trials ought to be), then their difference should also be normal with</p>
+<ul>
+<li>mean $p_B − p_A$ </li>
+<li>standard deviation $\sqrt {\sigma_A^2 + \sigma_B^2}$.</li>
+</ul>
+<p>Null Hypothesis: $p_A$ and $p_B$ are the same, that is $p_A - p_B = 0$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">a_b_test_statistic</span><span class="p">(</span><span class="n">N_A</span><span class="p">,</span> <span class="n">n_A</span><span class="p">,</span> <span class="n">N_B</span><span class="p">,</span> <span class="n">n_B</span><span class="p">):</span>
+    <span class="n">p_A</span><span class="p">,</span> <span class="n">sigma_A</span> <span class="o">=</span> <span class="n">estimated_parameters</span><span class="p">(</span><span class="n">N_A</span><span class="p">,</span> <span class="n">n_A</span><span class="p">)</span>
+    <span class="n">p_B</span><span class="p">,</span> <span class="n">sigma_B</span> <span class="o">=</span> <span class="n">estimated_parameters</span><span class="p">(</span><span class="n">N_B</span><span class="p">,</span> <span class="n">n_B</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">p_B</span> <span class="o">-</span> <span class="n">p_A</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_A</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_B</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># it should approximately be a standard normal.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For example, if “tastes great” gets 200 clicks out of 1,000 views and “less bias” gets 180 clicks out of 1,000 views, the statistic equals:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_rejections</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num_rejections</span><span class="p">,</span> <span class="s2">&quot;rejections out of 1000&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A/B testing&quot;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">a_b_test_statistic</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a_b_test_statistic(1000, 200, 1000, 180)&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-value&quot;</span><span class="p">,</span> <span class="n">two_sided_p_value</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;which is large enough that you can’t conclude there’s much of a difference. &#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1000 rejections out of 1000
+A/B testing
+a_b_test_statistic(1000, 200, 1000, 180) -1.1403464899034472
+p-value 0.254141976542236
+which is large enough that you can’t conclude there’s much of a difference. 
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On the other hand, if “less bias” only got 150 clicks, we’d have:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">a_b_test_statistic</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a_b_test_statistic(1000, 200, 1000, 150)&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-value&quot;</span><span class="p">,</span> <span class="n">two_sided_p_value</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>a_b_test_statistic(1000, 200, 1000, 150) -2.948839123097944
+p-value 0.003189699706216853
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>it means there’s only a 0.003 probability you’d see such a large difference if the ads were equally effective.</li>
+<li>there’s only a .3% chance you’d observe such an extreme statistic if our null hypothesis were true.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Bayesian-Inference">Bayesian Inference<a class="anchor-link" href="#Bayesian-Inference"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An alternative approach to inference involves treating the unknown parameters themselves as random variables.</p>
+<ul>
+<li>To start with a <code>prior distribution</code> for the parameters </li>
+<li>and then uses the observed data and Bayes’s Theorem to get an updated <code>posterior distribution</code> for the parameters. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For example, when the unknown parameter is a probability (as in our coin-flipping example), we often use a <code>prior</code> from the <code>Beta distribution</code>, which puts all its probability between 0 and 1:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">B</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;a normalizing constant so that the total probability is 1&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">beta_pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>          <span class="c1"># no weight outside of [0, 1]</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">beta</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">B</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The larger alpha and beta are, the “tighter” the distribution is.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>if alpha and beta are both 1, it’s just the uniform distribution (centered at 0.5, very dispersed). </li>
+<li>If alpha is much larger than beta, most of the weight is near 1.</li>
+<li>if alpha is much smaller than beta, most of the weight is near zero. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">10</span><span class="o">/</span><span class="mi">1000</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y4</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(1, 1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(10, 10)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="s1">&#39;-*&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(4, 16)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y4</span><span class="p">,</span> <span class="s1">&#39;_-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(16, 4)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_04-hypothesis_inference_77_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So let’s say we assume a prior distribution on p.</p>
+<ul>
+<li>Maybe we don’t want to take a stand on whether the coin is fair, and we choose alpha and beta to both equal 1. </li>
+<li>Or maybe we have a strong belief that it lands heads 55% of the time, and we choose alpha equals 55, beta equals 45.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then we flip our coin a bunch of times and see h heads and t tails.</p>
+<ul>
+<li>Bayes’s Theorem tells us that the posterior distribution for p is again a Beta distribution <ul>
+<li>but with parameters alpha + h and beta + t.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img align="left" style="padding-right:10px;" src="figures/bird.png">
+Beta is the conjugate prior (共轭先验) to the Binomial distribution.</p>
+<p>Whenever you update a Beta prior using observations from the corresponding binomial, you will get back a Beta posterior.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let’s say you flip the coin 10 times and see only 3 heads.</p>
+<ul>
+<li>If you started with the uniform prior, your posterior distribution would be a Beta(4, 8), centered around 0.33. <ul>
+<li>Since you considered all probabilities equally likely, your best guess is something pretty close to the observed probability.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y5</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y5</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(4, 8)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_04-hypothesis_inference_82_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>If you started with a Beta(20, 20) <ul>
+<li>expressing the belief that the coin was roughly fair</li>
+<li>your posterior distribution would be a Beta(23, 27), centered around 0.46, </li>
+<li>indicating a revised belief that maybe the coin is slightly biased toward tails.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y5</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y6</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y5</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(4, 8)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y6</span><span class="p">,</span> <span class="s1">&#39;-*&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(23, 27)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_04-hypothesis_inference_84_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>And if you started with a Beta(30, 10) <ul>
+<li>expressing a belief that the coin was biased to flip 75% heads</li>
+<li>your posterior distribution would be a Beta(33, 17), centered around 0.66. </li>
+<li>In that case you’d still believe in a heads bias, but less strongly than you did initially. </li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y5</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y6</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y7</span> <span class="o">=</span> <span class="p">[</span><span class="n">beta_pdf</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y5</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(4, 8)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y6</span><span class="p">,</span> <span class="s1">&#39;-*&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(23, 27)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y7</span><span class="p">,</span> <span class="s1">&#39;_-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Beta(33, 17)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_04-hypothesis_inference_86_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img align="left" style="padding-right:10px;" src="./img/stats/bird.png"></p>
+<p>What’s interesting is that this allows us to make probability statements about hypotheses:</p>
+<blockquote><p>“Based on the prior and the observed data, there is only a 5% likelihood the coin’s heads probability is between 49% and 51%.”</p>
+</blockquote>
+<p>This is philosophically very different from a statement like</p>
+<blockquote><p>“if the coin were fair we would expect to observe data so extreme only 5% of the time.”</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img align="left" style="padding-right:10px;" src="./img/stats/bird.png"></p>
+<ul>
+<li>If you flipped the coin more and more times, the prior would matter less and less until eventually you’d have (nearly) the same posterior distribution no matter which prior you started with.</li>
+</ul>
+<p>Using Bayesian inference to test hypotheses is considered somewhat controversial— in part because of the subjective nature of choosing a prior.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+</main>
