@@ -2,6 +2,8 @@
 
 《计算传播基础》 
 
+![logo](/content/img/logo/logo.png)
+
 王成军
 
 在线浏览链接见：https://computational-class.github.io/ccbook/
