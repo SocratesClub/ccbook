@@ -16,7 +16,7 @@
 
 #######################################################################################
 # Jekyll site settings
-title: 计算传播学
+title: Elements of Computational Communication
 author: 王成军
 email: wangchj04@gmail.com
 description: >-
@@ -37,7 +37,7 @@ footer_text: This page was created by <a href="https://github.com/jupyter/jupyte
 show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.
 collapse_inactive_chapters: true  # Whether to collapse the inactive chapters in the sidebar
 textbook_logo: img/logo/logo.png               # A logo to be displayed at the top of your textbook sidebar. Should be square
-textbook_logo_link: https://jupyter.org/jupyter-book/                    # A link for the logo.
+textbook_logo_link: https://computational-class.github.io/ccbook/                    # A link for the logo.
 sidebar_footer_text: Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter
   Book</a>
 number_toc_chapters: true         # Whether to add numbers to chapterse in your Table of Contents. If true, you can control this at the Chapter level in _data/toc.yml
@@ -49,7 +49,7 @@ search_max_words_in_content: 100   # In the search function, use at most this ma
 # Interact link settings
 
 # General interact settings
-use_jupyterlab: true                     # If 'true', interact links will use JupyterLab as the interface
+use_jupyterlab: false                     # If 'true', interact links will use JupyterLab as the interface
 
 # Jupyterhub link settings
 use_jupyterhub_button: true              # If 'true', display a button that will direct users to a JupyterHub (that you provide)
@@ -66,7 +66,7 @@ binder_repo_branch: gh-pages                   # The branch on which your textbo
 binderhub_interact_text: Interact              # The text that interact buttons will contain.
 
 # Thebelab settings
-use_thebelab_button: true                # If 'true', display a button to allow in-page running code cells with Thebelab
+use_thebelab_button: false                # If 'true', display a button to allow in-page running code cells with Thebelab
 thebelab_button_text: Thebelab                 # The text to display inside the Thebelab initialization button
 codemirror_theme: abcdef                     # Theme for codemirror cells, for options see https://codemirror.net/doc/manual.html#config
 

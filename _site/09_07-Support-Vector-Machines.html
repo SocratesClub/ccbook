@@ -9,7 +9,7 @@
   <meta name="description" content="In-Depth: Support Vector Machines This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on Git...">
 
   <link rel="canonical" href="https://computational-class.github.io/ccbook/09_07-Support-Vector-Machines.html">
-  <link rel="alternate" type="application/rss+xml" title="计算传播学" href="https://computational-class.github.io/ccbook/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
 
   <meta property="og:url"         content="https://computational-class.github.io/ccbook/09_07-Support-Vector-Machines.html" />
 <meta property="og:type"        content="article" />
@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/09_07-Support-Vector-Machines.html",
   "headline": "Support Vector Machines",
-  "datePublished": "2019-10-06T17:36:27+08:00",
-  "dateModified": "2019-10-06T17:36:27+08:00",
+  "datePublished": "2019-10-06T19:01:02+08:00",
+  "dateModified": "2019-10-06T19:01:02+08:00",
   "description": "In-Depth: Support Vector Machines This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on Git...",
   "author": {
     "@type": "Person",
@@ -114,141 +114,6 @@ MathJax.Hub.Config({
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
-
-
-<!-- Display Thebelab button in each code cell -->
-<script>
-/**
- * Set up thebelab button for code blocks
- */
-
-const thebelabCellButton = id =>
-  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
-    <img src="/ccbook/assets/images/edit-button.svg" alt="Start interactive mode">
-  </a>`
-
-
-const addThebelabButtonToCodeCells =  () => {
-
-  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
-  codeCells.forEach((codeCell, index) => {
-    const id = codeCellId(index)
-    codeCell.setAttribute('id', id)
-    if (document.getElementById("thebelab-cell-button-" + id) == null) {
-      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
-    }
-  })
-}
-
-initFunction(addThebelabButtonToCodeCells);
-</script>
-
-
-
-<script type="text/x-thebe-config">
-    {
-      requestKernel: true,
-      binderOptions: {
-        repo: 'YOUR-ORG/YOUR-REPO',
-        ref: 'gh-pages',
-      },
-      codeMirrorConfig: {
-        theme: "abcdef"
-      },
-      kernelOptions: {
-        name: 'python3',
-      }
-    }
-</script>
-<script src="https://unpkg.com/thebelab@0.4.0/lib/index.js" async></script>
-<script>
-    /**
-     * Add attributes to Thebelab blocks
-     */
-
-    const initThebelab = () => {
-        const addThebelabToCodeCells = () => {
-            console.log("Adding thebelab to code cells...");
-            // If Thebelab hasn't loaded, wait a bit and try again. This
-            // happens because we load ClipboardJS asynchronously.
-            if (window.thebelab === undefined) {
-                setTimeout(addThebelabToCodeCells, 250)
-            return
-            }
-
-            // If we already detect a Thebelab cell, don't re-run
-            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
-                return;
-            }
-
-            // Find all code cells, replace with Thebelab interactive code cells
-            const codeCells = document.querySelectorAll('.input_area pre')
-            codeCells.forEach((codeCell, index) => {
-                const id = codeCellId(index)
-                codeCell.setAttribute('data-executable', 'true')
-
-                // Figure out the language it uses and add this too
-                var parentDiv = codeCell.parentElement.parentElement;
-                var arrayLength = parentDiv.classList.length;
-                for (var ii = 0; ii < arrayLength; ii++) {
-                    var parts = parentDiv.classList[ii].split('language-');
-                    if (parts.length === 2) {
-                        // If found, assign dataLanguage and break the loop
-                        var dataLanguage = parts[1];
-                        break;
-                    }
-                }
-                codeCell.setAttribute('data-language', dataLanguage)
-
-                // If the code cell is hidden, show it
-                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
-                if (inputCheckbox !== null) {
-                    setCodeCellVisibility(inputCheckbox, 'visible');
-                }
-            });
-
-            // Remove the event listener from the page so keyboard press doesn't
-            // Change page
-            document.removeEventListener('keydown', initPageNav)
-            keyboardListener = false;
-
-            // Init thebelab
-            thebelab.bootstrap();
-
-            // Remove copy buttons since they won't work anymore
-            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
-            copyAndThebeButtons.forEach((button, index) => {
-                button.remove();
-            });
-
-            // Remove outputs since they'll be stale
-            const outputs = document.querySelectorAll('.output *, .output')
-            outputs.forEach((output, index) => {
-                output.remove();
-            });
-
-            // Find any cells with an initialization tag and ask ThebeLab to run them when ready
-            var thebeInitCells = document.querySelectorAll('div.tag_thebelab-init');
-            thebeInitCells.forEach((cell) => {
-                console.log("Initializing ThebeLab with cell: " + cell.id);
-                cell.querySelector('.thebelab-run-button').click();
-            });
-        }
-
-        // Add event listener for the function to modify code cells
-        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
-        thebelabButtons.forEach((thebelabButton,index) => {
-            if (thebelabButton === null) {
-                setTimeout(initThebelab, 250)
-                return
-            };
-            thebelabButton.addEventListener('click', addThebelabToCodeCells);
-        });
-    }
-
-    // Initialize Thebelab
-    initFunction(initThebelab);
-</script>
 
 
 
@@ -560,8 +425,8 @@ initFunction(initPrint)
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://jupyter.org/jupyter-book/"><img src="/ccbook/img/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
-  <h2 class="c-sidebar__title">计算传播学</h2>
+  <a href="https://computational-class.github.io/ccbook/"><img src="/ccbook/img/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Elements of Computational Communication</h2>
   <ul class="c-sidebar__chapters">
     
       
@@ -1657,17 +1522,16 @@ initFunction(initPrint)
     </div>
 </div>
 
-  <button id="interact-button-thebelab" class="interact-button">Thebelab</button>
-
   
   
   
+  
 
 
 
 
 
-<a href="/hub/user-redirect/git-pull?repo=https://github.com//YOUR-ORG/YOUR-REPO&amp;branch=gh-pages&amp;subPath=content%2F09_07-Support-Vector-Machines.ipynb&amp;app=lab"><button class="interact-button" id="interact-button-jupyterhub"><img class="interact-button-logo" src="/ccbook/assets/images/logo_jupyterhub.svg" alt="Interact" />Interact</button></a>
+<a href="/hub/user-redirect/git-pull?repo=https://github.com//YOUR-ORG/YOUR-REPO&amp;branch=gh-pages&amp;subPath=content%2F09_07-Support-Vector-Machines.ipynb&amp;app=notebook"><button class="interact-button" id="interact-button-jupyterhub"><img class="interact-button-logo" src="/ccbook/assets/images/logo_jupyterhub.svg" alt="Interact" />Interact</button></a>
 
 
 
