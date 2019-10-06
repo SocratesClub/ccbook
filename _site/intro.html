@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Home</title>
-  <meta name="description" content="Books with Jupyter Jupyter Books lets you build an online book using a collection of Jupyter Notebooksand Markdown files. Its output is similar to the excell...">
+  <meta name="description" content="&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.comRISE: "Live" Reve...">
 
-  <link rel="canonical" href="https://jupyter.org/jupyter-book/intro.html">
-  <link rel="alternate" type="application/rss+xml" title="Jupyter Book" href="https://jupyter.org/jupyter-book/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/ccbook/intro.html">
+  <link rel="alternate" type="application/rss+xml" title="计算传播学" href="http://localhost:4000/ccbook/feed.xml">
 
-  <meta property="og:url"         content="https://jupyter.org/jupyter-book/intro.html" />
+  <meta property="og:url"         content="http://localhost:4000/ccbook/intro.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Home" />
-<meta property="og:description" content="Books with Jupyter Jupyter Books lets you build an online book using a collection of Jupyter Notebooksand Markdown files. Its output is similar to the excell..." />
-<meta property="og:image"       content="https://jupyter.org/jupyter-book/images/logo/logo.png" />
+<meta property="og:description" content="&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.comRISE: "Live" Reve..." />
+<meta property="og:image"       content="http://localhost:4000/ccbook/images/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
 
@@ -24,35 +24,35 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://jupyter.org/jupyter-book/intro.html",
+  "mainEntityOfPage": "http://localhost:4000/ccbook/intro.html",
   "headline": "Home",
-  "datePublished": "2019-09-23T12:42:13-07:00",
-  "dateModified": "2019-09-23T12:42:13-07:00",
-  "description": "Books with Jupyter Jupyter Books lets you build an online book using a collection of Jupyter Notebooksand Markdown files. Its output is similar to the excell...",
+  "datePublished": "2019-10-06T09:12:22+08:00",
+  "dateModified": "2019-10-06T09:12:22+08:00",
+  "description": "&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.comRISE: "Live" Reve...",
   "author": {
     "@type": "Person",
-    "name": "The Jupyter Book Community"
+    "name": "王成军"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://jupyter.org/jupyter-book",
+      "url": "http://localhost:4000/ccbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://jupyter.org/jupyter-book",
+    "url": "http://localhost:4000/ccbook",
     "height": 60,
     "width": 60
   }
 }
 
   </script>
-  <link rel="stylesheet" href="/jupyter-book/assets/css/styles.css">
+  <link rel="stylesheet" href="/ccbook/assets/css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/regular.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/solid.css">
 
@@ -63,7 +63,7 @@
   <meta name="theme-color" content="#233947">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/jupyter-book/images/logo/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/ccbook/images/logo/favicon.ico">
 
   <!-- MathJax Config -->
   <!-- Allow inline math using $ and automatically break long math lines -->
@@ -90,19 +90,19 @@ MathJax.Hub.Config({
 
 
   <!-- DOM updating function -->
-  <script src="/jupyter-book/assets/js/dom-update.js"></script>
+  <script src="/ccbook/assets/js/dom-update.js"></script>
 
   <!-- Selectors for elements on the page -->
-  <script src="/jupyter-book/assets/js/documentSelectors.js"></script>
+  <script src="/ccbook/assets/js/documentSelectors.js"></script>
 
   <!-- Define some javascript variables that will be useful in other javascript -->
   <script>
-    const site_basename = '/jupyter-book';
+    const site_basename = '/ccbook';
   </script>
 
   <!-- Add AnchorJS to let headers be linked -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
-  <script src="/jupyter-book/assets/js/anchors.js" async></script>
+  <script src="/ccbook/assets/js/anchors.js" async></script>
 
   <!-- Include Turbolinks to make page loads fast -->
   <!-- https://github.com/turbolinks/turbolinks -->
@@ -124,7 +124,7 @@ MathJax.Hub.Config({
 
 const thebelabCellButton = id =>
   `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
-    <img src="/jupyter-book/assets/images/edit-button.svg" alt="Start interactive mode">
+    <img src="/ccbook/assets/images/edit-button.svg" alt="Start interactive mode">
   </a>`
 
 
@@ -149,14 +149,14 @@ initFunction(addThebelabButtonToCodeCells);
     {
       requestKernel: true,
       binderOptions: {
-        repo: 'jupyter/jupyter-book',
+        repo: 'YOUR-ORG/YOUR-REPO',
         ref: 'gh-pages',
       },
       codeMirrorConfig: {
         theme: "abcdef"
       },
       kernelOptions: {
-        name: 'python3',
+        name: 'conda-root-py',
       }
     }
 </script>
@@ -229,11 +229,9 @@ initFunction(addThebelabButtonToCodeCells);
 
             // Find any cells with an initialization tag and ask ThebeLab to run them when ready
             var thebeInitCells = document.querySelectorAll('div.tag_thebelab-init');
-            var thebeOutputCells = document.querySelectorAll('div.tag_thebelab-output');
             thebeInitCells.forEach((cell) => {
                 console.log("Initializing ThebeLab with cell: " + cell.id);
-                const initButton = cell.querySelector('.thebelab-run-button');
-                initButton.click();
+                cell.querySelector('.thebelab-run-button').click();
             });
         }
 
@@ -256,18 +254,18 @@ initFunction(addThebelabButtonToCodeCells);
 
   <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" async></script>
-  <script src="/jupyter-book/assets/js/tocbot.js"></script>
+  <script src="/ccbook/assets/js/tocbot.js"></script>
 
   <!-- Google analytics -->
   
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52617120-7"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-52617120-7');
+  gtag('config', '');
 </script>
 
 
@@ -276,11 +274,11 @@ initFunction(addThebelabButtonToCodeCells);
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
 
   <!-- Load custom website scripts -->
-  <script src="/jupyter-book/assets/js/scripts.js" async></script>
+  <script src="/ccbook/assets/js/scripts.js" async></script>
 
   <!-- Load custom user CSS and JS  -->
-  <script src="/jupyter-book/assets/custom/custom.js" async></script>
-  <link rel="stylesheet" href="/jupyter-book/assets/custom/custom.css">
+  <script src="/ccbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/ccbook/assets/custom/custom.css">
 
   <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
   
@@ -344,7 +342,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("https://jupyter.org") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -515,10 +513,10 @@ initFunction(initQuery);
 </script>
 
   <!-- Load JS that depends on site variables -->
-  <script src="/jupyter-book/assets/js/copy-button.js" async></script>
+  <script src="/ccbook/assets/js/copy-button.js" async></script>
 
   <!-- Hide cell code -->
-  <script src="/jupyter-book/assets/js/hide-cell.js" async></script>
+  <script src="/ccbook/assets/js/hide-cell.js" async></script>
 
   <!-- Printing the screen -->
   <!-- Include nbinteract for interactive widgets -->
@@ -538,7 +536,7 @@ printContent = () => {
     printJS({
         printable: 'textbook_content',
         type: 'html',
-        css: "/jupyter-book/assets/css/styles.css",
+        css: "/ccbook/assets/css/styles.css",
         scanStyles: false,
         targetStyles: ["*"],
         ignoreElements: ignoreAssistList
@@ -562,8 +560,8 @@ initFunction(initPrint)
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://jupyter.org/jupyter-book/intro.html"><img src="/jupyter-book/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
-  <h2 class="c-sidebar__title">Jupyter Book</h2>
+  <a href="https://jupyter.org/jupyter-book/"><img src="/ccbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">计算传播学</h2>
   <ul class="c-sidebar__chapters">
     
       
@@ -576,383 +574,12 @@ initFunction(initPrint)
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry c-sidebar__entry--active"
-          href="/jupyter-book/intro.html"
+          href="/ccbook/intro.html"
         >
           
           Home
         </a>
 
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/guide/01_overview.html"
-        >
-          
-          Getting started
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/02_create.html"
-                >
-                  
-                  Create your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/03_build.html"
-                >
-                  
-                  Build HTML for each page of your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/04_publish.html"
-                >
-                  
-                  Build and publish your book online
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/05_faq.html"
-                >
-                  
-                  Frequently Asked Questions (FAQ)
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/guide/06_advanced.html"
-                >
-                  
-                  How-to and advanced topics
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/features/features.html"
-        >
-          
-          Features and customization
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/markdown.html"
-                >
-                  
-                  Markdown files
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/notebooks.html"
-                >
-                  
-                  Jupyter notebooks
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/hiding.html"
-                >
-                  
-                  Hiding code blocks or entire cells
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/interact.html"
-                >
-                  
-                  Connecting content with JupyterHub and Binder
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/executing.html"
-                >
-                  
-                  Running each page when building your book
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/interactive_cells.html"
-                >
-                  
-                  BETA - Adding interactivity to your book pages
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/citations.html"
-                >
-                  
-                  BETA - Citations and bibliographies
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/jupytext.html"
-                >
-                  
-                  BETA - Using Jupytext for text-based Notebook content
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/layout.html"
-                >
-                  
-                  BETA - Controlling page layout
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/features/limits.html"
-                >
-                  
-                  Feature Limits
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/advanced/advanced.html"
-        >
-          
-          Advanced Topics
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections ">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/advanced/circleci.html"
-                >
-                  
-                  Building, previewing, and publishing your book with CircleCI
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
         
       </li>
 
@@ -981,6 +608,29 @@ initFunction(initPrint)
     
       
       
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href=".html"
+        >
+          
+            1.
+          
+          Search
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
         <li class="c-sidebar__divider"></li>
         
       
@@ -996,242 +646,15 @@ initFunction(initPrint)
       
       
       <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/01/what-is-data-science.html"
-        >
-          
-            1.
-          
-          Data Science
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections u-hidden-visually">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/01/1/intro.html"
-                >
-                  
-                    1.1
-                  
-                  Introduction
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/01/2/why-data-science.html"
-                >
-                  
-                    1.2
-                  
-                  Why Data Science?
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/01/3/Plotting_the_Classics.html"
-                >
-                  
-                    1.3
-                  
-                  Plotting the Classics
-                </a>
-
-                
-                
-                  
-                  
-
-                  <li class="c-sidebar__subsection">
-                    <a class="c-sidebar__entry "
-                      href="/jupyter-book/01/3/subsection/subsections.html"
-                    >
-                      
-                        1.3.1
-                        
-                      
-                      Subsection Demo 1
-                    </a>
-                
-                  
-                  
-
-                  <li class="c-sidebar__subsection">
-                    <a class="c-sidebar__entry "
-                      href="/jupyter-book/01/3/subsection/subsectiontwo.html"
-                    >
-                      
-                        1.3.2
-                        
-                      
-                      Subsection Demo 2
-                    </a>
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/02/causality-and-experiments.html"
+        <a class="c-sidebar__entry c-sidebar__entry--active"
+          href="/ccbook/intro.html"
         >
           
             2.
           
-          Causality and Experiments
+          Introduction
         </a>
 
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections u-hidden-visually">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/1/observation-and-visualization-john-snow-and-the-broad-street-pump.html"
-                >
-                  
-                    2.1
-                  
-                  John Snow and the Broad Street Pump
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/2/snow-s-grand-experiment.html"
-                >
-                  
-                    2.2
-                  
-                  Snow’s “Grand Experiment”
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/3/establishing-causality.html"
-                >
-                  
-                    2.3
-                  
-                  Establishing Causality
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/4/randomization.html"
-                >
-                  
-                    2.4
-                  
-                  Randomization
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/02/5/endnote.html"
-                >
-                  
-                    2.5
-                  
-                  Endnote
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
         
       </li>
 
@@ -1247,194 +670,14 @@ initFunction(initPrint)
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/jupyter-book/03/programming-in-python.html"
+          href="/ccbook/chapter1.html"
         >
           
             3.
           
-          Programming in Python
+          chapter 1
         </a>
 
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections u-hidden-visually">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/03/1/Expressions.html"
-                >
-                  
-                    3.1
-                  
-                  Expressions
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/03/2/Names.html"
-                >
-                  
-                    3.2
-                  
-                  Names
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/03/3/Calls.html"
-                >
-                  
-                    3.3
-                  
-                  Call Expressions
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/03/4/Introduction_to_Tables.html"
-                >
-                  
-                    3.4
-                  
-                  Introduction to Tables
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
-        
-      </li>
-
-      
-    
-      
-      
-
-      
-      
-
-      
-      
-      <li class="c-sidebar__chapter">
-        <a class="c-sidebar__entry "
-          href="/jupyter-book/04/Types.html"
-        >
-          
-            4.
-          
-          Data Types
-        </a>
-
-        
-
-          
-          
-          
-          
-
-          
-
-          <ul class="c-sidebar__sections u-hidden-visually">
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/04/1/Numbers.html"
-                >
-                  
-                    4.1
-                  
-                  Numbers
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/04/2/Strings.html"
-                >
-                  
-                    4.2
-                  
-                  Strings
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-              
-              
-
-              <li class="c-sidebar__section">
-                <a class="c-sidebar__entry "
-                  href="/jupyter-book/04/3/Comparison.html"
-                >
-                  
-                    4.3
-                  
-                  Comparisons
-                </a>
-
-                
-                
-
-              </li>
-              
-            
-          </ul>
         
       </li>
 
@@ -1460,7 +703,7 @@ initFunction(initPrint)
 <div class="download-buttons-dropdown">
     <button id="dropdown-button-trigger" class="interact-button"><i class="fa fa-download"></i></button>
     <div class="download-buttons">
-        <a href="/jupyter-book/content/intro.ipynb" download>
+        <a href="/ccbook/content/intro.ipynb" download>
         <button id="interact-button-download" class="interact-button">ORIG</button>
         </a>
         
@@ -1472,14 +715,15 @@ initFunction(initPrint)
 
   
   
-
-
-
-
-
-
-<a href="https://mybinder.org/v2/gh/jupyter/jupyter-book/gh-pages?filepath=content%2Fintro.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/jupyter-book/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
   
+
+
+
+
+
+<a href="/hub/user-redirect/git-pull?repo=https://github.com//YOUR-ORG/YOUR-REPO&amp;branch=gh-pages&amp;subPath=content%2Fintro.ipynb&amp;app=lab"><button class="interact-button" id="interact-button-jupyterhub"><img class="interact-button-logo" src="/ccbook/assets/images/logo_jupyterhub.svg" alt="Interact" />Interact</button></a>
+
+
 
 
 </div>
@@ -1491,51 +735,20 @@ initFunction(initPrint)
     <nav class="onthispage">
     </nav>
   </aside>
-  <a href="/jupyter-book/search.html" class="topbar-right-button" id="search-button"><i class="fa fa-search"></i></a>
+  <a href="/ccbook/search.html" class="topbar-right-button" id="search-button"><i class="fa fa-search"></i></a>
 </div>
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
               <main class="jupyter-page">
+
 <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Books-with-Jupyter">Books with Jupyter<a class="anchor-link" href="#Books-with-Jupyter"> </a></h1><p><a href="https://circleci.com/gh/jupyter/jupyter-book"><img src="https://circleci.com/gh/jupyter/jupyter-book.svg?style=svg" class="left"></a>
-<a href="https://codecov.io/gh/jupyter/jupyter-book"><img src="https://codecov.io/gh/jupyter/jupyter-book/branch/master/graph/badge.svg" class="left"></a>
-<a href="https://doi.org/10.5281/zenodo.2799972"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2799972.svg" class="left"></a></p>
-<div style="clear:both;"></div><p>Jupyter Books lets you build an online book using a collection of Jupyter Notebooks
-and Markdown files. Its output is similar to the excellent <a href="https://bookdown.org/yihui/bookdown/">Bookdown</a> tool,
-and adds extra functionality for people running a Jupyter stack.</p>
-<p>For an example of a book built with Jupyter Books, see the <a href="https://www.textbook.ds100.org/">textbook for Data 100</a> at UC Berkeley (or this website!)</p>
-<p>Here are a few features of Jupyter Books</p>
-<ul>
-<li>A Command-Line Interface (CLI) to quickly create, build, and upgrade books.</li>
-<li>Write book content in markdown and Jupyter Notebooks</li>
-<li>Convert these into Jekyll pages that can be hosted for free on GitHub</li>
-<li>Pages can have <a href="https://mybinder.org">Binder</a>, JupyterHub, or <a href="https://thebelab.readthedocs.io">Thebelab</a> links
-automatically added for interactivity.</li>
-<li>The website itself is based on Jekyll and is highly extensible.</li>
-<li>There are lots of nifty HTML features under-the-hood, such as
-Turbolinks fast-navigation and click-to-copy in code cells.</li>
-</ul>
-<p>Check out other features in the <a href="features/features">Features section</a>.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell tag_popout">
-
-<div class="cell border-box-sizing text_cell rendered tag_popout"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Note:</strong> Throughout this guide you may see an experimental tag that looks
-like this:</p>
-<p>✨<strong>experimental</strong>✨</p>
-<p>These are features that we are playing around with, but might change in how they
-behave or are controlled. Please use them and give feedback, but note that they
-may be a bit unstable!</p>
+<h1 id="&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461;">&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461;<a class="anchor-link" href="#&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461;"> </a></h1><p>王成军</p>
+<p>wangchengjun@nju.edu.cn</p>
+<p>计算传播网 <a href="http://computational-communication.com">http://computational-communication.com</a></p>
 
 </div>
 </div>
@@ -1546,51 +759,530 @@ may be a bit unstable!</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Getting-started">Getting started<a class="anchor-link" href="#Getting-started"> </a></h2><p><em>This documentation is for the <a href="https://github.com/jupyter/jupyter-book">master branch of Jupyter Book</a>, which
-means that it might be slightly out-of-date with the
-<a href="https://pypi.org/project/jupyter-book/">latest version released</a> on pip</em>.</p>
-<p>To get started, you may be interested in the following links.
-Here are a few links of interest:</p>
-<ul>
-<li><p><strong><a href="features/features">Jupyter Book features</a></strong> is a quick demo and overview
-of Jupyter Books.</p>
+<h1 id="RISE:-&quot;Live&quot;-Reveal.js-Jupyter/IPython-Slideshow-Extension">RISE: "Live" Reveal.js Jupyter/IPython Slideshow Extension<a class="anchor-link" href="#RISE:-&quot;Live&quot;-Reveal.js-Jupyter/IPython-Slideshow-Extension"> </a></h1><p><a href="https://github.com/damianavila/RISE">https://github.com/damianavila/RISE</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h1><ul>
+<li>Downnload from <a href="https://github.com/damianavila/RISE">https://github.com/damianavila/RISE</a></li>
+<li><p>open your teminal, cd to the RISE folder, e.g.,</p>
+<blockquote><h2 id="cd--/github/RISE/">cd  /github/RISE/<a class="anchor-link" href="#cd--/github/RISE/"> </a></h2>
+</blockquote>
 </li>
-<li><p><strong><a href="guide/01_overview">The Jupyter Book Guide</a></strong>
-will step you through the process of configuring and building your own Jupyter Book.</p>
+<li><p>To install this nbextension, simply run</p>
+<blockquote><h2 id="python-setup.py-install">python setup.py install<a class="anchor-link" href="#python-setup.py-install"> </a></h2>
+</blockquote>
 </li>
 </ul>
-<h3 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h3><p>To install the Jupyter Book command-line interface (CLI), use <code>pip</code>!</p>
+<p>from the RISE repository.</p>
 
-<pre><code>pip install jupyter-book</code></pre>
-<p>alternatively, if you'd like to install the latest version from GitHub,
-you can run:</p>
+</div>
+</div>
+</div>
+</div>
 
-<pre><code>pip install git+https://github.com/jupyter/jupyter-book</code></pre>
-<p>This will install the <em>master branch</em> of Jupyter Book (what these docs are
-built from), though it might be a bit less-stable.</p>
-<h3 id="Create-a-new-book">Create a new book<a class="anchor-link" href="#Create-a-new-book"> </a></h3><p>Once you've installed the CLI, create a new book using the demo book content
-(the website that you're viewing now) with this command:</p>
+<div class="jb_cell">
 
-<pre><code>jupyter-book create mybookname --demo</code></pre>
-<h3 id="Build-the-markdown-for-your-book">Build the markdown for your book<a class="anchor-link" href="#Build-the-markdown-for-your-book"> </a></h3><p>Now, build the markdown that Jekyll will use for your book. Run this command:</p>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the notebook toolbar, a new button ("Enter/Exit Live Reveal Slideshow") will be available.</p>
+<p>The notebook toolbar also contains a "Cell Toolbar" dropdown menu that gives you access to metadata for each cell. If you select the Slideshow preset, you will see in the right corner of each cell a little box where you can select the cell type (similar as for the static reveal slides with nbconvert).</p>
 
-<pre><code>jupyter-book build mybookname</code></pre>
-<h3 id="That's-it!">That's it!<a class="anchor-link" href="#That's-it!"> </a></h3><p>You can now either push your book to GitHub and serve the demo with gh-pages,
-or modify the book with your own content.</p>
-<h2 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements"> </a></h2><p>Jupyter Books was originally created by <a href="http://www.samlau.me/">Sam Lau</a> and <a href="https://predictablynoisy.com">Chris Holdgraf</a>
-with support of the <strong>UC Berkeley Data Science Education Program and the
-<a href="https://bids.berkeley.edu/">Berkeley Institute for Data Science</a></strong>.</p>
+</div>
+</div>
+</div>
+</div>
 
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#23558;ipynb&#25991;&#20214;&#36716;&#20026;slides.html">&#23558;ipynb&#25991;&#20214;&#36716;&#20026;slides.html<a class="anchor-link" href="#&#23558;ipynb&#25991;&#20214;&#36716;&#20026;slides.html"> </a></h1><ul>
+<li>download the reveal.js from Github <a href="https://github.com/hakimel/reveal.js">https://github.com/hakimel/reveal.js</a></li>
+<li>generate html using the following code</li>
+<li>put the generated html into the reveal.js folder</li>
+<li>open the html using chrome</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>chengjuns-MacBook-Pro:~ chengjun$ cd github/cjc/code/
+
+chengjuns-MacBook-Pro:code chengjun$ jupyter nbconvert slides.ipynb --to slides --post serve</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#25209;&#37327;&#29983;&#25104;slides.html&#182;">&#25209;&#37327;&#29983;&#25104;slides.html&#182;<a class="anchor-link" href="#&#25209;&#37327;&#29983;&#25104;slides.html&#182;"> </a></h1>
+<pre><code>chengjuns-MacBook-Pro:~ chengjun$ cd github/cjc/code/
+
+chengjuns-MacBook-Pro:code chengjun$ jupyter nbconvert *.ipynb --to slides</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#25968;&#23398;&#20844;&#24335;">&#25968;&#23398;&#20844;&#24335;<a class="anchor-link" href="#&#25968;&#23398;&#20844;&#24335;"> </a></h1><p>$E = MC^2$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c">%%latex</span>
+<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+a = <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span><span class="k">\\</span>
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea ">
+\begin{align}
+a = \frac{1}{2}\\
+\end{align}
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#31243;&#24207;&#20195;&#30721;">&#31243;&#24207;&#20195;&#30721;<a class="anchor-link" href="#&#31243;&#24207;&#20195;&#30721;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="s1">&#39;hello world&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>hello world
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="n">i</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get a list of all the available magics</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span> <span class="n">lsmagic</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Available line magics:
+%alias  %alias_magic  %autocall  %automagic  %autosave  %bookmark  %cat  %cd  %clear  %colors  %config  %connect_info  %cp  %debug  %dhist  %dirs  %doctest_mode  %ed  %edit  %env  %gui  %hist  %history  %install_default_config  %install_ext  %install_profiles  %killbgscripts  %ldir  %less  %lf  %lk  %ll  %load  %load_ext  %loadpy  %logoff  %logon  %logstart  %logstate  %logstop  %ls  %lsmagic  %lx  %macro  %magic  %man  %matplotlib  %mkdir  %more  %mv  %notebook  %page  %pastebin  %pdb  %pdef  %pdoc  %pfile  %pinfo  %pinfo2  %popd  %pprint  %precision  %profile  %prun  %psearch  %psource  %pushd  %pwd  %pycat  %pylab  %qtconsole  %quickref  %recall  %rehashx  %reload_ext  %rep  %rerun  %reset  %reset_selective  %rm  %rmdir  %run  %save  %sc  %set_env  %store  %sx  %system  %tb  %time  %timeit  %unalias  %unload_ext  %who  %who_ls  %whos  %xdel  %xmode
+
+Available cell magics:
+%%!  %%HTML  %%SVG  %%bash  %%capture  %%debug  %%file  %%html  %%javascript  %%latex  %%perl  %%prun  %%pypy  %%python  %%python2  %%python3  %%ruby  %%script  %%sh  %%svg  %%sx  %%system  %%time  %%timeit  %%writefile
+
+Automagic is ON, % prefix IS NOT needed for line magics.</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span> <span class="n">env</span>
+<span class="c1"># to list your environment variables.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;Apple_PubSub_Socket_Render&#39;: &#39;/private/tmp/com.apple.launchd.Cti3IOL0XG/Render&#39;,
+ &#39;CLICOLOR&#39;: &#39;1&#39;,
+ &#39;DISPLAY&#39;: &#39;/private/tmp/com.apple.launchd.GQAU1RS6KM/org.macosforge.xquartz:0&#39;,
+ &#39;GIT_PAGER&#39;: &#39;cat&#39;,
+ &#39;HOME&#39;: &#39;/Users/chengjun&#39;,
+ &#39;JPY_PARENT_PID&#39;: &#39;84860&#39;,
+ &#39;LANG&#39;: &#39;en_US.UTF-8&#39;,
+ &#39;LC_ALL&#39;: &#39;en_US.UTF-8&#39;,
+ &#39;LC_CTYPE&#39;: &#39;UTF-8&#39;,
+ &#39;LOGNAME&#39;: &#39;chengjun&#39;,
+ &#39;PAGER&#39;: &#39;cat&#39;,
+ &#39;PATH&#39;: &#39;/Users/chengjun/anaconda/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin&#39;,
+ &#39;PWD&#39;: &#39;/Users/chengjun&#39;,
+ &#39;SECURITYSESSIONID&#39;: &#39;186a5&#39;,
+ &#39;SHELL&#39;: &#39;/bin/bash&#39;,
+ &#39;SHLVL&#39;: &#39;2&#39;,
+ &#39;SSH_AUTH_SOCK&#39;: &#39;/private/tmp/com.apple.launchd.VNCcz4m0az/Listeners&#39;,
+ &#39;TERM&#39;: &#39;xterm-color&#39;,
+ &#39;TERM_PROGRAM&#39;: &#39;Apple_Terminal&#39;,
+ &#39;TERM_PROGRAM_VERSION&#39;: &#39;343&#39;,
+ &#39;TERM_SESSION_ID&#39;: &#39;FDFD985A-CDD6-415E-A3B0-E8A2A05CC9B4&#39;,
+ &#39;TMPDIR&#39;: &#39;/var/folders/l6/ntr5b4610hx38gy0_2xp7ngh0000gn/T/&#39;,
+ &#39;USER&#39;: &#39;chengjun&#39;,
+ &#39;XPC_FLAGS&#39;: &#39;0x0&#39;,
+ &#39;XPC_SERVICE_NAME&#39;: &#39;0&#39;,
+ &#39;_&#39;: &#39;/Users/chengjun/anaconda/python.app/Contents/MacOS/python&#39;,
+ &#39;__CF_USER_TEXT_ENCODING&#39;: &#39;0x1F5:0x0:0x0&#39;}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">prun</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> </pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">time</span> range(10)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 11 µs, sys: 9 µs, total: 20 µs
+Wall time: 21 µs
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> range(100)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The slowest run took 295.47 times longer than the fastest. This could mean that an intermediate result is being cached.
+1000000 loops, best of 3: 748 ns per loop
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>!: to run a shell command. E.g., ! pip freeze | grep pandas to see what version of pandas is installed.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> <span class="nb">cd</span> /Users/chengjun/github/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span> <span class="n">matplotlib</span> <span class="n">inline</span> 
+<span class="c1"># to show matplotlib plots inline the notebook.</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;r-o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/intro_20_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="This-is-the-End.">This is the End.<a class="anchor-link" href="#This-is-the-End."> </a></h1><h2 id="Thanks-for-your-attention.">Thanks for your attention.<a class="anchor-link" href="#Thanks-for-your-attention."> </a></h2>
 </div>
 </div>
 </div>
 </div>
 
  
-
-<script type="application/vnd.jupyter.widget-state+json">
-{"state": {}, "version_major": 2, "version_minor": 0}
-</script>
 
 
 </main>
@@ -1606,8 +1298,8 @@ with support of the <strong>UC Berkeley Data Science Education Program and the
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/jupyter-book/guide/01_overview.html">
-      Getting started <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/intro.html">
+      Introduction <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
