@@ -176,6 +176,18 @@
       url: 19_visualization_maps_using_folium
 
 
+# chapter 11
+- title: Appendix of Common Questions
+  url: 0_common_questions
+  sections:
+    - title: Appendix of Using Jupyter Notebooks
+      url: 0_jupyter_notebook
+    - title: Appendix of Making Slides with RISE
+      url: 0_slides
+    - title: Appendix of Using Turicreate
+      url: 0_turicreate
+
+
 # External link
 - header: Resources
 - title: Jupyter Book

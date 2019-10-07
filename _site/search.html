@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/search",
   "headline": "Search the site",
-  "datePublished": "2019-10-06T20:59:25+08:00",
-  "dateModified": "2019-10-06T20:59:25+08:00",
+  "datePublished": "2019-10-07T20:45:26+08:00",
+  "dateModified": "2019-10-07T20:45:26+08:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -1450,6 +1450,98 @@ initFunction(initPrint)
     
       
       
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/0_common_questions.html"
+        >
+          
+            12.
+          
+          Appendix of Common Questions
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0_jupyter_notebook.html"
+                >
+                  
+                    12.1
+                  
+                  Appendix of Using Jupyter Notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0_slides.html"
+                >
+                  
+                    12.2
+                  
+                  Appendix of Making Slides with RISE
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0_turicreate.html"
+                >
+                  
+                    12.3
+                  
+                  Appendix of Using Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
         <li><h2 class="c-sidebar__title">Resources</li>
         
       
@@ -1756,6 +1848,38 @@ initFunction(initPrint)
         "categories": [],
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/09_neural_network_advanced.html",
+        "teaser":null},{
+        "title": "Appendix of Common Questions",
+        
+        "excerpt":
+            "在anaconda 环境中运行jupyter notebook &#38382;&#39064;&#21450;&#20854;&#35299;&#20915;&#26041;&#27861; Mac&#30005;&#33041;&#22914;&#20309;&#24555;&#36895;&#25214;&#21040;&#29992;&#25143;&#30446;&#24405; 　 1、在finder的偏好设置中选择边栏选中个人收藏下房子的图标，然后在边栏就可以看到用户目录，然后就可以找到目录了。 2、在finder的偏好设置中选择通用，然后选择磁盘，磁盘就出现在桌面了，这样也可以很方便的进入根目录，进而找到用户目录； 3、桌面目录下，菜单前往-个人也可以进入用户目录 &#22914;&#20309;&#25171;&#24320;jupyter notebook Mac users： 打开terminal （可以在launchpad中找到），输入：jupyter notebook windows users: 在电脑左下角输入'cmd'打开terminal, 输入：jupyter notebook &#22312;terminal&#37324;&#25104;&#21151;&#23433;&#35013;&#31532;&#19977;&#26041;&#30340;&#21253;&#65292;&#32467;&#26524;&#21457;&#29616;&#22312;notebook&#37324;&#26080;&#27861;import 这个问题多出现于mac用户，因为mac有一个系统自带的python，成功安装的第三方包都被安装到了系统自带的python里。因此需要确保我们使用的是conda自己的pip，即需要指定pip的路径名，比如我的pip路径名在：/Users/datalab/anaconda/bin/pip,那么在terminal里输入： /Users/datalab/anaconda/bin/pip install package_name 或者在notebook的初始页面，右上方-new-terminal,在这个terminal里输入 pip install package_name 或者通过anaconda自带的spyder安装 常用的包也可以直接 conda install package_name &#22914;&#20309;&#26597;&#30475;anaconda&#33258;&#24102;&#30340;&#21253;&#21644;&#24050;&#32463;&#23433;&#35013;&#30340;&#21253;&#65311; 打开terminal，输入： conda list windows&#29992;&#25143;&#23433;&#35013;graphlab-create&#20986;&#38169;&#65306;unistall tornado, permission denied&#65306; tornado/speedup.pdy, &#35299;&#20915;&#26041;&#27861;&#65306; 首先，卸载tornado：conda remove tornado 然后，重新运行：pip install -U graphlab-create 添加Anaconda的国内镜像，快速安装Python包 添加清华镜像 https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/ conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/ conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/cloud/conda-forge/ conda config --set show_channel_urls yes &#35774;&#32622;&#25628;&#32034;&#26102;&#26174;&#31034;&#36890;&#36947;&#22320;&#22336; conda config --set show_channel_urls yes 如果命令行方法添加不上，可以在用户目录下的.condarc中添加https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/： 如果没有该文件可以直接创建，Windows为C://Users/username/.condarc，Linux/Mac为~/.condarc To install a different version of Python without overwriting the current version https://conda.io/docs/user-guide/tasks/manage-python.html Creating a new environment...",
+        "categories": [],
+        "tags": [],
+        "url": "https://computational-class.github.io/ccbook/0_common_questions.html",
+        "teaser":null},{
+        "title": "Appendix of Using Jupyter Notebooks",
+        
+        "excerpt":
+            "The Jupyter Notebook It is a web application that allows you to create and share documents that contain live code equations visualizations explanatory text Table of Contents The Jupyter Notebook搜狗输入法表情和符号一级标题二级标题运行C代码Jupyter 魔术命令END # my first python script print(&quot;hello world! \\n I am Cheng-Jun Wang.&quot;) hello world! I am Cheng-Jun Wang. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, machine learning and much more. print(&#39;hello world&#39;) hello world 1 + 1 2 $E = MC^2$ \\begin{align} \\dot{x} &amp; = \\sigma(y-x) \\\\ \\dot{y} &amp; = \\rho x - y - xz \\\\ \\dot{z} &amp; = -\\beta z + xy \\end{align} &#25628;&#29399;&#36755;&#20837;&#27861;&#34920;&#24773;&#21644;&#31526;&#21495;...",
+        "categories": [],
+        "tags": [],
+        "url": "https://computational-class.github.io/ccbook/0_jupyter_notebook.html",
+        "teaser":null},{
+        "title": "Appendix of Making Slides with RISE",
+        
+        "excerpt":
+            "&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com RISE: \"Live\" Reveal.js Jupyter/IPython Slideshow Extension https://github.com/damianavila/RISE Installation Downnload from https://github.com/damianavila/RISE open your teminal, cd to the RISE folder, e.g., cd /github/RISE/ To install this nbextension, simply run python setup.py install from the RISE repository. In the notebook toolbar, a new button (\"Enter/Exit Live Reveal Slideshow\") will be available. The notebook toolbar also contains a \"Cell Toolbar\" dropdown menu that gives you access to metadata for each cell. If you select the Slideshow preset, you will see in the right corner of each cell a little box where you can select the cell type (similar...",
+        "categories": [],
+        "tags": [],
+        "url": "https://computational-class.github.io/ccbook/0_slides.html",
+        "teaser":null},{
+        "title": "Appendix of Using Turicreate",
+        
+        "excerpt":
+            "Turicreate: Departure from Graphlab Turi Create simplifies the development of custom machine learning models. https://github.com/apple/turicreate You don't have to be a machine learning expert to add recommendations, object detection, image classification, image similarity activity classification to your app. https://apple.github.io/turicreate/docs/userguide/ https://apple.github.io/turicreate/docs/api/index.html pip install -U turicreate import turicreate as tc actions = tc.SFrame.read_csv(&#39;/Users/datalab/bigdata/cjc/ml-1m/ratings.dat&#39;, delimiter=&#39;\\n&#39;, header=False)[&#39;X1&#39;].apply(lambda x: x.split(&#39;::&#39;)).unpack() for col in actions.column_names(): actions[col] = actions[col].astype(int) actions = actions.rename({&#39;X.0&#39;: &#39;user_id&#39;, &#39;X.1&#39;: &#39;movie_id&#39;, &#39;X.2&#39;: &#39;rating&#39;, &#39;X.3&#39;: &#39;timestamp&#39;}) #actions.save(&#39;ratings&#39;) Finished parsing file /Users/datalab/bigdata/cjc/ml-1m/ratings.dat Parsing completed. Parsed 100 lines in 0.348264 secs. ------------------------------------------------------ Inferred types from first 100 line(s) of file as column_type_hints=[str] If parsing fails due...",
+        "categories": [],
+        "tags": [],
+        "url": "https://computational-class.github.io/ccbook/0_turicreate.html",
         "teaser":null},{
         "title": "Text Mining",
         
