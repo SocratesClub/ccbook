@@ -177,7 +177,7 @@
 
 
 # chapter 11
-- title: Appendix of Common Questions
+- title: Appendix
   url: 0_common_questions
   sections:
     - title: Appendix of Using Jupyter Notebooks
