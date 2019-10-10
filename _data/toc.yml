@@ -68,6 +68,12 @@
 - title: Data Collection
   url: 04_PythonCrawler_beautifulsoup
   sections:
+    - title: Crawling WeChat Public Accounts
+      url: 04_PythonCrawler_wechat
+    - title: Crawling Douban Movies
+      url: 04_PythonCrawler_douban
+    - title: Collecting CPPCC proposals
+      url: 04_PythonCrawler_cppcc
     - title: Introduction of Selenium
       url: 04_PythonCrawler_selenium
     - title: Crawling Music Data
