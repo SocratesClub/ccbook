@@ -53,6 +53,16 @@
 
 # A chapter w/ a collection of sections beneath it
 
+# External link
+- title: Preface
+  url: 00_preface
+  not_numbered: true
+- title: Acknowledgement
+  url: 00_acknowledgement
+  not_numbered: true
+- divider: true
+
+
 # chapter 1
 - title: Introduction to Computational Communication
   url: 01_intro2cjc
