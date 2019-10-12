@@ -97,6 +97,8 @@
   sections:
     - title: Cleaning the News of Occupy Central
       url: 07_data_cleaning_occupy_central_news
+    - title: Cleaning Music List
+      url: 06_data_cleaning_music_list
 
 # chapter 5
 - title: Statistics Thinking

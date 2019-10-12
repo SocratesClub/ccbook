@@ -40,7 +40,53 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#The-Jupyter-Notebook" data-toc-modified-id="The-Jupyter-Notebook-1">The Jupyter Notebook</a></span></li><li><span><a href="#引用" data-toc-modified-id="引用-2">引用</a></span></li><li><span><a href="#一级标题" data-toc-modified-id="一级标题-3">一级标题</a></span><ul class="toc-item"><li><span><a href="#二级标题" data-toc-modified-id="二级标题-3.1">二级标题</a></span></li></ul></li><li><span><a href="#搜狗输入法表情和符号" data-toc-modified-id="搜狗输入法表情和符号-4">搜狗输入法表情和符号</a></span></li><li><span><a href="#运行C代码" data-toc-modified-id="运行C代码-5">运行C代码</a></span></li><li><span><a href="#Jupyter-魔术命令" data-toc-modified-id="Jupyter-魔术命令-6">Jupyter 魔术命令</a></span></li><li><span><a href="#References" data-toc-modified-id="References-7">References</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#The-Jupyter-Notebook" data-toc-modified-id="The-Jupyter-Notebook-1">The Jupyter Notebook</a></span></li><li><span><a href="#Publish-on-Github-Pages" data-toc-modified-id="Publish-on-Github-Pages-2">Publish on Github Pages</a></span></li><li><span><a href="#Workflow" data-toc-modified-id="Workflow-3">Workflow</a></span></li><li><span><a href="#引用" data-toc-modified-id="引用-4">引用</a></span></li><li><span><a href="#一级标题" data-toc-modified-id="一级标题-5">一级标题</a></span><ul class="toc-item"><li><span><a href="#二级标题" data-toc-modified-id="二级标题-5.1">二级标题</a></span></li></ul></li><li><span><a href="#搜狗输入法表情和符号" data-toc-modified-id="搜狗输入法表情和符号-6">搜狗输入法表情和符号</a></span></li><li><span><a href="#运行C代码" data-toc-modified-id="运行C代码-7">运行C代码</a></span></li><li><span><a href="#Jupyter-魔术命令" data-toc-modified-id="Jupyter-魔术命令-8">Jupyter 魔术命令</a></span></li><li><span><a href="#References" data-toc-modified-id="References-9">References</a></span></li></ul></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell tag_popout">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Publish-on-Github-Pages">Publish on Github Pages<a class="anchor-link" href="#Publish-on-Github-Pages"> </a></h1><ol>
+<li>Confirm that your book's HTML is built in the <strong>_site</strong> folder.</li>
+<li>Install the ghp-import tool.</li>
+</ol>
+<div class="highlight"><pre><span></span>pip install ghp-import
+</pre></div>
+<ol>
+<li>Use ghp-import to push your book's HTML onto the gh-pages branch of your repository.</li>
+</ol>
+<div class="highlight"><pre><span></span>ghp-import -n -p -f _site
+</pre></div>
+<p><a href="https://jupyterbook.org/guide/publish/github-pages.html">https://jupyterbook.org/guide/publish/github-pages.html</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Workflow">Workflow<a class="anchor-link" href="#Workflow"> </a></h1><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># open github master branch</span>
+<span class="c1"># open atom master branch</span>
+<span class="nb">cd</span> ..
+jupyter-book build ccbook/
+<span class="nb">cd</span> ccbook
+make serve
+
+<span class="c1"># Publish your book&#39;s HTML manually to GitHub-pages</span>
+<span class="c1"># publish the _site folder of master</span>
+<span class="c1"># branch to gh-pages branch</span>
+
+ghp-import -n -p -f _site
+</pre></div>
+
 </div>
 </div>
 </div>
@@ -298,7 +344,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="images/0_jupyter_notebook_13_0.png"
+<img src="images/0_jupyter_notebook_15_0.png"
 >
 </div>
 
@@ -343,7 +389,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="images/0_jupyter_notebook_14_0.png"
+<img src="images/0_jupyter_notebook_16_0.png"
 >
 </div>
 
