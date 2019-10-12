@@ -1,0 +1,216 @@
+# This file contains the order and numbering for all sections in the book.
+#
+# It is a sample TOC file to help you get started. Fill it out with entries
+# for your own content.
+#
+# Each entry has the following schema:
+#
+# - title: mytitle   # Title of chapter or section
+#   url: /myurl  # URL of section relative to the /content/ folder.
+#   sections:  # Contains a list of more entries that make up the chapter's sections
+#   not_numbered: true  # if the section shouldn't have a number in the sidebar
+#     (e.g. Introduction or appendices)
+#   expand_sections: true  # if you'd like the sections of this chapter to always
+#     be expanded in the sidebar.
+#   external: true  # Whether the URL is an external link or points to content in the book
+#
+# Below are some special values that trigger specific behavior:
+# - search: true  # Will provide a link to a search page
+# - divider: true  # Will insert a divider in the sidebar
+# - header: My Header  # Will insert a header with no link in the sidebar
+#
+# See the links below for an example.
+
+# # Top-level page
+# - title: Home
+#   url: /intro
+#   not_numbered: true
+
+
+
+# # Divider for meta-pages and content page
+# - divider: true
+
+# # Add a header and sample content section
+# - header: Demo textbook
+
+# - title: Introduction
+#   url: /chapters/intro
+#   not_numbered: true
+
+# - divider: true
+
+# - title: Data Science
+#   url: /chapters/01/what-is-data-science
+#   sections:
+#   - title: Introduction
+#     url: /chapters/01/1/intro
+#     subsections:
+#     - title: Computational Tools
+#       url: /chapters/01/1/1/computational-tools
+#     - title: Statistical Techniques
+#       url: /chapters/01/1/2/statistical-techniques
+
+# A chapter w/ a collection of sections beneath it
+
+# External link
+- title: Preface
+  url: 00_preface
+  not_numbered: true
+- title: Acknowledgement
+  url: 00_acknowledgement
+  not_numbered: true
+- divider: true
+
+
+# chapter 1
+- title: Introduction to Computational Communication
+  url: 01_intro2cjc
+  sections:
+  - title: Understanding Big Data
+    url: 02_bigdata
+
+# chapter 2
+- title: Introduction of Python Programming
+  url: 03_python_intro
+
+# chapter 3
+- title: Data Collection
+  url: 04_PythonCrawler_beautifulsoup
+  sections:
+    - title: Crawling WeChat Public Accounts
+      url: 04_PythonCrawler_wechat
+    - title: Crawling Douban Movies
+      url: 04_PythonCrawler_douban
+    - title: Collecting CPPCC proposals
+      url: 04_PythonCrawler_cppcc
+    - title: Introduction of Selenium
+      url: 04_PythonCrawler_selenium
+    - title: Crawling Music Data
+      url: 04_PythonCrawler_netease_music
+    - title: Crawling Government Reports
+      url: 04_PythonCrawlerGovernmentReport
+
+# chapter 4
+- title: Data Cleaning
+  url: 06_data_cleaning_Tweets
+  sections:
+    - title: Cleaning the News of Occupy Central
+      url: 07_data_cleaning_occupy_central_news
+
+# chapter 5
+- title: Statistics Thinking
+  url: 08_01-statistics_thinking
+  sections:
+    - title: Linear Algebra
+      url: 08_02-linear_algebra
+    - title: Probability
+      url: 08_03-probability
+    - title: Hypothesis Inference
+      url: 08_04-hypothesis_inference
+    - title: Gradient Descent
+      url: 08_05-gradient_descent
+    - title: Linear Regression
+      url: 08_06-regression
+    - title: Introduction to statsmodels
+      url: 08_06-statsmodels
+    - title: Analyzing Titanic Dataset
+      url: 08_07-analyzing_titanic_dataset
+
+# chapter 6
+- title: Machine Learning
+  url: 09_01-machine-learning-with-sklearn
+  sections:
+    - title: Hyperparameters and Model Validation
+      url: 09_03-Hyperparameters-and-Model-Validation
+    - title: Feature Engineering
+      url: 09_04-Feature-Engineering
+    - title: Naive Bayes
+      url: 09_05-Naive-Bayes
+    - title: Linear Regression
+      url: 09_06-Linear-Regression
+    - title: Support Vector Machines
+      url: 09_07-Support-Vector-Machines
+    - title: Random Forests
+      url: 09_08-Random-Forests
+    - title: Summary
+      url: 09_09-machine-learning-summary
+
+# chapter 7
+- title: Neural Network
+  url: 09_neural_network
+  sections:
+    - title: Advanced Topics
+      url: 09_neural_network_advanced
+
+# chapter 8
+- title: Text Mining
+  url: 10_text_minning_gov_report
+  sections:
+    - title: Word2vec
+      url: 10_word2vec
+    - title: Sentiment Analysis with Dictionary
+      url: 11_sentiment_analysis_with_dict
+    - title: Sentiment Analysis with Machine Learning
+      url: 11_sentiment_classifier
+    - title: Topic Models
+      url: 12_topic_models_update
+    - title: Topic Models with Turicreate
+      url: 12_topic-models-with-turicreate
+
+# chapter 9
+- title: Recommendation System
+  url: 13_recsys_intro
+  sections:
+    - title: The Case of Million Song
+      url: 14_millionsong
+    - title: The Case of Movielens
+      url: 14_movielens
+
+# chapter 10
+- title: Network Science
+  url: 15_network_science_intro
+  sections:
+    - title: Network Models
+      url: 16_network_science_models
+    - title: networkx
+      url: 17_networkx
+    - title: The case of Tianya BBS
+      url: 18_network_analysis_of_tianya_bbs
+    - title: Network Epidemics
+      url: 18_network_epidemics
+
+# chapter 11
+- title: Visualization
+  url: 19_visualization_with_seaborn
+  sections:
+    - title: datashader
+      url: 19_visualization_datashader
+    - title: pyecharts
+      url: 19_visualization_with_pyecharts
+    - title: folium
+      url: 19_visualization_maps_using_folium
+
+
+# chapter 11
+- title: Appendix
+  url: 0_common_questions
+  sections:
+    - title: Appendix of Using Jupyter Notebooks
+      url: 0_jupyter_notebook
+    - title: Appendix of Making Slides with RISE
+      url: 0_slides
+    - title: Appendix of Using Turicreate
+      url: 0_turicreate
+
+
+# External link
+- header: Resources
+- title: Jupyter Book
+  url: https://github.com/jupyter/jupyter-book
+  external: true
+  not_numbered: true
+- title: GitHub repository
+  url: https://github.com/computational-class/ccbook
+  external: true
+  not_numbered: true

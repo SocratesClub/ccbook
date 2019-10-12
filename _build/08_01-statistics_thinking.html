@@ -1,0 +1,1895 @@
+---
+redirect_from:
+  - "08-01-statistics-thinking"
+interact_link: content/08_01-statistics_thinking.ipynb
+kernel_name: conda-env-anaconda-py
+has_widgets: false
+title: |-
+  Chapter 5. Statistics Thinking
+prev_page:
+  url: /07_data_cleaning_occupy_central_news.html
+  title: |-
+    Cleaning the News of Occupy Central
+next_page:
+  url: /08_02-linear_algebra.html
+  title: |-
+    Linear Algebra
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<hr>
+<h1 id="Introduction-to-Statistical-Thinking">Introduction to Statistical Thinking<a class="anchor-link" href="#Introduction-to-Statistical-Thinking"> </a></h1><hr>
+<hr>
+<p><img align="left" style="padding-right:10px;" width ="200px" src="./img/stats/preface2.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents"> </a></h4><ol>
+<li><a href="./introduction.py">Introduction</a></li>
+<li>A Crash Course in Python</li>
+<li><a href="./visualizing_data.py">Visualizing Data</a></li>
+<li><a href="./linear_algebra.py">Linear Algebra</a></li>
+<li><a href="./statistics.py">Statistics</a></li>
+<li><a href="./probability.py">Probability</a></li>
+<li><a href="./hypothesis_and_inference.py">Hypothesis and Inference</a></li>
+<li><a href="./gradient_descent.py">Gradient Descent</a></li>
+<li><a href="./getting_data.py">Getting Data</a></li>
+<li><a href="./working_with_data.py">Working With Data</a></li>
+<li><a href="./machine_learning.py">Machine Learning</a></li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li><a href="./nearest_neighbors.py">k-Nearest Neighbors</a></li>
+<li><a href="./naive_bayes.py">Naive Bayes</a></li>
+<li><a href="./simple_linear_regression.py">Simple Linear Regression</a></li>
+<li><a href="./multiple_regression.py">Multiple Regression</a></li>
+<li><a href="./logistic_regression.py">Logistic Regression</a></li>
+<li><a href="./decision_trees.py">Decision Trees</a></li>
+<li><a href="./neural_networks.py">Neural Networks</a></li>
+<li><a href="./clustering.py">Clustering</a></li>
+<li><a href="./natural_language_processing.py">Natural Language Processing</a></li>
+<li><a href="./network_analysis.py">Network Analysis</a></li>
+<li><a href="./recommender_systems.py">Recommender Systems</a></li>
+<li><a href="./databases.py">Databases and SQL</a></li>
+<li><a href="./mapreduce.py">MapReduce</a></li>
+<li>Go Forth And Do Data Science</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/stats/school.png' width = '800px' ></p>
+<p><strong>The School of Athens</strong> by Raphael (1509–1510), fresco at the Apostolic Palace, Vatican City. <a href="https://en.wikipedia.org/wiki/Platonic_Academy">https://en.wikipedia.org/wiki/Platonic_Academy</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/stats/socrats2.png' width = '800px' ></p>
+<p>The School of Athens by Raphael (1509–1510), fresco at the Apostolic Palace, Vatican City. <a href="https://en.wikipedia.org/wiki/Platonic_Academy">https://en.wikipedia.org/wiki/Platonic_Academy</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/stats/plato.jpg' width = '150px' align = 'right'></p>
+<h1 id="Plato-&amp;-Typological-Thinking">Plato &amp; Typological Thinking<a class="anchor-link" href="#Plato-&amp;-Typological-Thinking"> </a></h1><ul>
+<li>Pythagoras held that <ul>
+<li>all things are number</li>
+<li>the cosmos comes from numerical principles. </li>
+</ul>
+</li>
+</ul>
+<p><code>The theory of Forms</code> or <code>theory of Ideas</code> is a philosophical theory, concept, or world-view, attributed to Plato, that the <code>physical world</code> is not as real or true as timeless, absolute, unchangeable <code>ideas</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/stats/plato2.png' width = '150px' align = 'right'></p>
+<ul>
+<li>真实的知识存在于普遍而永恒的法则之中。</li>
+<li>The physical world of becoming is an imitation of the mathematical world of being.<ul>
+<li>the realm of Being 本质世界(理念世界)<ul>
+<li>perfect, eternal, and changeless forms, </li>
+</ul>
+</li>
+<li>sensible world of becoming  现实世界<ul>
+<li>imperfect</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Social-Physics:-Taking-Physics-as-a-Role-Model">Social Physics: Taking Physics as a Role Model<a class="anchor-link" href="#Social-Physics:-Taking-Physics-as-a-Role-Model"> </a></h1><ul>
+<li>French social thinker <strong>Henri de Saint-Simon</strong> 1803 described the idea of describing society using laws similar to those of the physical and biological sciences.</li>
+<li>His student and collaborator was <strong>Auguste Comte</strong>, a French philosopher, the founder of sociology, who first defined the term </li>
+</ul>
+<blockquote><p>Social physics is that science which occupies itself with social phenomena, considered in the same light as astronomical, physical, chemical, and physiological phenomena, that is to say as being subject to <strong>natural and invariable laws</strong>, the discovery of which is the special object of its researches.</p>
+</blockquote>
+<ul>
+<li>Computational Social Science</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Social_physics">https://en.wikipedia.org/wiki/Social_physics</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/stats/Adolphe_Quételet.jpg' width = '200px' align = 'right'></p>
+<p><strong>Lambert Adolphe Jacques Quetelet</strong> (1796-1874)</p>
+<ul>
+<li>introducing statistical methods to the social sciences</li>
+<li>in his book titled <strong>Essays on Social Physics</strong>, <ul>
+<li>the concept of the "average man" </li>
+<li>characterized by the mean values </li>
+<li>follow a normal distribution. </li>
+<li>He collected data about many such variables.<ul>
+<li>developed the body mass index scale</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote><p>“His goal was to understand the statistical laws underlying such phenomena as crime rates, marriage rates or suicide rates. He wanted to explain the values of these variables by other social factors”.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/stats/darwin.jpg' width = '200px' align = 'right'></p>
+<h1 id="Population-Thinking"><strong>Population Thinking</strong><a class="anchor-link" href="#Population-Thinking"> </a></h1><p><strong>Charles Robert Darwin</strong> (12 February 1809 – 19 April 1882)</p>
+<ul>
+<li>the science of evolution.</li>
+</ul>
+<blockquote><p>favourable variations would make organisms better at surviving and passing the variations on to their offspring, while unfavourable variations would be lost.</p>
+</blockquote>
+<ul>
+<li>Variation is the basis of natural seletion. </li>
+</ul>
+<blockquote><p>在类型逻辑中平均数是主要的内容。在总体逻辑中重要的是差异，平均数只是总体的一个特征值，是探讨真实原因的手段，而不是原因本身。</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Statisticism--or-Damn-Lies">Statisticism  or Damn Lies<a class="anchor-link" href="#Statisticism--or-Damn-Lies"> </a></h1><p>"统计至上主义"天真地以为统计学是科学方法的完备基础。</p>
+<ul>
+<li>改进测量工具</li>
+<li>研究设计、概念化</li>
+</ul>
+<p>Duncan, O.D. 1984. Notes on Social Measurement, Historical and Critical. New York: Russell Sage Fundation, p.226.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-Paradigm-of-Demography">The Paradigm of Demography<a class="anchor-link" href="#The-Paradigm-of-Demography"> </a></h1><p>Otis Dudley Duncan (1921-2004) 确立一种新的学术传统</p>
+<ul>
+<li>蔑视模仿自然科学试图寻找普遍规律的做法；</li>
+<li>记录和理解真实人口中的经验模式是第一要务；</li>
+<li>变异是人类社会的本质。<ul>
+<li>柏拉图：变异是对本质世界的拙劣复制。</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/stats/aristotle2.png' width = '600px' ></p>
+<p>The School of Athens by Raphael (1509–1510), fresco at the Apostolic Palace, Vatican City. <a href="https://en.wikipedia.org/wiki/Platonic_Academy">https://en.wikipedia.org/wiki/Platonic_Academy</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#26412;&#20307;&#35770;&#65306;-&#19990;&#30028;&#30340;&#26412;&#36136;">&#26412;&#20307;&#35770;&#65306; &#19990;&#30028;&#30340;&#26412;&#36136;<a class="anchor-link" href="#&#26412;&#20307;&#35770;&#65306;-&#19990;&#30028;&#30340;&#26412;&#36136;"> </a></h2><p><img src = './img/stats/galton.jpg' width = '200px' align = 'right'></p>
+<blockquote><p>“我认为自然科学是以“挖掘”本质的世界中的真理为最终目的，这也是其精华所在。而社会科学是以“了解”形成的世界为最终目的。历史上很多人想在社会科学领域找到一种真理，能够适用于各个方面，并且做过许多这方面的尝试。我认为社会科学不应该是这样的。在社会科学中，我们的目的是要了解现实世界，而不是去挖掘永恒的真理。这可能和你们的想象不一样。......既然差异是世界的本质，那差异就应该是研究的对象。” --- 谢宇</p>
+</blockquote>
+<ul>
+<li>高尔顿认为凯特莱的社会物理学用处不大，普通人不是万能的。<ul>
+<li>左手入冰，右手入火，平均温度？</li>
+</ul>
+</li>
+<li>高尔顿说（社会）科学的探索必须关注变异和共变。<ul>
+<li>variation &amp; Co-variation</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#26412;&#20307;&#35770;&#65306;-&#19990;&#30028;&#30340;&#26412;&#36136;">&#26412;&#20307;&#35770;&#65306; &#19990;&#30028;&#30340;&#26412;&#36136;<a class="anchor-link" href="#&#26412;&#20307;&#35770;&#65306;-&#19990;&#30028;&#30340;&#26412;&#36136;"> </a></h2><p>The measurements have both</p>
+<ul>
+<li>a central tendency, or mean, and 
+<img src = './img/stats/galton.jpg' width = '200px' align = 'right'></li>
+<li>a spread around this central value, or variance. <ul>
+<li>In the late 1860s, Galton conceived of a measure to quantify normal variation: <ul>
+<li>the <strong>standard deviation</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>"Regression to mediocrity"</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#35748;&#35782;&#35770;&#65306;-&#20154;&#31867;&#30693;&#35782;&#30340;&#36215;&#28304;&#12289;&#26412;&#36136;&#12289;&#26041;&#27861;&#21450;&#23616;&#38480;">&#35748;&#35782;&#35770;&#65306; &#20154;&#31867;&#30693;&#35782;&#30340;&#36215;&#28304;&#12289;&#26412;&#36136;&#12289;&#26041;&#27861;&#21450;&#23616;&#38480;<a class="anchor-link" href="#&#35748;&#35782;&#35770;&#65306;-&#20154;&#31867;&#30693;&#35782;&#30340;&#36215;&#28304;&#12289;&#26412;&#36136;&#12289;&#26041;&#27861;&#21450;&#23616;&#38480;"> </a></h2><p>谢宇：“你到底能知道什么，你怎样认识世界。"</p>
+<ul>
+<li>自然科学追求永恒真理，关注典型现象；<ul>
+<li>典型现象 &amp; 平均人</li>
+</ul>
+</li>
+<li>社会科学关注所有个案组成的总体的状况。</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#26041;&#27861;&#35770;&#65306;-&#20351;&#29992;&#20160;&#20040;&#26041;&#27861;">&#26041;&#27861;&#35770;&#65306; &#20351;&#29992;&#20160;&#20040;&#26041;&#27861;<a class="anchor-link" href="#&#26041;&#27861;&#35770;&#65306;-&#20351;&#29992;&#20160;&#20040;&#26041;&#27861;"> </a></h2><p>谢宇：“社会科学之所以复杂，是因为我们运用的数据是通过观察所得，而观察所得的数据必然受到外来因素的影响，这些外来因素都可能解释你的数据。“</p>
+<ul>
+<li>自然科学使用实验来隔离外来因素的影响；</li>
+<li>“社会科学可以使用统计排除一些外来影响，但你不能排除所有的外来因素”。</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Three-Basic-Principles-of-Social-Science-Research">Three Basic Principles of Social Science Research<a class="anchor-link" href="#Three-Basic-Principles-of-Social-Science-Research"> </a></h2><ul>
+<li>Variability Principle<ul>
+<li>Social Grouping Principle<ul>
+<li>Social Context Principle</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h1 id="Statistics-for-Describing-Data">Statistics for Describing Data<a class="anchor-link" href="#Statistics-for-Describing-Data"> </a></h1><hr>
+<p>The mathematics and techniques with which we understand data.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+<span class="c1">#from linear_algebra import sum_of_squares, dot</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>def dot(v, w):
+    """v_1 * w_1 + ... + v_n * w_n"""
+    return sum(v_i * w_i for v_i, w_i in zip(v, w))
+
+def sum_of_squares(v):
+    """v_1 * v_1 + ... + v_n * v_n"""
+    return dot(v, v)</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">daily_minutes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mf">68.77</span><span class="p">,</span><span class="mf">51.25</span><span class="p">,</span><span class="mf">52.08</span><span class="p">,</span><span class="mf">38.36</span><span class="p">,</span><span class="mf">44.54</span><span class="p">,</span><span class="mf">57.13</span><span class="p">,</span>
+                 <span class="mf">51.4</span><span class="p">,</span><span class="mf">41.42</span><span class="p">,</span><span class="mf">31.22</span><span class="p">,</span><span class="mf">34.76</span><span class="p">,</span><span class="mf">54.01</span><span class="p">,</span><span class="mf">38.79</span><span class="p">,</span>
+                 <span class="mf">47.59</span><span class="p">,</span><span class="mf">49.1</span><span class="p">,</span><span class="mf">27.66</span><span class="p">,</span><span class="mf">41.03</span><span class="p">,</span><span class="mf">36.73</span><span class="p">,</span><span class="mf">48.65</span><span class="p">,</span><span class="mf">28.12</span><span class="p">,</span>
+                 <span class="mf">46.62</span><span class="p">,</span><span class="mf">35.57</span><span class="p">,</span><span class="mf">32.98</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mf">26.07</span><span class="p">,</span><span class="mf">23.77</span><span class="p">,</span><span class="mf">39.73</span><span class="p">,</span>
+                 <span class="mf">40.57</span><span class="p">,</span><span class="mf">31.65</span><span class="p">,</span><span class="mf">31.21</span><span class="p">,</span><span class="mf">36.32</span><span class="p">,</span><span class="mf">20.45</span><span class="p">,</span><span class="mf">21.93</span><span class="p">,</span><span class="mf">26.02</span><span class="p">,</span>
+                 <span class="mf">27.34</span><span class="p">,</span><span class="mf">23.49</span><span class="p">,</span><span class="mf">46.94</span><span class="p">,</span><span class="mf">30.5</span><span class="p">,</span><span class="mf">33.8</span><span class="p">,</span><span class="mf">24.23</span><span class="p">,</span><span class="mf">21.4</span><span class="p">,</span><span class="mf">27.94</span><span class="p">,</span>
+                 <span class="mf">32.24</span><span class="p">,</span><span class="mf">40.57</span><span class="p">,</span><span class="mf">25.07</span><span class="p">,</span><span class="mf">19.42</span><span class="p">,</span><span class="mf">22.39</span><span class="p">,</span><span class="mf">18.42</span><span class="p">,</span><span class="mf">46.96</span><span class="p">,</span><span class="mf">23.72</span><span class="p">,</span>
+                 <span class="mf">26.41</span><span class="p">,</span><span class="mf">26.97</span><span class="p">,</span><span class="mf">36.76</span><span class="p">,</span><span class="mf">40.32</span><span class="p">,</span><span class="mf">35.02</span><span class="p">,</span><span class="mf">29.47</span><span class="p">,</span><span class="mf">30.2</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span>
+                 <span class="mf">38.11</span><span class="p">,</span><span class="mf">38.18</span><span class="p">,</span><span class="mf">36.31</span><span class="p">,</span><span class="mf">21.03</span><span class="p">,</span><span class="mf">30.86</span><span class="p">,</span><span class="mf">36.07</span><span class="p">,</span><span class="mf">28.66</span><span class="p">,</span>
+                 <span class="mf">29.08</span><span class="p">,</span><span class="mf">37.28</span><span class="p">,</span><span class="mf">15.28</span><span class="p">,</span><span class="mf">24.17</span><span class="p">,</span><span class="mf">22.31</span><span class="p">,</span><span class="mf">30.17</span><span class="p">,</span><span class="mf">25.53</span><span class="p">,</span>
+                 <span class="mf">19.85</span><span class="p">,</span><span class="mf">35.37</span><span class="p">,</span><span class="mf">44.6</span><span class="p">,</span><span class="mf">17.23</span><span class="p">,</span><span class="mf">13.47</span><span class="p">,</span><span class="mf">26.33</span><span class="p">,</span><span class="mf">35.02</span><span class="p">,</span>
+                 <span class="mf">32.09</span><span class="p">,</span><span class="mf">24.81</span><span class="p">,</span><span class="mf">19.33</span><span class="p">,</span><span class="mf">28.77</span><span class="p">,</span><span class="mf">24.26</span><span class="p">,</span><span class="mf">31.98</span><span class="p">,</span><span class="mf">25.73</span><span class="p">,</span>
+                 <span class="mf">24.86</span><span class="p">,</span><span class="mf">16.28</span><span class="p">,</span><span class="mf">34.51</span><span class="p">,</span><span class="mf">15.23</span><span class="p">,</span><span class="mf">39.72</span><span class="p">,</span><span class="mf">40.8</span><span class="p">,</span><span class="mf">26.06</span><span class="p">,</span>
+                 <span class="mf">35.76</span><span class="p">,</span><span class="mf">34.76</span><span class="p">,</span><span class="mf">16.13</span><span class="p">,</span><span class="mf">44.04</span><span class="p">,</span><span class="mf">18.03</span><span class="p">,</span><span class="mf">19.65</span><span class="p">,</span><span class="mf">32.62</span><span class="p">,</span>
+                 <span class="mf">35.59</span><span class="p">,</span><span class="mf">39.43</span><span class="p">,</span><span class="mf">14.18</span><span class="p">,</span><span class="mf">35.24</span><span class="p">,</span><span class="mf">40.13</span><span class="p">,</span><span class="mf">41.82</span><span class="p">,</span><span class="mf">35.45</span><span class="p">,</span>
+                 <span class="mf">36.07</span><span class="p">,</span><span class="mf">43.67</span><span class="p">,</span><span class="mf">24.61</span><span class="p">,</span><span class="mf">20.9</span><span class="p">,</span><span class="mf">21.9</span><span class="p">,</span><span class="mf">18.79</span><span class="p">,</span><span class="mf">27.61</span><span class="p">,</span><span class="mf">27.21</span><span class="p">,</span>
+                 <span class="mf">26.61</span><span class="p">,</span><span class="mf">29.77</span><span class="p">,</span><span class="mf">20.59</span><span class="p">,</span><span class="mf">27.53</span><span class="p">,</span><span class="mf">13.82</span><span class="p">,</span><span class="mf">33.2</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mf">33.1</span><span class="p">,</span><span class="mf">36.65</span><span class="p">,</span>
+                 <span class="mf">18.63</span><span class="p">,</span><span class="mf">14.87</span><span class="p">,</span><span class="mf">22.2</span><span class="p">,</span><span class="mf">36.81</span><span class="p">,</span><span class="mf">25.53</span><span class="p">,</span><span class="mf">24.62</span><span class="p">,</span><span class="mf">26.25</span><span class="p">,</span><span class="mf">18.21</span><span class="p">,</span>
+                 <span class="mf">28.08</span><span class="p">,</span><span class="mf">19.42</span><span class="p">,</span><span class="mf">29.79</span><span class="p">,</span><span class="mf">32.8</span><span class="p">,</span><span class="mf">35.99</span><span class="p">,</span><span class="mf">28.32</span><span class="p">,</span><span class="mf">27.79</span><span class="p">,</span><span class="mf">35.88</span><span class="p">,</span><span class="mf">29.06</span><span class="p">,</span>
+                 <span class="mf">36.28</span><span class="p">,</span><span class="mf">14.1</span><span class="p">,</span><span class="mf">36.63</span><span class="p">,</span><span class="mf">37.49</span><span class="p">,</span><span class="mf">26.9</span><span class="p">,</span><span class="mf">18.58</span><span class="p">,</span><span class="mf">38.48</span><span class="p">,</span><span class="mf">24.48</span><span class="p">,</span>
+                 <span class="mf">18.95</span><span class="p">,</span><span class="mf">33.55</span><span class="p">,</span><span class="mf">14.24</span><span class="p">,</span><span class="mf">29.04</span><span class="p">,</span><span class="mf">32.51</span><span class="p">,</span><span class="mf">25.63</span><span class="p">,</span><span class="mf">22.22</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span>
+                 <span class="mf">32.73</span><span class="p">,</span><span class="mf">15.16</span><span class="p">,</span><span class="mf">13.9</span><span class="p">,</span><span class="mf">27.2</span><span class="p">,</span><span class="mf">32.01</span><span class="p">,</span><span class="mf">29.27</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mf">13.74</span><span class="p">,</span><span class="mf">20.42</span><span class="p">,</span>
+                 <span class="mf">27.32</span><span class="p">,</span><span class="mf">18.23</span><span class="p">,</span><span class="mf">35.35</span><span class="p">,</span><span class="mf">28.48</span><span class="p">,</span><span class="mf">9.08</span><span class="p">,</span><span class="mf">24.62</span><span class="p">,</span><span class="mf">20.12</span><span class="p">,</span><span class="mf">35.26</span><span class="p">,</span>
+                 <span class="mf">19.92</span><span class="p">,</span><span class="mf">31.02</span><span class="p">,</span><span class="mf">16.49</span><span class="p">,</span><span class="mf">12.16</span><span class="p">,</span><span class="mf">30.7</span><span class="p">,</span><span class="mf">31.22</span><span class="p">,</span><span class="mf">34.65</span><span class="p">,</span><span class="mf">13.13</span><span class="p">,</span>
+                 <span class="mf">27.51</span><span class="p">,</span><span class="mf">33.2</span><span class="p">,</span><span class="mf">31.57</span><span class="p">,</span><span class="mf">14.1</span><span class="p">,</span><span class="mf">33.42</span><span class="p">,</span><span class="mf">17.44</span><span class="p">,</span><span class="mf">10.12</span><span class="p">,</span><span class="mf">24.42</span><span class="p">,</span>
+                 <span class="mf">9.82</span><span class="p">,</span><span class="mf">23.39</span><span class="p">,</span><span class="mf">30.93</span><span class="p">,</span><span class="mf">15.03</span><span class="p">,</span><span class="mf">21.67</span><span class="p">,</span><span class="mf">31.09</span><span class="p">,</span><span class="mf">33.29</span><span class="p">,</span><span class="mf">22.61</span><span class="p">,</span>
+                 <span class="mf">26.89</span><span class="p">,</span><span class="mf">23.48</span><span class="p">,</span><span class="mf">8.38</span><span class="p">,</span><span class="mf">27.81</span><span class="p">,</span><span class="mf">32.35</span><span class="p">,</span><span class="mf">23.84</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_friends</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">49</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span>
+               <span class="mi">18</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span>
+               <span class="mi">13</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span>
+               <span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span>
+               <span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span>
+               <span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span>
+               <span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span>
+               <span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+               <span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span>
+               <span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span>
+               <span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+               <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+               <span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span>
+               <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+               <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Distribution-and-Histogram">Distribution and Histogram<a class="anchor-link" href="#Distribution-and-Histogram"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">time_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">))</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">69</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">time_counts</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">14</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram of Time Counts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;# of Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# of people&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_24_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">friend_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">friend_counts</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram of Friend Counts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;# of friends&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# of people&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_25_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also draw them with <code>plt.hist</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">daily_minutes</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Daily minutes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_27_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;# of friends&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_28_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Unfortunately, this chart is still too difficult to interpret.</p>
+<ul>
+<li>So you start generating some statistics. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="From-Max-to-Min">From Max to Min<a class="anchor-link" href="#From-Max-to-Min"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>               <span class="c1"># 204</span>
+
+<span class="n">largest_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>            <span class="c1"># 100</span>
+<span class="n">smallest_value</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>           <span class="c1"># 1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">num_points</span><span class="p">,</span> <span class="n">largest_value</span><span class="p">,</span> <span class="n">smallest_value</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>204 100 1
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sorted_values</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+<span class="n">smallest_value</span> <span class="o">=</span> <span class="n">sorted_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>           <span class="c1"># 1</span>
+
+<span class="n">second_smallest_value</span> <span class="o">=</span> <span class="n">sorted_values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># 1</span>
+<span class="n">second_largest_value</span> <span class="o">=</span> <span class="n">sorted_values</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>    <span class="c1"># 49</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mean,-Median,-Mode,-and-Quantile">Mean, Median, Mode, and Quantile<a class="anchor-link" href="#Mean,-Median,-Mode,-and-Quantile"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean(num_friends)&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>mean(num_friends) 7.333333333333333
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7.333333333333333</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">median</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;finds the &#39;middle-most&#39; value of v&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">sorted_v</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">midpoint</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># if odd, return the middle value</span>
+        <span class="k">return</span> <span class="n">sorted_v</span><span class="p">[</span><span class="n">midpoint</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># if even, return the average of the middle values</span>
+        <span class="n">lo</span> <span class="o">=</span> <span class="n">midpoint</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">hi</span> <span class="o">=</span> <span class="n">midpoint</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">sorted_v</span><span class="p">[</span><span class="n">lo</span><span class="p">]</span> <span class="o">+</span> <span class="n">sorted_v</span><span class="p">[</span><span class="n">hi</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;median(num_friends)&quot;</span><span class="p">,</span> <span class="n">median</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>median(num_friends) 6.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns the pth-percentile value in x&quot;&quot;&quot;</span>
+    <span class="n">p_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="n">p_index</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quantile(num_friends, 0.10)&quot;</span><span class="p">,</span> <span class="n">quantile</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quantile(num_friends, 0.25)&quot;</span><span class="p">,</span> <span class="n">quantile</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quantile(num_friends, 0.75)&quot;</span><span class="p">,</span> <span class="n">quantile</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quantile(num_friends, 0.90)&quot;</span><span class="p">,</span> <span class="n">quantile</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>quantile(num_friends, 0.10) 1
+quantile(num_friends, 0.25) 3
+quantile(num_friends, 0.75) 9
+quantile(num_friends, 0.90) 13
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>9.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mode</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns a list, might be more than one mode&quot;&quot;&quot;</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">max_count</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x_i</span> <span class="k">for</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="n">max_count</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mode(num_friends)&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>mode(num_friends) [1, 6]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+<span class="c1"># Only the first occurrence is returned.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 0, 22, 17, 20, 20, 17, 22, 15, 13, 18, 15,  1,  2,  4,  2,  4,  1,
+        0,  2,  2,  0,  2,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  1,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>ModeResult(mode=array([1]), count=array([22]))</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">data_range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data_range(num_friends)&quot;</span><span class="p">,</span> <span class="n">data_range</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>data_range(num_friends) 99
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">daily_minutes</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_50_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">num_friends</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_51_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Variance-and-Standard-Deviation">Variance and Standard Deviation<a class="anchor-link" href="#Variance-and-Standard-Deviation"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\sigma = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} }$$$$\sigma ^ 2 = \frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">de_mean</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;translate x by subtracting its mean </span>
+<span class="sd">    so the result has mean 0&quot;&quot;&quot;</span>
+    <span class="n">x_bar</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">x_bar</span> <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;assumes x has at least two elements&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">deviations</span> <span class="o">=</span> <span class="n">de_mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sum_of_squares</span><span class="p">(</span><span class="n">deviations</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;variance(num_friends)&quot;</span><span class="p">,</span> <span class="n">variance</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>variance(num_friends) 81.54351395730716
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>81.14379084967321
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">standard_deviation</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;standard_deviation(num_friends)&quot;</span><span class="p">,</span> <span class="n">standard_deviation</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>standard_deviation(num_friends) 9.03014473623248
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>9.007984838446012</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Covariance,-Correlation,-and-Scatter-Plot">Covariance, Correlation, and Scatter Plot<a class="anchor-link" href="#Covariance,-Correlation,-and-Scatter-Plot"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">interquartile_range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;interquartile_range(num_friends)&quot;</span><span class="p">,</span> <span class="n">interquartile_range</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>interquartile_range(num_friends) 6
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">covariance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dot</span><span class="p">(</span><span class="n">de_mean</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">de_mean</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;covariance(num_friends, daily_minutes)&quot;</span><span class="p">,</span> <span class="n">covariance</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>covariance(num_friends, daily_minutes) 22.425435139573064
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 81.54351396,  22.42543514],
+       [ 22.42543514, 100.78589895]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">stdev_x</span> <span class="o">=</span> <span class="n">standard_deviation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">stdev_y</span> <span class="o">=</span> <span class="n">standard_deviation</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">stdev_x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">stdev_y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">covariance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">stdev_x</span> <span class="o">/</span> <span class="n">stdev_y</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span> <span class="c1"># if no variation, correlation is zero</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;correlation(num_friends, daily_minutes)&quot;</span><span class="p">,</span> <span class="n">correlation</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>correlation(num_friends, daily_minutes) 0.24736957366478218
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">,</span> 
+            <span class="n">alpha</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of friends&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;daily minutes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;outliers&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_64_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">,</span> 
+                  <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_65_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">daily_minutes</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">trim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/08_01-statistics_thinking_66_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1.        ,  0.24736957],
+       [ 0.24736957,  1.        ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats.stats</span> <span class="k">import</span> <span class="n">pearsonr</span>   
+  
+<span class="n">pearsonr</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(0.24736957366478224, 0.00036104739734502003)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outlier</span> <span class="o">=</span> <span class="n">num_friends</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># index of outlier</span>
+
+<span class="n">num_friends_good</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span>
+                    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">outlier</span><span class="p">]</span>
+
+<span class="n">daily_minutes_good</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span>
+                      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">daily_minutes</span><span class="p">)</span>
+                      <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">outlier</span><span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;correlation(num_friends_good, daily_minutes_good)&quot;</span><span class="p">,</span> \
+      <span class="n">correlation</span><span class="p">(</span><span class="n">num_friends_good</span><span class="p">,</span> <span class="n">daily_minutes_good</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>correlation(num_friends_good, daily_minutes_good) 0.5736792115665573
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+</main>

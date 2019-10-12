@@ -1,0 +1,440 @@
+---
+redirect_from:
+  - "02-bigdata"
+interact_link: content/02_bigdata.ipynb
+kernel_name: python3
+has_widgets: false
+title: |-
+  Understanding Big Data
+prev_page:
+  url: /01_intro2cjc.html
+  title: |-
+    Introduction to Computational Communication
+next_page:
+  url: /03_python_intro.html
+  title: |-
+    Introduction of Python Programming
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<hr>
+<h1 id="&#25968;&#25454;&#31185;&#23398;&#30340;&#32534;&#31243;&#24037;&#20855;&#65306;&#22823;&#25968;&#25454;">&#25968;&#25454;&#31185;&#23398;&#30340;&#32534;&#31243;&#24037;&#20855;&#65306;&#22823;&#25968;&#25454;<a class="anchor-link" href="#&#25968;&#25454;&#31185;&#23398;&#30340;&#32534;&#31243;&#24037;&#20855;&#65306;&#22823;&#25968;&#25454;"> </a></h1><hr>
+<hr>
+<p>王成军</p>
+<p>wangchengjun@nju.edu.cn</p>
+<p>计算传播网 <a href="http://computational-communication.com">http://computational-communication.com</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#20851;&#20110;&#22823;&#25968;&#25454;&#30340;&#22270;&#29255;">&#20851;&#20110;&#22823;&#25968;&#25454;&#30340;&#22270;&#29255;<a class="anchor-link" href="#&#20851;&#20110;&#22823;&#25968;&#25454;&#30340;&#22270;&#29255;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/bigdata.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#25968;&#23383;">&#25968;&#23383;<a class="anchor-link" href="#&#25968;&#23383;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/bignumber.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#32593;&#32476;">&#32593;&#32476;<a class="anchor-link" href="#&#32593;&#32476;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/bignetwork.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#25991;&#26412;">&#25991;&#26412;<a class="anchor-link" href="#&#25991;&#26412;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/bigword.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Big data is like <strong>teenage sex</strong>:</p>
+<ul>
+<li>Everyone talks about it, </li>
+<li>nobody really knows how to do it, </li>
+<li>everyone thinks everyone else is doing it, </li>
+<li>so everyone claims they are doing it.  </li>
+</ul>
+<blockquote><p>Dan Ariely, Duke University</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>Big data  is a broad term for  data sets  so large or complex that traditional  data processing  applications are inadequate. Challenges include analysis, capture,  data curation , search,  sharing , storage, transfer, visualization, and  information privacy .  (WIKIPEDIA)</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#20113;&#35745;&#31639;">&#20113;&#35745;&#31639;<a class="anchor-link" href="#&#20113;&#35745;&#31639;"> </a></h1><p>2006: AWS EC2 (cloud-based computing clusters)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tools in the Ecosystem: "Hadoop" and Map/Reduce</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>阿里云</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>百度云</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Map/Reduce</p>
+<p>Google article on MapReduce by Dean and Ghemawat, 2004</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/mapreduce.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The nightmare that is to find out a way to split the data</p>
+<ul>
+<li>word count</li>
+<li>network?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An alternative to Hadoop, Spark with Python</p>
+<ul>
+<li><a href="https://github.com/apache/spark/blob/master/examples/src/main/python/wordcount.py">wordcount with spark and python</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>把系统与算法结合，设计大规模分布式的机器学习算法与系统，使得机器学习算法可以在多处理器和多机器的集群环境下作业，处理更大量级的数据。
+这方面较为知名的系统包括：</p>
+<ul>
+<li>加州大学伯克利分校的Spark</li>
+<li>谷歌的TensorFlow</li>
+<li>华盛顿大学的Dato GraphLab</li>
+<li>卡内基梅陇大学的Petuum</li>
+<li>微软的DMTK系统</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Giant-Data-Sets-Are-Around">Giant Data Sets Are Around<a class="anchor-link" href="#Giant-Data-Sets-Are-Around"> </a></h1><ul>
+<li>amazon <a href="https://aws.amazon.com/public-data-sets/">https://aws.amazon.com/public-data-sets/</a>   </li>
+<li>雅虎开放数据 <a href="http://webscope.sandbox.yahoo.com/">http://webscope.sandbox.yahoo.com/</a></li>
+<li>Stanford Large Network Dataset Collection <a href="https://snap.stanford.edu/data/">https://snap.stanford.edu/data/</a><ul>
+<li>bigdata/twitter7/tweets2009-07.txt.gz </li>
+</ul>
+</li>
+<li>Gdelt news data <a href="http://gdeltproject.org/">http://gdeltproject.org/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/gdelt.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Big-Query-Demo-of-GDELT">Big Query Demo of GDELT<a class="anchor-link" href="#Big-Query-Demo-of-GDELT"> </a></h1><p><a href="https://bigquery.cloud.google.com/table/gdelt-bq:gdeltv2.events?_ga=1.69322323.2127553167.1443183592">https://bigquery.cloud.google.com/table/gdelt-bq:gdeltv2.events?_ga=1.69322323.2127553167.1443183592</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/bigquery.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/dilbert.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Big Data and whole data are not the same. Without taking into account the sample of a data set, the size of the data set is meaningless. For example, a researcher may seek to understand the topical frequency of tweets, yet if Twitter removes all tweets that contain problematic words or content – such as references to pornography or spam – from the stream, the topical frequency would be inaccurate. Regardless of the number of tweets, it is not a representative sample as the data is skewed from the beginning.</p>
+<blockquote><p>d. boyd and K. Crawford, "Critical Questions for Big Data"</p>
+</blockquote>
+<p>Information, Communication &amp; Society Volume 15, Issue 5, 2012 <a href="http://www.tandfonline.com/doi/abs/10.1080/1369118X.2012.678878">http://www.tandfonline.com/doi/abs/10.1080/1369118X.2012.678878</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>...  four quantitatively adept social scientists reported that Google’s flu-tracking service not only wildly overestimated the number of flu cases in the United States in the 2012-13 flu season — a well-known miss — but has also consistently overshot in the last few years. Google Flu Trends’ estimate for the 2011-12 flu season was more than 50 percent higher than the cases reported by the Centers for Disease Control and Prevention. ...Their technical criticism of Google Flu Trends is that it is not using a broader array of data analysis tools. Indeed, their analysis shows that combining Google Flu Trends with C.D.C. data, and applying a few tweaking techniques, works best.</p>
+<p><a href="http://bits.blogs.nytimes.com/2014/03/28/google-flu-trends-the-limits-of-big-data/?_r=0">Google Flu Trends: The Limits of Big Data (NYT)</a></p>
+<blockquote><p>Lazer, David, Ryan Kennedy, Gary King, and Alessandro Vespignani. 2014. “The Parable of Google Flu: Traps in Big Data Analysis.” Science 343 (14 March): 1203-1205.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first lesson of Web-scale learning is to use available large-scale data rather than hoping for annotated data that isn’t available. For instance, we find that useful semantic relationships can be automatically learned from the statistics of search queries and the corresponding results-- or from the accumulated evidence of Web-based text patterns and formatted tables-- in both cases without needing any manually annotated data.</p>
+<blockquote><p>Halevy, Norvig, Pereira</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/datascience.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Type A: Analysis</p>
+<ul>
+<li>making sense of data<ul>
+<li>very similar to a statistician </li>
+</ul>
+</li>
+</ul>
+<p>Type B: Builders</p>
+<ul>
+<li>mainly interested in using data in production.<ul>
+<li>strong coders and may be trained software engineers. </li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Everyone should learn Python</li>
+<li>Everyone should learn some SQL.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#21442;&#32771;&#25991;&#29486;">&#21442;&#32771;&#25991;&#29486;<a class="anchor-link" href="#&#21442;&#32771;&#25991;&#29486;"> </a></h1><ul>
+<li><p>维克托•迈尔•舍恩伯格（Viktor Mayer-Schönberger） 大数据时代：生活、工作与思维的大变革, 浙江人民出版社 Big Data:A Revolution That Will Transform How We Live, Work, and Think 译者: 周涛 2012-12 页数: 261</p>
+</li>
+<li><p><a href="http://ghostweather.slides.com/lynncherny/what-is-big-data-anyway">http://ghostweather.slides.com/lynncherny/what-is-big-data-anyway</a></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+</main>

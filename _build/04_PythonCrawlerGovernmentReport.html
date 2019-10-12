@@ -1,0 +1,987 @@
+---
+redirect_from:
+  - "04-pythoncrawlergovernmentreport"
+interact_link: content/04_PythonCrawlerGovernmentReport.ipynb
+kernel_name: conda-env-anaconda-py
+has_widgets: false
+title: |-
+  Crawling Government Reports
+prev_page:
+  url: /04_PythonCrawler_netease_music.html
+  title: |-
+    Crawling Music Data
+next_page:
+  url: 
+  title: |-
+    
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<hr>
+<h1 id="&#25968;&#25454;&#25235;&#21462;">&#25968;&#25454;&#25235;&#21462;<a class="anchor-link" href="#&#25968;&#25454;&#25235;&#21462;"> </a></h1><blockquote><h1 id="&#25235;&#21462;&#21382;&#23626;&#25919;&#24220;&#24037;&#20316;&#25253;&#21578;">&#25235;&#21462;&#21382;&#23626;&#25919;&#24220;&#24037;&#20316;&#25253;&#21578;<a class="anchor-link" href="#&#25235;&#21462;&#21382;&#23626;&#25919;&#24220;&#24037;&#20316;&#25253;&#21578;"> </a></h1><hr>
+<hr>
+</blockquote>
+<p>王成军</p>
+<p>wangchengjun@nju.edu.cn</p>
+<p>计算传播网 <a href="http://computational-communication.com">http://computational-communication.com</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display_html</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe src=http://www.hprc.org.cn/wxzl/wxysl/lczf/ width=1000 height=500&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+<span class="c1"># the webpage we would like to crawl</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<iframe src=http://www.hprc.org.cn/wxzl/wxysl/lczf/ width=1000 height=500></iframe>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Inspect">Inspect<a class="anchor-link" href="#Inspect"> </a></h1><h1><td width="274" class="bl">·&nbsp;<a href="./d12qgrdzfbg/201603/t20160318_369509.html" target="_blank" title="2016年政府工作报告">2016年政府工作报告</a></td></h1>
+
+<pre><code>&lt;td width="274" class="bl"&gt;·&nbsp;&lt;a href="./d12qgrdzfbg/201603/t20160318_369509.html" target="_blank" title="2016年政府工作报告"&gt;2016年政府工作报告&lt;/a&gt;&lt;/td&gt;</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the link for each year</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://www.hprc.org.cn/wxzl/wxysl/lczf/&quot;</span> 
+<span class="n">content</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">content</span><span class="o">.</span><span class="n">encoding</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;ISO-8859-1&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Encoding">Encoding<a class="anchor-link" href="#Encoding"> </a></h2><ul>
+<li>ASCII<ul>
+<li>7位字符集</li>
+<li>美国标准信息交换代码（American Standard Code for Information Interchange）的缩写, 为美国英语通信所设计。</li>
+<li>它由128个字符组成，包括大小写字母、数字0-9、标点符号、非打印字符（换行符、制表符等4个）以及控制字符（退格、响铃等）组成。</li>
+</ul>
+</li>
+<li>iso8859-1 通常叫做Latin-1。<ul>
+<li>和ascii编码相似。</li>
+<li>属于单字节编码，最多能表示的字符范围是0-255，应用于英文系列。比如，字母a的编码为0x61=97。 </li>
+<li>无法表示中文字符。</li>
+<li>单字节编码，和计算机最基础的表示单位一致，所以很多时候，仍旧使用iso8859-1编码来表示。在很多协议上，默认使用该编码。</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>gb2312/gbk/gb18030<ul>
+<li>是汉字的国标码，专门用来表示汉字，是双字节编码，而英文字母和iso8859-1一致（兼容iso8859-1编码）。</li>
+<li>其中gbk编码能够用来同时表示繁体字和简体字,K 为汉语拼音 Kuo Zhan（扩展）中“扩”字的声母</li>
+<li>gb2312只能表示简体字，gbk是兼容gb2312编码的。 </li>
+<li>gb18030，全称：国家标准 GB 18030-2005《信息技术中文编码字符集》，是中华人民共和国现时最新的内码字集</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>unicode <ul>
+<li>最统一的编码，用来表示所有语言的字符。</li>
+<li>占用更多的空间，定长双字节（也有四字节的）编码，包括英文字母在内。</li>
+<li>不兼容iso8859-1等其它编码。相对于iso8859-1编码来说，uniocode编码只是在前面增加了一个0字节，比如字母a为"00 61"。 </li>
+<li>定长编码便于计算机处理（注意GB2312/GBK不是定长编码），unicode又可以用来表示所有字符，所以在很多软件内部是使用unicode编码来处理的，比如java。 </li>
+</ul>
+</li>
+<li>UTF <ul>
+<li>unicode不便于传输和存储，产生了utf编码</li>
+<li>utf编码兼容iso8859-1编码，同时也可以用来表示所有语言的字符</li>
+<li>utf编码是不定长编码，每一个字符的长度从1-6个字节不等。</li>
+<li>其中，utf8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，又称万国码。<ul>
+<li>由Ken Thompson于1992年创建。现在已经标准化为RFC 3629。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="decode">decode<a class="anchor-link" href="#decode"> </a></h1><p><del>urllib2.urlopen(url).read().decode('gb18030') </del></p>
+
+<pre><code>content.encoding = 'gb18030'
+
+content = content.text
+
+</code></pre>
+<p>Or</p>
+
+<pre><code>content = content.text.encode(content.encoding).decode('gb18030')
+
+
+
+</code></pre>
+<h1 id="html.parser">html.parser<a class="anchor-link" href="#html.parser"> </a></h1><p>BeautifulSoup(content, 'html.parser')</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Specify the encoding</span>
+<span class="n">content</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf8&#39;</span> <span class="c1"># &#39;gb18030&#39;</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span> 
+<span class="c1"># links = soup.find_all(&#39;td&#39;, {&#39;class&#39;, &#39;bl&#39;})   </span>
+<span class="n">links</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.bl a&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">links</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;a href=&#34;./dssjqgrmdbdh_1/201903/t20190318_4849567.html&#34; target=&#34;_blank&#34; title=&#34;2019年政府工作报告&#34;&gt;2019年政府工作报告&lt;/a&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>50</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">links</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;./dishiyijie_10/200908/t20090818_3955459.html&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">links</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;href&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;dssjqgrmdbdh_1/201903/t20190318_4849567.html&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">+</span> <span class="n">links</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;href&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dssjqgrmdbdh_1/201903/t20190318_4849567.html&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hyperlinks</span> <span class="o">=</span> <span class="p">[</span><span class="n">url</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">links</span><span class="p">]</span>
+<span class="n">hyperlinks</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dssjqgrmdbdh_1/201903/t20190318_4849567.html&#39;,
+ &#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dssjqgrmdbdh_1/201803/t20180323_4240852.html&#39;,
+ &#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/d12qgrdzfbg/201703/t20170317_4144138.html&#39;,
+ &#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/d12qgrdzfbg/201603/t20160318_4135203.html&#39;,
+ &#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/d12qgrdzfbg/201503/t20150318_4106347.html&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hyperlinks</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_9/200908/t20090818_3955464.html&#39;,
+ &#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_10/200908/t20090818_3955462.html&#39;,
+ &#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_10/200908/t20090818_3955461.html&#39;,
+ &#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_10/200908/t20090818_3955460.html&#39;,
+ &#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_10/200908/t20090818_3955459.html&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hyperlinks</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="c1"># 2007年有分页</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_1/200908/t20090818_3955570.html&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display_html</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe src=http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_1/200908/t20090818_3955570.html width=1000 height=500&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+<span class="c1"># 2007年有分页</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<iframe src=http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_1/200908/t20090818_3955570.html width=1000 height=500></iframe>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Inspect-&#19979;&#19968;&#39029;">Inspect &#19979;&#19968;&#39029;<a class="anchor-link" href="#Inspect-&#19979;&#19968;&#39029;"> </a></h1><p><a href="t20090818_27775_1.html"><span style="color:#0033FF;font-weight:bold">下一页</span></a></p>
+
+<pre><code>&lt;a href="t20090818_27775_1.html"&gt;&lt;span style="color:#0033FF;font-weight:bold"&gt;下一页&lt;/span&gt;&lt;/a&gt;
+
+</code></pre>
+<ul>
+<li>a<ul>
+<li>script<ul>
+<li>td</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url_i</span> <span class="o">=</span> <span class="s1">&#39;http://www.hprc.org.cn/wxzl/wxysl/lczf/dishiyijie_1/200908/t20090818_3955570.html&#39;</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_i</span><span class="p">)</span>
+<span class="n">content</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf8&#39;</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">text</span>
+<span class="c1">#content = content.text.encode(content.encoding).decode(&#39;gb18030&#39;)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span> 
+<span class="c1">#scripts = soup.find_all(&#39;script&#39;)</span>
+<span class="c1">#scripts[0]</span>
+<span class="n">scripts</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;td script&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scripts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;script&gt;
+	var currentPage = 0;//所在页从0开始
+	var prevPage = currentPage-1//上一页
+	var 下一页Page = currentPage+1//下一页
+	var countPage = 4//共多少页
+	//document.write(&#34;共&#34;+countPage+&#34;页&amp;nbsp;&amp;nbsp;&#34;);
+	
+	//循环
+	var num = 17;
+	for(var i=0+(currentPage-1-(currentPage-1)%num) ; i&lt;=(num+(currentPage-1-(currentPage-1)%num))&amp;&amp;(i&lt;countPage) ; i++){
+		if(countPage &gt;1){
+			if(currentPage==i)
+				document.write(&#34;【&lt;span style=\&#34;color:#FF0000;\&#34; class=\&#34;hui14_30_h\&#34;&gt;&#34;+(i+1)+&#34;&lt;/span&gt;】&amp;nbsp;&#34;);
+			else if(i==0)
+				document.write(&#34;&lt;a href=\&#34;t20090818_3955570.html\&#34; class=\&#34;hui14_30_h\&#34;&gt;【&#34;+(i+1)+&#34;】&lt;/a&gt;&amp;nbsp;&#34;);
+			else
+				document.write(&#34;&lt;a href=\&#34;t20090818_3955570&#34;+&#34;_&#34; + i + &#34;.&#34;+&#34;html\&#34; class=\&#34;hui14_30_h\&#34;&gt;【&#34;+(i+1)+&#34;】&lt;/a&gt;&amp;nbsp;&#34;);
+		}	
+	}
+	
+	document.write(&#34;&lt;br&gt;&lt;br&gt;&#34;);
+	//设置上一页代码
+	if(countPage&gt;1&amp;&amp;currentPage!=0&amp;&amp;currentPage!=1)
+		document.write(&#34;&lt;a href=\&#34;t20090818_3955570&#34;+&#34;_&#34; + prevPage + &#34;.&#34;+&#34;html\&#34;&gt;&lt;span style=\&#34;color:#0033FF;font-weight:bold\&#34;&gt;上一页&lt;/span&gt;&lt;/a&gt;&amp;nbsp;&#34;);
+	else if(countPage&gt;1&amp;&amp;currentPage!=0&amp;&amp;currentPage==1)
+		document.write(&#34;&lt;a href=\&#34;t20090818_3955570.html\&#34;&gt;&lt;span style=\&#34;color:#0033FF;font-weight:bold\&#34;&gt;上一页&lt;/span&gt;&lt;/a&gt;&amp;nbsp;&#34;);
+	//else
+	//	document.write(&#34;上一页 &amp;nbsp;&#34;);
+	
+	
+	//设置下一页代码 
+	if(countPage&gt;1&amp;&amp;currentPage!=(countPage-1))
+		document.write(&#34;&lt;a href=\&#34;t20090818_3955570&#34;+&#34;_&#34; + 下一页Page + &#34;.&#34;+&#34;html\&#34; &gt;&lt;span style=\&#34;color:#0033FF;font-weight:bold\&#34;&gt;下一页&lt;/span&gt;&lt;/a&gt; &amp;nbsp;&#34;);
+	//else
+	//	document.write(&#34;下一页 &amp;nbsp;&#34;);
+					 
+	&lt;/script&gt;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scripts</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;\n\tvar currentPage = 0;//所在页从0开始\n\tvar prevPage = currentPage-1//上一页\n\tvar 下一页Page = currentPage+1//下一页\n\tvar countPage = 4//共多少页\n\t//document.write(&#34;共&#34;+countPage+&#34;页&amp;nbsp;&amp;nbsp;&#34;);\n\t\n\t//循环\n\tvar num = 17;\n\tfor(var i=0+(currentPage-1-(currentPage-1)%num) ; i&lt;=(num+(currentPage-1-(currentPage-1)%num))&amp;&amp;(i&lt;countPage) ; i++){\n\t\tif(countPage &gt;1){\n\t\t\tif(currentPage==i)\n\t\t\t\tdocument.write(&#34;【&lt;span style=\\&#34;color:#FF0000;\\&#34; class=\\&#34;hui14_30_h\\&#34;&gt;&#34;+(i+1)+&#34;&lt;/span&gt;】&amp;nbsp;&#34;);\n\t\t\telse if(i==0)\n\t\t\t\tdocument.write(&#34;&lt;a href=\\&#34;t20090818_3955570.html\\&#34; class=\\&#34;hui14_30_h\\&#34;&gt;【&#34;+(i+1)+&#34;】&lt;/a&gt;&amp;nbsp;&#34;);\n\t\t\telse\n\t\t\t\tdocument.write(&#34;&lt;a href=\\&#34;t20090818_3955570&#34;+&#34;_&#34; + i + &#34;.&#34;+&#34;html\\&#34; class=\\&#34;hui14_30_h\\&#34;&gt;【&#34;+(i+1)+&#34;】&lt;/a&gt;&amp;nbsp;&#34;);\n\t\t}\t\n\t}\n\t\n\tdocument.write(&#34;&lt;br&gt;&lt;br&gt;&#34;);\n\t//设置上一页代码\n\tif(countPage&gt;1&amp;&amp;currentPage!=0&amp;&amp;currentPage!=1)\n\t\tdocument.write(&#34;&lt;a href=\\&#34;t20090818_3955570&#34;+&#34;_&#34; + prevPage + &#34;.&#34;+&#34;html\\&#34;&gt;&lt;span style=\\&#34;color:#0033FF;font-weight:bold\\&#34;&gt;上一页&lt;/span&gt;&lt;/a&gt;&amp;nbsp;&#34;);\n\telse if(countPage&gt;1&amp;&amp;currentPage!=0&amp;&amp;currentPage==1)\n\t\tdocument.write(&#34;&lt;a href=\\&#34;t20090818_3955570.html\\&#34;&gt;&lt;span style=\\&#34;color:#0033FF;font-weight:bold\\&#34;&gt;上一页&lt;/span&gt;&lt;/a&gt;&amp;nbsp;&#34;);\n\t//else\n\t//\tdocument.write(&#34;上一页 &amp;nbsp;&#34;);\n\t\n\t\n\t//设置下一页代码 \n\tif(countPage&gt;1&amp;&amp;currentPage!=(countPage-1))\n\t\tdocument.write(&#34;&lt;a href=\\&#34;t20090818_3955570&#34;+&#34;_&#34; + 下一页Page + &#34;.&#34;+&#34;html\\&#34; &gt;&lt;span style=\\&#34;color:#0033FF;font-weight:bold\\&#34;&gt;下一页&lt;/span&gt;&lt;/a&gt; &amp;nbsp;&#34;);\n\t//else\n\t//\tdocument.write(&#34;下一页 &amp;nbsp;&#34;);\n\t\t\t\t\t \n\t&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># countPage = int(&#39;&#39;.join(scripts).split(&#39;countPage = &#39;)\</span>
+<span class="c1">#                 [1].split(&#39;//&#39;)[0])</span>
+<span class="c1"># countPage</span>
+
+<span class="n">countPage</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">scripts</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;countPage = &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">countPage</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">def</span> <span class="nf">flushPrint</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+    
+<span class="k">def</span> <span class="nf">crawler</span><span class="p">(</span><span class="n">url_i</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_i</span><span class="p">)</span>
+    <span class="n">content</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf8&#39;</span>  
+    <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span> 
+    <span class="n">year</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;huang16c&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soup</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">))</span>
+    <span class="c1"># 找到分页信息</span>
+    <span class="n">scripts</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">)</span>
+    <span class="n">countPage</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scripts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;countPage = &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;//&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">countPage</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">countPage</span><span class="p">):</span>
+            <span class="n">url_child</span> <span class="o">=</span> <span class="n">url_i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.html&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.html&#39;</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_child</span><span class="p">)</span>
+            <span class="n">content</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;gb18030&#39;</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">text</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span> 
+            <span class="n">report_child</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soup</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">))</span>
+            <span class="n">report</span> <span class="o">=</span> <span class="n">report</span> <span class="o">+</span> <span class="n">report_child</span>
+    <span class="k">return</span> <span class="n">year</span><span class="p">,</span> <span class="n">report</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 抓取50年政府工作报告内容</span>
+<span class="n">reports</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">hyperlinks</span><span class="p">:</span>
+    <span class="n">year</span><span class="p">,</span> <span class="n">report</span> <span class="o">=</span> <span class="n">crawler</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+    <span class="n">flushPrint</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+    <span class="n">reports</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">report</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1954</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/gov_reports1954-2019.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">reports</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">reports</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;../data/gov_reports1954-2019.txt&#39;</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;report&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>report</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>45</th>
+      <td>2015</td>
+      <td>国务院总理 李克强　　各位代表：　　现在，我代表国务院，向大会报告政府工作，请予审议，并...</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>2016</td>
+      <td>政府工作报告</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2017</td>
+      <td>各位代表：　　现在，我代表国务院，向大会报告政府工作，请予审议，并请全国政协各位委员提出...</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>2018</td>
+      <td>各位代表：　　现在，我代表国务院，向大会报告过去五年政府工作，对今年工作提出建议，请予审...</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>2019</td>
+      <td>新华社北京3月16日电　　 政府工作报告　　——2019年3月5日在第十三届全国人民代表...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="This-is-the-end.">This is the end.<a class="anchor-link" href="#This-is-the-end."> </a></h1><blockquote><h2 id="Thank-you-for-your-attention.">Thank you for your attention.<a class="anchor-link" href="#Thank-you-for-your-attention."> </a></h2>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+</main>

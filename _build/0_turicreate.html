@@ -1,0 +1,157 @@
+---
+redirect_from:
+  - "0-turicreate"
+interact_link: content/0_turicreate.ipynb
+kernel_name: conda-env-anaconda-py
+has_widgets: false
+title: |-
+  Appendix of Using Turicreate
+prev_page:
+  url: /0_slides.html
+  title: |-
+    Appendix of Making Slides with RISE
+next_page:
+  url: 
+  title: |-
+    
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<hr>
+<h1 id="Turicreate:-Departure-from-Graphlab">Turicreate: Departure from Graphlab<a class="anchor-link" href="#Turicreate:-Departure-from-Graphlab"> </a></h1><p>Turi Create simplifies the development of custom machine learning models.</p>
+<hr>
+<hr>
+<p><a href="https://github.com/apple/turicreate">https://github.com/apple/turicreate</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You don't have to be a machine learning expert to add</p>
+<ul>
+<li>recommendations, </li>
+<li>object detection, </li>
+<li>image classification, </li>
+<li>image similarity  </li>
+<li>activity classification </li>
+</ul>
+<p>to your app.</p>
+<ul>
+<li><a href="https://apple.github.io/turicreate/docs/userguide/">https://apple.github.io/turicreate/docs/userguide/</a></li>
+<li><a href="https://apple.github.io/turicreate/docs/api/index.html">https://apple.github.io/turicreate/docs/api/index.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="pip-install--U-turicreate">pip install -U turicreate<a class="anchor-link" href="#pip-install--U-turicreate"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">turicreate</span> <span class="k">as</span> <span class="nn">tc</span>
+<span class="n">actions</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">SFrame</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/datalab/bigdata/cjc/ml-1m/ratings.dat&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> 
+                                <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">&#39;X1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;::&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">unpack</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">column_names</span><span class="p">():</span>
+    <span class="n">actions</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">actions</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">actions</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;X.0&#39;</span><span class="p">:</span> <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;X.1&#39;</span><span class="p">:</span> <span class="s1">&#39;movie_id&#39;</span><span class="p">,</span> <span class="s1">&#39;X.2&#39;</span><span class="p">:</span> <span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="s1">&#39;X.3&#39;</span><span class="p">:</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">})</span>
+<span class="c1">#actions.save(&#39;ratings&#39;)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Finished parsing file /Users/datalab/bigdata/cjc/ml-1m/ratings.dat</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Parsing completed. Parsed 100 lines in 0.348264 secs.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>------------------------------------------------------
+Inferred types from first 100 line(s) of file as 
+column_type_hints=[str]
+If parsing fails due to incorrect types, you can correct
+the inferred type list above and pass it to read_csv in
+the column_type_hints argument
+------------------------------------------------------
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Finished parsing file /Users/datalab/bigdata/cjc/ml-1m/ratings.dat</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Parsing completed. Parsed 1000209 lines in 0.376001 secs.</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+</main>

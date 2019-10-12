@@ -1,0 +1,20 @@
+<div class="download-buttons-dropdown">
+    <button id="interact-button-binder" class="interact-button">
+      <!-- <img src="{{ site.images_url | relative_url }}/download-solid.svg" alt="Download" /> -->
+      {{ site.download_button_text }}
+    </button>
+    <!-- <a href="{{ site.binderhub_url }}/{{ interact_url_binder }}">
+      <button class="interact-button" id="interact-button-binder">
+        <img class="interact-button-logo" src="{{ interact_icon_binder }}" alt="Interact" />
+        {{ site.binderhub_interact_text }}
+      </button></a> -->
+
+    <div class="download-buttons">
+        {% if site.use_download_button and page.interact_link -%}
+        <a href="{{ page.interact_link | relative_url }}" download>
+        <button id="interact-button-download" class="interact-button">{{ page.suffix | capitalize }}</button>
+        </a>
+        {% endif %}
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
