@@ -1,0 +1,564 @@
+---
+redirect_from:
+  - "0-slides"
+interact_link: content/0_slides.ipynb
+kernel_name: python3
+has_widgets: false
+title: |-
+  Appendix of Making Slides with RISE
+prev_page:
+  url: /0_jupyter_notebook.html
+  title: |-
+    Appendix of Using Jupyter Notebooks
+next_page:
+  url: /0_turicreate.html
+  title: |-
+    Appendix of Using Turicreate
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461;">&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461;<a class="anchor-link" href="#&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461;"> </a></h1><p>王成军</p>
+<p>wangchengjun@nju.edu.cn</p>
+<p>计算传播网 <a href="http://computational-communication.com">http://computational-communication.com</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="RISE:-&quot;Live&quot;-Reveal.js-Jupyter/IPython-Slideshow-Extension">RISE: "Live" Reveal.js Jupyter/IPython Slideshow Extension<a class="anchor-link" href="#RISE:-&quot;Live&quot;-Reveal.js-Jupyter/IPython-Slideshow-Extension"> </a></h1><p><a href="https://github.com/damianavila/RISE">https://github.com/damianavila/RISE</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h1><ul>
+<li>Downnload from <a href="https://github.com/damianavila/RISE">https://github.com/damianavila/RISE</a></li>
+<li><p>open your teminal, cd to the RISE folder, e.g.,</p>
+<blockquote><h2 id="cd--/github/RISE/">cd  /github/RISE/<a class="anchor-link" href="#cd--/github/RISE/"> </a></h2>
+</blockquote>
+</li>
+<li><p>To install this nbextension, simply run</p>
+<blockquote><h2 id="python-setup.py-install">python setup.py install<a class="anchor-link" href="#python-setup.py-install"> </a></h2>
+</blockquote>
+</li>
+</ul>
+<p>from the RISE repository.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the notebook toolbar, a new button ("Enter/Exit Live Reveal Slideshow") will be available.</p>
+<p>The notebook toolbar also contains a "Cell Toolbar" dropdown menu that gives you access to metadata for each cell. If you select the Slideshow preset, you will see in the right corner of each cell a little box where you can select the cell type (similar as for the static reveal slides with nbconvert).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#23558;ipynb&#25991;&#20214;&#36716;&#20026;slides.html">&#23558;ipynb&#25991;&#20214;&#36716;&#20026;slides.html<a class="anchor-link" href="#&#23558;ipynb&#25991;&#20214;&#36716;&#20026;slides.html"> </a></h1><ul>
+<li>download the reveal.js from Github <a href="https://github.com/hakimel/reveal.js">https://github.com/hakimel/reveal.js</a></li>
+<li>generate html using the following code</li>
+<li>put the generated html into the reveal.js folder</li>
+<li>open the html using chrome</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>chengjuns-MacBook-Pro:~ chengjun$ cd github/cjc/code/
+
+chengjuns-MacBook-Pro:code chengjun$ jupyter nbconvert slides.ipynb --to slides --post serve</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#25209;&#37327;&#29983;&#25104;slides.html&#182;">&#25209;&#37327;&#29983;&#25104;slides.html&#182;<a class="anchor-link" href="#&#25209;&#37327;&#29983;&#25104;slides.html&#182;"> </a></h1>
+<pre><code>chengjuns-MacBook-Pro:~ chengjun$ cd github/cjc/code/
+
+chengjuns-MacBook-Pro:code chengjun$ jupyter nbconvert *.ipynb --to slides</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#25968;&#23398;&#20844;&#24335;">&#25968;&#23398;&#20844;&#24335;<a class="anchor-link" href="#&#25968;&#23398;&#20844;&#24335;"> </a></h1><p>$E = MC^2$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c">%%latex</span>
+<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+a = <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span><span class="k">\\</span>
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea ">
+\begin{align}
+a = \frac{1}{2}\\
+\end{align}
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#31243;&#24207;&#20195;&#30721;">&#31243;&#24207;&#20195;&#30721;<a class="anchor-link" href="#&#31243;&#24207;&#20195;&#30721;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="s1">&#39;hello world&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>hello world
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="n">i</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get a list of all the available magics</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span> <span class="n">lsmagic</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Available line magics:
+%alias  %alias_magic  %autocall  %automagic  %autosave  %bookmark  %cat  %cd  %clear  %colors  %config  %connect_info  %cp  %debug  %dhist  %dirs  %doctest_mode  %ed  %edit  %env  %gui  %hist  %history  %install_default_config  %install_ext  %install_profiles  %killbgscripts  %ldir  %less  %lf  %lk  %ll  %load  %load_ext  %loadpy  %logoff  %logon  %logstart  %logstate  %logstop  %ls  %lsmagic  %lx  %macro  %magic  %man  %matplotlib  %mkdir  %more  %mv  %notebook  %page  %pastebin  %pdb  %pdef  %pdoc  %pfile  %pinfo  %pinfo2  %popd  %pprint  %precision  %profile  %prun  %psearch  %psource  %pushd  %pwd  %pycat  %pylab  %qtconsole  %quickref  %recall  %rehashx  %reload_ext  %rep  %rerun  %reset  %reset_selective  %rm  %rmdir  %run  %save  %sc  %set_env  %store  %sx  %system  %tb  %time  %timeit  %unalias  %unload_ext  %who  %who_ls  %whos  %xdel  %xmode
+
+Available cell magics:
+%%!  %%HTML  %%SVG  %%bash  %%capture  %%debug  %%file  %%html  %%javascript  %%latex  %%perl  %%prun  %%pypy  %%python  %%python2  %%python3  %%ruby  %%script  %%sh  %%svg  %%sx  %%system  %%time  %%timeit  %%writefile
+
+Automagic is ON, % prefix IS NOT needed for line magics.</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span> <span class="n">env</span>
+<span class="c1"># to list your environment variables.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;Apple_PubSub_Socket_Render&#39;: &#39;/private/tmp/com.apple.launchd.Cti3IOL0XG/Render&#39;,
+ &#39;CLICOLOR&#39;: &#39;1&#39;,
+ &#39;DISPLAY&#39;: &#39;/private/tmp/com.apple.launchd.GQAU1RS6KM/org.macosforge.xquartz:0&#39;,
+ &#39;GIT_PAGER&#39;: &#39;cat&#39;,
+ &#39;HOME&#39;: &#39;/Users/chengjun&#39;,
+ &#39;JPY_PARENT_PID&#39;: &#39;84860&#39;,
+ &#39;LANG&#39;: &#39;en_US.UTF-8&#39;,
+ &#39;LC_ALL&#39;: &#39;en_US.UTF-8&#39;,
+ &#39;LC_CTYPE&#39;: &#39;UTF-8&#39;,
+ &#39;LOGNAME&#39;: &#39;chengjun&#39;,
+ &#39;PAGER&#39;: &#39;cat&#39;,
+ &#39;PATH&#39;: &#39;/Users/chengjun/anaconda/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin&#39;,
+ &#39;PWD&#39;: &#39;/Users/chengjun&#39;,
+ &#39;SECURITYSESSIONID&#39;: &#39;186a5&#39;,
+ &#39;SHELL&#39;: &#39;/bin/bash&#39;,
+ &#39;SHLVL&#39;: &#39;2&#39;,
+ &#39;SSH_AUTH_SOCK&#39;: &#39;/private/tmp/com.apple.launchd.VNCcz4m0az/Listeners&#39;,
+ &#39;TERM&#39;: &#39;xterm-color&#39;,
+ &#39;TERM_PROGRAM&#39;: &#39;Apple_Terminal&#39;,
+ &#39;TERM_PROGRAM_VERSION&#39;: &#39;343&#39;,
+ &#39;TERM_SESSION_ID&#39;: &#39;FDFD985A-CDD6-415E-A3B0-E8A2A05CC9B4&#39;,
+ &#39;TMPDIR&#39;: &#39;/var/folders/l6/ntr5b4610hx38gy0_2xp7ngh0000gn/T/&#39;,
+ &#39;USER&#39;: &#39;chengjun&#39;,
+ &#39;XPC_FLAGS&#39;: &#39;0x0&#39;,
+ &#39;XPC_SERVICE_NAME&#39;: &#39;0&#39;,
+ &#39;_&#39;: &#39;/Users/chengjun/anaconda/python.app/Contents/MacOS/python&#39;,
+ &#39;__CF_USER_TEXT_ENCODING&#39;: &#39;0x1F5:0x0:0x0&#39;}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">prun</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> </pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">time</span> range(10)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 11 µs, sys: 9 µs, total: 20 µs
+Wall time: 21 µs
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> range(100)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The slowest run took 295.47 times longer than the fastest. This could mean that an intermediate result is being cached.
+1000000 loops, best of 3: 748 ns per loop
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>!: to run a shell command. E.g., ! pip freeze | grep pandas to see what version of pandas is installed.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> <span class="nb">cd</span> /Users/chengjun/github/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span> <span class="n">matplotlib</span> <span class="n">inline</span> 
+<span class="c1"># to show matplotlib plots inline the notebook.</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s1">&#39;r-o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/0_slides_20_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="This-is-the-End.">This is the End.<a class="anchor-link" href="#This-is-the-End."> </a></h1><h2 id="Thanks-for-your-attention.">Thanks for your attention.<a class="anchor-link" href="#Thanks-for-your-attention."> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+</main>

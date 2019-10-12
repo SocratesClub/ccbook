@@ -1,0 +1,2303 @@
+---
+redirect_from:
+  - "14-millionsong"
+interact_link: content/14_millionsong.ipynb
+kernel_name: conda-env-anaconda-py
+has_widgets: false
+title: |-
+  The Case of Million Song
+prev_page:
+  url: /13_recsys_intro.html
+  title: |-
+    Recommendation System
+next_page:
+  url: /14_movielens.html
+  title: |-
+    The Case of Movielens
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<hr>
+<h1 id="&#20351;&#29992;Turicreate&#36827;&#34892;&#38899;&#20048;&#25512;&#33616;">&#20351;&#29992;Turicreate&#36827;&#34892;&#38899;&#20048;&#25512;&#33616;<a class="anchor-link" href="#&#20351;&#29992;Turicreate&#36827;&#34892;&#38899;&#20048;&#25512;&#33616;"> </a></h1><hr>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">turicreate</span> <span class="k">as</span> <span class="nn">tc</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#19979;&#36733;&#25968;&#25454;">&#19979;&#36733;&#25968;&#25454;<a class="anchor-link" href="#&#19979;&#36733;&#25968;&#25454;"> </a></h1><p><a href="http://s3.amazonaws.com/dato-datasets/millionsong/10000.txt">http://s3.amazonaws.com/dato-datasets/millionsong/10000.txt</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#train_file = &#39;http://s3.amazonaws.com/dato-datasets/millionsong/10000.txt&#39;</span>
+<span class="n">train_file</span> <span class="o">=</span> <span class="s1">&#39;/Users/datalab/bigdata/cjc/millionsong/song_usage_10000.txt&#39;</span>
+<span class="n">sf</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">SFrame</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">train_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sf</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;X1&#39;</span><span class="p">:</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;X2&#39;</span><span class="p">:</span><span class="s1">&#39;music_id&#39;</span><span class="p">,</span> <span class="s1">&#39;X3&#39;</span><span class="p">:</span><span class="s1">&#39;rating&#39;</span><span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">popularity_model</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">popularity_recommender</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> 
+                                                    <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;music_id&#39;</span><span class="p">,</span> 
+                                                    <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;rating&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Preparing data set.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>    Data has 1599753 observations with 76085 users and 10000 items.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>    Data prepared in: 0.907738s</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>1599753 observations to process; with 10000 unique items.</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item_sim_model</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">item_similarity_recommender</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> 
+                                                       <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;music_id&#39;</span><span class="p">,</span> 
+                                                       <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;rating&#39;</span><span class="p">,</span> 
+                                                       <span class="n">similarity_type</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Preparing data set.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>    Data has 1599753 observations with 76085 users and 10000 items.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>    Data prepared in: 0.939059s</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Training model from provided data.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Gathering per-item and per-user statistics.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+--------------------------------+------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| Elapsed Time (Item Statistics) | % Complete |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+--------------------------------+------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 1.878ms                        | 1.25       |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 29.154ms                       | 100        |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+--------------------------------+------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Setting up lookup tables.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Processing data in one pass using dense lookup tables.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+-------------------------------------+------------------+-----------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| Elapsed Time (Constructing Lookups) | Total % Complete | Items Processed |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+-------------------------------------+------------------+-----------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 199.684ms                           | 0                | 0               |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 957.28ms                            | 100              | 10000           |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+-------------------------------------+------------------+-----------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Finalizing lookup tables.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Generating candidate set for working with new users.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Finished training in 2.00431s</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">factorization_machine_model</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">recommender</span><span class="o">.</span><span class="n">factorization_recommender</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> 
+                                                                              <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;music_id&#39;</span><span class="p">,</span>
+                                                                              <span class="n">target</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Preparing data set.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>    Data has 1599753 observations with 76085 users and 10000 items.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>    Data prepared in: 0.930001s</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Training factorization_recommender for recommendations.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+--------------------------------+--------------------------------------------------+----------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| Parameter                      | Description                                      | Value    |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+--------------------------------+--------------------------------------------------+----------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| num_factors                    | Factor Dimension                                 | 8        |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| regularization                 | L2 Regularization on Factors                     | 1e-08    |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| solver                         | Solver used for training                         | sgd      |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| linear_regularization          | L2 Regularization on Linear Coefficients         | 1e-10    |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| max_iterations                 | Maximum Number of Iterations                     | 50       |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+--------------------------------+--------------------------------------------------+----------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>  Optimizing model using SGD; tuning step size.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>  Using 199969 / 1599753 points for tuning the step size.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+---------+-------------------+------------------------------------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| Attempt | Initial Step Size | Estimated Objective Value                |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+---------+-------------------+------------------------------------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 0       | 25                | No Decrease (224.847 >= 36.2873)         |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 1       | 6.25              | No Decrease (211.831 >= 36.2873)         |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 2       | 1.5625            | No Decrease (184.589 >= 36.2873)         |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 3       | 0.390625          | No Decrease (83.9764 >= 36.2873)         |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 4       | 0.0976562         | 11.3523                                  |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 5       | 0.0488281         | 7.5686                                   |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 6       | 0.0244141         | 21.6581                                  |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+---------+-------------------+------------------------------------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| Final   | 0.0488281         | 7.5686                                   |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+---------+-------------------+------------------------------------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Starting Optimization.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+---------+--------------+-------------------+-----------------------+-------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| Iter.   | Elapsed Time | Approx. Objective | Approx. Training RMSE | Step Size   |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+---------+--------------+-------------------+-----------------------+-------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| Initial | 99us         | 43.795            | 6.61778               |             |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+---------+--------------+-------------------+-----------------------+-------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 1       | 99.622ms     | 43.5086           | 6.59571               | 0.0488281   |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 2       | 191.248ms    | 40.9101           | 6.39574               | 0.0290334   |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 3       | 280.477ms    | 37.8972           | 6.15571               | 0.0214205   |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 4       | 378.603ms    | 35.2936           | 5.94045               | 0.0172633   |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 5       | 474.372ms    | 32.7773           | 5.72471               | 0.014603    |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 10      | 959.686ms    | 24.5984           | 4.95903               | 0.008683    |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>| 50      | 5.02s        | 9.19885           | 3.0314                | 0.00154408  |</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>+---------+--------------+-------------------+-----------------------+-------------+</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Optimization Complete: Maximum number of passes through the data reached.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>Computing final objective value and training RMSE.</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>       Final objective value: 8.16243</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>       Final training RMSE: 2.85534</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1599753</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">recommender</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">compare_models</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> 
+                                            <span class="p">[</span><span class="n">popularity_model</span><span class="p">,</span> <span class="n">item_sim_model</span><span class="p">,</span> <span class="n">factorization_machine_model</span><span class="p">],</span>
+                                            <span class="n">user_sample</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">skip_set</span><span class="o">=</span><span class="n">train_set</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>compare_models: using 34354 users to estimate model performance
+PROGRESS: Evaluate model M0
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 1000/34354 queries. users per second: 19077.4</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 2000/34354 queries. users per second: 21071.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 3000/34354 queries. users per second: 21793</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 4000/34354 queries. users per second: 22081.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 5000/34354 queries. users per second: 22392.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 6000/34354 queries. users per second: 22620.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 7000/34354 queries. users per second: 22719.2</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 8000/34354 queries. users per second: 22900.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 9000/34354 queries. users per second: 23067.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 10000/34354 queries. users per second: 22887.2</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 11000/34354 queries. users per second: 22713</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 12000/34354 queries. users per second: 22595.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 13000/34354 queries. users per second: 22631.4</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 14000/34354 queries. users per second: 22749.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 15000/34354 queries. users per second: 22609.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 16000/34354 queries. users per second: 22638.4</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 17000/34354 queries. users per second: 22764.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 18000/34354 queries. users per second: 22809.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 19000/34354 queries. users per second: 22919.8</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 20000/34354 queries. users per second: 22935.8</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 21000/34354 queries. users per second: 22884.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 22000/34354 queries. users per second: 22859.4</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 23000/34354 queries. users per second: 22748.8</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 24000/34354 queries. users per second: 22678.2</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 25000/34354 queries. users per second: 22568.9</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 26000/34354 queries. users per second: 22427.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 27000/34354 queries. users per second: 22358.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 28000/34354 queries. users per second: 22262.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 29000/34354 queries. users per second: 22079</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 30000/34354 queries. users per second: 22018.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 31000/34354 queries. users per second: 21629.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 32000/34354 queries. users per second: 21548.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 33000/34354 queries. users per second: 21540.2</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 34000/34354 queries. users per second: 21499.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Precision and recall summary statistics by cutoff
++--------+------------------------+------------------------+
+| cutoff |      mean_recall       |     mean_precision     |
++--------+------------------------+------------------------+
+|   1    | 4.3383582709425655e-05 | 0.00032019561040927034 |
+|   2    | 9.351370595195784e-05  | 0.0003493043022646556  |
+|   3    | 0.00013332475867271565 | 0.00032989850769439354 |
+|   4    | 0.00025157207340778813 | 0.0003638586481923528  |
+|   5    | 0.0003743018484379922  | 0.00043663037783082004 |
+|   6    | 0.00044921257061878193 | 0.00042207603190312675 |
+|   7    | 0.0005172658393736786  | 0.00041583845507697374 |
+|   8    |  0.000573334927644493  | 0.0004038830994935098  |
+|   9    | 0.0008801308762376106  | 0.0005304250515870728  |
+|   10   | 0.0009133251742113642  | 0.0005035803690982172  |
++--------+------------------------+------------------------+
+[10 rows x 3 columns]
+
+
+Overall RMSE: 6.339345574168611
+
+Per User RMSE (best)
++-------------------------------+------+-------+
+|            user_id            | rmse | count |
++-------------------------------+------+-------+
+| 6d61c9b3678aa6c015ea9fd502... | 0.0  |   1   |
++-------------------------------+------+-------+
+[1 rows x 3 columns]
+
+
+Per User RMSE (worst)
++-------------------------------+-------------------+-------+
+|            user_id            |        rmse       | count |
++-------------------------------+-------------------+-------+
+| 38767872c514c1b43bab5c7b21... | 341.2071760874715 |   2   |
++-------------------------------+-------------------+-------+
+[1 rows x 3 columns]
+
+
+Per Item RMSE (best)
++--------------------+---------------------+-------+
+|      music_id      |         rmse        | count |
++--------------------+---------------------+-------+
+| SOXDPFW12A81C2319B | 0.07352941176470584 |   6   |
++--------------------+---------------------+-------+
+[1 rows x 3 columns]
+
+
+Per Item RMSE (worst)
++--------------------+--------------------+-------+
+|      music_id      |        rmse        | count |
++--------------------+--------------------+-------+
+| SOLGIWB12A58A77A05 | 109.15045476689721 |   35  |
++--------------------+--------------------+-------+
+[1 rows x 3 columns]
+
+PROGRESS: Evaluate model M1
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 1000/34354 queries. users per second: 18663.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 2000/34354 queries. users per second: 21804.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 3000/34354 queries. users per second: 22501.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 4000/34354 queries. users per second: 22946.8</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 5000/34354 queries. users per second: 23156.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 6000/34354 queries. users per second: 23361.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 7000/34354 queries. users per second: 23118</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 8000/34354 queries. users per second: 23054.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 9000/34354 queries. users per second: 22947</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 10000/34354 queries. users per second: 22859.2</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 11000/34354 queries. users per second: 22138.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 12000/34354 queries. users per second: 22029.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 13000/34354 queries. users per second: 22098.2</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 14000/34354 queries. users per second: 22204</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 15000/34354 queries. users per second: 22239.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 16000/34354 queries. users per second: 22323</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 17000/34354 queries. users per second: 22380.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 18000/34354 queries. users per second: 22421.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 19000/34354 queries. users per second: 22465.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 20000/34354 queries. users per second: 22521.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 21000/34354 queries. users per second: 22402.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 22000/34354 queries. users per second: 22338.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 23000/34354 queries. users per second: 21869.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 24000/34354 queries. users per second: 21574.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 25000/34354 queries. users per second: 21291.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 26000/34354 queries. users per second: 20909</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 27000/34354 queries. users per second: 20723.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 28000/34354 queries. users per second: 20666.2</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 29000/34354 queries. users per second: 20559.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 30000/34354 queries. users per second: 20340.9</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 31000/34354 queries. users per second: 20157.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 32000/34354 queries. users per second: 19851.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 33000/34354 queries. users per second: 19819</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 34000/34354 queries. users per second: 19781</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Precision and recall summary statistics by cutoff
++--------+----------------------+----------------------+
+| cutoff |     mean_recall      |    mean_precision    |
++--------+----------------------+----------------------+
+|   1    | 0.014688842060795695 | 0.050445362985387564 |
+|   2    | 0.03291712354999962  | 0.06248180706759065  |
+|   3    | 0.05399142375515901  | 0.07436300479323134  |
+|   4    | 0.06963924374087777  | 0.07609012050998376  |
+|   5    | 0.08384375244888208  | 0.07552541188798938  |
+|   6    |  0.0959100718474003  | 0.07364499039413211  |
+|   7    | 0.10643883706242792  | 0.07136619566031029  |
+|   8    | 0.11604275927620446  | 0.06902398556208861  |
+|   9    |  0.1246532903037569  | 0.06660392126422279  |
+|   10   | 0.13280279585995652  | 0.06440006986086082  |
++--------+----------------------+----------------------+
+[10 rows x 3 columns]
+
+
+Overall RMSE: 7.041096333660663
+
+Per User RMSE (best)
++-------------------------------+----------------------+-------+
+|            user_id            |         rmse         | count |
++-------------------------------+----------------------+-------+
+| 714c577dfeaa6ffaf778286302... | 0.022276699542999268 |   1   |
++-------------------------------+----------------------+-------+
+[1 rows x 3 columns]
+
+
+Per User RMSE (worst)
++-------------------------------+--------------------+-------+
+|            user_id            |        rmse        | count |
++-------------------------------+--------------------+-------+
+| 38767872c514c1b43bab5c7b21... | 343.85311015265717 |   2   |
++-------------------------------+--------------------+-------+
+[1 rows x 3 columns]
+
+
+Per Item RMSE (best)
++--------------------+--------------------+-------+
+|      music_id      |        rmse        | count |
++--------------------+--------------------+-------+
+| SOBHIJM12AB018194F | 0.7032955339939242 |   6   |
++--------------------+--------------------+-------+
+[1 rows x 3 columns]
+
+
+Per Item RMSE (worst)
++--------------------+--------------------+-------+
+|      music_id      |        rmse        | count |
++--------------------+--------------------+-------+
+| SOLGIWB12A58A77A05 | 109.83254923449184 |   35  |
++--------------------+--------------------+-------+
+[1 rows x 3 columns]
+
+PROGRESS: Evaluate model M2
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 1000/34354 queries. users per second: 14762.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 2000/34354 queries. users per second: 16166.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 3000/34354 queries. users per second: 16291.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 4000/34354 queries. users per second: 16418.9</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 5000/34354 queries. users per second: 16427.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 6000/34354 queries. users per second: 16329.2</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 7000/34354 queries. users per second: 16405.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 8000/34354 queries. users per second: 16508</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 9000/34354 queries. users per second: 16428.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 10000/34354 queries. users per second: 16403.8</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 11000/34354 queries. users per second: 16274.9</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 12000/34354 queries. users per second: 16310.9</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 13000/34354 queries. users per second: 16293.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 14000/34354 queries. users per second: 16244.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 15000/34354 queries. users per second: 16212</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 16000/34354 queries. users per second: 16201.7</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 17000/34354 queries. users per second: 16228.6</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 18000/34354 queries. users per second: 16249.9</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 19000/34354 queries. users per second: 16250.9</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 20000/34354 queries. users per second: 16246</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 21000/34354 queries. users per second: 16212.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 22000/34354 queries. users per second: 16218.8</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 23000/34354 queries. users per second: 16218.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 24000/34354 queries. users per second: 16230.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 25000/34354 queries. users per second: 16172.3</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 26000/34354 queries. users per second: 16175.4</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 27000/34354 queries. users per second: 16188.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 28000/34354 queries. users per second: 16199.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 29000/34354 queries. users per second: 16199.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 30000/34354 queries. users per second: 16217</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 31000/34354 queries. users per second: 16228.5</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 32000/34354 queries. users per second: 16176.8</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 33000/34354 queries. users per second: 16184.1</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<pre>recommendations finished on 34000/34354 queries. users per second: 16170.4</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Precision and recall summary statistics by cutoff
++--------+------------------------+------------------------+
+| cutoff |      mean_recall       |     mean_precision     |
++--------+------------------------+------------------------+
+|   1    |  7.0023278723497e-05   | 0.0004075216859754317  |
+|   2    | 0.00015701647350617692 | 0.0004220760319031288  |
+|   3    | 0.00025150526145133087 | 0.00041722458326056295 |
+|   4    | 0.00034565751961335053 | 0.00043663037783081874 |
+|   5    | 0.00046127750964837765 | 0.0004424521162018989  |
+|   6    | 0.0006061722786786824  | 0.0004899963128990292  |
+|   7    |  0.00070561257944388   | 0.0005197980688462193  |
+|   8    | 0.0008535975421092137  | 0.0005457879722885229  |
+|   9    | 0.0009773205690967743  | 0.0005433622479672466  |
+|   10   | 0.0011201566127395915  | 0.0005647086219945271  |
++--------+------------------------+------------------------+
+[10 rows x 3 columns]
+
+
+Overall RMSE: 7.780049286375036
+
+Per User RMSE (best)
++-------------------------------+------------------------+-------+
+|            user_id            |          rmse          | count |
++-------------------------------+------------------------+-------+
+| 80495441caacdc7e069b441047... | 5.1963096963536515e-05 |   1   |
++-------------------------------+------------------------+-------+
+[1 rows x 3 columns]
+
+
+Per User RMSE (worst)
++-------------------------------+--------------------+-------+
+|            user_id            |        rmse        | count |
++-------------------------------+--------------------+-------+
+| 38767872c514c1b43bab5c7b21... | 338.99132097019395 |   2   |
++-------------------------------+--------------------+-------+
+[1 rows x 3 columns]
+
+
+Per Item RMSE (best)
++--------------------+---------------------+-------+
+|      music_id      |         rmse        | count |
++--------------------+---------------------+-------+
+| SOCOZST12A67020452 | 0.06951240175355755 |   1   |
++--------------------+---------------------+-------+
+[1 rows x 3 columns]
+
+
+Per Item RMSE (worst)
++--------------------+--------------------+-------+
+|      music_id      |        rmse        | count |
++--------------------+--------------------+-------+
+| SOVQSQZ12A8C13F960 | 113.92735214599614 |   17  |
++--------------------+--------------------+-------+
+[1 rows x 3 columns]
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">SArray</span><span class="p">(</span><span class="n">sf</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">recs</span> <span class="o">=</span> <span class="n">item_sim_model</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">users</span><span class="o">=</span><span class="n">users</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>
+<span class="n">recs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div style="max-height:1000px;max-width:1500px;overflow:auto;"><table frame="box" rules="cols">
+    <tr>
+        <th style="padding-left: 1em; padding-right: 1em; text-align: center">user_id</th>
+        <th style="padding-left: 1em; padding-right: 1em; text-align: center">music_id</th>
+        <th style="padding-left: 1em; padding-right: 1em; text-align: center">score</th>
+        <th style="padding-left: 1em; padding-right: 1em; text-align: center">rank</th>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOXUQNR12AF72A69D6</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">3.022422651449839</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOUFAZA12AC3DFAB20</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1.3368427753448486</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">2</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOSFSTC12A8C141219</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1.091982126235962</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">3</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOVIWFP12A58A7D1BD</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1.045163869857788</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">4</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOBMTQD12AB01833D0</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1.0294516881306965</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">5</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOCMNRG12AB0189D3F</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">0.9756437937418619</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">6</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOXOHUM12A67ADC826</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">0.9506873289744059</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">7</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOWBFVW12A6D4F612B</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">0.9092370669047037</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">8</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOXFYTY127E9433E7D</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">0.8977278073628744</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">9</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">279292bb36dbfc7f505e36ebf<br>038c81eb1d1d63e ...</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">SOYBLYP12A58A79D32</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">0.8970928192138672</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">10</td>
+    </tr>
+</table>
+[10 rows x 4 columns]<br/>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+</main>

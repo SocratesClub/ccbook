@@ -1,0 +1,2401 @@
+---
+redirect_from:
+  - "09-01-machine-learning-with-sklearn"
+interact_link: content/09_01-machine-learning-with-sklearn.ipynb
+kernel_name: python3
+has_widgets: false
+title: |-
+  Machine Learning
+prev_page:
+  url: /08_07-analyzing_titanic_dataset.html
+  title: |-
+    Analyzing Titanic Dataset
+next_page:
+  url: /09_03-Hyperparameters-and-Model-Validation.html
+  title: |-
+    Hyperparameters and Model Validation
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introducing-Scikit-Learn-for-Machine-Learning">Introducing Scikit-Learn for Machine Learning<a class="anchor-link" href="#Introducing-Scikit-Learn-for-Machine-Learning"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<!--BOOK_INFORMATION-->
+
+<p><em>This notebook contains an excerpt from the <a href="http://shop.oreilly.com/product/0636920034919.do">Python Data Science Handbook</a> by Jake VanderPlas; the content is available <a href="https://github.com/jakevdp/PythonDataScienceHandbook">on GitHub</a>.</em></p>
+<p><em>The text is released under the <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">CC-BY-NC-ND license</a>, and code is released under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. If you find this content useful, please consider supporting the work by <a href="http://shop.oreilly.com/product/0636920034919.do">buying the book</a>!</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="05.01-What-Is-Machine-Learning.ipynb">What Is Machine Learning?</a> | <a href="Index.ipynb">Contents</a> | <a href="05.03-Hyperparameters-and-Model-Validation.ipynb">Hyperparameters and Model Validation</a> &gt;</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/mlprocess.png' width = 800></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python machine learning</p>
+<ul>
+<li><a href="http://scikit-learn.org">Scikit-Learn</a> provides efficient versions of a large number of common algorithms.<ul>
+<li>Scikit-Learn is characterized by a clean, uniform, and streamlined API, as well as by very useful and complete online documentation.</li>
+</ul>
+</li>
+</ul>
+<blockquote><h2 id="Once-you-understand-the-basic-use-and-syntax-of-Scikit-Learn-for-one-type-of-model,-switching-to-a-new-model-or-algorithm-is-very-straightforward.">Once you understand the basic use and syntax of Scikit-Learn for one type of model, switching to a new model or algorithm is very straightforward.<a class="anchor-link" href="#Once-you-understand-the-basic-use-and-syntax-of-Scikit-Learn-for-one-type-of-model,-switching-to-a-new-model-or-algorithm-is-very-straightforward."> </a></h2>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python machine learning</p>
+<p>A solid understanding of these API elements will form the foundation for understanding the deeper practical discussion of machine learning algorithms and approaches.</p>
+<p>This section provides an overview of the Scikit-Learn API</p>
+<ul>
+<li>The <em>data representation</em> in Scikit-Learn</li>
+<li>The <em>Estimator</em> API<ul>
+<li>a more interesting example of using these tools for exploring a set of images of hand-written digits.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Representation-in-Scikit-Learn">Data Representation in Scikit-Learn<a class="anchor-link" href="#Data-Representation-in-Scikit-Learn"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Machine learning is about creating models from data:</p>
+<ul>
+<li>How data can be represented in order to be understood by the computer.<ul>
+<li>Tables of data.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Data-as-table">Data as table<a class="anchor-link" href="#Data-as-table"> </a></h3><p>A basic table is a two-dimensional grid of data</p>
+<ul>
+<li>the rows represent individual elements of the dataset</li>
+<li>the columns represent quantities related to each of these elements.</li>
+</ul>
+<p>For example, consider the <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris dataset</a>, famously analyzed by Ronald Fisher in 1936.</p>
+<p>We can download this dataset in the form of a Pandas <code>DataFrame</code> using the <a href="http://seaborn.pydata.org/">seaborn</a> library:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+<span class="n">iris</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Each row of the data refers to a single observed flower</li>
+<li>The number of rows is the total number of flowers in the dataset.<ul>
+<li>the rows of the matrix as <em>samples</em></li>
+<li>the number of rows as <code>n_samples</code>.</li>
+</ul>
+</li>
+<li>each column of the data refers to a particular quantitative piece of information that describes each sample.<ul>
+<li>the columns of the matrix as <em>features</em></li>
+<li>the number of columns as <code>n_features</code>.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Features-matrix">Features matrix<a class="anchor-link" href="#Features-matrix"> </a></h4><p>This table layout of the information can be thought of as a <code>two-dimensional numerical array or matrix</code>, which we will call the <strong>features matrix</strong>.</p>
+<ul>
+<li>The features matrix is often stored in a variable named <code>X</code>.</li>
+<li>The features matrix is assumed to be two-dimensional, with shape <code>[n_samples, n_features]</code>, </li>
+<li>The features matrix is most often contained in a NumPy array or a Pandas <code>DataFrame</code></li>
+<li>some Scikit-Learn models also accept SciPy sparse matrices.</li>
+</ul>
+<p>The samples (i.e., rows) always refer to the individual objects described by the dataset.</p>
+<ul>
+<li>For example, the sample might be a flower, a person, a document, an image, a sound file, a video, an astronomical object, or anything else you can describe with a set of quantitative measurements.</li>
+</ul>
+<p>The features (i.e., columns) always refer to the distinct observations that describe each sample in a quantitative manner.</p>
+<ul>
+<li>Features are generally real-valued, but may be Boolean or discrete-valued in some cases.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Target-array">Target array<a class="anchor-link" href="#Target-array"> </a></h4><p>In addition to the feature matrix <code>X</code>, we also generally work with a <em>label</em> or <em>target</em> array, which by convention we will usually call <code>y</code>.</p>
+<ul>
+<li>The target array is usually one dimensional, with length <code>n_samples</code></li>
+<li>The target array is generally contained in a NumPy array or Pandas <code>Series</code>.</li>
+<li>The target array may have continuous numerical values, or discrete classes/labels.</li>
+</ul>
+<p>While some Scikit-Learn estimators do handle multiple target values in the form of a two-dimensional, <code>[n_samples, n_targets]</code> target array, we will primarily be working with the common case of a one-dimensional target array.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Target-array">Target array<a class="anchor-link" href="#Target-array"> </a></h4><p>The target array is usually the quantity we want to <em>predict from the data</em>: in statistical terms, it is the dependent variable.</p>
+<blockquote><p>For example, in the preceding data we may wish to construct a model that can predict the species of flower based on the other measurements; in this case, the <code>species</code> column would be considered the target array.</p>
+</blockquote>
+<p>With this target array in mind, we can use Seaborn (see <a href="04.14-Visualization-With-Seaborn.ipynb">Visualization With Seaborn</a>) to conveniently visualize the data:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> 
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_14_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For use in Scikit-Learn, we will extract the features matrix and target array from the <code>DataFrame</code></p>
+<ul>
+<li>we can use some of the Pandas <code>DataFrame</code> operations discussed in the <a href="03.00-Introduction-to-Pandas.ipynb">Chapter 3</a>:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_iris</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_iris</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(150, 4)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_iris</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_iris</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span>
+<span class="n">y_iris</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(150,)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_iris</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    setosa
+1    setosa
+2    setosa
+Name: species, dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To summarize, the expected layout of features and target values is visualized in the following diagram:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="figures/05.02-samples-features.png" alt="">
+<a href="06.00-Figure-Code.ipynb#Features-and-Labels-Grid">figure source in Appendix</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Scikit-Learn's-Estimator-API">Scikit-Learn's Estimator API<a class="anchor-link" href="#Scikit-Learn's-Estimator-API"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With this data properly formatted, we can move on to consider the <em>estimator</em> API of Scikit-Learn:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Guiding principles outlined in the <a href="http://arxiv.org/abs/1309.0238">Scikit-Learn API paper</a>:</p>
+<ul>
+<li><p><em>Consistency</em>: All objects share a common interface drawn from a limited set of methods, with consistent documentation.</p>
+<ul>
+<li>Every machine learning algorithm in Scikit-Learn is implemented via the Estimator API, which provides a consistent interface for a wide range of machine learning applications.</li>
+</ul>
+</li>
+<li><p><em>Inspection</em>: All specified parameter values are exposed as public attributes.</p>
+</li>
+<li><p><em>Limited object hierarchy</em>:</p>
+<ul>
+<li>Only algorithms are represented by Python classes; </li>
+<li>datasets are represented in standard formats (NumPy arrays, Pandas <code>DataFrame</code>s, SciPy sparse matrices) and </li>
+<li>parameter names use standard Python strings.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Guiding principles outlined in the <a href="http://arxiv.org/abs/1309.0238">Scikit-Learn API paper</a>:</p>
+<ul>
+<li><p><em>Composition</em>: Many machine learning tasks can be expressed as sequences of more fundamental algorithms,
+and Scikit-Learn makes use of this wherever possible.</p>
+</li>
+<li><p><em>Sensible defaults</em>: When models require user-specified parameters, the library defines an appropriate default value.</p>
+</li>
+</ul>
+<blockquote><p>In practice, these principles make Scikit-Learn very easy to use, once the basic principles are understood.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Basics-of-the-API">Basics of the API<a class="anchor-link" href="#Basics-of-the-API"> </a></h3><ol>
+<li>Choose a class of model by importing the appropriate estimator class from Scikit-Learn.</li>
+<li>Choose model hyperparameters by instantiating this class with desired values.</li>
+<li>Arrange data into a features matrix and target vector following the discussion above.</li>
+<li>Fit the model to your data by calling the <code>fit()</code> method of the model instance.</li>
+<li>Apply the Model to new data:<ul>
+<li>For supervised learning, often we predict labels for unknown data using the <code>predict()</code> method.</li>
+<li>For unsupervised learning, we often transform or infer properties of the data using the <code>transform()</code> or <code>predict()</code> method.</li>
+</ul>
+</li>
+</ol>
+<p>We will now step through several simple examples of applying supervised and unsupervised learning methods.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Supervised-learning-example:-Simple-linear-regression">Supervised learning example: Simple linear regression<a class="anchor-link" href="#Supervised-learning-example:-Simple-linear-regression"> </a></h3><p>As an example of this process, let's consider a simple linear regression—that is, the common case of fitting a line to $(x, y)$ data.
+We will use the following simple data for our regression example:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_28_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With this data in place, we can use the recipe outlined earlier. Let's walk through the process:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="1.-Choose-a-class-of-model">1. Choose a class of model<a class="anchor-link" href="#1.-Choose-a-class-of-model"> </a></h4><p>In Scikit-Learn, every class of model is represented by a Python class.
+So, for example, if we would like to compute a simple linear regression model, we can import the linear regression class:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that other more general linear regression models exist as well; you can read more about them in the <a href="http://Scikit-Learn.org/stable/modules/linear_model.html"><code>sklearn.linear_model</code> module documentation</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.-Choose-model-hyperparameters">2. Choose model hyperparameters<a class="anchor-link" href="#2.-Choose-model-hyperparameters"> </a></h4><p>An important point is that <em>a class of model is not the same as an instance of a model</em>.</p>
+<p>Once we have decided on our model class, there are still some options open to us.
+Depending on the model class we are working with, we might need to answer one or more questions like the following:</p>
+<ul>
+<li>Would we like to fit for the offset (i.e., <em>y</em>-intercept)?</li>
+<li>Would we like the model to be normalized?</li>
+<li>Would we like to preprocess our features to add model flexibility?</li>
+<li>What degree of regularization would we like to use in our model?</li>
+<li>How many model components would we like to use?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.-Choose-model-hyperparameters">2. Choose model hyperparameters<a class="anchor-link" href="#2.-Choose-model-hyperparameters"> </a></h4><p>These are examples of the important choices that must be made <em>once the model class is selected</em>.</p>
+<ul>
+<li>These choices are often represented as <em>hyperparameters</em>, or parameters that must be set before the model is fit to data.</li>
+<li>In Scikit-Learn, hyperparameters are chosen by passing values at model instantiation.</li>
+</ul>
+<p>We will explore how you can quantitatively motivate the choice of hyperparameters in <a href="05.03-Hyperparameters-and-Model-Validation.ipynb">Hyperparameters and Model Validation</a>.</p>
+<p>For our linear regression example, we can instantiate the <code>LinearRegression</code> class and specify that we would like to fit the intercept using the <code>fit_intercept</code> hyperparameter:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span>
+<span class="c1">#help(LinearRegression)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Keep in mind that when the model is instantiated, the only action is the storing of these hyperparameter values.</p>
+<ul>
+<li>In particular, we have not yet applied the model to any data: </li>
+<li>the Scikit-Learn API makes very clear the distinction between <em>choice of model</em> and <em>application of model to data</em>.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.-Arrange-data-into-a-features-matrix-and-target-vector">3. Arrange data into a features matrix and target vector<a class="anchor-link" href="#3.-Arrange-data-into-a-features-matrix-and-target-vector"> </a></h4><p>Previously we detailed the Scikit-Learn data representation, which requires a two-dimensional features matrix and a one-dimensional target array.</p>
+<ul>
+<li>The target variable <code>y</code> is already in the correct form (a length-<code>n_samples</code> array)</li>
+<li>The feature matrix <code>x</code> should be transformed to a matrix of size <code>[n_samples, n_features]</code>.</li>
+</ul>
+<p>In this case, this amounts to a simple reshaping of the one-dimensional array:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(50, 1)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="4.-Fit-the-model-to-your-data">4. Fit the model to your data<a class="anchor-link" href="#4.-Fit-the-model-to-your-data"> </a></h4><p>Now it is time to apply our model to data.
+This can be done with the <code>fit()</code> method of the model:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This <code>fit()</code> command causes a number of model-dependent internal computations to take place, and the results of these computations are stored in model-specific attributes that the user can explore.</p>
+<p>In Scikit-Learn, by convention all model parameters that were learned during the <code>fit()</code> process have trailing underscores;</p>
+<ul>
+<li>for example in this linear model, we have the following:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The parameters represent the slope of the simple linear fit to the data.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">coef_</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1.9776566])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The parameter represent the intercept of the simple linear fit to the data.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">intercept_</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-0.9033107255311164</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Comparing to the data definition, we see that they are very close to the input slope of 2 and intercept of -1.</p>
+<p>One question that frequently comes up regards the uncertainty in such internal model parameters.</p>
+<p>In general, Scikit-Learn does not provide tools to draw conclusions from internal model parameters themselves:</p>
+<ul>
+<li>interpreting model parameters is much more a <em>statistical modeling</em> question than a <em>machine learning</em> question.</li>
+<li>Machine learning rather focuses on what the model <em>predicts</em>.</li>
+</ul>
+<p>If you would like to dive into the meaning of fit parameters within the model, other tools are available, including the <a href="http://statsmodels.sourceforge.net/">Statsmodels Python package</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="5.-Predict-labels-for-unknown-data">5. Predict labels for unknown data<a class="anchor-link" href="#5.-Predict-labels-for-unknown-data"> </a></h4><p>Once the model is trained, the main task of supervised machine learning is to evaluate it based on what it says about new data that was not part of the training set.
+In Scikit-Learn, this can be done using the <code>predict()</code> method.
+For the sake of this example, our "new data" will be a grid of <em>x</em> values, and we will ask what <em>y</em> values the model predicts:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">xfit</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-1.        , -0.75510204, -0.51020408, -0.26530612, -0.02040816,
+        0.2244898 ,  0.46938776,  0.71428571,  0.95918367,  1.20408163,
+        1.44897959,  1.69387755,  1.93877551,  2.18367347,  2.42857143,
+        2.67346939,  2.91836735,  3.16326531,  3.40816327,  3.65306122,
+        3.89795918,  4.14285714,  4.3877551 ,  4.63265306,  4.87755102,
+        5.12244898,  5.36734694,  5.6122449 ,  5.85714286,  6.10204082,
+        6.34693878,  6.59183673,  6.83673469,  7.08163265,  7.32653061,
+        7.57142857,  7.81632653,  8.06122449,  8.30612245,  8.55102041,
+        8.79591837,  9.04081633,  9.28571429,  9.53061224,  9.7755102 ,
+       10.02040816, 10.26530612, 10.51020408, 10.75510204, 11.        ])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As before, we need to coerce these <em>x</em> values into a <code>[n_samples, n_features]</code> features matrix, after which we can feed it to the model:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xfit</span> <span class="o">=</span> <span class="n">xfit</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">yfit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xfit</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, let's visualize the results by plotting first the raw data, and then this model fit:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">yfit</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_50_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Typically the efficacy of the model is evaluated by comparing its results to some known baseline, as we will see in the next example</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Supervised-learning-example:-Iris-classification">Supervised learning example: Iris classification<a class="anchor-link" href="#Supervised-learning-example:-Iris-classification"> </a></h3><blockquote><h3 id="Question:-given-a-model-trained-on-a-portion-of-the-Iris-data,-how-well-can-we-predict-the-remaining-labels?">Question: given a model trained on a portion of the Iris data, how well can we predict the remaining labels?<a class="anchor-link" href="#Question:-given-a-model-trained-on-a-portion-of-the-Iris-data,-how-well-can-we-predict-the-remaining-labels?"> </a></h3>
+</blockquote>
+<p>For this task, we will use an extremely simple generative model known as <strong>Gaussian naive Bayes</strong></p>
+<ul>
+<li>which proceeds by assuming each class is drawn from an axis-aligned Gaussian distribution</li>
+<li>see <a href="05.05-Naive-Bayes.ipynb">In Depth: Naive Bayes Classification</a> for more details).</li>
+<li>it is so fast </li>
+<li>it has no hyperparameters to choose</li>
+</ul>
+<p>Gaussian naive Bayes is often a good model to use as a baseline classification, before exploring whether improvements can be found through more sophisticated models.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="To-evaluate-the-model-on-data-it-has-not-seen-before">To evaluate the model on data it has not seen before<a class="anchor-link" href="#To-evaluate-the-model-on-data-it-has-not-seen-before"> </a></h1><ul>
+<li>we will split the data into a <em>training set</em> and a <em>testing set</em>.<ul>
+<li>Using the <code>train_test_split</code> utility function:</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_iris</span><span class="p">,</span> <span class="n">y_iris</span><span class="p">,</span>
+                                                <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With the data arranged, we can follow our recipe to predict the labels:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <span class="n">GaussianNB</span> <span class="c1"># 1. choose model class</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>                       <span class="c1"># 2. instantiate model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>                  <span class="c1"># 3. fit model to data</span>
+<span class="n">y_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>             <span class="c1"># 4. predict on new data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, we can use the <code>accuracy_score</code> utility to see the fraction of predicted labels that match their true value:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">y_model</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(&#39;setosa&#39;, &#39;setosa&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;versicolor&#39;, &#39;virginica&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;virginica&#39;, &#39;virginica&#39;) (&#39;setosa&#39;, &#39;setosa&#39;) (&#39;versicolor&#39;, &#39;versicolor&#39;) (&#39;setosa&#39;, &#39;setosa&#39;)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">y_model</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.9736842105263158</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With an accuracy topping 97%, we see that even this very naive classification algorithm is effective for this particular dataset!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Unsupervised-learning-example:-Iris-dimensionality-reduction">Unsupervised learning example: Iris dimensionality reduction<a class="anchor-link" href="#Unsupervised-learning-example:-Iris-dimensionality-reduction"> </a></h3><p>Reducing the dimensionality of the Iris data to more easily visualize it:</p>
+<ul>
+<li>Iris data is four dimensional: <ul>
+<li>there are four features recorded for each sample.</li>
+</ul>
+</li>
+</ul>
+<p>The task of dimensionality reduction is to ask:</p>
+<blockquote><h2 id="whether-there-is-a-suitable-lower-dimensional-representation-that-retains-the-essential-features-of-the-data.">whether there is a suitable lower-dimensional representation that retains the essential features of the data.<a class="anchor-link" href="#whether-there-is-a-suitable-lower-dimensional-representation-that-retains-the-essential-features-of-the-data."> </a></h2>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Unsupervised-learning-example:-Iris-dimensionality-reduction">Unsupervised learning example: Iris dimensionality reduction<a class="anchor-link" href="#Unsupervised-learning-example:-Iris-dimensionality-reduction"> </a></h3><p>Dimensionality reduction is often used as an aid to visualizing data:</p>
+<ul>
+<li>it is much easier to plot data in two dimensions than in four dimensions or higher!</li>
+</ul>
+<p>Here we will use <code>principal component analysis</code> (PCA; see <a href="05.09-Principal-Component-Analysis.ipynb">In Depth: Principal Component Analysis</a>)</p>
+<ul>
+<li>It is a fast linear dimensionality reduction technique.</li>
+</ul>
+<p>We will ask the model to return</p>
+<ul>
+<li>two components<ul>
+<li>a two-dimensional representation of the data.
+# Following the sequence of steps outlined earlier:</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>  <span class="c1"># 1. Choose the model class</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>            <span class="c1"># 2. Instantiate the model with hyperparameters</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_iris</span><span class="p">)</span>                      <span class="c1"># 3. Fit to data. Notice y is not specified!</span>
+<span class="n">X_2D</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_iris</span><span class="p">)</span>         <span class="c1"># 4. Transform the data to two dimensions</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To plot the results:</p>
+<ul>
+<li>A quick way to do this is to insert the results into the original Iris <code>DataFrame</code>, </li>
+<li>use Seaborn's <code>lmplot</code> to show the results:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">iris</span><span class="p">[</span><span class="s1">&#39;PCA1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_2D</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">iris</span><span class="p">[</span><span class="s1">&#39;PCA2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_2D</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="s2">&quot;PCA1&quot;</span><span class="p">,</span> <span class="s2">&quot;PCA2&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_65_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the two-dimensional representation, the species are fairly well separated, even though the PCA algorithm had no knowledge of the species labels!</p>
+<p>A relatively straightforward classification will probably be effective on the dataset.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Unsupervised-learning:-Iris-clustering">Unsupervised learning: Iris clustering<a class="anchor-link" href="#Unsupervised-learning:-Iris-clustering"> </a></h3><p>Let's next look at applying clustering to the Iris data.</p>
+<blockquote><h3 id="A-clustering-algorithm-attempts-to-find-distinct-groups-of-data-without-reference-to-any-labels.">A clustering algorithm attempts to find distinct groups of data without reference to any labels.<a class="anchor-link" href="#A-clustering-algorithm-attempts-to-find-distinct-groups-of-data-without-reference-to-any-labels."> </a></h3>
+</blockquote>
+<p>We will use a powerful clustering method called a <code>Gaussian mixture model (GMM)</code></p>
+<ul>
+<li>more detail in <a href="05.12-Gaussian-Mixtures.ipynb">In Depth: Gaussian Mixture Models</a>.</li>
+<li>A GMM attempts to model the data as a collection of Gaussian blobs.</li>
+</ul>
+<p>We can fit the Gaussian mixture model as follows:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="k">import</span> <span class="n">GMM</span>      <span class="c1"># 1. Choose the model class</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">covariance_type</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span>  <span class="c1"># 2. Instantiate the model with hyperparameters</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_iris</span><span class="p">)</span>                    <span class="c1"># 3. Fit to data. Notice y is not specified!</span>
+<span class="n">y_gmm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_iris</span><span class="p">)</span>        <span class="c1"># 4. Determine cluster labels</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As before, we will</p>
+<ul>
+<li>add the cluster label to the Iris <code>DataFrame</code> and </li>
+<li>use Seaborn to plot the results:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">plotting_context</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;axes.labelsize&#39;: 11.0,
+ &#39;axes.titlesize&#39;: 12.0,
+ &#39;font.size&#39;: 50.0,
+ &#39;grid.linewidth&#39;: 1.0,
+ &#39;legend.fontsize&#39;: 10.0,
+ &#39;lines.linewidth&#39;: 1.75,
+ &#39;lines.markeredgewidth&#39;: 0.0,
+ &#39;lines.markersize&#39;: 7.0,
+ &#39;patch.linewidth&#39;: 0.3,
+ &#39;xtick.labelsize&#39;: 10.0,
+ &#39;xtick.major.pad&#39;: 7.0,
+ &#39;xtick.major.width&#39;: 1.0,
+ &#39;xtick.minor.width&#39;: 0.5,
+ &#39;ytick.labelsize&#39;: 10.0,
+ &#39;ytick.major.pad&#39;: 7.0,
+ &#39;ytick.major.width&#39;: 1.0,
+ &#39;ytick.minor.width&#39;: 0.5}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">iris</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_gmm</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="s2">&quot;PCA1&quot;</span><span class="p">,</span> <span class="s2">&quot;PCA2&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">,</span>
+           <span class="n">col</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_71_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By splitting the data by cluster number, GMM algorithm recovered the underlying label  without an expert:</p>
+<ul>
+<li>the measurements of these flowers are distinct enough</li>
+<li>we could <em>automatically</em> identify the presence of these different groups of species <ul>
+<li>with a simple clustering algorithm!</li>
+</ul>
+</li>
+<li>might further give experts in the field clues as to the relationship between the samples they are observing.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Application:-Exploring-Hand-written-Digits">Application: Exploring Hand-written Digits<a class="anchor-link" href="#Application:-Exploring-Hand-written-Digits"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the wild, this problem involves</p>
+<ul>
+<li>locating characters in an image. </li>
+<li>identifying characters in an image. </li>
+</ul>
+<p>Here we'll take a shortcut and use Scikit-Learn's set of pre-formatted digits, which is built into the library.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Loading-and-visualizing-the-digits-data">Loading and visualizing the digits data<a class="anchor-link" href="#Loading-and-visualizing-the-digits-data"> </a></h3><p>We'll use Scikit-Learn's data access interface and take a look at this data:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_digits</span>
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1797, 8, 8)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The images data is a three-dimensional array:</p>
+<ul>
+<li>1,797 samples </li>
+<li>each consisting of an 8 × 8 grid of pixels.</li>
+</ul>
+<p>Let's visualize the first hundred of these:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                         <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xticks&#39;</span><span class="p">:[],</span> <span class="s1">&#39;yticks&#39;</span><span class="p">:[]},</span>
+                         <span class="n">gridspec_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_78_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In order to work with this data within Scikit-Learn,</p>
+<ul>
+<li>we need a two-dimensional, <code>[n_samples, n_features]</code> representation.</li>
+<li>treating each pixel in the image as a feature: <ul>
+<li>so that we have a length-64 array of pixel values representing each digit.</li>
+</ul>
+</li>
+<li>target array gives the previously determined label for each digit.</li>
+</ul>
+<p>Features and targets are represented as the <code>data</code> and <code>target</code> attributes in the <code>digits</code> dataset respectively:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1797, 64)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 0.,  0.,  5., ...,  0.,  0.,  0.],
+       [ 0.,  0.,  0., ..., 10.,  0.,  0.],
+       [ 0.,  0.,  0., ..., 16.,  9.,  0.],
+       ...,
+       [ 0.,  0.,  1., ...,  6.,  0.,  0.],
+       [ 0.,  0.,  2., ..., 12.,  0.,  0.],
+       [ 0.,  0., 10., ..., 12.,  1.,  0.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
+<span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1797,)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0, 1, 2, ..., 8, 9, 8])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see here that there are 1,797 samples and 64 features.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Unsupervised-learning:-Dimensionality-reduction">Unsupervised learning: Dimensionality reduction<a class="anchor-link" href="#Unsupervised-learning:-Dimensionality-reduction"> </a></h3><p>We'd like to visualize our points within the 64-dimensional parameter space</p>
+<ul>
+<li>it's difficult to effectively visualize points in such a high-dimensional space.</li>
+<li>Instead we'll reduce the dimensions to 2, using an unsupervised method.</li>
+</ul>
+<p>Here, we'll make use of a manifold learning algorithm called <em>Isomap</em> (see <a href="05.10-Manifold-Learning.ipynb">In-Depth: Manifold Learning</a>), and transform the data to two dimensions:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">Isomap</span>
+<span class="n">iso</span> <span class="o">=</span> <span class="n">Isomap</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">iso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data_projected</span> <span class="o">=</span> <span class="n">iso</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data_projected</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1797, 2)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see that the projected data is now two-dimensional.
+Let's plot this data to see if we can learn anything from its structure:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_projected</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data_projected</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;nipy_spectral&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;digit label&#39;</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_88_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This plot gives us some good intuition into how well various numbers are separated in the larger 64-dimensional space.</p>
+<ul>
+<li>zeros (in black) and ones (in purple) have very little overlap in parameter space.<ul>
+<li>Intuitively, this makes sense: a zero is empty in the middle of the image, while a one will generally have ink in the middle.</li>
+</ul>
+</li>
+<li>There seems to be a more or less continuous spectrum between ones and fours: <ul>
+<li>we can understand this by realizing that some people draw ones with "hats" on them, which cause them to look similar to fours.</li>
+</ul>
+</li>
+</ul>
+<p>Overall, however, the different groups appear to be fairly well separated in the parameter space:</p>
+<ul>
+<li>this tells us that even a very straightforward supervised classification algorithm should perform suitably on this data.</li>
+</ul>
+<p>Let's give it a try.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Classification-on-digits">Classification on digits<a class="anchor-link" href="#Classification-on-digits"> </a></h3><p>Let's apply a classification algorithm to the digits.</p>
+<ul>
+<li>split the data into a training and testing set</li>
+<li>fit a Gaussian naive Bayes model</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <span class="n">GaussianNB</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>
+<span class="n">y_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have predicted our model, we can gauge its accuracy by comparing the true values of the test set to the predictions:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">y_model</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.8333333333333334</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With even this extremely simple model, we find about 80% accuracy for classification of the digits!</p>
+<p>However, this single number doesn't tell us <em>where</em> we've gone wrong</p>
+<ul>
+<li>one nice way to do this is to use the <em>confusion matrix</em>, <ul>
+<li>which we can compute with Scikit-Learn and plot with Seaborn:</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">confusion_matrix</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.7</span><span class="p">)</span>
+
+<span class="n">mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">y_model</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;predicted value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;true value&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_96_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This shows us where the mis-labeled points tend to be:</p>
+<ul>
+<li>a large number of twos here are mis-classified as either ones or eights.</li>
+</ul>
+<p>Another way to gain intuition into the characteristics of the model:</p>
+<ul>
+<li>to plot the inputs again, with their predicted labels.</li>
+<li>using green for correct labels, and red for incorrect labels:</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                         <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xticks&#39;</span><span class="p">:[],</span> <span class="s1">&#39;yticks&#39;</span><span class="p">:[]},</span>
+                         <span class="n">gridspec_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">Xtest</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_model</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span> <span class="k">if</span> <span class="p">(</span><span class="n">ytest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">y_model</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">else</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09_01-machine-learning-with-sklearn_98_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Examining this subset of the data, we can gain insight regarding where the algorithm might be not performing optimally.</p>
+<p>To go beyond our 80% classification rate, we might move to a more sophisticated algorithm such as</p>
+<ul>
+<li>support vector machines (see <a href="05.07-Support-Vector-Machines.ipynb">In-Depth: Support Vector Machines</a>), </li>
+<li>random forests (see <a href="05.08-Random-Forests.ipynb">In-Depth: Decision Trees and Random Forests</a>) </li>
+<li>the other classification approaches.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this section we have covered the essential features of the Scikit-Learn</p>
+<ul>
+<li>data representation</li>
+<li>the estimator API.</li>
+</ul>
+<p>Regardless of the type of estimator, the same import/instantiate/fit/predict pattern holds.</p>
+<p>Armed with this information about the estimator API, you can explore the Scikit-Learn documentation and begin trying out various models on your data.</p>
+<p>In the next section, we will explore perhaps the most important topic in machine learning: how to select and validate your model.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src = './img/mlprocess.png' width = 800></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="05.01-What-Is-Machine-Learning.ipynb">What Is Machine Learning?</a> | <a href="Index.ipynb">Contents</a> | <a href="05.03-Hyperparameters-and-Model-Validation.ipynb">Hyperparameters and Model Validation</a> &gt;</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+</main>
