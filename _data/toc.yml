@@ -93,11 +93,15 @@
 
 # chapter 4
 - title: Data Cleaning
-  url: 06_data_cleaning_Tweets
+  url: 06_data_cleaning_intro
   sections:
+    - title: Preprocessing Big Data
+      url: 06_data_cleaning_preprocessing
+    - title: Data Cleaning of OWS tweets
+      url: 06_data_cleaning_tweets
     - title: Cleaning the News of Occupy Central
       url: 07_data_cleaning_occupy_central_news
-    - title: Cleaning Music List
+    - title: Cleaning A Music List
       url: 06_data_cleaning_music_list
 
 # chapter 5

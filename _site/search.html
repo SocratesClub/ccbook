@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/search",
   "headline": "Search the site",
-  "datePublished": "2019-10-12T14:03:05+08:00",
-  "dateModified": "2019-10-12T14:03:05+08:00",
+  "datePublished": "2019-10-12T15:28:23+08:00",
+  "dateModified": "2019-10-12T15:28:23+08:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -711,7 +711,7 @@ initFunction(initPrint)
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/ccbook/06_data_cleaning_Tweets.html"
+          href="/ccbook/06_data_cleaning_intro.html"
         >
           
             4.
@@ -735,10 +735,48 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/ccbook/07_data_cleaning_occupy_central_news.html"
+                  href="/ccbook/06_data_cleaning_preprocessing.html"
                 >
                   
                     4.1
+                  
+                  Preprocessing Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06_data_cleaning_tweets.html"
+                >
+                  
+                    4.2
+                  
+                  Data Cleaning of OWS tweets
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/07_data_cleaning_occupy_central_news.html"
+                >
+                  
+                    4.3
                   
                   Cleaning the News of Occupy Central
                 </a>
@@ -757,9 +795,9 @@ initFunction(initPrint)
                   href="/ccbook/06_data_cleaning_music_list.html"
                 >
                   
-                    4.2
+                    4.4
                   
-                  Cleaning Music List
+                  Cleaning A Music List
                 </a>
 
                 
@@ -1856,13 +1894,21 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/04_PythonCrawler_wechat.html",
         "teaser":null},{
-        "title": "Data Cleaning",
+        "title": "Data Cleaning of OWS tweets",
         
         "excerpt":
-            "&#25968;&#25454;&#28165;&#27927;&#20043;&#25512;&#29305;&#25968;&#25454; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#25968;&#25454;&#28165;&#27927;&#65288;data cleaning&#65289; 是数据分析的重要步骤，其主要目标是将混杂的数据清洗为可以被直接分析的数据，一般需要将数据转化为数据框（data frame）的样式。 本章将以推特文本的清洗作为例子，介绍数据清洗的基本逻辑。 清洗错误行 正确分列 提取所要分析的内容 介绍通过按行、chunk的方式对大规模数据进行预处理 1. &#25277;&#21462;tweets&#26679;&#26412;&#20570;&#23454;&#39564; 此节学生略过 bigfile = open(&#39;/Users/chengjun/百度云同步盘/Writing/OWS/ows-raw.txt&#39;, &#39;r&#39;) chunkSize = 1000000 chunk = bigfile.readlines(chunkSize) print(len(chunk)) with open(&quot;/Users/chengjun/GitHub/cjc/data/ows_tweets_sample.txt&quot;, &#39;w&#39;) as f: for i in chunk: f.write(i) 2752 Lazy Method for Reading Big File in Python? # https://stackoverflow.com/questions/519633/lazy-method-for-reading-big-file-in-python?lq=1 import csv bigfile = open(&#39;/Users/datalab/bigdata/cjc/ows-raw.txt&#39;, &#39;r&#39;) chunkSize = 10**8 chunk = bigfile.readlines(chunkSize) num, num_lines = 0, 0 while chunk: lines = csv.reader((line.replace(&#39;\\x00&#39;,&#39;&#39;) for line in chunk), delimiter=&#39;,&#39;, quotechar=&#39;&quot;&#39;) #do sth. num_lines += len(list(lines)) print(num, num_lines) num += 1 chunk = bigfile.readlines(chunkSize) # read another chunk 0 262665 1 525130 2 787344...",
+            "&#25968;&#25454;&#28165;&#27927;&#20043;&#25512;&#29305;&#25968;&#25454; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#25968;&#25454;&#28165;&#27927;&#65288;data cleaning&#65289; 是数据分析的重要步骤，其主要目标是将混杂的数据清洗为可以被直接分析的数据，一般需要将数据转化为数据框（data frame）的样式。 本章将以推特文本的清洗作为例子，介绍数据清洗的基本逻辑。 清洗错误行 正确分列 提取所要分析的内容 介绍通过按行、chunk的方式对大规模数据进行预处理 1. &#25277;&#21462;tweets&#26679;&#26412;&#20570;&#23454;&#39564; 此节学生略过 2. &#28165;&#27927;&#38169;&#34892;&#30340;&#24773;&#20917; with open(&quot;../data/ows_tweets_sample.txt&quot;, &#39;r&#39;) as f: lines = f.readlines() # 总行数 len(lines) 2753 # 查看第一行 lines[15] &#39;121813245488140288,&#34;@HumanityCritic i\\&#39;m worried that the #ows sells out to the hamsher-norquist spitefuck, and tries to unite with the teahad.&#34;,http://a2.twimg.com/profile_images/627683576/flytits_normal.jpg,2011-10-06,5,5,&#34;2011-10-06 05:05:15&#34;,N;,fucentarmal,27480502,en,HumanityCritic,230431,&#34;&amp;lt;a href=&amp;quot;http://www.tweetdeck.com&amp;quot; rel=&amp;quot;nofollow&amp;quot;&amp;gt;TweetDeck&amp;lt;/a&amp;gt;&#34;\\n&#39; help(lines[1].split) Help on built-in function split: split(...) method of builtins.str instance S.split(sep=None, maxsplit=-1) -&gt; list of strings Return a list of the words in S, using sep as the delimiter string. If maxsplit is given, at most maxsplit splits are done. If sep is...",
         "categories": [],
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/06_data_cleaning_Tweets.html",
+        "teaser":null},{
+        "title": "Data Cleaning",
+        
+        "excerpt":
+            "        &#25968;&#25454;&#28165;&#27927;    王成军  wangchengjun@nju.edu.cn  计算传播网 http://computational-communication.com            &#25968;&#25454;&#28165;&#27927;&#65288;data cleaning&#65289;  是数据分析的重要步骤，其主要目标是将混杂的数据清洗为可以被直接分析的数据，一般需要将数据转化为数据框（data frame）的样式。  本章将以推特文本的清洗作为例子，介绍数据清洗的基本逻辑。   介绍通过按行、chunk的方式对大规模数据进行预处理 清洗错误行和列 提取所要分析的内容             ",
+        "categories": [],
+        "tags": [],
+        "url": "https://computational-class.github.io/ccbook/06_data_cleaning_intro.html",
         "teaser":null},{
         "title": "Cleaning Music List",
         
@@ -1871,6 +1917,14 @@ initFunction(initPrint)
         "categories": [],
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/06_data_cleaning_music_list.html",
+        "teaser":null},{
+        "title": "Preprocessing Big Data",
+        
+        "excerpt":
+            "&#23545;&#22823;&#25968;&#25454;&#36827;&#34892;&#39044;&#22788;&#29702; 以占领华尔街推特数据为例 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#23383;&#33410;&#65288;Byte /bait/&#65289; 计算机信息技术用于计量存储容量的一种计量单位，通常情况下一字节等于有八位， [1] 也表示一些计算机编程语言中的数据类型和语言字符。 1B（byte，字节）= 8 bit； 1KB=1000B；1MB=1000KB=1000×1000B。其中1000=10^3。 1KB（kilobyte，千字节）=1000B= 10^3 B； 1MB（Megabyte，兆字节，百万字节，简称“兆”）=1000KB= 10^6 B； 1GB（Gigabyte，吉字节，十亿字节，又称“千兆”）=1000MB= 10^9 B； &#25353;&#29031;Chunk&#35835;&#21462;&#25968;&#25454;&#24182;&#36827;&#34892;&#22788;&#29702; Lazy Method for Reading Big File in Python? bigfile = open(&#39;/Users/chengjun/百度云同步盘/Writing/OWS/ows-raw.txt&#39;, &#39;r&#39;) chunkSize = 1000000 chunk = bigfile.readlines(chunkSize) print(len(chunk)) with open(&quot;/Users/chengjun/GitHub/cjc/data/ows_tweets_sample.txt&quot;, &#39;w&#39;) as f: for i in chunk: f.write(i) 2752 # https://stackoverflow.com/questions/519633/lazy-method-for-reading-big-file-in-python?lq=1 import csv bigfile = open(&#39;/Users/datalab/bigdata/cjc/ows-raw.txt&#39;, &#39;r&#39;) chunkSize = 10**8 chunk = bigfile.readlines(chunkSize) num, num_lines = 0, 0 while chunk: lines = csv.reader((line.replace(&#39;\\x00&#39;,&#39;&#39;) for line in chunk), delimiter=&#39;,&#39;, quotechar=&#39;&quot;&#39;) #do sth. num_lines += len(list(lines)) print(num, num_lines) num += 1 chunk = bigfile.readlines(chunkSize) # read...",
+        "categories": [],
+        "tags": [],
+        "url": "https://computational-class.github.io/ccbook/06_data_cleaning_preprocessing.html",
         "teaser":null},{
         "title": "Cleaning the News of Occupy Central",
         
