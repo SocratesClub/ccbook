@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/search",
   "headline": "Search the site",
-  "datePublished": "2019-10-12T12:17:54+08:00",
-  "dateModified": "2019-10-12T12:17:54+08:00",
+  "datePublished": "2019-10-12T14:03:05+08:00",
+  "dateModified": "2019-10-12T14:03:05+08:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -741,6 +741,25 @@ initFunction(initPrint)
                     4.1
                   
                   Cleaning the News of Occupy Central
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06_data_cleaning_music_list.html"
+                >
+                  
+                    4.2
+                  
+                  Cleaning Music List
                 </a>
 
                 
@@ -1837,13 +1856,21 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/04_PythonCrawler_wechat.html",
         "teaser":null},{
-        "title": "Chapter 4. Data Cleaning",
+        "title": "Data Cleaning",
         
         "excerpt":
             "&#25968;&#25454;&#28165;&#27927;&#20043;&#25512;&#29305;&#25968;&#25454; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#25968;&#25454;&#28165;&#27927;&#65288;data cleaning&#65289; 是数据分析的重要步骤，其主要目标是将混杂的数据清洗为可以被直接分析的数据，一般需要将数据转化为数据框（data frame）的样式。 本章将以推特文本的清洗作为例子，介绍数据清洗的基本逻辑。 清洗错误行 正确分列 提取所要分析的内容 介绍通过按行、chunk的方式对大规模数据进行预处理 1. &#25277;&#21462;tweets&#26679;&#26412;&#20570;&#23454;&#39564; 此节学生略过 bigfile = open(&#39;/Users/chengjun/百度云同步盘/Writing/OWS/ows-raw.txt&#39;, &#39;r&#39;) chunkSize = 1000000 chunk = bigfile.readlines(chunkSize) print(len(chunk)) with open(&quot;/Users/chengjun/GitHub/cjc/data/ows_tweets_sample.txt&quot;, &#39;w&#39;) as f: for i in chunk: f.write(i) 2752 Lazy Method for Reading Big File in Python? # https://stackoverflow.com/questions/519633/lazy-method-for-reading-big-file-in-python?lq=1 import csv bigfile = open(&#39;/Users/datalab/bigdata/cjc/ows-raw.txt&#39;, &#39;r&#39;) chunkSize = 10**8 chunk = bigfile.readlines(chunkSize) num, num_lines = 0, 0 while chunk: lines = csv.reader((line.replace(&#39;\\x00&#39;,&#39;&#39;) for line in chunk), delimiter=&#39;,&#39;, quotechar=&#39;&quot;&#39;) #do sth. num_lines += len(list(lines)) print(num, num_lines) num += 1 chunk = bigfile.readlines(chunkSize) # read another chunk 0 262665 1 525130 2 787344...",
         "categories": [],
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/06_data_cleaning_Tweets.html",
+        "teaser":null},{
+        "title": "Cleaning Music List",
+        
+        "excerpt":
+            "&#28165;&#27927;&#38899;&#20048;&#21015;&#34920;&#127925; https://music.163.com/#/djradio?id=527084660&amp;order=2&amp;_hash=programlist&amp;limit=200&amp;offset=0 music_list = &#39;&#39;&#39; 1 1 敏浩共伙诱骗允浩 罗文姬母子搬沙发 播放12644 赞23 2018-05-06 26:20 2 2 申智偷欲赴俄罗斯 李民永帮偷小俊熙 播放6449 赞10 2018-05-07 27:25 3 3 李顺才庸医无门诊 徐敏静住进民勇家 播放5790 赞2 2018-05-07 27:47 4 4 李敏浩初遇姜尤美 罗文姬苦寻开成嫂 播放5126 赞1 2018-05-07 26:53 5 5 李俊河佯当家作主 罗文姬偷设阁楼梯 播放6349 赞5 2018-05-07 29:19 6 6 五男人关进小阁楼 申智在俄遇健美男 播放6475 赞5 2018-05-07 26:37 7 7 徐敏静班级树威信 朴海美佯装贤媳妇 播放5920 赞2 2018-05-07 31:19 8 8 李俊河便秘难医治 罗文姬买药制劫匪 播放6101 赞4 2018-05-07 31:31 9 9 海美民永针锋相对 敏浩闯尤美家犯险 播放5399 赞2 2018-05-07 33:09 10 10 食神罗文姬失胃口 申智遇麻烦偷回国 播放5920 赞4 2018-05-07 29:06 11 11 敏浩金范救火英雄 海美遭遇马桶堵塞 播放5551 赞1 2018-05-07 31:41 12 12 敏浩为钱帮助允浩 民永好心申智误会 播放5126 赞1 2018-05-07...",
+        "categories": [],
+        "tags": [],
+        "url": "https://computational-class.github.io/ccbook/06_data_cleaning_music_list.html",
         "teaser":null},{
         "title": "Cleaning the News of Occupy Central",
         
@@ -2008,7 +2035,7 @@ initFunction(initPrint)
         "title": "Appendix of Using Jupyter Notebooks",
         
         "excerpt":
-            "The Jupyter Notebook It is a web application that allows you to create and share documents that contain live code equations visualizations explanatory text Publish on Github Pages Confirm that your book's HTML is built in the _site folder. Install the ghp-import tool. pip install ghp-import Use ghp-import to push your book's HTML onto the gh-pages branch of your repository. ghp-import -n -p -f _site https://jupyterbook.org/guide/publish/github-pages.html Workflow #!/bin/bash # open github master branch # open atom master branch cd .. jupyter-book build ccbook/ cd ccbook make serve # Publish your book&#39;s HTML manually to GitHub-pages # publish the _site folder...",
+            "The Jupyter Notebook It is a web application that allows you to create and share documents that contain live code equations visualizations explanatory text Table of Contents The Jupyter NotebookPublish on Github PagesWorkflow引用一级标题二级标题搜狗输入法表情和符号运行C代码Jupyter 魔术命令References Publish on Github Pages Confirm that your book's HTML is built in the _site folder. Install the ghp-import tool. pip install ghp-import Use ghp-import to push your book's HTML onto the gh-pages branch of your repository. ghp-import -n -p -f _site https://jupyterbook.org/guide/publish/github-pages.html Workflow #!/bin/bash # open github master branch # open atom master branch cd .. jupyter-book build ccbook/ cd ccbook make serve # Publish your...",
         "categories": [],
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/0_jupyter_notebook.html",
