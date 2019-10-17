@@ -55,159 +55,159 @@
 
 # External link
 - title: Preface
-  url: 00_preface
-  not_numbered: true
+  url: 00-preface
+  not-numbered: true
 - title: Acknowledgement
-  url: 00_acknowledgement
-  not_numbered: true
+  url: 00-acknowledgement
+  not-numbered: true
 - divider: true
 
 
 # chapter 1
 - title: Introduction to Computational Communication
-  url: 01_intro2cjc
+  url: 01-intro2cjc
   sections:
   - title: Understanding Big Data
-    url: 02_bigdata
+    url: 02-bigdata
 
 # chapter 2
 - title: Introduction of Python Programming
-  url: 03_python_intro
+  url: 03-python-intro
 
 # chapter 3
 - title: Data Collection
-  url: 04_PythonCrawler_beautifulsoup
+  url: 04-crawler-beautifulsoup
   sections:
     - title: Crawling WeChat Public Accounts
-      url: 04_PythonCrawler_wechat
+      url: 04-crawler-wechat
     - title: Crawling Douban Movies
-      url: 04_PythonCrawler_douban
+      url: 04-crawler-douban
     - title: Collecting CPPCC proposals
-      url: 04_PythonCrawler_cppcc
+      url: 04-crawler-cppcc
     - title: Introduction of Selenium
-      url: 04_PythonCrawler_selenium
+      url: 04-crawler-selenium
     - title: Crawling Music Data
-      url: 04_PythonCrawler_netease_music
+      url: 04-crawler-netease-music
     - title: Crawling Government Reports
-      url: 04_PythonCrawlerGovernmentReport
+      url: 04-crawler-gov-report
 
 # chapter 4
 - title: Data Cleaning
-  url: 06_data_cleaning_intro
+  url: 06-data-cleaning-intro
   sections:
     - title: Preprocessing Big Data
-      url: 06_data_cleaning_preprocessing
+      url: 06-data-cleaning-preprocessing
     - title: Data Cleaning of OWS tweets
-      url: 06_data_cleaning_tweets
+      url: 06-data-cleaning-tweets
     - title: Cleaning the News of Occupy Central
-      url: 07_data_cleaning_occupy_central_news
+      url: 07-data-cleaning-occupy-central-news
     - title: Cleaning A Music List
-      url: 06_data_cleaning_music_list
+      url: 06-data-cleaning-music-list
 
 # chapter 5
 - title: Statistics Thinking
-  url: 08_01-statistics_thinking
+  url: 08-01-statistics-thinking
   sections:
     - title: Linear Algebra
-      url: 08_02-linear_algebra
+      url: 08-02-linear-algebra
     - title: Probability
-      url: 08_03-probability
+      url: 08-03-probability
     - title: Hypothesis Inference
-      url: 08_04-hypothesis_inference
+      url: 08-04-hypothesis-inference
     - title: Gradient Descent
-      url: 08_05-gradient_descent
+      url: 08-05-gradient-descent
     - title: Linear Regression
-      url: 08_06-regression
+      url: 08-06-regression
     - title: Introduction to statsmodels
-      url: 08_06-statsmodels
+      url: 08-06-statsmodels
     - title: Analyzing Titanic Dataset
-      url: 08_07-analyzing_titanic_dataset
+      url: 08-07-analyzing-titanic-dataset
 
 # chapter 6
 - title: Machine Learning
-  url: 09_01-machine-learning-with-sklearn
+  url: 09-01-machine-learning-with-sklearn
   sections:
     - title: Hyperparameters and Model Validation
-      url: 09_03-Hyperparameters-and-Model-Validation
+      url: 09-03-hyperparameters-and-model-validation
     - title: Feature Engineering
-      url: 09_04-Feature-Engineering
+      url: 09-04-feature-engineering
     - title: Naive Bayes
-      url: 09_05-Naive-Bayes
+      url: 09-05-naive-bayes
     - title: Linear Regression
-      url: 09_06-Linear-Regression
+      url: 09-06-linear-regression
     - title: Support Vector Machines
-      url: 09_07-Support-Vector-Machines
+      url: 09-07-support-vector-machines
     - title: Random Forests
-      url: 09_08-Random-Forests
+      url: 09-08-random-forests
     - title: Summary
-      url: 09_09-machine-learning-summary
+      url: 09-09-machine-learning-summary
 
 # chapter 7
 - title: Neural Network
-  url: 09_neural_network
+  url: 09-neural-network
   sections:
     - title: Advanced Topics
-      url: 09_neural_network_advanced
+      url: 09-neural-network-advanced
 
 # chapter 8
 - title: Text Mining
-  url: 10_text_minning_gov_report
+  url: 10-text-minning-gov-report
   sections:
     - title: Word2vec
-      url: 10_word2vec
+      url: 10-word2vec
     - title: Sentiment Analysis with Dictionary
-      url: 11_sentiment_analysis_with_dict
+      url: 11-sentiment-analysis-with-dict
     - title: Sentiment Analysis with Machine Learning
-      url: 11_sentiment_classifier
+      url: 11-sentiment-classifier
     - title: Topic Models
-      url: 12_topic_models_update
+      url: 12-topic-models-update
     - title: Topic Models with Turicreate
-      url: 12_topic-models-with-turicreate
+      url: 12-topic-models-with-turicreate
 
 # chapter 9
 - title: Recommendation System
-  url: 13_recsys_intro
+  url: 13-recsys-intro
   sections:
     - title: The Case of Million Song
-      url: 14_millionsong
+      url: 14-millionsong
     - title: The Case of Movielens
-      url: 14_movielens
+      url: 14-movielens
 
 # chapter 10
 - title: Network Science
-  url: 15_network_science_intro
+  url: 15-network-science-intro
   sections:
     - title: Network Models
-      url: 16_network_science_models
+      url: 16-network-science-models
     - title: networkx
-      url: 17_networkx
+      url: 17-networkx
     - title: The case of Tianya BBS
-      url: 18_network_analysis_of_tianya_bbs
+      url: 18-network-analysis-of-tianya-bbs
     - title: Network Epidemics
-      url: 18_network_epidemics
+      url: 18-network-epidemics
 
 # chapter 11
 - title: Visualization
-  url: 19_visualization_with_seaborn
+  url: 19-visualization-with-seaborn
   sections:
     - title: datashader
-      url: 19_visualization_datashader
+      url: 19-visualization-datashader
     - title: pyecharts
-      url: 19_visualization_with_pyecharts
+      url: 19-visualization-with-pyecharts
     - title: folium
-      url: 19_visualization_maps_using_folium
+      url: 19-visualization-maps-using-folium
 
 
 # chapter 11
 - title: Appendix
-  url: 0_common_questions
+  url: 0-common-questions
   sections:
     - title: Appendix of Using Jupyter Notebooks
-      url: 0_jupyter_notebook
+      url: 0-jupyter-notebook
     - title: Appendix of Making Slides with RISE
-      url: 0_slides
+      url: 0-slides
     - title: Appendix of Using Turicreate
-      url: 0_turicreate
+      url: 0-turicreate
 
 
 # External link
@@ -215,8 +215,8 @@
 - title: Jupyter Book
   url: https://github.com/jupyter/jupyter-book
   external: true
-  not_numbered: true
+  not-numbered: true
 - title: GitHub repository
   url: https://github.com/computational-class/ccbook
   external: true
-  not_numbered: true
+  not-numbered: true

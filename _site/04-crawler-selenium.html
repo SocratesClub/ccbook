@@ -1,0 +1,3212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Introduction of Selenium</title>
+  <meta name="description" content="&#25968;&#25454;&#25235;&#21462; &#20351;&#29992;Selenium&#25805;&#32437;&#27983;&#35272;&#22120; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-commun...">
+
+  <link rel="canonical" href="https://computational-class.github.io/ccbook/04-crawler-selenium.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+
+  <meta property="og:url"         content="https://computational-class.github.io/ccbook/04-crawler-selenium.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Introduction of Selenium" />
+<meta property="og:description" content="&#25968;&#25454;&#25235;&#21462; &#20351;&#29992;Selenium&#25805;&#32437;&#27983;&#35272;&#22120; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-commun..." />
+<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://computational-class.github.io/ccbook/04-crawler-selenium.html",
+  "headline": "Introduction of Selenium",
+  "datePublished": "2019-10-17T11:46:26+08:00",
+  "dateModified": "2019-10-17T11:46:26+08:00",
+  "description": "&#25968;&#25454;&#25235;&#21462; &#20351;&#29992;Selenium&#25805;&#32437;&#27983;&#35272;&#22120; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-commun...",
+  "author": {
+    "@type": "Person",
+    "name": "王成军"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://computational-class.github.io/ccbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://computational-class.github.io/ccbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/ccbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/regular.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/solid.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/ccbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    }
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/ccbook/assets/js/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/ccbook/assets/js/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/ccbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/ccbook/assets/js/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" async></script>
+  <script src="/ccbook/assets/js/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/ccbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/ccbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/ccbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/ccbook/assets/js/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/ccbook/assets/js/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/ccbook/assets/css/styles.css",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://computational-class.github.io/ccbook/"><img src="/ccbook/img/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Elements of Computational Communication</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/00-preface.html"
+        >
+          
+            1.
+          
+          Preface
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/00-acknowledgement.html"
+        >
+          
+            2.
+          
+          Acknowledgement
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/01-intro2cjc.html"
+        >
+          
+            3.
+          
+          Introduction to Computational Communication
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/02-bigdata.html"
+                >
+                  
+                    3.1
+                  
+                  Understanding Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/03-python-intro.html"
+        >
+          
+            4.
+          
+          Introduction of Python Programming
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/04-crawler-beautifulsoup.html"
+        >
+          
+            5.
+          
+          Data Collection
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-wechat.html"
+                >
+                  
+                    5.1
+                  
+                  Crawling WeChat Public Accounts
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-douban.html"
+                >
+                  
+                    5.2
+                  
+                  Crawling Douban Movies
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-cppcc.html"
+                >
+                  
+                    5.3
+                  
+                  Collecting CPPCC proposals
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/ccbook/04-crawler-selenium.html"
+                >
+                  
+                    5.4
+                  
+                  Introduction of Selenium
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-netease-music.html"
+                >
+                  
+                    5.5
+                  
+                  Crawling Music Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-gov-report.html"
+                >
+                  
+                    5.6
+                  
+                  Crawling Government Reports
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/06-data-cleaning-intro.html"
+        >
+          
+            6.
+          
+          Data Cleaning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-preprocessing.html"
+                >
+                  
+                    6.1
+                  
+                  Preprocessing Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-tweets.html"
+                >
+                  
+                    6.2
+                  
+                  Data Cleaning of OWS tweets
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/07-data-cleaning-occupy-central-news.html"
+                >
+                  
+                    6.3
+                  
+                  Cleaning the News of Occupy Central
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-music-list.html"
+                >
+                  
+                    6.4
+                  
+                  Cleaning A Music List
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/08-01-statistics-thinking.html"
+        >
+          
+            7.
+          
+          Statistics Thinking
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-02-linear-algebra.html"
+                >
+                  
+                    7.1
+                  
+                  Linear Algebra
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-03-probability.html"
+                >
+                  
+                    7.2
+                  
+                  Probability
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-04-hypothesis-inference.html"
+                >
+                  
+                    7.3
+                  
+                  Hypothesis Inference
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-05-gradient-descent.html"
+                >
+                  
+                    7.4
+                  
+                  Gradient Descent
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-06-regression.html"
+                >
+                  
+                    7.5
+                  
+                  Linear Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-06-statsmodels.html"
+                >
+                  
+                    7.6
+                  
+                  Introduction to statsmodels
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-07-analyzing-titanic-dataset.html"
+                >
+                  
+                    7.7
+                  
+                  Analyzing Titanic Dataset
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/09-01-machine-learning-with-sklearn.html"
+        >
+          
+            8.
+          
+          Machine Learning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-03-hyperparameters-and-model-validation.html"
+                >
+                  
+                    8.1
+                  
+                  Hyperparameters and Model Validation
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-04-feature-engineering.html"
+                >
+                  
+                    8.2
+                  
+                  Feature Engineering
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-05-naive-bayes.html"
+                >
+                  
+                    8.3
+                  
+                  Naive Bayes
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-06-linear-regression.html"
+                >
+                  
+                    8.4
+                  
+                  Linear Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-07-support-vector-machines.html"
+                >
+                  
+                    8.5
+                  
+                  Support Vector Machines
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-08-random-forests.html"
+                >
+                  
+                    8.6
+                  
+                  Random Forests
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-09-machine-learning-summary.html"
+                >
+                  
+                    8.7
+                  
+                  Summary
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/09-neural-network.html"
+        >
+          
+            9.
+          
+          Neural Network
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-neural-network-advanced.html"
+                >
+                  
+                    9.1
+                  
+                  Advanced Topics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/10-text-minning-gov-report.html"
+        >
+          
+            10.
+          
+          Text Mining
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/10-word2vec.html"
+                >
+                  
+                    10.1
+                  
+                  Word2vec
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/11-sentiment-analysis-with-dict.html"
+                >
+                  
+                    10.2
+                  
+                  Sentiment Analysis with Dictionary
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/11-sentiment-classifier.html"
+                >
+                  
+                    10.3
+                  
+                  Sentiment Analysis with Machine Learning
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/12-topic-models-update.html"
+                >
+                  
+                    10.4
+                  
+                  Topic Models
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/12-topic-models-with-turicreate.html"
+                >
+                  
+                    10.5
+                  
+                  Topic Models with Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/13-recsys-intro.html"
+        >
+          
+            11.
+          
+          Recommendation System
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/14-millionsong.html"
+                >
+                  
+                    11.1
+                  
+                  The Case of Million Song
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/14-movielens.html"
+                >
+                  
+                    11.2
+                  
+                  The Case of Movielens
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/15-network-science-intro.html"
+        >
+          
+            12.
+          
+          Network Science
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/16-network-science-models.html"
+                >
+                  
+                    12.1
+                  
+                  Network Models
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/17-networkx.html"
+                >
+                  
+                    12.2
+                  
+                  networkx
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/18-network-analysis-of-tianya-bbs.html"
+                >
+                  
+                    12.3
+                  
+                  The case of Tianya BBS
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/18-network-epidemics.html"
+                >
+                  
+                    12.4
+                  
+                  Network Epidemics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/19-visualization-with-seaborn.html"
+        >
+          
+            13.
+          
+          Visualization
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-datashader.html"
+                >
+                  
+                    13.1
+                  
+                  datashader
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-with-pyecharts.html"
+                >
+                  
+                    13.2
+                  
+                  pyecharts
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-maps-using-folium.html"
+                >
+                  
+                    13.3
+                  
+                  folium
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/0-common-questions.html"
+        >
+          
+            14.
+          
+          Appendix
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-jupyter-notebook.html"
+                >
+                  
+                    14.1
+                  
+                  Appendix of Using Jupyter Notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-slides.html"
+                >
+                  
+                    14.2
+                  
+                  Appendix of Making Slides with RISE
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-turicreate.html"
+                >
+                  
+                    14.3
+                  
+                  Appendix of Using Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Resources</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/jupyter/jupyter-book"
+        >
+          
+            15.
+          
+          Jupyter Book
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/computational-class/ccbook"
+        >
+          
+            16.
+          
+          GitHub repository
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button">
+      <img src="/ccbook/assets/images/download-solid.svg" height="15" width="15" alt="Download" />
+      <!-- PDF -->
+    </button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/computational-class/ccbook/gh-pages?filepath=content%2F04-crawler-selenium.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/ccbook/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/ccbook/search.html" class="topbar-right-button" id="search-button"><i class="fa fa-search"></i></a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<hr>
+<h1 id="&#25968;&#25454;&#25235;&#21462;">&#25968;&#25454;&#25235;&#21462;<a class="anchor-link" href="#&#25968;&#25454;&#25235;&#21462;"> </a></h1><blockquote><h1 id="&#20351;&#29992;Selenium&#25805;&#32437;&#27983;&#35272;&#22120;">&#20351;&#29992;Selenium&#25805;&#32437;&#27983;&#35272;&#22120;<a class="anchor-link" href="#&#20351;&#29992;Selenium&#25805;&#32437;&#27983;&#35272;&#22120;"> </a></h1>
+</blockquote>
+<hr>
+<hr>
+<p>王成军</p>
+<p>wangchengjun@nju.edu.cn</p>
+<p>计算传播网 <a href="http://computational-communication.com">http://computational-communication.com</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Selenium 是一套完整的web应用程序测试系统，包含了</p>
+<ul>
+<li>测试的录制（selenium IDE）</li>
+<li>编写及运行（Selenium Remote Control）</li>
+<li>测试的并行处理（Selenium Grid）。</li>
+</ul>
+<p>Selenium的核心Selenium Core基于JsUnit，完全由JavaScript编写，因此可以用于任何支持JavaScript的浏览器上。selenium可以模拟真实浏览器，自动化测试工具，支持多种浏览器，爬虫中主要用来解决JavaScript渲染问题。<a href="https://www.cnblogs.com/zhaof/p/6953241.html">https://www.cnblogs.com/zhaof/p/6953241.html</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上面我们知道了selenium支持很多的浏览器，但是如果想要声明并调用浏览器则需要：
+<a href="https://pypi.org/project/selenium/">https://pypi.org/project/selenium/</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install selenium
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting selenium
+  Downloading https://files.pythonhosted.org/packages/80/d6/4294f0b4bce4de0abf13e17190289f9d0613b0a44e5dd6a7f5ca98459853/selenium-3.141.0-py2.py3-none-any.whl (904kB)
+    100% |████████████████████████████████| 911kB 9.3MB/s ta 0:00:011
+Requirement already satisfied: urllib3 in /Users/datalab/anaconda3/lib/python3.7/site-packages (from selenium) (1.24.1)
+Installing collected packages: selenium
+Successfully installed selenium-3.141.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Webdriver">Webdriver<a class="anchor-link" href="#Webdriver"> </a></h3><ul>
+<li>主要用的是selenium的Webdriver</li>
+<li>我们可以通过下面的方式先看看Selenium.Webdriver支持哪些浏览器</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Help on package selenium.webdriver in selenium:
+
+NAME
+    selenium.webdriver
+
+DESCRIPTION
+    # Licensed to the Software Freedom Conservancy (SFC) under one
+    # or more contributor license agreements.  See the NOTICE file
+    # distributed with this work for additional information
+    # regarding copyright ownership.  The SFC licenses this file
+    # to you under the Apache License, Version 2.0 (the
+    # &#34;License&#34;); you may not use this file except in compliance
+    # with the License.  You may obtain a copy of the License at
+    #
+    #   http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing,
+    # software distributed under the License is distributed on an
+    # &#34;AS IS&#34; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    # KIND, either express or implied.  See the License for the
+    # specific language governing permissions and limitations
+    # under the License.
+
+PACKAGE CONTENTS
+    android (package)
+    blackberry (package)
+    chrome (package)
+    common (package)
+    edge (package)
+    firefox (package)
+    ie (package)
+    opera (package)
+    phantomjs (package)
+    remote (package)
+    safari (package)
+    support (package)
+    webkitgtk (package)
+
+VERSION
+    3.14.1
+
+FILE
+    /Users/datalab/anaconda3/lib/python3.7/site-packages/selenium/webdriver/__init__.py
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#19979;&#36733;&#21644;&#35774;&#32622;Webdriver">&#19979;&#36733;&#21644;&#35774;&#32622;Webdriver<a class="anchor-link" href="#&#19979;&#36733;&#21644;&#35774;&#32622;Webdriver"> </a></h3><p>对于Chrome需要的webdriver下载地址</p>
+<p><a href="http://chromedriver.storage.googleapis.com/index.html">http://chromedriver.storage.googleapis.com/index.html</a></p>
+<p>需要将webdriver放在系统路径下：</p>
+<ul>
+<li>确保anaconda在系统路径名里</li>
+<li>把下载的webdriver 放在<code>Anaconda的bin文件夹</code>下</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="PhantomJS">PhantomJS<a class="anchor-link" href="#PhantomJS"> </a></h3><p>PhantomJS是一个而基于WebKit的服务端JavaScript API,支持Web而不需要浏览器支持，其快速、原生支持各种Web标准：Dom处理，CSS选择器，JSON等等。PhantomJS可以用用于页面自动化、网络监测、网页截屏，以及无界面测试</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#browser = webdriver.Firefox() # 打开Firefox浏览器</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span> <span class="c1"># 打开Chrome浏览器</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#35775;&#38382;&#39029;&#38754;">&#35775;&#38382;&#39029;&#38754;<a class="anchor-link" href="#&#35775;&#38382;&#39029;&#38754;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+ 
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://music.163.com&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">page_source</span><span class="p">)</span>
+<span class="c1">#browser.close() </span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;!DOCTYPE html&gt;&lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&lt;head&gt;
+&lt;meta charset=&#34;utf-8&#34; /&gt;
+&lt;meta name=&#34;baidu_ssp_verify&#34; content=&#34;39f14c78c537175eb4b5192c72d002c1&#34; /&gt;
+&lt;meta name=&#34;baidu-site-verification&#34; content=&#34;cNhJHKEzsD&#34; /&gt;
+&lt;meta name=&#34;360-site-verification&#34; content=&#34;e37aef53e3922913e2a6a4682e479b84&#34; /&gt;
+&lt;meta name=&#34;sogou_site_verification&#34; content=&#34;7zFjYjJaMq&#34; /&gt;
+&lt;meta name=&#34;msvalidate.01&#34; content=&#34;0CA3171633345524D8CBED5E95C75FFF&#34; /&gt;
+&lt;meta name=&#34;google-site-verification&#34; content=&#34;rh2irYN2Lu028orAseOD3aXd5u7Eu1mqTfhoVaw2Ihg&#34; /&gt;
+&lt;meta name=&#34;shenma-site-verification&#34; content=&#34;12da4afc02bfe908ed0667f287167d11_1555581349&#34; /&gt;
+&lt;meta property=&#34;qc:admins&#34; content=&#34;27354635321361636375&#34; /&gt;
+&lt;link rel=&#34;canonical&#34; href=&#34;https://music.163.com/&#34; /&gt;
+&lt;meta name=&#34;applicable-device&#34; content=&#34;pc,mobile&#34; /&gt;
+&lt;title&gt;网易云音乐&lt;/title&gt;
+&lt;meta name=&#34;keywords&#34; content=&#34;网易云音乐，音乐，播放器，网易，下载，播放，DJ，免费，明星，精选，歌单，识别音乐，收藏，分享音乐，音乐互动，高音质，320K，音乐社交，官网，music.163.com&#34; /&gt;
+&lt;meta name=&#34;description&#34; content=&#34;网易云音乐是一款专注于发现与分享的音乐产品，依托专业音乐人、DJ、好友推荐及社交功能，为用户打造全新的音乐生活。&#34; /&gt;
+&lt;meta property=&#34;og:title&#34; content=&#34;网易云音乐&#34; /&gt;
+&lt;meta property=&#34;og:type&#34; content=&#34;website&#34; /&gt;
+&lt;meta property=&#34;og:image&#34; content=&#34;http://p3.music.126.net/tBTNafgjNnTL1KlZMt7lVA==/18885211718935735.jpg&#34; /&gt;
+&lt;meta property=&#34;og:url&#34; content=&#34;https://music.163.com/&#34; /&gt;
+&lt;meta property=&#34;og:site_name&#34; content=&#34;网易云音乐&#34; /&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+var GDownloadLink=&#34;&#34;;
+var GDevice = &#34;phone&#34;;
+var GFrom=&#34;&#34;;
+var GClient=&#34;&#34;;
+var GPlatform=&#34;other&#34;;
+var GRef = &#39;&#39;;
+var GInApp = false;
+var GMobile = false;
+var GAbroad = false;
+var GUser={};
+var GAllowRejectComment = false;
+var GEnc = true;
+var GEnvType = &#34;online&#34;;
+var GWebpSupport = &#34;1&#34;;
+var vipWebCashierRedirect = &#34;1&#34;
+window.NEJ_CONF = {p_csrf:{cookie:&#39;__csrf&#39;,param:&#39;csrf_token&#39;}};
+GUtil = {
+getBase:function(){
+return location.protocol+&#39;//&#39;+location.hostname;
+},
+getPathAndHash:function(_url){//获取URL path 之后的所有内容,并将/#/替换成/m/使之成为path的一部分
+if(!_url) return &#39;&#39;;
+var _reg0 = /^https?:\/\/.*?\//i,
+_reg1 = /\/?#\/?/i;
+return _url.replace(_reg0,&#39;/&#39;).replace(_reg1,&#39;/m/&#39;);
+},
+composeRefer:function(_url,_ref){//对所有的页面请求都加上ref参数表示被嵌套的来源
+if(!_ref) return _url;
+var _hi = _url.indexOf(&#39;#&#39;),
+_si = _url.indexOf(&#39;?&#39;);
+if(_si&amp;gt;0&amp;amp;&amp;amp;(_si&amp;lt;_hi||_hi&amp;lt;0)){
+return _url.substring(0,_si+1)+&#39;ref=&#39;+_ref+&#39;&amp;amp;&#39;+_url.substring(_si+1);
+}else if(_hi&amp;gt;0&amp;amp;&amp;amp;(_si&amp;lt;0||_si&amp;gt;_hi)){
+return _url.substring(0,_hi)+&#39;?ref=&#39;+_ref+_url.substring(_hi);
+}else{
+return _url+&#39;?ref=&#39;+_ref;
+}
+}
+};(function(){
+var _ua = window.navigator.userAgent,
+_isMobile = /(mobile|mobi|wap|iphone)/i.test(_ua),
+_isAndroid = /android/i.test(_ua),
+_isIpad = /(ipad)/i.test(_ua),
+_igList = [/^\/xiami$/,/^\/live$/],//不需要以单页面打开的列表，比如某些活动页面
+_pn = location.pathname,
+_idx = _pn.lastIndexOf(&#39;/&#39;),
+_pReg = /\s*(\w+)\s*=\s*(\d+)\s*/,
+_redirect2mobile = function() {
+var _type,_murl,
+_id = 0,
+_hash = location.hash,
+_mReg = /^#\/?m?\/(share|song|playlist|djradio|dj|program|album|mv|artist|topic|radio|zysf|drqp|qp|activity|store|user|event|video|discover\/toplist)(\/(\d+))?/,
+_base = location.protocol+&#39;//&#39;+location.hostname,
+_sindex = _hash.lastIndexOf(&#39;?&#39;),
+_search = _sindex&amp;gt;-1?_hash.substring(_sindex+1):&#39;&#39;,
+_match = _mReg.exec(_hash);
+// 用户等级页特殊处理
+if (_hash === &#39;#/user/level&#39;) {
+location.href = _base + &#39;/store/m/gain/mylevel&#39;;
+return;
+}
+// 无hash || 不匹配 || 匹配但是商品之外不带参数 || 匹配且是排行榜
+if (!_hash.length || !_match || (_match[1] != &#39;store&#39; &amp;amp;&amp;amp; !_search) || /share|discover\/toplist/.test(_match[1])) {
+// 有hash &amp;amp;&amp;amp; (没有参数 || 排行榜)
+if ((!_search || /share|discover\/toplist/.test(_match[1])) &amp;amp;&amp;amp; _hash.length) {
+location.href = _base + &#39;/&#39; + _hash.replace(&#39;#&#39;, &#39;m&#39;);
+} else {
+location.href = _base + &#39;/m/&#39;;
+}
+return;
+}
+_type = _match[1];
+_id = _match[3];
+if (_type == &#39;dj&#39;) _type = &#39;program&#39;;
+if (_type == &#39;store&#39;) {
+_murl = /^#\/store\/(product|concert)\/detail/.test(_hash) ? _hash.replace(&#39;#/store&#39;, &#39;/store/m&#39;) : &#39;/store/m/product/index&#39;;
+} else {
+_murl = &#39;/&#39; + _type + &#39;?&#39; + (_id ? &#39;id=&#39; + _id + &#39;&amp;amp;&#39; : &#39;&#39;) + _search;
+}
+location.href = _base + _murl;
+};
+if(_isMobile || _isAndroid || _isIpad){
+_redirect2mobile();
+return;
+}
+if(!_pn||_pn==&#39;/&#39;) return;
+for(var i in _igList){
+if(_igList[i].test(_pn)) return;
+}
+if(top==self){
+location.href = &#39;/#&#39;+GUtil.getPathAndHash(location.href);
+return;
+}
+//搜索引擎过来的内容页连接
+if(top==self&amp;amp;&amp;amp;/^\/static\/(song|playlist|album|artist)/i.test(_pn)){
+location.href = &#39;/#&#39;+_pn.substring(0,_idx).replace(&#39;/static/&#39;,&#39;/&#39;)+&#39;?id=&#39;+_pn.substring(_idx+1);
+}
+})();
+(function(){
+var _addEvent = function(_node,_type,_cb){
+if(_node.addEventListener){
+_node.addEventListener(_type,_cb);
+}else if(_node.attachEvent){
+_node.attachEvent(&#39;on&#39;+_type,_cb);
+}
+},
+_pathPrefixArray = [
+&#39;/store/&#39;, // 商城
+&#39;/m/at/&#39;, // 活动
+&#39;/prime/m/&#39;, // 会员移动端页面
+&#39;/oauth2/&#39;, // 授权
+&#39;/m/oauth2/&#39;, // 授权
+&#39;/octave/&#39;, // 新数字专辑
+&#39;/v/&#39;, // 新数字专辑
+&#39;/st/&#39;, // 静态页面
+&#39;/nmusician/&#39;,// 音乐人
+&#39;/nact/&#39;, // 新活动
+&#39;/m/topic/&#39;, // 专栏移动端
+&#39;/show/m/&#39;, //演出移动端
+],
+_isNotMainsitePagePath = function(_pagePath){
+// 对于非主站内的页面的跳转 需要排除
+var _path = (_pagePath||&#39;&#39;).replace(/^https?:\/\/.*?\//i, &#39;/&#39;).split(/[?#]/)[0];
+for(var i=0;i&amp;lt;_pathPrefixArray.length;i++){
+if(_path.indexOf(_pathPrefixArray[i])===0) return true;
+}
+return false;
+},
+_onAnchorClick = function(_event){//截获所有&amp;lt;a&amp;gt;标签的点击事件，自定义页面的跳转
+_event = _event||window.event;
+var _el = _event.target||_event.srcElement,
+_base = location.protocol+&#39;//&#39;+location.host;
+while(_el&amp;amp;&amp;amp;_el!=document){
+if(_el.tagName&amp;amp;&amp;amp;_el.tagName.toLowerCase()==&#39;a&#39;){
+//fix ie6下有时javascript:;不能阻止默认事件的bug.
+if(_el.href.indexOf(&#39;javascript:&#39;)&amp;gt;=0){
+!!_event.preventDefault
+? _event.preventDefault()
+: _event.returnValue = !1;
+return;
+}
+if(_event.button==2) return;//ff 右键会触发click事件
+//商城有独立地顶栏了，排除掉。但会员、数字专辑、单曲的商品、订单页仍保持主站frame，
+//这些url往往是通过/vip2, /payfee这样的地址跳转的，也没有问题，如果真的有，URL用#配置就好了
+if(_isNotMainsitePagePath(_el.href)) return;
+//新窗口打开的链接、云音乐单页面形式的链接、站外的链接不做拦截处理。
+if(_el.target==&#39;_blank&#39;
+||_el.target==&#39;blank&#39;
+||_isNotSameHost(_el.href)
+||_el.href==_base
+||_el.href.indexOf(_base+&#39;/#&#39;)&amp;gt;=0) return;
+!!_event.preventDefault
+? _event.preventDefault()
+: _event.returnValue = !1;
+location.dispatch2(_el.href);
+break;
+}else{
+_el = _el.parentNode;
+}
+}
+},
+_isNotSameHost = function(_href){
+var _same = true;
+if(_href.charAt(0)!=&#39;/&#39;){
+var _index = _href.indexOf(&#39;//&#39;+location.hostname);
+if(_index &amp;gt; 0){
+var _index2 = _href.indexOf(&#39;?&#39;);
+if(_index2 &amp;gt; 0 &amp;amp;&amp;amp; _index2 &amp;lt; _index){
+_same = false;
+}
+}else{
+_same = false;
+}
+}
+return !_same;
+};
+_addEvent(document,&#39;click&#39;,_onAnchorClick);
+//扩展一个js中直接使用的页面跳转的方法，以拦截js中的页面跳转行为
+location.dispatch2 = function(_url,_replace){
+var delegate = false;
+try{
+delegate = !!top.GDispatcher;
+}catch(e){
+delegate = false;
+}
+// 处理对于非主站内的页面的跳转
+if(_isNotMainsitePagePath(_url)){
+if(delegate &amp;amp;&amp;amp; top.location &amp;amp;&amp;amp; top.location.href){
+top.location.href = _url;
+}else{
+location.href = _url;
+}
+return;
+}
+if(delegate){
+top.GDispatcher.dispatch(_url,_replace);
+}else{
+_url = GUtil.composeRefer(_url,GRef);
+//邮箱音乐盒中，每次链接的跳转都要将proxy.html的地址合并到hash中
+if(GRef&amp;amp;&amp;amp;GRef==&#39;mail&#39;){
+var _hindex,_sindex,
+_reg = /(https?:\/\/.+\/proxy.html)/,
+_hreg = /#(.*?)$/,
+_href = decodeURIComponent(location.href);
+if(!_reg.test(decodeURIComponent(_url))&amp;amp;&amp;amp;_reg.test(_href)){
+_hindex = _url.indexOf(&#39;#&#39;);
+_sindex = _url.lastIndexOf(&#39;?&#39;);
+if(_hindex&amp;gt;0){
+_url = _url+(_sindex&amp;gt;_hindex?&#39;&amp;amp;&#39;:&#39;?&#39;)+&#39;proxy=&#39;+encodeURIComponent(RegExp.$1);
+}else{
+_url = _url+&#39;#proxy=&#39;+encodeURIComponent(RegExp.$1);
+}
+}
+}
+if(_replace){
+location.replace(_url);
+}else{
+location.href = _url;
+}
+}
+};
+})();
+(function start() {
+var targetUrl = &#39;https://music.163.com&#39;;
+// 首先检测hash规则, 在白名单内才进行跳转
+var hashWhite = /^(\/discover|\/download|\/login)/ig;
+// 如果当前域不是163域名，那么强制跳转到163.com
+var siteReg = /^(https?:\/\/)?([a-zA-Z0-9]+(-?[a-zA-Z0-9])*\.){1,}?(163\.com)$/ig;
+if(hashWhite.test(window.location.pathname) &amp;amp;&amp;amp; !siteReg.test(window.location.hostname)){
+top.location.href = targetUrl;
+}
+})();&lt;/script&gt;
+&lt;link rel=&#34;shortcut icon&#34; href=&#34;//s1.music.126.net/style/favicon.ico?v20180823&#34; /&gt;
+&lt;link href=&#34;//s2.music.126.net/web/s/core_50ad2145ad526d20456118b24db986d7.css?50ad2145ad526d20456118b24db986d7&#34; type=&#34;text/css&#34; rel=&#34;stylesheet&#34; /&gt;&lt;link href=&#34;//s2.music.126.net/web/s/pt_frame_48c8b54589cccecb9b345836a6e82767.css?48c8b54589cccecb9b345836a6e82767&#34; type=&#34;text/css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;style&gt;html,body{overflow:hidden;}&lt;/style&gt;
+&lt;script&gt;if(top!=self)top.location=self.location;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;//s5.music.126.net/static_public/5c51482cf8a93b7fc8cf42cb/0.6.0-beta1/vipcashier.umd.js&#34;&gt;&lt;/script&gt;&lt;script type=&#34;text/javascript&#34; charset=&#34;UTF-8&#34; async=&#34;&#34; src=&#34;https://acstatic-dun.126.net/2.5.5_26766d7a/watchman.min.js&#34;&gt;&lt;/script&gt;&lt;script type=&#34;text/javascript&#34; charset=&#34;UTF-8&#34; async=&#34;&#34; src=&#34;https://acstatic-dun.126.net/2.5.5_26766d7a/watchman.min.js&#34;&gt;&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&#34;g-topbar&#34; class=&#34;g-topbar&#34; style=&#34;width: 1200px; top: 0px;&#34;&gt;
+&lt;div class=&#34;m-top&#34;&gt;
+&lt;div class=&#34;wrap f-cb&#34;&gt;
+&lt;h1 class=&#34;logo&#34;&gt;&lt;a hidefocus=&#34;true&#34; href=&#34;/#&#34;&gt;网易云音乐&lt;/a&gt;&lt;/h1&gt;
+&lt;ul class=&#34;m-nav j-tflag&#34;&gt;
+&lt;li class=&#34;fst&#34;&gt;
+&lt;span&gt;&lt;a hidefocus=&#34;true&#34; href=&#34;/#&#34; data-module=&#34;discover&#34; class=&#34;z-slt&#34;&gt;&lt;em&gt;发现音乐&lt;/em&gt;&lt;sub class=&#34;cor&#34;&gt; &lt;/sub&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;span&gt;&lt;a data-action=&#34;bilog&#34; data-log-action=&#34;page&#34; data-log-json=&#34;{&amp;quot;type&amp;quot;:&amp;quot;my&amp;quot;}&#34; hidefocus=&#34;true&#34; href=&#34;/my/&#34; data-module=&#34;my&#34;&gt;&lt;em&gt;我的音乐&lt;/em&gt;&lt;sub class=&#34;cor&#34;&gt; &lt;/sub&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;span&gt;&lt;a hidefocus=&#34;true&#34; href=&#34;/friend&#34; data-module=&#34;friend&#34;&gt;&lt;em&gt;朋友&lt;/em&gt;&lt;sub class=&#34;cor&#34;&gt; &lt;/sub&gt;&lt;i class=&#34;dot j-t&#34; style=&#34;display:none;&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;span&gt;&lt;a hidefocus=&#34;true&#34; href=&#34;/store/product&#34; target=&#34;_blank&#34; data-module=&#34;store&#34;&gt;&lt;em&gt;商城&lt;/em&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;span&gt;&lt;a hidefocus=&#34;true&#34; href=&#34;/nmusician/web/recruit&#34; target=&#34;_blank&#34; data-module=&#34;musician&#34;&gt;&lt;em&gt;音乐人&lt;/em&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;/li&gt;
+&lt;li class=&#34;lst&#34;&gt;
+&lt;span&gt;&lt;a id=&#34;topbar-download-link&#34; data-action=&#34;bilog&#34; data-log-action=&#34;page&#34; data-log-json=&#34;{&amp;quot;type&amp;quot;:&amp;quot;downloadapp&amp;quot;,&amp;quot;source&amp;quot;:&amp;quot;tab&amp;quot;}&#34; hidefocus=&#34;true&#34; href=&#34;/download&#34; data-module=&#34;download&#34;&gt;&lt;em&gt;下载客户端&lt;/em&gt;&lt;sub class=&#34;cor&#34;&gt; &lt;/sub&gt;&lt;/a&gt;&lt;/span&gt;&lt;sup class=&#34;hot&#34;&gt; &lt;/sup&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;m-tophead f-pr j-tflag&#34; id=&#34;auto-id-TAJ80gQuBk105lNT&#34;&gt;&lt;a hidefocus=&#34;true&#34; href=&#34;#&#34; class=&#34;link s-fc3&#34; data-action=&#34;login&#34;&gt;登录&lt;/a&gt;
+&lt;div class=&#34;m-tlist j-uflag&#34; style=&#34;display:none;&#34;&gt;
+&lt;div class=&#34;inner&#34;&gt;
+&lt;/div&gt;
+&lt;i class=&#34;arr&#34;&gt;&lt;/i&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;a data-action=&#34;bilog&#34; data-log-action=&#34;click&#34; data-log-json=&#34;{&amp;quot;target&amp;quot;:&amp;quot;uploadvideo&amp;quot;,&amp;quot;page&amp;quot;:&amp;quot;homepage&amp;quot;}&#34; href=&#34;/login?targetUrl=%2Fst/creator&#34; target=&#34;_blank&#34; class=&#34;m-topvd f-pr m-creator-center&#34;&gt;创作者中心&lt;/a&gt;
+&lt;div class=&#34;m-srch f-pr j-suggest&#34; id=&#34;g_search&#34;&gt;
+&lt;div class=&#34;srchbg&#34;&gt;
+&lt;span class=&#34;parent&#34;&gt;
+&lt;input type=&#34;text&#34; name=&#34;srch&#34; id=&#34;srch&#34; class=&#34;txt j-flag&#34; value=&#34;&#34; style=&#34;opacity: 1;&#34; /&gt;
+&lt;label class=&#34;ph j-flag&#34; id=&#34;auto-id-urmKeZT09eNeWEmB&#34;&gt;音乐/视频/电台/用户&lt;/label&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&#34;j-showoff u-showoff&#34;&gt;&lt;p&gt;现在支持搜索MV啦~&lt;/p&gt;&lt;/div&gt;
+&lt;span class=&#34;j-flag&#34; style=&#34;display:none;&#34; id=&#34;auto-id-EuiwIrNb4WA90NoG&#34;&gt; &lt;/span&gt;
+&lt;div class=&#34;u-lstlay j-flag&#34; style=&#34;display:none;&#34; id=&#34;auto-id-MT1wJD6X0far5svk&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;m-subnav m-subnav-up f-pr j-tflag f-hide&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;g_nav2&#34; class=&#34;m-subnav j-tflag&#34;&gt;
+&lt;div class=&#34;wrap f-pr&#34;&gt;
+&lt;ul class=&#34;nav&#34;&gt;
+&lt;li&gt;&lt;a hidefocus=&#34;true&#34; data-module=&#34;discover&#34; href=&#34;/discover&#34; class=&#34;z-slt&#34;&gt;&lt;em&gt;推荐&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a hidefocus=&#34;true&#34; data-module=&#34;toplist&#34; href=&#34;/discover/toplist&#34;&gt;&lt;em&gt;排行榜&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a hidefocus=&#34;true&#34; data-module=&#34;playlist&#34; href=&#34;/discover/playlist&#34;&gt;&lt;em class=&#34;f-pr&#34; style=&#34;padding: 0 15px 0 11px;&#34;&gt;歌单&lt;span class=&#34;f-pa f-r-white-icon&#34; style=&#34;display:inline-block;width:8px;height:8px;top:2px;background-size:cover;&#34;&gt;&lt;/span&gt;&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a hidefocus=&#34;true&#34; data-module=&#34;djradio&#34; href=&#34;/discover/djradio&#34;&gt;&lt;em&gt;主播电台&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a hidefocus=&#34;true&#34; data-module=&#34;artist&#34; href=&#34;/discover/artist&#34;&gt;&lt;em&gt;歌手&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a hidefocus=&#34;true&#34; data-module=&#34;album&#34; href=&#34;/discover/album&#34;&gt;&lt;em&gt;新碟上架&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;iframe name=&#34;contentFrame&#34; id=&#34;g_iframe&#34; class=&#34;g-iframe&#34; scrolling=&#34;auto&#34; frameborder=&#34;0&#34; src=&#34;about:blank&#34; allowfullscreen=&#34;true&#34;&gt;&lt;/iframe&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+var GUserAcc={topic:1, reward:false};
+(function(){
+var topbar = document.getElementById(&#39;g-topbar&#39;),
+scrollBarWidth = document.body.clientWidth - topbar.clientWidth;
+topbar.style.width = topbar.clientWidth+&#39;px&#39;;
+topbar.className = &#39;g-topbar&#39;;
+if(window.addEventListener){
+window.addEventListener(&#39;resize&#39;, onResize)
+}else{
+window.attachEvent(&#39;onresize&#39;, onResize)
+}
+function onResize(){
+topbar.style.width = (document.body.clientWidth-scrollBarWidth)+&#39;px&#39;;
+};
+})();/*!
+* Copyright (c) 2009-2011 Andreas Blixt &amp;lt;andreas@blixt.org&amp;gt;
+* Contributors: Aaron Ogle &amp;lt;aogle@avencia.com&amp;gt;,
+* Matti Virkkunen &amp;lt;mvirkkunen@gmail.com&amp;gt;,
+* Simon Chester &amp;lt;simonches@gmail.com&amp;gt;
+* http://github.com/blixt/js-hash
+* MIT License: http://www.opensource.org/licenses/mit-license.php
+*
+* Hash handler
+* Keeps track of the history of changes to the hash part in the address bar.
+*/
+/* WARNING for Internet Explorer 7 and below:
+* If an element on the page has the same ID as the hash used, the history will
+* get messed up.
+*
+* Does not support history in Safari 2 and below.
+*
+* Example:
+* function handler(newHash, initial) {
+* if (initial)
+* alert(&#39;Hash is &#34;&#39; + newHash + &#39;&#34;&#39;);
+* else
+* alert(&#39;Hash changed to &#34;&#39; + newHash + &#39;&#34;&#39;);
+* }
+* Hash.init(handler);
+* Hash.go(&#39;abc123&#39;);
+*
+*
+* Updated by Simon Chester (simonches@gmail.com) on 2011-05-16:
+* - Removed the need for blank.html and the iframe argument by creating the
+* iframe on initialization.
+*
+* Updated by Matti Virkkunen (mvirkkunen@gmail.com) on 2009-11-16:
+* - Added second argument to callback that indicates whether the callback is
+* due to initial state (true) or due to an actual change to the hash
+* (false).
+*
+* Updated by Aaron Ogle (aogle@avencia.com) on 2009-08-11:
+* - Fixed bug where Firefox automatically unescapes location.hash but no
+* other browsers do. Always get the hash by parsing location.href and
+* never use location.hash.
+*/
+var Hash = (function () {
+var
+// Import globals
+window = this,
+documentMode = document.documentMode,
+history = window.history,
+// Plugin variables
+callback, hash,
+// IE-specific
+iframe,
+getHash = function () {
+// Internet Explorer 6 (and possibly other browsers) extracts the query
+// string out of the location.hash property into the location.search
+// property, so we can&#39;t rely on it. The location.search property can&#39;t be
+// relied on either, since if the URL contains a real query string, that&#39;s
+// what it will be set to. The only way to get the whole hash is to parse
+// it from the location.href property.
+//
+// Another thing to note is that in Internet Explorer 6 and 7 (and possibly
+// other browsers), subsequent hashes are removed from the location.href
+// (and location.hash) property if the location.search property is set.
+//
+// Via Aaron: Firefox 3.5 (and below?) always unescape location.hash which
+// causes poll to fire the hashchange event twice on escaped hashes. This
+// is because the hash variable (escaped) will not match location.hash
+// (unescaped.) The only consistent option is to rely completely on
+// location.href.
+var index = window.location.href.indexOf(&#39;#&#39;);
+return (index == -1 ? &#39;&#39; : window.location.href.substr(index + 1));
+},
+// Used by all browsers except Internet Explorer 7 and below.
+poll = function () {
+var curHash = getHash();
+if (curHash != hash) {
+hash = curHash;
+callback(curHash, false);
+}
+},
+// From:
+// http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
+isHashChangeSupported = function() {
+var eventName = &#39;onhashchange&#39;;
+var isSupported = (eventName in document.body);
+if (!isSupported) {
+document.body.setAttribute(eventName, &#39;return;&#39;);
+isSupported = typeof document.body[eventName] == &#39;function&#39;;
+}
+// documentMode logic from YUI to filter out IE8 Compat Mode (which
+// generates false positives).
+return isSupported &amp;amp;&amp;amp; (document.documentMode === undefined ||
+document.documentMode &amp;gt; 7);
+},
+createIframe = function () {
+var tempEl = document.createElement();
+tempEl.innerHTML = &#39;&amp;lt;iframe src=&#34;javascript:void(0)&#34; tabindex=&#34;-1&#34; &#39; +
+&#39;style=&#34;display: none;&#34;&amp;gt;&amp;lt;/iframe&amp;gt;&#39;;
+var frame = tempEl.childNodes[0];
+document.body.appendChild(frame);
+return frame;
+},
+// Used to create a history entry with a value in the iframe.
+setIframe = function (newHash) {
+try {
+var doc = iframe.contentWindow.document;
+doc.open();
+doc.write(&#39;&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;&#39; + newHash + &#39;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&#39;);
+doc.close();
+hash = newHash;
+} catch (e) {
+setTimeout(function () { setIframe(newHash); }, 10);
+}
+},
+// Used by Internet Explorer 7 and below to set up an iframe that keeps track
+// of history changes.
+setUpIframe = function () {
+// Don&#39;t run until access to the body is allowed.
+try {
+iframe = createIframe();
+} catch (e) {
+setTimeout(setUpIframe, 10);
+return;
+}
+// Create a history entry for the initial state.
+setIframe(hash);
+var data = hash;
+setInterval(function () {
+var curData, curHash;
+try {
+curData = iframe.contentWindow.document.body.innerText;
+if (curData != data) {
+data = curData;
+window.location.hash = hash = curData;
+callback(curData, true);
+} else {
+curHash = getHash();
+if (curHash != hash) setIframe(curHash);
+}
+} catch (e) {
+}
+}, 50);
+};
+return {
+init: function (cb) {
+// init can only be called once.
+if (callback) return;
+callback = cb;
+// Keep track of the hash value.
+hash = getHash();
+cb(hash, true);
+if (isHashChangeSupported()) {
+if (window.addEventListener){
+window.addEventListener(&#39;hashchange&#39;, poll, false);
+} else if (window.attachEvent){
+window.attachEvent(&#39;onhashchange&#39;, poll);
+}
+} else {
+// Run specific code for Internet Explorer.
+if (window.ActiveXObject) {
+if (!documentMode || documentMode &amp;lt; 8) {
+// Internet Explorer 5.5/6/7 need an iframe for history
+// support.
+setUpIframe();
+}
+} else {
+// Change Opera navigation mode to improve history support.
+if (history.navigationMode) {
+history.navigationMode = &#39;compatible&#39;;
+}
+setInterval(poll, 50);
+}
+}
+},
+go: function (newHash) {
+// Cancel if the new hash is the same as the current one, since there
+// is no cross-browser way to keep track of navigation to the exact
+// same hash multiple times in a row. A wrapper can handle this by
+// adding an incrementing counter to the end of the hash.
+if (newHash == hash) return;
+if (iframe) {
+setIframe(newHash);
+} else {
+window.location.hash = hash = newHash;
+callback(newHash, false);
+}
+}
+};
+})();var GDispatcher = (function(){
+var _lastPage = &#39;&#39;,
+_igReg = /f=(.*?)/,
+_hReg = /\/?#.*/,
+_xssReg = /(java|vb)script/,//xss注入
+_default = &#39;/discover&#39;;
+function _isIE10plus(){
+var _ua = window.navigator.userAgent;
+return (/msie\s+(.*?);/i.test(_ua)||/trident\/.+rv:([\d\.]+)/i.test(_ua))&amp;amp;&amp;amp;(parseInt(RegExp.$1)&amp;gt;=10);
+};
+function _onHashChange(_hash){
+var _url,
+_iframe = document.getElementById(&#39;g_iframe&#39;);
+if(!_hash||_igReg.test(_hash)||_xssReg.test(_hash)){//忽略统计来源的hash
+_url = _default;
+}else{
+if(_hash.indexOf(&#39;/&#39;) !== 0) {
+_hash = &#39;/&#39; + _hash;
+}
+_hash = _hash.replace(/\/+/g, &#39;/&#39;);//#29664 http://music.163.com/#// 会死循环
+var _midx = -1;
+if((_midx=_hash.indexOf(&#39;store/m/&#39;))&amp;gt;=0){
+_url = _hash.substring(0, _midx+8)+(_hash.substring(_midx+8).replace(&#39;/m/&#39;,&#39;/#/&#39;));
+}else{
+_url = _hash.replace(&#39;/m/&#39;,&#39;/#/&#39;);
+// debugger;
+if(/^\/member\/?(\?[\s\S]*)?$/.test(_url) &amp;amp;&amp;amp; typeof vipWebCashierRedirect !== &#39;undefined&#39; &amp;amp;&amp;amp; &#39;&#39; + vipWebCashierRedirect === &#39;1&#39;) {
+_url = _url.replace(&#39;/member&#39;,&#39;/prime/member&#39;);
+}
+}
+}
+if(_url.indexOf(&#39;http://&#39;)&amp;lt;0){
+_url = location.protocol+&#39;//&#39;+location.hostname+_url;
+}
+//针对ie10+ location.replace的bug做特殊处理
+if(_isIE10plus()){
+if(_lastPage.replace(_hReg,&#39;&#39;)==_url.replace(_hReg,&#39;&#39;)){//只是hash的改变
+_iframe.contentWindow.location.replace(_url);
+} else{
+_iframe.parentNode.removeChild(_iframe);
+_iframe = document.createElement(&#39;iframe&#39;);
+_iframe.id = &#39;g_iframe&#39;;
+_iframe.src = &#39;about:blank&#39;;
+_iframe.className = &#39;g-iframe&#39;;
+_iframe.setAttribute(&#39;allowfullscreen&#39;, true);
+document.body.insertAdjacentElement(&#39;afterBegin&#39;,_iframe);
+_iframe.contentWindow.location.href = _url;
+}
+}else{
+_iframe.contentWindow.location.replace(_url);
+}
+_lastPage = _url;
+if(typeof window.onHashChange==&#39;function&#39;){
+window.onHashChange(_hash);
+}
+};
+Hash.init(_onHashChange);
+return {
+dispatch:function(_url,_replace){
+var _ph = GUtil.getPathAndHash(_url);
+if(!_ph) return;
+if(_replace){
+location.replace(GUtil.getBase()+&#39;#&#39;+_ph);
+}else{
+location.hash = _ph;
+}
+},
+refreshIFrame:function(_url){
+_onHashChange(_url);
+}
+};
+})();&lt;/script&gt;
+&lt;div class=&#34;g-btmbar&#34;&gt;
+&lt;div class=&#34;m-playbar m-playbar-unlock&#34; style=&#34;top: -53px; visibility: visible;&#34; id=&#34;auto-id-8JF3ENN3VAFToxxh&#34;&gt;
+&lt;div class=&#34;updn&#34;&gt;
+&lt;div class=&#34;left f-fl&#34;&gt;&lt;a href=&#34;javascript:;&#34; class=&#34;btn&#34; hidefocus=&#34;true&#34; data-action=&#34;lock&#34;&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&#34;right f-fl&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;bg&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hand&#34; title=&#34;展开播放条&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;wrap&#34; id=&#34;g_player&#34; style=&#34;margin-left: -490px;&#34;&gt;
+&lt;div class=&#34;btns&#34;&gt;
+&lt;a href=&#34;javascript:;&#34; hidefocus=&#34;true&#34; data-action=&#34;prev&#34; class=&#34;prv&#34; title=&#34;上一首(ctrl+←)&#34;&gt;上一首&lt;/a&gt;
+&lt;a href=&#34;javascript:;&#34; hidefocus=&#34;true&#34; data-action=&#34;play&#34; class=&#34;ply j-flag&#34; title=&#34;播放/暂停(p)&#34;&gt;播放/暂停&lt;/a&gt;
+&lt;a href=&#34;javascript:;&#34; hidefocus=&#34;true&#34; data-action=&#34;next&#34; class=&#34;nxt&#34; title=&#34;下一首(ctrl+→)&#34;&gt;下一首&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&#34;head j-flag&#34;&gt;&lt;img src=&#34;http://s4.music.126.net/style/web2/img/default/default_album.jpg&#34; /&gt;&lt;a href=&#34;javascript:;&#34; hidefocus=&#34;true&#34; class=&#34;mask&#34;&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&#34;play&#34;&gt;
+&lt;div class=&#34;j-flag words&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;m-pbar&#34; data-action=&#34;noop&#34;&gt;
+&lt;div class=&#34;barbg j-flag&#34; id=&#34;auto-id-XT3AmP2zq1lUqJcF&#34;&gt;
+&lt;div class=&#34;rdy&#34; style=&#34;width:0%;&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;cur&#34; style=&#34;width:0%;&#34;&gt;&lt;span class=&#34;btn f-tdn f-alpha&#34; id=&#34;auto-id-HsQavKpTMfk9nN00&#34;&gt;&lt;i&gt;&lt;/i&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;span class=&#34;j-flag time&#34;&gt;&lt;em&gt;00:00&lt;/em&gt; / 00:00&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;oper f-fl&#34;&gt;
+&lt;a href=&#34;javascript:;&#34; hidefocus=&#34;true&#34; data-action=&#34;like&#34; class=&#34;icn icn-add j-flag&#34; title=&#34;收藏&#34;&gt;收藏&lt;/a&gt;
+&lt;a href=&#34;javascript:;&#34; hidefocus=&#34;true&#34; data-action=&#34;share&#34; class=&#34;icn icn-share&#34; title=&#34;分享&#34;&gt;分享&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&#34;ctrl f-fl f-pr j-flag&#34;&gt;
+&lt;div class=&#34;m-vol&#34; style=&#34;visibility:hidden;&#34; id=&#34;auto-id-F3iGHU1MamHcdwZt&#34;&gt;
+&lt;div class=&#34;barbg&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;vbg j-t&#34; id=&#34;auto-id-8QOlkbDIX70QxLCA&#34;&gt;&lt;div class=&#34;curr j-t&#34; style=&#34;height: 74.4px;&#34;&gt;&lt;/div&gt;
+&lt;span class=&#34;btn f-alpha j-t&#34; style=&#34;top: 16.2px;&#34;&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;a href=&#34;javascript:;&#34; hidefocus=&#34;true&#34; data-action=&#34;volume&#34; class=&#34;icn icn-vol&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;javascript:;&#34; hidefocus=&#34;true&#34; data-action=&#34;mode&#34; class=&#34;icn icn-loop&#34; title=&#34;循环&#34;&gt;&lt;/a&gt;
+&lt;span class=&#34;add f-pr&#34;&gt;
+&lt;span class=&#34;tip&#34; style=&#34;display:none;&#34;&gt;已添加到播放列表&lt;/span&gt;
+&lt;a href=&#34;javascript:;&#34; title=&#34;播放列表&#34; hidefocus=&#34;true&#34; data-action=&#34;panel&#34; class=&#34;icn icn-list s-fc3&#34;&gt;0&lt;/a&gt;
+&lt;/span&gt;
+&lt;div class=&#34;tip tip-1&#34; style=&#34;display:none;&#34;&gt;循环&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src=&#34;//s3.music.126.net/web/s/core_b0a178a6096b06b7ede4786484719e64.js?b0a178a6096b06b7ede4786484719e64&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt;&lt;iframe frameborder=&#34;0&#34; id=&#34;auto-id-SCGcud22FsyTJrOJ&#34; style=&#34;display: none;&#34; src=&#34;about:blank&#34;&gt;&lt;/iframe&gt;&lt;script type=&#34;text/javascript&#34; src=&#34;https://acstatic-dun.126.net/tool.min.js&#34;&gt;&lt;/script&gt;&lt;script src=&#34;//s3.music.126.net/web/s/pt_frame_index_72027f888ebe95226812e45a754a3fad.js?72027f888ebe95226812e45a754a3fad&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt;&lt;script type=&#34;text/javascript&#34; src=&#34;https://acstatic-dun.126.net/tool.min.js&#34;&gt;&lt;/script&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+var _gaq=_gaq||[];
+_gaq.push([&#39;_setAccount&#39;,&#39;UA-38766552-1&#39;],[&#39;_setLocalGifPath&#39;,&#39;/UA-38766552-1/__utm.gif&#39;],[&#39;_setLocalRemoteServerMode&#39;]);
+_gaq.push([&#39;_trackPageview&#39;]);
+//fix ipad下的一个bug
+if (navigator.userAgent.indexOf(&#39;iPad&#39;) != -1) {
+iframeHeight = Math.max(
+Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
+Math.max(document.body.offsetHeight, document.documentElement.offsetHeight),
+Math.max(document.body.clientHeight, document.documentElement.clientHeight)
+);
+top.document.body.style.height = iframeHeight + 20 + &#39;px&#39;;
+}&lt;/script&gt;
+&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#26597;&#25214;&#20803;&#32032;">&#26597;&#25214;&#20803;&#32032;<a class="anchor-link" href="#&#26597;&#25214;&#20803;&#32032;"> </a></h1><p>单个元素查找</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://music.163.com&quot;</span><span class="p">)</span>
+<span class="n">input_first</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s2">&quot;g_search&quot;</span><span class="p">)</span>
+<span class="n">input_second</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s2">&quot;#g_search&quot;</span><span class="p">)</span>
+<span class="n">input_third</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&quot;g_search&quot;]&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_first</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_second</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_third</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;selenium.webdriver.remote.webelement.WebElement (session=&#34;c3cc1a9b94f4916ca4876894a7181c24&#34;, element=&#34;0.058239897806812824-1&#34;)&gt;
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&#34;c3cc1a9b94f4916ca4876894a7181c24&#34;, element=&#34;0.058239897806812824-1&#34;)&gt;
+&lt;selenium.webdriver.remote.webelement.WebElement (session=&#34;c3cc1a9b94f4916ca4876894a7181c24&#34;, element=&#34;0.058239897806812824-1&#34;)&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>这里我们通过三种不同的方式去获取响应的元素，第一种是通过id的方式，第二个中是CSS选择器，第三种是xpath选择器，结果都是相同的。</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#24120;&#29992;&#30340;&#26597;&#25214;&#20803;&#32032;&#26041;&#27861;&#65306;">&#24120;&#29992;&#30340;&#26597;&#25214;&#20803;&#32032;&#26041;&#27861;&#65306;<a class="anchor-link" href="#&#24120;&#29992;&#30340;&#26597;&#25214;&#20803;&#32032;&#26041;&#27861;&#65306;"> </a></h2><ul>
+<li>find_element_by_name</li>
+<li>find_element_by_id</li>
+<li>find_element_by_xpath</li>
+<li>find_element_by_link_text</li>
+<li>find_element_by_partial_link_text</li>
+<li>find_element_by_tag_name</li>
+<li>find_element_by_class_name</li>
+<li>find_element_by_css_selector</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 下面这种方式是比较通用的一种方式：这里需要记住By模块所以需要导入</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="k">import</span> <span class="n">By</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://music.163.com&quot;</span><span class="p">)</span>
+<span class="n">input_first</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span><span class="s2">&quot;g_search&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_first</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;selenium.webdriver.remote.webelement.WebElement (session=&#34;804f73390e4b2b1f3d258d3c64cfcdf6&#34;, element=&#34;0.8756856460866715-1&#34;)&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#22810;&#20010;&#20803;&#32032;&#26597;&#25214;">&#22810;&#20010;&#20803;&#32032;&#26597;&#25214;<a class="anchor-link" href="#&#22810;&#20010;&#20803;&#32032;&#26597;&#25214;"> </a></h2><p>其实多个元素和单个元素的区别，举个例子：find_elements,单个元素是find_element,其他使用上没什么区别，通过其中的一个例子演示：</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://music.163.com&quot;</span><span class="p">)</span>
+<span class="n">lis</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lis</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&lt;selenium.webdriver.remote.webelement.WebElement (session=&#34;16c18e686f0c8bf5cc368774e0dfbf4e&#34;, element=&#34;0.356934675169573-1&#34;)&gt;]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>当然上面的方式也是可以通过导入<code>from selenium.webdriver.common.by import By</code> 这种方式实现</p>
+<blockquote><p>lis = browser.find_elements(By.CSS_SELECTOR,'.service-bd li')</p>
+</blockquote>
+<p>同样的在单个元素中查找的方法在多个元素查找中同样存在：</p>
+<ul>
+<li>find_elements_by_name</li>
+<li>find_elements_by_id</li>
+<li>find_elements_by_xpath</li>
+<li>find_elements_by_link_text</li>
+<li>find_elements_by_partial_link_text</li>
+<li>find_elements_by_tag_name</li>
+<li>find_elements_by_class_name</li>
+<li>find_elements_by_css_selector</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20803;&#32032;&#20132;&#20114;&#25805;&#20316;">&#20803;&#32032;&#20132;&#20114;&#25805;&#20316;<a class="anchor-link" href="#&#20803;&#32032;&#20132;&#20114;&#25805;&#20316;"> </a></h2><p>对于获取的元素调用交互方法</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://music.163.com/&quot;</span><span class="p">)</span>
+<span class="n">input_str</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s1">&#39;srch&#39;</span><span class="p">)</span>
+<span class="n">input_str</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;周杰伦&quot;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#休眠，模仿人工搜索</span>
+<span class="n">input_str</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">input_str</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;林俊杰&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>运行的结果可以看出程序会自动打开Chrome浏览器并打开淘宝输入ipad,然后删除，重新输入MacBook pro，并点击搜索</p>
+<p>Selenium所有的api文档：<a href="http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.action_chains">http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.action_chains</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#25191;&#34892;JavaScript">&#25191;&#34892;JavaScript<a class="anchor-link" href="#&#25191;&#34892;JavaScript"> </a></h2><p>这是一个非常有用的方法，这里就可以直接调用js方法来实现一些操作，
+下面的例子是通过登录知乎然后通过js翻到页面底部，并弹框提示</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.zhihu.com/explore/&quot;</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;window.scrollTo(0, document.body.scrollHeight)&#39;</span><span class="p">)</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;alert(&quot;To Bottom&quot;)&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#19968;&#20010;&#20363;&#23376;">&#19968;&#20010;&#20363;&#23376;<a class="anchor-link" href="#&#19968;&#20010;&#20363;&#23376;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>pyton
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get("https://www.privco.com/home/login") #需要翻墙打开网址
+username = 'fake_username'
+password =  'fake_password'
+browser.find_element_by_id("username").clear()
+browser.find_element_by_id("username").send_keys(username) 
+browser.find_element_by_id("password").clear()
+browser.find_element_by_id("password").send_keys(password)
+browser.find_element_by_css_selector("#login-form &gt; div:nth-child(5) &gt; div &gt; button").click()</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># url = &quot;https://www.privco.com/private-company/329463&quot;</span>
+<span class="k">def</span> <span class="nf">download_excel</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">title</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">page_source</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="n">url_new</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;profile-name&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+        <span class="n">url_excel</span> <span class="o">=</span> <span class="n">url_new</span> <span class="o">+</span> <span class="s1">&#39;/export&#39;</span>
+        <span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_excel</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;no excel&#39;</span><span class="p">)</span>
+        <span class="k">pass</span>
+        
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">urls</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;https://www.privco.com/private-company/1135789&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;https://www.privco.com/private-company/542756&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;https://www.privco.com/private-company/137908&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;https://www.privco.com/private-company/137138&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">url</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">urls</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">download_excel</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+https://www.privco.com/private-company/1135789 no excel
+1
+https://www.privco.com/private-company/542756 no excel
+2
+https://www.privco.com/private-company/137908 no excel
+3
+https://www.privco.com/private-company/137138 no excel
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+</main>
+
+            </div>
+            <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/04-crawler-cppcc.html">
+      〈 <span class="u-margin-right-tiny"></span> Collecting CPPCC proposals
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/04-crawler-netease-music.html">
+      Crawling Music Data <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
