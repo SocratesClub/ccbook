@@ -52,16 +52,17 @@
 #       url: /chapters/01/1/2/statistical-techniques
 
 # A chapter w/ a collection of sections beneath it
-
-# External link
-- title: Preface
-  url: 00-preface
-  not-numbered: true
-- title: Acknowledgement
-  url: 00-acknowledgement
-  not-numbered: true
 - divider: true
 
+- title: Preface
+  url: 00-preface
+  not_numbered: true
+
+- title: Acknowledgement
+  url: 00-acknowledgement
+  not_numbered: true
+
+- divider: true
 
 # chapter 1
 - title: Introduction to Computational Communication
@@ -212,11 +213,12 @@
 
 # External link
 - header: Resources
+
 - title: Jupyter Book
   url: https://github.com/jupyter/jupyter-book
   external: true
-  not-numbered: true
+  not_numbered: true
 - title: GitHub repository
   url: https://github.com/computational-class/ccbook
   external: true
-  not-numbered: true
+  not_numbered: true
