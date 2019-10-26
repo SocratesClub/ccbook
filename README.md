@@ -2,8 +2,6 @@
 
 《计算传播基础》
 
-![Progress](http://progressed.io/bar/50)
-
 ![logo](/content/img/logo/logo.png)
 
 王成军
