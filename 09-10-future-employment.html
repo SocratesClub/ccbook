@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/09-10-future-employment.html",
   "headline": "Case study of future employment",
-  "datePublished": "2019-11-16T17:13:46+08:00",
-  "dateModified": "2019-11-16T17:13:46+08:00",
+  "datePublished": "2019-11-22T20:17:38+08:00",
+  "dateModified": "2019-11-22T20:17:38+08:00",
   "description": "The future of employment How susceptible are jobs to computerisation?We examine how susceptible jobs are to computerisation. To assess this, we begin by impl...",
   "author": {
     "@type": "Person",
@@ -1865,6 +1865,116 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>First, together with a group of ML researchers, we subjectively hand-labelled 70 occupations, assigning 1 if automatable, and 0 if not.</p>
+<ul>
+<li><p>For our subjective assessments, we draw upon a workshop held at the <code>Oxford University Engineering Sciences Department</code>, examining the automatability of a wide range of tasks.</p>
+</li>
+<li><p>Our label assignments were based on eyeballing the O*NET tasks and job description of each occupation.</p>
+</li>
+<li><p>The hand-labelling of the occupations was made by answering the question “Can the tasks of this job be sufficiently specified, conditional on the availability of big data, to be performed by state of the art computer-controlled equipment”.</p>
+</li>
+<li><p>Labels were assigned only to the occupations about which we were most confident.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Second, we use objective O*NET variables corresponding to the defined bottlenecks to computerisation.</p>
+<ul>
+<li>We are interested in variables describing the level of perception and manipulation, creativity, and social intelligence required to perform it. </li>
+<li>We identified <strong>nine variables of O*NET</strong> that describe these attributes. </li>
+<li>We rely on the “level” rating which corresponds to specific examples about the capabilities required of computer-controlled equipment to perform the tasks of an occupation. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Computerisation-bottleneck">Computerisation bottleneck<a class="anchor-link" href="#Computerisation-bottleneck"> </a></h2><ul>
+<li><strong>Perception and manipulation</strong><ul>
+<li>Finger dexterity [variables of O*NET]<ul>
+<li>The ability to make precisely coordinated movements of the fingers of one or both hands to grasp, manipulate, or assemble very small objects.</li>
+</ul>
+</li>
+<li>Manual dexterity [variables of O*NET]<ul>
+<li>The ability to quickly move your hand, your hand together with your arm, or your two hands to grasp, manipulate, or assemble objects.</li>
+</ul>
+</li>
+<li>Cramped work space, awkward positions  [variables of O*NET]<ul>
+<li>How often does this job require working in cramped work spaces that requires getting into awkward positions?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Creative intelligence</strong><ul>
+<li>Originality [variables of O*NET]<ul>
+<li>The ability to come up with unusual or clever ideas about a given topic or situation, or to develop creative ways to solve a problem.</li>
+</ul>
+</li>
+<li>Fine arts [variables of O*NET]<ul>
+<li>Knowledge of theory and techniques required to compose, produce, and perform works of music, dance, visual arts, drama, and sculpture.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Social intelligence</strong><ul>
+<li>Social perceptiveness  [variables of O*NET]<ul>
+<li>Being aware of others’ reactions and understanding why they react as they do.</li>
+</ul>
+</li>
+<li>Negotiation [variables of O*NET]<ul>
+<li>Bringing others together and trying to reconcile differences.</li>
+</ul>
+</li>
+<li>Persuasion [variables of O*NET]<ul>
+<li>Persuading others to change their minds or behaviour.</li>
+</ul>
+</li>
+<li>Assisting and caring for others [variables of O*NET]<ul>
+<li>Providing personal assistance, medical attention, emotional support, or other personal care to others such as coworkers, customers, or patients.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We tested three Gaussian process classifiers using the <strong>GPML toolbox</strong> (Rasmussen and Nickisch, 2010) on our data, built around exponentiated quadratic, rational quadratic and linear covariances.</p>
+<ul>
+<li>Rasmussen, C.E., Nickisch, H., 2010. Gaussian processes for machine learning (GPML) toolbox. J. Mach. Learn. Res. 11, 3011–3015.</li>
+<li>Rasmussen, C.E., Williams, C.K.I., 2006. Gaussian Processes for Machine Learning. MIT Press.</li>
+</ul>
+<p>Having validated our approach, we proceed to use classification to predict the probability of <strong>computerisation</strong> for all 702 occupations.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="GPy">GPy<a class="anchor-link" href="#GPy"> </a></h1><p>The Gaussian processes framework in Python. <a href="https://github.com/SheffieldML/GPy">https://github.com/SheffieldML/GPy</a></p>
 
 </div>
@@ -1947,7 +2057,8 @@ Successfully installed GPy-1.9.9 paramz-0.9.5
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jobdata.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># https://github.com/computational-class/ccbook/tree/master/data/jobdata.csv</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/jobdata.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -2163,7 +2274,7 @@ Successfully installed GPy-1.9.9 paramz-0.9.5
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;paramz.optimization.optimization.opt_lbfgsb at 0x105b9c898&gt;</pre>
+<pre>&lt;paramz.optimization.optimization.opt_lbfgsb at 0x1a1d24ec88&gt;</pre>
 </div>
 
 </div>
@@ -2224,21 +2335,31 @@ Parameters:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span> 
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span> 
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">explained_variance_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">accuracy_score</span>
 
 <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                   <span class="n">train_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">GPy</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">GPRegression</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">kernel</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">y2_model</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y2_model</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">y2_model</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">0.5</span><span class="p">:</span>
-            <span class="n">y2_model</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">y2_model</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
-    
-<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_model</span><span class="p">)</span>
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <span class="n">GaussianNB</span>
+<span class="n">bayes</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">bayes</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">y1</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="n">y2_model</span> <span class="o">=</span> <span class="n">bayes</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>  
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_model</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_model</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2254,7 +2375,7 @@ Parameters:
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.9230769230769231</pre>
+<pre>(0.8846153846153846, 0.8846153846153847)</pre>
 </div>
 
 </div>
@@ -2267,12 +2388,396 @@ Parameters:
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>End.</p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestRegressor</span>
+<span class="n">forest</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">y1</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="n">y2_model</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+<span class="n">y2_model</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="mi">0</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y2_model</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy score = &#39;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_model</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ROC_AUC score =&#39;</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_model</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Accuracy score =  0.8461538461538461
+ROC_AUC score = 0.8461538461538461
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 </div>
 </div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVC</span> 
+<span class="c1"># &quot;Support vector classifier&quot;</span>
+<span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                  <span class="n">train_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1E10</span><span class="p">)</span>
+<span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">y1</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="n">y2_model</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+<span class="n">y2_model</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="mi">0</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y2_model</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy score = &#39;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_model</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ROC_AUC score =&#39;</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_model</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Accuracy score =  0.8846153846153846
+ROC_AUC score = 0.8846153846153846
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SCORERS</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dict_keys([&#39;explained_variance&#39;, &#39;r2&#39;, &#39;neg_median_absolute_error&#39;, &#39;neg_mean_absolute_error&#39;, &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, &#39;accuracy&#39;, &#39;roc_auc&#39;, &#39;balanced_accuracy&#39;, &#39;average_precision&#39;, &#39;neg_log_loss&#39;, &#39;brier_score_loss&#39;, &#39;adjusted_rand_score&#39;, &#39;homogeneity_score&#39;, &#39;completeness_score&#39;, &#39;v_measure_score&#39;, &#39;mutual_info_score&#39;, &#39;adjusted_mutual_info_score&#39;, &#39;normalized_mutual_info_score&#39;, &#39;fowlkes_mallows_score&#39;, &#39;precision&#39;, &#39;precision_macro&#39;, &#39;precision_micro&#39;, &#39;precision_samples&#39;, &#39;precision_weighted&#39;, &#39;recall&#39;, &#39;recall_macro&#39;, &#39;recall_micro&#39;, &#39;recall_samples&#39;, &#39;recall_weighted&#39;, &#39;f1&#39;, &#39;f1_macro&#39;, &#39;f1_micro&#39;, &#39;f1_samples&#39;, &#39;f1_weighted&#39;])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1E10</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">cross_validation</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">roc_auc</span><span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;roc_auc&quot;</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">roc_auc</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_validation</span><span class="p">(</span><span class="n">svc</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.8912698412698414</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1E10</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">cross_validation</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">roc_auc</span><span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;roc_auc&quot;</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">roc_auc</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_validation</span><span class="p">(</span><span class="n">svc</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.9103174603174604</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>13.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                  <span class="n">train_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">GPy</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">GPRegression</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">kernel</span><span class="p">)</span><span class="c1">#, normalizer = True)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">y2_model</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y2_hat</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="mi">0</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y2_model</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy score = &#39;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_hat</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ROC_AUC score =&#39;</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_hat</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Accuracy score =  0.9230769230769231
+ROC_AUC score = 0.9230769230769231
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_model</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y_pred&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y_test&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/09-10-future-employment_22_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">roc_auc_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                                      <span class="n">train_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">GPy</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">GPRegression</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">kernel</span><span class="p">)</span><span class="c1">#, normalizer = True)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">y2_model</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y2_hat</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="mi">0</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y2_model</span> <span class="p">]</span>
+    <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_hat</span><span class="p">)</span>
+    <span class="n">roc_auc_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">roc_auc</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ROC_AUC score =&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">roc_auc_list</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ROC_AUC score = 0.8779356399319636
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">roc_auc_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                                      <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">GPy</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">GPRegression</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">kernel</span><span class="p">)</span><span class="c1">#, normalizer = True)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">y2_model</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y2_hat</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="mi">0</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y2_model</span> <span class="p">]</span>
+    <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">y2_hat</span><span class="p">)</span>
+    <span class="n">roc_auc_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">roc_auc</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ROC_AUC score =&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">roc_auc_list</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ROC_AUC score = 0.8921962481962482
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
