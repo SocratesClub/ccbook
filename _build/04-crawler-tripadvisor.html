@@ -1,0 +1,285 @@
+---
+interact_link: content/04-crawler-tripadvisor.ipynb
+kernel_name: python3
+has_widgets: false
+title: |-
+  Using selenium for clicking
+prev_page:
+  url: /04-crawler-selenium.html
+  title: |-
+    Introduction of Selenium
+next_page:
+  url: /04-crawler-netease-music.html
+  title: |-
+    Crawling Music Data
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+<main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;">&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;<a class="anchor-link" href="#&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS&#39;</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> 
+
+<span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;#component_10 &gt; div &gt; div:nth-child(3) &gt; div.location-review-filters-hr-ReviewFilters__filters_wrap--3zsVa &gt; div.ui_columns &gt; div.ui_column.is-3-tablet.is-shown-at-tablet &gt; ul &gt; li:nth-child(1) &gt; label &gt; span.location-review-review-list-parts-LanguageFilter__no_wrap--2Dckv&#39;</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">page_source</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">comments</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;hotels-community-tab-common-Card__card--ihfZB hotels-community-tab-common-Card__section--4r93H&#39;</span><span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;div class=&#34;hotels-community-tab-common-Card__card--ihfZB hotels-community-tab-common-Card__section--4r93H&#34; data-test-target=&#34;HR_CC_CARD&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-MachineTranslationHeader__mt_wrap--2uRXX&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-MachineTranslationHeader__qtext--2lhyR&#34;&gt;这些点评为英文的机器翻译。 显示机器翻译？&lt;/span&gt; &lt;div class=&#34;ui_radio&#34;&gt;&lt;input checked=&#34;&#34; id=&#34;autoTranslateYes&#34; type=&#34;radio&#34; value=&#34;true&#34;/&gt;&lt;label for=&#34;autoTranslateYes&#34;&gt;是&lt;/label&gt;&lt;/div&gt;&lt;div class=&#34;ui_radio&#34;&gt;&lt;input id=&#34;autoTranslateNo&#34; type=&#34;radio&#34; value=&#34;false&#34;/&gt;&lt;label for=&#34;autoTranslateNo&#34;&gt;否&lt;/label&gt;&lt;/div&gt;&lt;span class=&#34;ui_icon information-circle-fill location-review-review-list-parts-MachineTranslationHeader__tip--2EQEh&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__member_event_block--1Kusx&#34;&gt;&lt;a class=&#34;styleguide-avatar-Avatar__avatar--2NStU ui_social_avatar inline&#34; href=&#34;https://www.tripadvisor.com/Profile/kimlette&#34; target=&#34;_self&#34;&gt;&lt;img src=&#34;https://ccm.ddcdn.com/ext/photo-t/01/2e/70/81/avatar002.jpg&#34;/&gt;&lt;/a&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__event_wrap--1YkeG&#34;&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__member_actions--2uzIM&#34;&gt;&lt;div class=&#34;overflow&#34;&gt;&lt;span class=&#34;_3-zQ1eyd _4nIC4qqF&#34;&gt;&lt;span class=&#34;_35pfga6W _2HBN-k68&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span class=&#34;social-section-overflow-SectionOverflowMenu__float--3mJ5J&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__event_type--3njyv&#34;&gt;&lt;span&gt;&lt;a class=&#34;ui_header_link social-member-event-MemberEventOnObjectBlock__member--35-jC&#34; href=&#34;https://www.tripadvisor.com/Profile/kimlette&#34;&gt;kimlette&lt;/a&gt; 写了一条点评 12月12日 &lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;social-member-MemberHeaderStats__event_info--30wFs&#34;&gt;&lt;span class=&#34;social-member-MemberHeaderStats__hometown_stat_item--231iN&#34;&gt;&lt;span class=&#34;default social-member-common-MemberHometown__hometown--3kM9S small&#34;&gt;&lt;span class=&#34;ui_icon map-pin-fill social-member-common-MemberHometown__icon--3WpeC&#34;&gt;&lt;/span&gt;新加坡新加坡&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-SingleReview__mainCol--1hApa&#34; data-reviewid=&#34;671457443&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-RatingLine__container--2bjtw&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-RatingLine__bubbles--GcJvM&#34; data-test-target=&#34;review-rating&#34;&gt;&lt;span class=&#34;ui_bubble_rating bubble_10&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-ReviewTitle__reviewTitle--2GO9Z&#34; data-test-target=&#34;review-title&#34; dir=&#34;ltr&#34;&gt;&lt;a class=&#34;location-review-review-list-parts-ReviewTitle__reviewTitleText--2tFRT&#34; href=&#34;/ShowUserReviews-g294213-d1459920-r671457443-Somerset_Jiefangbei_Chongqing-Chongqing.html&#34;&gt;&lt;span lang=&#34;zh-x-mtfrom-en&#34;&gt;&lt;span&gt;不要留在这里：在线图片欺骗&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-ExpandableReview__containerStyles--1G0AE&#34;&gt;&lt;div class=&#34;_2f_ruteS _1bona3Pu _2uD5bLZZ&#34;&gt;&lt;div class=&#34;cPQsENeY&#34; style=&#34;max-height: initial;&#34;&gt;&lt;q class=&#34;location-review-review-list-parts-ExpandableReview__reviewText--gOmRC&#34; lang=&#34;zh-x-mtfrom-en&#34;&gt;&lt;span&gt;入住3晚，但在12月第一周晚1晚后退房。 Somerset ppty真是太可惜了，房间简朴而舒适。我们已经预订了3间客房，所以我们没有。房间布局中，只有一个可行的是09堆栈。所有级别只有一个09型单位。布局不好的是03面，所以如果不幸的话避免呆在这里。大堂和餐厅/餐厅的日子已经好过了，管理层需要尽快对其进行翻新。早餐太可悲了。我们有了早餐券，但是晚上睡不好后就没有吃。第二天早上尽快退房。不要留在这里！在公共区域也有难闻的气味。  唯一的好处是-接待女士们确实很有帮助和理解。在我们急忙离开的时候，我忘了问他们的名字了！&lt;/span&gt;&lt;/q&gt;&lt;/div&gt;&lt;span class=&#34;_36B4Vw6t&#34; style=&#34;line-height: 20px;&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-ExpandableReview__ctaLine--24Qlb&#34; data-test-target=&#34;expand-review&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-ExpandableReview__cta--2mR2g&#34;&gt;阅读更多&lt;/span&gt;&lt;span class=&#34;ui_icon caret-down location-review-review-list-parts-ExpandableReview__caret--3Ud_i&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;hotels-community-tab-reviews-ReviewsTabContent__footer--2FHIK&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-EventDate__event_date--1epHa&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-EventDate__bold--3b3PE&#34;&gt;入住日期：&lt;/span&gt;2019年12月&lt;/span&gt;&lt;span class=&#34;hotels-community-tab-reviews-ReviewsTabContent__hiddenReviewContent--FCrPr&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-TripType__trip_type--3w17i&#34;&gt;&lt;span class=&#34;trip_type_label&#34;&gt;旅行类型： &lt;/span&gt;结伴旅行&lt;/span&gt;&lt;/span&gt;&lt;div class=&#34;hotels-rate-mt-footer-rate-mt-footer__mtFooter--vvI3I&#34;&gt;&lt;span class=&#34;public-reviews-MTProviderLogo__provider_img--1z6u0&#34;&gt;&lt;img alt=&#34;Google&#34; src=&#34;/img2/langs/zh/branding/partners/powered_by_google_translate.png&#34;/&gt;&lt;/span&gt;&lt;div class=&#34;hotels-rate-mt-footer-rate-mt-footer__inlinify--2w_D9&#34;&gt;&lt;div class=&#34;ui_button small ui_link standard hotels-rate-mt-footer-rate-mt-footer__rateButton--1mDkC&#34;&gt;为译文打分 &lt;span class=&#34;ui_icon caret-down&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-social-bar-SocialBar__bar--3YwG5&#34;&gt;&lt;span class=&#34;social-statistics-bar-SocialStatisticsBar__bar--L8RDK&#34;&gt;&lt;/span&gt;&lt;div class=&#34;social-actions-SocialActionBar__social_action_bar--2_j8Y&#34;&gt;&lt;span class=&#34;social-actions-SocialAction__social_action--1RrZ-&#34;&gt;&lt;span class=&#34;ui_icon thumbs-up-fill social-actions-SocialAction__icon--2WCF0&#34;&gt;&lt;/span&gt;&lt;span class=&#34;ui_link social-actions-SocialAction__text--1yJuk&#34;&gt;推荐&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;social-actions-NestedSocialAction__nested_social_action--2mhpU&#34;&gt;&lt;div&gt;&lt;span&gt;&lt;div class=&#34;public-share-cta-ShareCta__social_action--2yJtr&#34;&gt;&lt;span&gt;&lt;span class=&#34;ui_icon repost-fill public-share-cta-ShareCta__icon--1Bvb0&#34;&gt;&lt;/span&gt;&lt;span class=&#34;ui_link public-share-cta-ShareCta__text--1tWKH socialCTA&#34;&gt;分享 &lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-OwnerResponse__containerStyles--1wv-S&#34;&gt;&lt;span class=&#34;styleguide-avatar-Avatar__avatar--2NStU ui_social_avatar small inline location-review-review-list-parts-OwnerResponse__ownerAvatar--3bb01&#34;&gt;&lt;span class=&#34;ui_icon member-fill&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;div class=&#34;location-review-review-list-parts-OwnerResponse__header--2jRig&#34;&gt;回复来自重庆盛捷解放碑服务公寓的前厅部经理SomersetChongqing&lt;div class=&#34;location-review-review-list-parts-OwnerResponse__responseDate--4i8wE&#34; title=&#34;2019-12-15&#34;&gt;回复时间：3天前&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-GoogleTranslateButton__buttonDiv--3bQd_&#34;&gt;&lt;button class=&#34;ui_button secondary small&#34;&gt;Google翻译&lt;/button&gt;&lt;/div&gt;&lt;div class=&#34;_2f_ruteS _1bona3Pu location-review-review-list-parts-OwnerResponse__responseReadMore--eB9_V _2uD5bLZZ&#34;&gt;&lt;div class=&#34;cPQsENeY&#34; style=&#34;max-height: 60px;&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-OwnerResponse__reviewText--108-V&#34;&gt;&lt;span&gt;I have noted your observations and recommendations for improvements to the breakfast and refurbishment. Please be assured that I will coordinate the plans for these enhancements with the respective departments.  We seek your patience and understanding as the recommendations may require time to be implemented, we will continue in our improvement efforts to provide excellent service and products to our residents. &lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span class=&#34;_36B4Vw6t&#34; style=&#34;line-height: 20px;&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-OwnerResponse__cta--2QSGH&#34;&gt;阅读更多&lt;/span&gt;&lt;span class=&#34;ui_icon caret-down location-review-review-list-parts-OwnerResponse__caret--1-bUW&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># user id</span>
+<span class="c1"># https://www.tripadvisor.com/Profile/kimlette</span>
+<span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;ui_header_link social-member-event-MemberEventOnObjectBlock__member--35-jC&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;kimlette&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;default social-member-common-MemberHometown__hometown--3kM9S small&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;新加坡新加坡&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># comment title</span>
+<span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;location-review-review-list-parts-ReviewTitle__reviewTitleText--2tFRT&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;不要留在这里：在线图片欺骗&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># comment body text</span>
+<span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;location-review-review-list-parts-ExpandableReview__reviewText--gOmRC&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;入住3晚，但在12月第一周晚1晚后退房。 Somerset ppty真是太可惜了，房间简朴而舒适。我们已经预订了3间客房，所以我们没有。房间布局中，只有一个可行的是09堆栈。所有级别只有一个09型单位。布局不好的是03面，所以如果不幸的话避免呆在这里。大堂和餐厅/餐厅的日子已经好过了，管理层需要尽快对其进行翻新。早餐太可悲了。我们有了早餐券，但是晚上睡不好后就没有吃。第二天早上尽快退房。不要留在这里！在公共区域也有难闻的气味。  唯一的好处是-接待女士们确实很有帮助和理解。在我们急忙离开的时候，我忘了问他们的名字了！&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+</main>

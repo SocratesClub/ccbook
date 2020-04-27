@@ -1,0 +1,6338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Data Processing with Pandas</title>
+  <meta name="description" content="&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927; &#31616;&#20171; Pandas 是 Python 中很流行的类库，使用它可以进行数据科学计算和数据分。数据分析结果的好坏依赖于数据的好坏。很多数据集存在数据缺失，或数据格式不统一（畸形数据...">
+
+  <link rel="canonical" href="https://computational-class.github.io/ccbook/06-data-cleaning-pandas.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+
+  <meta property="og:url"         content="https://computational-class.github.io/ccbook/06-data-cleaning-pandas.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Data Processing with Pandas" />
+<meta property="og:description" content="&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927; &#31616;&#20171; Pandas 是 Python 中很流行的类库，使用它可以进行数据科学计算和数据分。数据分析结果的好坏依赖于数据的好坏。很多数据集存在数据缺失，或数据格式不统一（畸形数据..." />
+<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://computational-class.github.io/ccbook/06-data-cleaning-pandas.html",
+  "headline": "Data Processing with Pandas",
+  "datePublished": "2019-12-19T15:40:38+08:00",
+  "dateModified": "2019-12-19T15:40:38+08:00",
+  "description": "&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927; &#31616;&#20171; Pandas 是 Python 中很流行的类库，使用它可以进行数据科学计算和数据分。数据分析结果的好坏依赖于数据的好坏。很多数据集存在数据缺失，或数据格式不统一（畸形数据...",
+  "author": {
+    "@type": "Person",
+    "name": "王成军"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://computational-class.github.io/ccbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://computational-class.github.io/ccbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/ccbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/regular.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/solid.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/ccbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    }
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/ccbook/assets/js/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/ccbook/assets/js/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/ccbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/ccbook/assets/js/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" async></script>
+  <script src="/ccbook/assets/js/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/ccbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/ccbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/ccbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/ccbook/assets/js/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/ccbook/assets/js/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/ccbook/assets/css/styles.css",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://computational-class.github.io/ccbook/"><img src="/ccbook/img/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Elements of Computational Communication</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/00-preface.html"
+        >
+          
+          Preface
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/00-acknowledgement.html"
+        >
+          
+          Acknowledgement
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/01-intro2cjc.html"
+        >
+          
+            1.
+          
+          Introduction to Computational Communication
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/02-bigdata.html"
+                >
+                  
+                    1.1
+                  
+                  Understanding Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/03-python-intro.html"
+        >
+          
+            2.
+          
+          Introduction of Python Programming
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/04-crawler-beautifulsoup.html"
+        >
+          
+            3.
+          
+          Data Collection
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-wechat.html"
+                >
+                  
+                    3.1
+                  
+                  Crawling WeChat Public Accounts
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-douban.html"
+                >
+                  
+                    3.2
+                  
+                  Crawling Douban Movies
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-cppcc.html"
+                >
+                  
+                    3.3
+                  
+                  Collecting CPPCC proposals
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-selenium.html"
+                >
+                  
+                    3.4
+                  
+                  Introduction of Selenium
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-tripadvisor.html"
+                >
+                  
+                    3.5
+                  
+                  Using selenium for clicking
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-netease-music.html"
+                >
+                  
+                    3.6
+                  
+                  Crawling Music Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-gov-report.html"
+                >
+                  
+                    3.7
+                  
+                  Crawling Government Reports
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/06-data-cleaning-intro.html"
+        >
+          
+            4.
+          
+          Data Cleaning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-preprocessing.html"
+                >
+                  
+                    4.1
+                  
+                  Preprocessing Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/ccbook/06-data-cleaning-pandas.html"
+                >
+                  
+                    4.2
+                  
+                  Data Processing with Pandas
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-tweets.html"
+                >
+                  
+                    4.3
+                  
+                  Data Cleaning of OWS tweets
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/07-data-cleaning-occupy-central-news.html"
+                >
+                  
+                    4.4
+                  
+                  Cleaning the News of Occupy Central
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-music-list.html"
+                >
+                  
+                    4.5
+                  
+                  Cleaning A Music List
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/08-01-statistics-thinking.html"
+        >
+          
+            5.
+          
+          Statistics Thinking
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-02-linear-algebra.html"
+                >
+                  
+                    5.1
+                  
+                  Linear Algebra
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-03-probability.html"
+                >
+                  
+                    5.2
+                  
+                  Probability
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-04-hypothesis-inference.html"
+                >
+                  
+                    5.3
+                  
+                  Hypothesis Inference
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-05-gradient-descent.html"
+                >
+                  
+                    5.4
+                  
+                  Gradient Descent
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-06-regression.html"
+                >
+                  
+                    5.5
+                  
+                  Linear Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-06-statsmodels.html"
+                >
+                  
+                    5.6
+                  
+                  Introduction to statsmodels
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-07-analyzing-titanic-dataset.html"
+                >
+                  
+                    5.7
+                  
+                  Analyzing Titanic Dataset
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/09-01-machine-learning-with-sklearn.html"
+        >
+          
+            6.
+          
+          Machine Learning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-03-hyperparameters-and-model-validation.html"
+                >
+                  
+                    6.1
+                  
+                  Hyperparameters and Model Validation
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-04-feature-engineering.html"
+                >
+                  
+                    6.2
+                  
+                  Feature Engineering
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-05-naive-bayes.html"
+                >
+                  
+                    6.3
+                  
+                  Naive Bayes
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-06-linear-regression.html"
+                >
+                  
+                    6.4
+                  
+                  Linear Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-07-support-vector-machines.html"
+                >
+                  
+                    6.5
+                  
+                  Support Vector Machines
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-08-random-forests.html"
+                >
+                  
+                    6.6
+                  
+                  Random Forests
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-09-machine-learning-summary.html"
+                >
+                  
+                    6.7
+                  
+                  Summary
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-10-future-employment.html"
+                >
+                  
+                    6.8
+                  
+                  Case study of future employment
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/09-neural-network.html"
+        >
+          
+            7.
+          
+          Neural Network
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-neural-network-advanced.html"
+                >
+                  
+                    7.1
+                  
+                  Advanced Topics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/10-text-minning-gov-report.html"
+        >
+          
+            8.
+          
+          Text Mining
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/10-word2vec.html"
+                >
+                  
+                    8.1
+                  
+                  Word2vec
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/11-sentiment-analysis-with-dict.html"
+                >
+                  
+                    8.2
+                  
+                  Sentiment Analysis with Dictionary
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/11-sentiment-classifier.html"
+                >
+                  
+                    8.3
+                  
+                  Sentiment Analysis with Machine Learning
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/12-topic-models-update.html"
+                >
+                  
+                    8.4
+                  
+                  Topic Models
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/12-topic-models-with-turicreate.html"
+                >
+                  
+                    8.5
+                  
+                  Topic Models with Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/13-recsys-intro.html"
+        >
+          
+            9.
+          
+          Recommendation System
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/14-millionsong.html"
+                >
+                  
+                    9.1
+                  
+                  The Case of Million Song
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/14-movielens.html"
+                >
+                  
+                    9.2
+                  
+                  The Case of Movielens
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/15-network-science-intro.html"
+        >
+          
+            10.
+          
+          Network Science
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/16-network-science-models.html"
+                >
+                  
+                    10.1
+                  
+                  Network Models
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/17-networkx.html"
+                >
+                  
+                    10.2
+                  
+                  networkx
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/18-network-analysis-of-tianya-bbs.html"
+                >
+                  
+                    10.3
+                  
+                  The case of Tianya BBS
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/18-network-epidemics.html"
+                >
+                  
+                    10.4
+                  
+                  Network Epidemics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/19-visualization-with-seaborn.html"
+        >
+          
+            11.
+          
+          Visualization
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-datashader.html"
+                >
+                  
+                    11.1
+                  
+                  datashader
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-with-pyecharts.html"
+                >
+                  
+                    11.2
+                  
+                  pyecharts
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-maps-using-folium.html"
+                >
+                  
+                    11.3
+                  
+                  folium
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/0-common-questions.html"
+        >
+          
+            12.
+          
+          Appendix
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-jupyter-notebook.html"
+                >
+                  
+                    12.1
+                  
+                  Appendix of Using Jupyter Notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-slides.html"
+                >
+                  
+                    12.2
+                  
+                  Appendix of Making Slides with RISE
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-turicreate.html"
+                >
+                  
+                    12.3
+                  
+                  Appendix of Using Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Resources</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/jupyter/jupyter-book"
+        >
+          
+          Jupyter Book
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/computational-class/ccbook"
+        >
+          
+          GitHub repository
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button">
+      <img src="/ccbook/assets/images/download-solid.svg" height="15" width="15" alt="Download" />
+      <!-- PDF -->
+    </button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/computational-class/ccbook/gh-pages?filepath=content%2F06-data-cleaning-pandas.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/ccbook/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/ccbook/search.html" class="topbar-right-button" id="search-button"><i class="fa fa-search"></i></a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927;">&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927;<a class="anchor-link" href="#&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#31616;&#20171;">&#31616;&#20171;<a class="anchor-link" href="#&#31616;&#20171;"> </a></h3><p>Pandas 是 Python 中很流行的类库，使用它可以进行数据科学计算和数据分。</p>
+<ul>
+<li>数据分析结果的好坏依赖于数据的好坏。</li>
+<li>很多数据集存在数据缺失，或数据格式不统一（畸形数据），或错误数据的情况。</li>
+<li>不管是不完善的报表，还是技术处理数据的失当都会不可避免的引起“脏”数据。</li>
+</ul>
+<p>Pandas 提供功能强大的类库，帮助我们清洗数据👇</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>准备工作</li>
+<li>检查数据</li>
+<li>处理缺失数据</li>
+<li>添加默认值</li>
+<li>删除不完整的行</li>
+<li>删除不完整的列</li>
+<li>规范化数据类型</li>
+<li>必要的转换</li>
+<li>重命名列名</li>
+<li>保存结果</li>
+</ul>
+<p><a href="https://www.cnblogs.com/BoyceYang/p/8182053.html">https://www.cnblogs.com/BoyceYang/p/8182053.html</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./img/data_cleaning/data_cleaning.jpg" alt=""></p>
+<p>Credit: <a href="https://pic2.zhimg.com/v2-7e5be40e46075e82d6362897319e7be9_r.jpg">来源</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#26696;&#20363;1&#65306;-&#30005;&#24433;&#25968;&#25454;&#28165;&#27927;">&#26696;&#20363;1&#65306; &#30005;&#24433;&#25968;&#25454;&#28165;&#27927;<a class="anchor-link" href="#&#26696;&#20363;1&#65306;-&#30005;&#24433;&#25968;&#25454;&#28165;&#27927;"> </a></h2><p>这个数据集包含了很多信息，演员、导演、预算、总输入，以及 IMDB 评分和上映时间。有一些列的值是缺失的，有些列的默认值是0，有的是 NaN（Not a Number）。下面我们通过使用 Pandas 提供的功能来清洗“脏”数据。</p>
+<p>数据来源:</p>
+<ul>
+<li><a href="https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset">https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset</a></li>
+<li><a href="https://raw.githubusercontent.com/sundeepblue/movie_rating_prediction/master/movie_metadata.csv">https://raw.githubusercontent.com/sundeepblue/movie_rating_prediction/master/movie_metadata.csv</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/movie_metadata.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#26816;&#26597;&#25968;&#25454;">&#26816;&#26597;&#25968;&#25454;<a class="anchor-link" href="#&#26816;&#26597;&#25968;&#25454;"> </a></h3><p>检查一下我们刚刚读入数据的基本结构，Pandas 提供了 head() 方法打印输出前五行数据。目的是让我们对读入的数据有一个大致的了解。</p>
+
+<pre><code>data.head()</code></pre>
+<p>我们可以通过上面介绍的 Pandas 的方法查看数据，也可以通过传统的 Excel 程序查看数据，这个时候，我们可以开始记录数据上的问题，然后，我们再想办法解决问题。</p>
+<p>Pandas 提供了一些选择的方法，这些选择的方法可以把数据切片，也可以把数据切块。下面我们简单介绍一下：</p>
+<ul>
+<li>查看一列的一些基本统计信息：data.columnname.describe()</li>
+<li>选择一列：data['columnname']</li>
+<li>选择一列的前几行数据：data['columnsname'][:n]</li>
+<li>选择多列：data[['column1','column2']]</li>
+<li>Where 条件过滤：data[data['columnname'] &gt; condition]</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Cameron</td>
+      <td>723.0</td>
+      <td>178.0</td>
+      <td>0.0</td>
+      <td>855.0</td>
+      <td>Joel David Moore</td>
+      <td>1000.0</td>
+      <td>760505847.0</td>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>...</td>
+      <td>3054.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>237000000.0</td>
+      <td>2009.0</td>
+      <td>936.0</td>
+      <td>7.9</td>
+      <td>1.78</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Verbinski</td>
+      <td>302.0</td>
+      <td>169.0</td>
+      <td>563.0</td>
+      <td>1000.0</td>
+      <td>Orlando Bloom</td>
+      <td>40000.0</td>
+      <td>309404152.0</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>...</td>
+      <td>1238.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>300000000.0</td>
+      <td>2007.0</td>
+      <td>5000.0</td>
+      <td>7.1</td>
+      <td>2.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>602.0</td>
+      <td>148.0</td>
+      <td>0.0</td>
+      <td>161.0</td>
+      <td>Rory Kinnear</td>
+      <td>11000.0</td>
+      <td>200074175.0</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>...</td>
+      <td>994.0</td>
+      <td>English</td>
+      <td>UK</td>
+      <td>PG-13</td>
+      <td>245000000.0</td>
+      <td>2015.0</td>
+      <td>393.0</td>
+      <td>6.8</td>
+      <td>2.35</td>
+      <td>85000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Color</td>
+      <td>Christopher Nolan</td>
+      <td>813.0</td>
+      <td>164.0</td>
+      <td>22000.0</td>
+      <td>23000.0</td>
+      <td>Christian Bale</td>
+      <td>27000.0</td>
+      <td>448130642.0</td>
+      <td>Action|Thriller</td>
+      <td>...</td>
+      <td>2701.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>250000000.0</td>
+      <td>2012.0</td>
+      <td>23000.0</td>
+      <td>8.5</td>
+      <td>2.35</td>
+      <td>164000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>Doug Walker</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>131.0</td>
+      <td>NaN</td>
+      <td>Rob Walker</td>
+      <td>131.0</td>
+      <td>NaN</td>
+      <td>Documentary</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>7.1</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#19968;&#12289;&#32570;&#22833;&#25968;&#25454;">&#19968;&#12289;&#32570;&#22833;&#25968;&#25454;<a class="anchor-link" href="#&#19968;&#12289;&#32570;&#22833;&#25968;&#25454;"> </a></h3><p>为什么要考虑数值缺失的情况？</p>
+<ul>
+<li><p>真实世界的数据很少是干净和一致的</p>
+</li>
+<li><p>许多有趣的数据集都会丢失一些数据</p>
+</li>
+<li><p>不同的数据源可能以不同的方式表示缺失的数据</p>
+</li>
+</ul>
+<p>缺失数据是最常见的问题之一。产生这个问题可能的原因</p>
+<p>① 从来没有填正确过</p>
+<p>② 数据不可用</p>
+<p>③ 计算错误</p>
+<h5 id="&#26080;&#35770;&#20160;&#20040;&#21407;&#22240;&#65292;&#21482;&#35201;&#26377;&#31354;&#30333;&#20540;&#24471;&#23384;&#22312;&#65292;&#23601;&#20250;&#24341;&#36215;&#21518;&#32493;&#30340;&#25968;&#25454;&#20998;&#26512;&#30340;&#38169;&#35823;&#12290;&#19979;&#38754;&#20171;&#32461;&#20960;&#20010;&#22788;&#29702;&#32570;&#22833;&#25968;&#25454;&#30340;&#26041;&#27861;&#65306;">&#26080;&#35770;&#20160;&#20040;&#21407;&#22240;&#65292;&#21482;&#35201;&#26377;&#31354;&#30333;&#20540;&#24471;&#23384;&#22312;&#65292;&#23601;&#20250;&#24341;&#36215;&#21518;&#32493;&#30340;&#25968;&#25454;&#20998;&#26512;&#30340;&#38169;&#35823;&#12290;&#19979;&#38754;&#20171;&#32461;&#20960;&#20010;&#22788;&#29702;&#32570;&#22833;&#25968;&#25454;&#30340;&#26041;&#27861;&#65306;<a class="anchor-link" href="#&#26080;&#35770;&#20160;&#20040;&#21407;&#22240;&#65292;&#21482;&#35201;&#26377;&#31354;&#30333;&#20540;&#24471;&#23384;&#22312;&#65292;&#23601;&#20250;&#24341;&#36215;&#21518;&#32493;&#30340;&#25968;&#25454;&#20998;&#26512;&#30340;&#38169;&#35823;&#12290;&#19979;&#38754;&#20171;&#32461;&#20960;&#20010;&#22788;&#29702;&#32570;&#22833;&#25968;&#25454;&#30340;&#26041;&#27861;&#65306;"> </a></h5><p>一、补充缺失值</p>
+<p>二、删除缺失值</p>
+<p>三、不处理</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="1.&#20351;&#29992;&#40664;&#35748;&#20540;--&#26469;&#22635;&#34917;&#32570;&#22833;">1.&#20351;&#29992;&#40664;&#35748;&#20540;  &#26469;&#22635;&#34917;&#32570;&#22833;<a class="anchor-link" href="#1.&#20351;&#29992;&#40664;&#35748;&#20540;--&#26469;&#22635;&#34917;&#32570;&#22833;"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="c1"># 通过这个函数查看是否有缺失值。True表示缺失，False表示没有缺失。</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5013</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5014</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5015</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5016</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5017</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5018</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5019</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5020</th>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5021</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5022</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5023</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5024</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5025</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5026</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5027</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5028</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5029</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5030</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5031</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5032</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5033</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5034</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5035</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5036</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5037</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5038</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5039</th>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5040</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5041</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5042</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>5043 rows × 28 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#128073;&#20351;&#29992;&#31354;&#23383;&#31526;&#20018;&#22635;&#34917;">&#128073;&#20351;&#29992;&#31354;&#23383;&#31526;&#20018;&#22635;&#34917;<a class="anchor-link" href="#&#128073;&#20351;&#29992;&#31354;&#23383;&#31526;&#20018;&#22635;&#34917;"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">director_name</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="c1"># 此处用空字符串替代缺失值</span>
+<span class="c1"># 该函数的使用方法：列表名称.列名.fillna(&#39;替代NA的字符&#39;)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0            James Cameron
+1           Gore Verbinski
+2               Sam Mendes
+3        Christopher Nolan
+4              Doug Walker
+5           Andrew Stanton
+6                Sam Raimi
+7             Nathan Greno
+8              Joss Whedon
+9              David Yates
+10             Zack Snyder
+11            Bryan Singer
+12            Marc Forster
+13          Gore Verbinski
+14          Gore Verbinski
+15             Zack Snyder
+16          Andrew Adamson
+17             Joss Whedon
+18            Rob Marshall
+19        Barry Sonnenfeld
+20           Peter Jackson
+21               Marc Webb
+22            Ridley Scott
+23           Peter Jackson
+24             Chris Weitz
+25           Peter Jackson
+26           James Cameron
+27           Anthony Russo
+28              Peter Berg
+29         Colin Trevorrow
+               ...        
+5013            Eric Eason
+5014              Uwe Boll
+5015     Richard Linklater
+5016       Joseph Mazzella
+5017          Travis Legge
+5018         Alex Kendrick
+5019         Marcus Nispel
+5020       Brandon Landers
+5021           Jay Duplass
+5022            Jim Chuchu
+5023            Daryl Wein
+5024           Jason Trost
+5025           John Waters
+5026       Olivier Assayas
+5027          Jafar Panahi
+5028         Ivan Kavanagh
+5029      Kiyoshi Kurosawa
+5030          Tadeo Garcia
+5031    Thomas L. Phillips
+5032       Ash Baron-Cohen
+5033         Shane Carruth
+5034      Neill Dela Llana
+5035      Robert Rodriguez
+5036       Anthony Vallone
+5037          Edward Burns
+5038           Scott Smith
+5039                      
+5040      Benjamin Roberds
+5041           Daniel Hsia
+5042              Jon Gunn
+Name: director_name, Length: 5043, dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#128073;&#20351;&#29992;&#25968;&#20540;0&#36827;&#34892;&#22635;&#34917;">&#128073;&#20351;&#29992;&#25968;&#20540;0&#36827;&#34892;&#22635;&#34917;<a class="anchor-link" href="#&#128073;&#20351;&#29992;&#25968;&#20540;0&#36827;&#34892;&#22635;&#34917;"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">duration</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0       178.0
+1       169.0
+2       148.0
+3       164.0
+4         0.0
+5       132.0
+6       156.0
+7       100.0
+8       141.0
+9       153.0
+10      183.0
+11      169.0
+12      106.0
+13      151.0
+14      150.0
+15      143.0
+16      150.0
+17      173.0
+18      136.0
+19      106.0
+20      164.0
+21      153.0
+22      156.0
+23      186.0
+24      113.0
+25      201.0
+26      194.0
+27      147.0
+28      131.0
+29      124.0
+        ...  
+5013     79.0
+5014     80.0
+5015    100.0
+5016     90.0
+5017     90.0
+5018    120.0
+5019     91.0
+5020    143.0
+5021     85.0
+5022     60.0
+5023     88.0
+5024     78.0
+5025    108.0
+5026    110.0
+5027     90.0
+5028     83.0
+5029    111.0
+5030     84.0
+5031     82.0
+5032     98.0
+5033     77.0
+5034     80.0
+5035     81.0
+5036     84.0
+5037     95.0
+5038     87.0
+5039     43.0
+5040     76.0
+5041    100.0
+5042     90.0
+Name: duration, Length: 5043, dtype: float64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.&#21024;&#38500;&#32570;&#22833;&#25968;&#25454;">2.&#21024;&#38500;&#32570;&#22833;&#25968;&#25454;<a class="anchor-link" href="#2.&#21024;&#38500;&#32570;&#22833;&#25968;&#25454;"> </a></h4><h5 id="&#9312;&#26377;&#32570;&#22833;&#25968;&#25454;&#30340;&#24773;&#20917;&#23601;&#21024;&#38500;&#65288;&#19968;&#34892;&#20219;&#24847;&#20986;&#29616;&#19968;&#20010;&#32570;&#22833;&#20540;&#25105;&#23601;&#21024;&#25481;&#65289;">&#9312;&#26377;&#32570;&#22833;&#25968;&#25454;&#30340;&#24773;&#20917;&#23601;&#21024;&#38500;&#65288;&#19968;&#34892;&#20219;&#24847;&#20986;&#29616;&#19968;&#20010;&#32570;&#22833;&#20540;&#25105;&#23601;&#21024;&#25481;&#65289;<a class="anchor-link" href="#&#9312;&#26377;&#32570;&#22833;&#25968;&#25454;&#30340;&#24773;&#20917;&#23601;&#21024;&#38500;&#65288;&#19968;&#34892;&#20219;&#24847;&#20986;&#29616;&#19968;&#20010;&#32570;&#22833;&#20540;&#25105;&#23601;&#21024;&#25481;&#65289;"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1"># 删除任何包含 NA 值的行：</span>
+<span class="c1"># 可以看到原本有NA值得行全部被删除</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Cameron</td>
+      <td>723.0</td>
+      <td>178.0</td>
+      <td>0.0</td>
+      <td>855.0</td>
+      <td>Joel David Moore</td>
+      <td>1000.0</td>
+      <td>760505847.0</td>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>...</td>
+      <td>3054.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>237000000.0</td>
+      <td>2009.0</td>
+      <td>936.0</td>
+      <td>7.9</td>
+      <td>1.78</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Verbinski</td>
+      <td>302.0</td>
+      <td>169.0</td>
+      <td>563.0</td>
+      <td>1000.0</td>
+      <td>Orlando Bloom</td>
+      <td>40000.0</td>
+      <td>309404152.0</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>...</td>
+      <td>1238.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>300000000.0</td>
+      <td>2007.0</td>
+      <td>5000.0</td>
+      <td>7.1</td>
+      <td>2.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>602.0</td>
+      <td>148.0</td>
+      <td>0.0</td>
+      <td>161.0</td>
+      <td>Rory Kinnear</td>
+      <td>11000.0</td>
+      <td>200074175.0</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>...</td>
+      <td>994.0</td>
+      <td>English</td>
+      <td>UK</td>
+      <td>PG-13</td>
+      <td>245000000.0</td>
+      <td>2015.0</td>
+      <td>393.0</td>
+      <td>6.8</td>
+      <td>2.35</td>
+      <td>85000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 28 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#9313;-&#20840;&#37096;&#26159;&#32570;&#22833;&#20540;&#25165;&#21024;&#38500;">&#9313; &#20840;&#37096;&#26159;&#32570;&#22833;&#20540;&#25165;&#21024;&#38500;<a class="anchor-link" href="#&#9313;-&#20840;&#37096;&#26159;&#32570;&#22833;&#20540;&#25165;&#21024;&#38500;"> </a></h5><p>（一般情况下如果有部分缺失值是不影响整体行列的，如果有就删除会影响数据完整性）</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1"># 删除任何包含 NA 值的行：</span>
+<span class="c1"># 可以看到原本有NA值得行全部被删除</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Cameron</td>
+      <td>723.0</td>
+      <td>178.0</td>
+      <td>0.0</td>
+      <td>855.0</td>
+      <td>Joel David Moore</td>
+      <td>1000.0</td>
+      <td>760505847.0</td>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>...</td>
+      <td>3054.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>237000000.0</td>
+      <td>2009.0</td>
+      <td>936.0</td>
+      <td>7.9</td>
+      <td>1.78</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Verbinski</td>
+      <td>302.0</td>
+      <td>169.0</td>
+      <td>563.0</td>
+      <td>1000.0</td>
+      <td>Orlando Bloom</td>
+      <td>40000.0</td>
+      <td>309404152.0</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>...</td>
+      <td>1238.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>300000000.0</td>
+      <td>2007.0</td>
+      <td>5000.0</td>
+      <td>7.1</td>
+      <td>2.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>602.0</td>
+      <td>148.0</td>
+      <td>0.0</td>
+      <td>161.0</td>
+      <td>Rory Kinnear</td>
+      <td>11000.0</td>
+      <td>200074175.0</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>...</td>
+      <td>994.0</td>
+      <td>English</td>
+      <td>UK</td>
+      <td>PG-13</td>
+      <td>245000000.0</td>
+      <td>2015.0</td>
+      <td>393.0</td>
+      <td>6.8</td>
+      <td>2.35</td>
+      <td>85000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 28 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#8594;&#22270;&#31034;&#35299;&#35835;&#65306;&#25105;&#20204;&#21487;&#20197;&#21457;&#29616;&#65292;&#20840;&#37096;&#26159;&#32570;&#22833;&#20540;&#25165;&#21024;&#38500;&#30340;&#26041;&#27861;&#24456;&#20302;&#25928;&#20960;&#20046;&#27809;&#29992;">&#8594;&#22270;&#31034;&#35299;&#35835;&#65306;&#25105;&#20204;&#21487;&#20197;&#21457;&#29616;&#65292;&#20840;&#37096;&#26159;&#32570;&#22833;&#20540;&#25165;&#21024;&#38500;&#30340;&#26041;&#27861;&#24456;&#20302;&#25928;&#20960;&#20046;&#27809;&#29992;<a class="anchor-link" href="#&#8594;&#22270;&#31034;&#35299;&#35835;&#65306;&#25105;&#20204;&#21487;&#20197;&#21457;&#29616;&#65292;&#20840;&#37096;&#26159;&#32570;&#22833;&#20540;&#25165;&#21024;&#38500;&#30340;&#26041;&#27861;&#24456;&#20302;&#25928;&#20960;&#20046;&#27809;&#29992;"> </a></h5><h5 id="&#8594;&#21407;&#22987;&#25968;&#25454;&#26159;5043&#34892;&#65292;&#32463;&#36807;&#22788;&#29702;&#21518;&#20173;&#28982;&#26159;5043&#34892;">&#8594;&#21407;&#22987;&#25968;&#25454;&#26159;5043&#34892;&#65292;&#32463;&#36807;&#22788;&#29702;&#21518;&#20173;&#28982;&#26159;5043&#34892;<a class="anchor-link" href="#&#8594;&#21407;&#22987;&#25968;&#25454;&#26159;5043&#34892;&#65292;&#32463;&#36807;&#22788;&#29702;&#21518;&#20173;&#28982;&#26159;5043&#34892;"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#9314;-&#33267;&#23569;&#26377;n&#20010;&#25165;&#21024;&#38500;">&#9314; &#33267;&#23569;&#26377;n&#20010;&#25165;&#21024;&#38500;<a class="anchor-link" href="#&#9314;-&#33267;&#23569;&#26377;n&#20010;&#25165;&#21024;&#38500;"> </a></h5><p>（我们可以设定一个“门槛”，如果一行中有5个以上缺失值就删除，这样比起上面两个方法更加“中庸”）</p>
+<h5 id="&#8594;&#22270;&#31034;&#35299;&#35835;&#65306;&#20294;&#25105;&#20204;&#21457;&#29616;&#35774;&#23450;5&#20010;&#32570;&#22833;&#20540;&#20026;&#38376;&#27099;&#20173;&#28982;&#19981;&#33021;&#22788;&#29702;&#65292;&#25105;&#20204;&#38656;&#35201;&#38477;&#20302;&#21024;&#38500;&#30340;&#38376;&#27099;,&#65292;&#27604;&#22914;&#25913;&#21040;4&#20010;&#25110;3">&#8594;&#22270;&#31034;&#35299;&#35835;&#65306;&#20294;&#25105;&#20204;&#21457;&#29616;&#35774;&#23450;5&#20010;&#32570;&#22833;&#20540;&#20026;&#38376;&#27099;&#20173;&#28982;&#19981;&#33021;&#22788;&#29702;&#65292;&#25105;&#20204;&#38656;&#35201;&#38477;&#20302;&#21024;&#38500;&#30340;&#38376;&#27099;,&#65292;&#27604;&#22914;&#25913;&#21040;4&#20010;&#25110;3<a class="anchor-link" href="#&#8594;&#22270;&#31034;&#35299;&#35835;&#65306;&#20294;&#25105;&#20204;&#21457;&#29616;&#35774;&#23450;5&#20010;&#32570;&#22833;&#20540;&#20026;&#38376;&#27099;&#20173;&#28982;&#19981;&#33021;&#22788;&#29702;&#65292;&#25105;&#20204;&#38656;&#35201;&#38477;&#20302;&#21024;&#38500;&#30340;&#38376;&#27099;,&#65292;&#27604;&#22914;&#25913;&#21040;4&#20010;&#25110;3"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">5</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1"># 在下面的例子中，行数据中至少要有 5 个缺失值才会删除</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Cameron</td>
+      <td>723.0</td>
+      <td>178.0</td>
+      <td>0.0</td>
+      <td>855.0</td>
+      <td>Joel David Moore</td>
+      <td>1000.0</td>
+      <td>760505847.0</td>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>...</td>
+      <td>3054.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>237000000.0</td>
+      <td>2009.0</td>
+      <td>936.0</td>
+      <td>7.9</td>
+      <td>1.78</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Verbinski</td>
+      <td>302.0</td>
+      <td>169.0</td>
+      <td>563.0</td>
+      <td>1000.0</td>
+      <td>Orlando Bloom</td>
+      <td>40000.0</td>
+      <td>309404152.0</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>...</td>
+      <td>1238.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>300000000.0</td>
+      <td>2007.0</td>
+      <td>5000.0</td>
+      <td>7.1</td>
+      <td>2.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>602.0</td>
+      <td>148.0</td>
+      <td>0.0</td>
+      <td>161.0</td>
+      <td>Rory Kinnear</td>
+      <td>11000.0</td>
+      <td>200074175.0</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>...</td>
+      <td>994.0</td>
+      <td>English</td>
+      <td>UK</td>
+      <td>PG-13</td>
+      <td>245000000.0</td>
+      <td>2015.0</td>
+      <td>393.0</td>
+      <td>6.8</td>
+      <td>2.35</td>
+      <td>85000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 28 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#9315;-&#26576;&#20010;/&#20960;&#20010;&#21015;&#20540;&#32570;&#22833;&#25165;&#21024;&#38500;">&#9315; &#26576;&#20010;/&#20960;&#20010;&#21015;&#20540;&#32570;&#22833;&#25165;&#21024;&#38500;<a class="anchor-link" href="#&#9315;-&#26576;&#20010;/&#20960;&#20010;&#21015;&#20540;&#32570;&#22833;&#25165;&#21024;&#38500;"> </a></h5><p>（如果我们觉得某几个值是特别重要的、不可或缺的话，如果是缺失值该数据就没意义，就可以指定特定列）</p>
+<p>（例如对于一个电影而言，电影名字或者导演通常是必须的要素）</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;director_name&#39;</span><span class="p">,</span><span class="s1">&#39;title_year&#39;</span><span class="p">])[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1"># 此处用subset方法删除了 &#39;director_name&#39;,&#39;title_year&#39;为缺失值的行</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Cameron</td>
+      <td>723.0</td>
+      <td>178.0</td>
+      <td>0.0</td>
+      <td>855.0</td>
+      <td>Joel David Moore</td>
+      <td>1000.0</td>
+      <td>760505847.0</td>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>...</td>
+      <td>3054.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>237000000.0</td>
+      <td>2009.0</td>
+      <td>936.0</td>
+      <td>7.9</td>
+      <td>1.78</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Verbinski</td>
+      <td>302.0</td>
+      <td>169.0</td>
+      <td>563.0</td>
+      <td>1000.0</td>
+      <td>Orlando Bloom</td>
+      <td>40000.0</td>
+      <td>309404152.0</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>...</td>
+      <td>1238.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>300000000.0</td>
+      <td>2007.0</td>
+      <td>5000.0</td>
+      <td>7.1</td>
+      <td>2.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>602.0</td>
+      <td>148.0</td>
+      <td>0.0</td>
+      <td>161.0</td>
+      <td>Rory Kinnear</td>
+      <td>11000.0</td>
+      <td>200074175.0</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>...</td>
+      <td>994.0</td>
+      <td>English</td>
+      <td>UK</td>
+      <td>PG-13</td>
+      <td>245000000.0</td>
+      <td>2015.0</td>
+      <td>393.0</td>
+      <td>6.8</td>
+      <td>2.35</td>
+      <td>85000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 28 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#9316;-&#21024;&#38500;&#21015;">&#9316; &#21024;&#38500;&#21015;<a class="anchor-link" href="#&#9316;-&#21024;&#38500;&#21015;"> </a></h5><p>（前面的操作是针对行）</p>
+<p>（同样的方法也适用于于列，只需要补充axis=1的参数即可。默认值为axis=0 行  axis=1 列）</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 删除一正列为 NA 的列：</span>
+<span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>color</th>
+      <th>director_name</th>
+      <th>num_critic_for_reviews</th>
+      <th>duration</th>
+      <th>director_facebook_likes</th>
+      <th>actor_3_facebook_likes</th>
+      <th>actor_2_name</th>
+      <th>actor_1_facebook_likes</th>
+      <th>gross</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>num_user_for_reviews</th>
+      <th>language</th>
+      <th>country</th>
+      <th>content_rating</th>
+      <th>budget</th>
+      <th>title_year</th>
+      <th>actor_2_facebook_likes</th>
+      <th>imdb_score</th>
+      <th>aspect_ratio</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Color</td>
+      <td>James Cameron</td>
+      <td>723.0</td>
+      <td>178.0</td>
+      <td>0.0</td>
+      <td>855.0</td>
+      <td>Joel David Moore</td>
+      <td>1000.0</td>
+      <td>760505847.0</td>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>...</td>
+      <td>3054.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>237000000.0</td>
+      <td>2009.0</td>
+      <td>936.0</td>
+      <td>7.9</td>
+      <td>1.78</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Color</td>
+      <td>Gore Verbinski</td>
+      <td>302.0</td>
+      <td>169.0</td>
+      <td>563.0</td>
+      <td>1000.0</td>
+      <td>Orlando Bloom</td>
+      <td>40000.0</td>
+      <td>309404152.0</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>...</td>
+      <td>1238.0</td>
+      <td>English</td>
+      <td>USA</td>
+      <td>PG-13</td>
+      <td>300000000.0</td>
+      <td>2007.0</td>
+      <td>5000.0</td>
+      <td>7.1</td>
+      <td>2.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Color</td>
+      <td>Sam Mendes</td>
+      <td>602.0</td>
+      <td>148.0</td>
+      <td>0.0</td>
+      <td>161.0</td>
+      <td>Rory Kinnear</td>
+      <td>11000.0</td>
+      <td>200074175.0</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>...</td>
+      <td>994.0</td>
+      <td>English</td>
+      <td>UK</td>
+      <td>PG-13</td>
+      <td>245000000.0</td>
+      <td>2015.0</td>
+      <td>393.0</td>
+      <td>6.8</td>
+      <td>2.35</td>
+      <td>85000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 28 columns</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 删除任何包含空值的列：</span>
+<span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>genres</th>
+      <th>movie_title</th>
+      <th>num_voted_users</th>
+      <th>cast_total_facebook_likes</th>
+      <th>movie_imdb_link</th>
+      <th>imdb_score</th>
+      <th>movie_facebook_likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Action|Adventure|Fantasy|Sci-Fi</td>
+      <td>Avatar</td>
+      <td>886204</td>
+      <td>4834</td>
+      <td>http://www.imdb.com/title/tt0499549/?ref_=fn_t...</td>
+      <td>7.9</td>
+      <td>33000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Action|Adventure|Fantasy</td>
+      <td>Pirates of the Caribbean: At World's End</td>
+      <td>471220</td>
+      <td>48350</td>
+      <td>http://www.imdb.com/title/tt0449088/?ref_=fn_t...</td>
+      <td>7.1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Action|Adventure|Thriller</td>
+      <td>Spectre</td>
+      <td>275868</td>
+      <td>11700</td>
+      <td>http://www.imdb.com/title/tt2379713/?ref_=fn_t...</td>
+      <td>6.8</td>
+      <td>85000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.-&#36890;&#36807;&#35745;&#31639;&#22635;&#20805;">3. &#36890;&#36807;&#35745;&#31639;&#22635;&#20805;<a class="anchor-link" href="#3.-&#36890;&#36807;&#35745;&#31639;&#22635;&#20805;"> </a></h4><p>使用数字类型的数据，比如，电影的时长，计算像电影平均时长可以帮我们甚至是数据集。这并不是最优解，但这个持续时间是根据其他数据估算出来的。这样的方式下，就不会因为像 0 或者 NaN这样的值在我们分析的时候而抛错。</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">duration</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">duration</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">][:</span><span class="mi">5</span><span class="p">]</span>
+<span class="c1"># 此外还可以使用最大值 最小值 等方式填补</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    178.000000
+1    169.000000
+2    148.000000
+3    164.000000
+4    107.201074
+Name: duration, dtype: float64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20108;&#12289;&#23545;&#25968;&#20540;&#31867;&#22411;&#36827;&#34892;&#35268;&#33539;(&#36716;&#25442;&#31867;&#22411;&#65289;">&#20108;&#12289;&#23545;&#25968;&#20540;&#31867;&#22411;&#36827;&#34892;&#35268;&#33539;(&#36716;&#25442;&#31867;&#22411;&#65289;<a class="anchor-link" href="#&#20108;&#12289;&#23545;&#25968;&#20540;&#31867;&#22411;&#36827;&#34892;&#35268;&#33539;(&#36716;&#25442;&#31867;&#22411;&#65289;"> </a></h3><p>有的时候，尤其当我们读取 csv 中一串数字的时候，有的时候数值类型的数字被读成字符串的数字，或将字符串的数字读成数据值类型的数字。</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;color&#39;, &#39;director_name&#39;, &#39;num_critic_for_reviews&#39;, &#39;duration&#39;,
+       &#39;director_facebook_likes&#39;, &#39;actor_3_facebook_likes&#39;, &#39;actor_2_name&#39;,
+       &#39;actor_1_facebook_likes&#39;, &#39;gross&#39;, &#39;genres&#39;, &#39;actor_1_name&#39;,
+       &#39;movie_title&#39;, &#39;num_voted_users&#39;, &#39;cast_total_facebook_likes&#39;,
+       &#39;actor_3_name&#39;, &#39;facenumber_in_poster&#39;, &#39;plot_keywords&#39;,
+       &#39;movie_imdb_link&#39;, &#39;num_user_for_reviews&#39;, &#39;language&#39;, &#39;country&#39;,
+       &#39;content_rating&#39;, &#39;budget&#39;, &#39;title_year&#39;, &#39;actor_2_facebook_likes&#39;,
+       &#39;imdb_score&#39;, &#39;aspect_ratio&#39;, &#39;movie_facebook_likes&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1"># 这就是告诉 Pandas ‘duration’列的类型是数值类型。</span>
+<span class="c1"># 同样的，如果想把上映年读成字符串而不是数值类型，我们使用和上面类似的方法：</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    178
+1    169
+2    148
+Name: duration, dtype: int64</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;title_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    2009.0
+1    2007.0
+2    2015.0
+Name: title_year, dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#19977;&#12289;&#19981;&#35782;&#21035;&#25968;&#25454;">&#19977;&#12289;&#19981;&#35782;&#21035;&#25968;&#25454;<a class="anchor-link" href="#&#19977;&#12289;&#19981;&#35782;&#21035;&#25968;&#25454;"> </a></h3><p>有时候我们不想看到某列或者某行的空值，但却该列缺失不是关键量不需要删除
+可以选择忽略/不识别该数据的方法</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;director_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;NaN&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0            James Cameron
+1           Gore Verbinski
+2               Sam Mendes
+3        Christopher Nolan
+4              Doug Walker
+5           Andrew Stanton
+6                Sam Raimi
+7             Nathan Greno
+8              Joss Whedon
+9              David Yates
+10             Zack Snyder
+11            Bryan Singer
+12            Marc Forster
+13          Gore Verbinski
+14          Gore Verbinski
+15             Zack Snyder
+16          Andrew Adamson
+17             Joss Whedon
+18            Rob Marshall
+19        Barry Sonnenfeld
+20           Peter Jackson
+21               Marc Webb
+22            Ridley Scott
+23           Peter Jackson
+24             Chris Weitz
+25           Peter Jackson
+26           James Cameron
+27           Anthony Russo
+28              Peter Berg
+29         Colin Trevorrow
+               ...        
+5013            Eric Eason
+5014              Uwe Boll
+5015     Richard Linklater
+5016       Joseph Mazzella
+5017          Travis Legge
+5018         Alex Kendrick
+5019         Marcus Nispel
+5020       Brandon Landers
+5021           Jay Duplass
+5022            Jim Chuchu
+5023            Daryl Wein
+5024           Jason Trost
+5025           John Waters
+5026       Olivier Assayas
+5027          Jafar Panahi
+5028         Ivan Kavanagh
+5029      Kiyoshi Kurosawa
+5030          Tadeo Garcia
+5031    Thomas L. Phillips
+5032       Ash Baron-Cohen
+5033         Shane Carruth
+5034      Neill Dela Llana
+5035      Robert Rodriguez
+5036       Anthony Vallone
+5037          Edward Burns
+5038           Scott Smith
+5039                   NaN
+5040      Benjamin Roberds
+5041           Daniel Hsia
+5042              Jon Gunn
+Name: director_name, Length: 5043, dtype: object</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#21516;&#26679;&#30340;&#65292;-&#23545;&#20110;&#29228;&#34411;&#25991;&#26412;&#20013;&#21487;&#33021;&#20250;&#20986;&#29616;&#25442;&#38169;&#34892;&#30340;&#24773;&#20917;">&#21516;&#26679;&#30340;&#65292; &#23545;&#20110;&#29228;&#34411;&#25991;&#26412;&#20013;&#21487;&#33021;&#20250;&#20986;&#29616;&#25442;&#38169;&#34892;&#30340;&#24773;&#20917;<a class="anchor-link" href="#&#21516;&#26679;&#30340;&#65292;-&#23545;&#20110;&#29228;&#34411;&#25991;&#26412;&#20013;&#21487;&#33021;&#20250;&#20986;&#29616;&#25442;&#38169;&#34892;&#30340;&#24773;&#20917;"> </a></h4><p>例如 原文本为112233</p>
+<p>因为错换行情况变成11</p>
+
+<pre><code>            22
+
+            33
+
+</code></pre>
+<p>因此，用这个方法可以可以替换文本中存在的/n（还可用来其他转移转义字符 /n/t/r</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#22235;&#12289;&#37325;&#22797;&#25968;&#25454;">&#22235;&#12289;&#37325;&#22797;&#25968;&#25454;<a class="anchor-link" href="#&#22235;&#12289;&#37325;&#22797;&#25968;&#25454;"> </a></h3><p>有的时候数据集中会有一些重复的数据。在我们的数据集中也添加了重复的数据。</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 首先我们校验一下是否存在重复记录。</span>
+<span class="c1"># 如果存在重复记录，就使用 Pandas 提供的 drop_duplicates() 来删除重复数据。</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;director_name&#39;</span><span class="p">,</span><span class="s1">&#39;duration&#39;</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#26696;&#20363;2&#65306;&#30149;&#20154;&#24515;&#33039;&#30149;&#25968;&#25454;">&#26696;&#20363;2&#65306;&#30149;&#20154;&#24515;&#33039;&#30149;&#25968;&#25454;<a class="anchor-link" href="#&#26696;&#20363;2&#65306;&#30149;&#20154;&#24515;&#33039;&#30149;&#25968;&#25454;"> </a></h2><p><a href="https://www.cnblogs.com/BoyceYang/p/8186033.html">https://www.cnblogs.com/BoyceYang/p/8186033.html</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/patient_heart_rate.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>Mickéy Mousé</th>
+      <th>56</th>
+      <th>70kgs</th>
+      <th>72</th>
+      <th>69</th>
+      <th>71</th>
+      <th>-</th>
+      <th>-.1</th>
+      <th>-.2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.0</td>
+      <td>Donald Duck</td>
+      <td>34.0</td>
+      <td>154.89lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>85</td>
+      <td>84</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>Mini Mouse</td>
+      <td>16.0</td>
+      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>65</td>
+      <td>69</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>Scrooge McDuck</td>
+      <td>NaN</td>
+      <td>78kgs</td>
+      <td>78</td>
+      <td>79</td>
+      <td>72</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.0</td>
+      <td>Pink Panther</td>
+      <td>54.0</td>
+      <td>198.658lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>69</td>
+      <td>NaN</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>189lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>没有列头</li>
+<li>一个列有多个参数</li>
+<li>列数据的单位不统一</li>
+<li>缺失值</li>
+<li>空行</li>
+<li>重复数据</li>
+<li>非 ASCII 字符</li>
+<li>有些列头应该是数据，而不应该是列名参数</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20116;&#12289;&#22686;&#21152;&#21015;&#22836;">&#20116;&#12289;&#22686;&#21152;&#21015;&#22836;<a class="anchor-link" href="#&#20116;&#12289;&#22686;&#21152;&#21015;&#22836;"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">column_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span><span class="s1">&#39;m0006&#39;</span><span class="p">,</span><span class="s1">&#39;m0612&#39;</span><span class="p">,</span><span class="s1">&#39;m1218&#39;</span><span class="p">,</span><span class="s1">&#39;f0006&#39;</span><span class="p">,</span><span class="s1">&#39;f0612&#39;</span><span class="p">,</span><span class="s1">&#39;f1218&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/patient_heart_rate.csv&#39;</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">column_names</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>age</th>
+      <th>weight</th>
+      <th>m0006</th>
+      <th>m0612</th>
+      <th>m1218</th>
+      <th>f0006</th>
+      <th>f0612</th>
+      <th>f1218</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>Mickéy Mousé</td>
+      <td>56.0</td>
+      <td>70kgs</td>
+      <td>72</td>
+      <td>69</td>
+      <td>71</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>Donald Duck</td>
+      <td>34.0</td>
+      <td>154.89lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>85</td>
+      <td>84</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>Mini Mouse</td>
+      <td>16.0</td>
+      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>65</td>
+      <td>69</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>Scrooge McDuck</td>
+      <td>NaN</td>
+      <td>78kgs</td>
+      <td>78</td>
+      <td>79</td>
+      <td>72</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>Pink Panther</td>
+      <td>54.0</td>
+      <td>198.658lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>69</td>
+      <td>NaN</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>189lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7.0</td>
+      <td>Dewey McDuck</td>
+      <td>19.0</td>
+      <td>56kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>71</td>
+      <td>78</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8.0</td>
+      <td>Scööpy Doo</td>
+      <td>32.0</td>
+      <td>78kgs</td>
+      <td>78</td>
+      <td>76</td>
+      <td>75</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>189lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10.0</td>
+      <td>Louie McDuck</td>
+      <td>12.0</td>
+      <td>45kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>92</td>
+      <td>95</td>
+      <td>87</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#20845;&#12289;&#21333;&#20301;&#21015;&#25968;&#25454;&#30340;&#21333;&#20301;&#19981;&#32479;&#19968;">&#20845;&#12289;&#21333;&#20301;&#21015;&#25968;&#25454;&#30340;&#21333;&#20301;&#19981;&#32479;&#19968;<a class="anchor-link" href="#&#20845;&#12289;&#21333;&#20301;&#21015;&#25968;&#25454;&#30340;&#21333;&#20301;&#19981;&#32479;&#19968;"> </a></h3><p>如果仔细观察数据集可以发现 Weight 列的单位不统一。有的单位是 kgs，有的单位是 lbs</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 获取 weight 数据列中单位为 lbs 的数据</span>
+<span class="n">rows_with_lbs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;lbs&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">rows_with_lbs</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>age</th>
+      <th>weight</th>
+      <th>m0006</th>
+      <th>m0612</th>
+      <th>m1218</th>
+      <th>f0006</th>
+      <th>f0612</th>
+      <th>f1218</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>Donald Duck</td>
+      <td>34.0</td>
+      <td>154.89lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>85</td>
+      <td>84</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>Pink Panther</td>
+      <td>54.0</td>
+      <td>198.658lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>69</td>
+      <td>NaN</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>189lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>189lbs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#20026;&#20102;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;&#65292;&#23558;&#21333;&#20301;&#32479;&#19968;&#65292;&#25105;&#20204;&#23558;&#21333;&#20301;&#26159;-lbs-&#30340;&#25968;&#25454;&#36716;&#25442;&#25104;-kgs&#12290;">&#20026;&#20102;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;&#65292;&#23558;&#21333;&#20301;&#32479;&#19968;&#65292;&#25105;&#20204;&#23558;&#21333;&#20301;&#26159; lbs &#30340;&#25968;&#25454;&#36716;&#25442;&#25104; kgs&#12290;<a class="anchor-link" href="#&#20026;&#20102;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;&#65292;&#23558;&#21333;&#20301;&#32479;&#19968;&#65292;&#25105;&#20204;&#23558;&#21333;&#20301;&#26159;-lbs-&#30340;&#25968;&#25454;&#36716;&#25442;&#25104;-kgs&#12290;"> </a></h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">lbs_row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="n">rows_with_lbs</span><span class="p">]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lbs_row</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span><span class="o">/</span><span class="mf">2.2</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">kgs&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>age</th>
+      <th>weight</th>
+      <th>m0006</th>
+      <th>m0612</th>
+      <th>m1218</th>
+      <th>f0006</th>
+      <th>f0612</th>
+      <th>f1218</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>Mickéy Mousé</td>
+      <td>56.0</td>
+      <td>70kgs</td>
+      <td>72</td>
+      <td>69</td>
+      <td>71</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>Donald Duck</td>
+      <td>34.0</td>
+      <td>70kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>85</td>
+      <td>84</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>Mini Mouse</td>
+      <td>16.0</td>
+      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>65</td>
+      <td>69</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>Scrooge McDuck</td>
+      <td>NaN</td>
+      <td>78kgs</td>
+      <td>78</td>
+      <td>79</td>
+      <td>72</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>Pink Panther</td>
+      <td>54.0</td>
+      <td>90kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>69</td>
+      <td>NaN</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>85kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7.0</td>
+      <td>Dewey McDuck</td>
+      <td>19.0</td>
+      <td>56kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>71</td>
+      <td>78</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8.0</td>
+      <td>Scööpy Doo</td>
+      <td>32.0</td>
+      <td>78kgs</td>
+      <td>78</td>
+      <td>76</td>
+      <td>75</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>85kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10.0</td>
+      <td>Louie McDuck</td>
+      <td>12.0</td>
+      <td>45kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>92</td>
+      <td>95</td>
+      <td>87</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#19971;&#12289;&#31354;&#34892;">&#19971;&#12289;&#31354;&#34892;<a class="anchor-link" href="#&#19971;&#12289;&#31354;&#34892;"> </a></h3><p>仔细对比会发现我们的数据中一行空行，除了 index 之外，全部的值都是 NaN。</p>
+<p>Pandas 的 read_csv() 并没有可选参数来忽略空行，这样，我们就需要在数据被读入之后再使用 dropna() 进行处理，删除空行.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 删除全空的行</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>age</th>
+      <th>weight</th>
+      <th>m0006</th>
+      <th>m0612</th>
+      <th>m1218</th>
+      <th>f0006</th>
+      <th>f0612</th>
+      <th>f1218</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>Mickéy Mousé</td>
+      <td>56.0</td>
+      <td>70kgs</td>
+      <td>72</td>
+      <td>69</td>
+      <td>71</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>Donald Duck</td>
+      <td>34.0</td>
+      <td>70kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>85</td>
+      <td>84</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>Mini Mouse</td>
+      <td>16.0</td>
+      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>65</td>
+      <td>69</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>Scrooge McDuck</td>
+      <td>NaN</td>
+      <td>78kgs</td>
+      <td>78</td>
+      <td>79</td>
+      <td>72</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>Pink Panther</td>
+      <td>54.0</td>
+      <td>90kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>69</td>
+      <td>NaN</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>85kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7.0</td>
+      <td>Dewey McDuck</td>
+      <td>19.0</td>
+      <td>56kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>71</td>
+      <td>78</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8.0</td>
+      <td>Scööpy Doo</td>
+      <td>32.0</td>
+      <td>78kgs</td>
+      <td>78</td>
+      <td>76</td>
+      <td>75</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9.0</td>
+      <td>Huey McDuck</td>
+      <td>52.0</td>
+      <td>85kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>68</td>
+      <td>75</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10.0</td>
+      <td>Louie McDuck</td>
+      <td>12.0</td>
+      <td>45kgs</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>92</td>
+      <td>95</td>
+      <td>87</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># 增加列头</span>
+<span class="n">column_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span><span class="s1">&#39;m0006&#39;</span><span class="p">,</span><span class="s1">&#39;m0612&#39;</span><span class="p">,</span><span class="s1">&#39;m1218&#39;</span><span class="p">,</span><span class="s1">&#39;f0006&#39;</span><span class="p">,</span><span class="s1">&#39;f0612&#39;</span><span class="p">,</span><span class="s1">&#39;f1218&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/patient_heart_rate.csv&#39;</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">column_names</span><span class="p">)</span>
+
+<span class="c1"># 切分名字，删除源数据列</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span><span class="s1">&#39;last_name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 获取 weight 数据列中单位为 lbs 的数据</span>
+<span class="n">rows_with_lbs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;lbs&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">rows_with_lbs</span><span class="p">]</span>
+
+<span class="c1"># 将 lbs 的数据转换为 kgs 数据</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">lbs_row</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="n">rows_with_lbs</span><span class="p">]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lbs_row</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span><span class="o">/</span><span class="mf">2.2</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">kgs&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+ 
+<span class="c1"># 删除全空的行</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 删除重复数据行</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span><span class="s1">&#39;last_name&#39;</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 删除非 ASCII 字符</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="sa">r</span><span class="s1">&#39;[^\x00-\x7F]+&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="sa">r</span><span class="s1">&#39;[^\x00-\x7F]+&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 切分 sex_hour 列为 sex 列和 hour 列</span>
+<span class="n">sorted_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+<span class="n">id_vars</span><span class="o">=</span><span class="n">sorted_columns</span><span class="p">,</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;sex_hour&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;puls_rate&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">sorted_columns</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span><span class="s1">&#39;hour&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex_hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(([</span><span class="n">x</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">-</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">:])])))[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;sex_hour&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 删除没有心率的数据</span>
+<span class="n">row_with_dashes</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;puls_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">row_with_dashes</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+<span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 重置索引，不做也没关系，主要是为了看着美观一点</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>      id   age      weight first_name last_name puls_rate sex   hour
+0    1.0  56.0       70kgs      Micky      Mous        72   m  00-06
+1    1.0  56.0       70kgs      Micky      Mous        69   m  06-12
+2    1.0  56.0       70kgs      Micky      Mous        71   m  12-18
+3    2.0  34.0   154.89lbs     Donald      Duck        85   f  00-06
+4    2.0  34.0   154.89lbs     Donald      Duck        84   f  06-12
+5    2.0  34.0   154.89lbs     Donald      Duck        76   f  12-18
+6    3.0  16.0         NaN       Mini     Mouse        65   f  00-06
+7    3.0  16.0         NaN       Mini     Mouse        69   f  06-12
+8    3.0  16.0         NaN       Mini     Mouse        72   f  12-18
+9    4.0   NaN       78kgs    Scrooge    McDuck        78   m  00-06
+10   4.0   NaN       78kgs    Scrooge    McDuck        79   m  06-12
+11   4.0   NaN       78kgs    Scrooge    McDuck        72   m  12-18
+12   5.0  54.0  198.658lbs       Pink   Panther        69   f  00-06
+13   5.0  54.0  198.658lbs       Pink   Panther       NaN   f  06-12
+14   5.0  54.0  198.658lbs       Pink   Panther        75   f  12-18
+15   6.0  52.0      189lbs       Huey    McDuck        68   f  00-06
+16   6.0  52.0      189lbs       Huey    McDuck        75   f  06-12
+17   6.0  52.0      189lbs       Huey    McDuck        72   f  12-18
+18   7.0  19.0       56kgs      Dewey    McDuck        71   f  00-06
+19   7.0  19.0       56kgs      Dewey    McDuck        78   f  06-12
+20   7.0  19.0       56kgs      Dewey    McDuck        75   f  12-18
+21   8.0  32.0       78kgs       Scpy       Doo        78   m  00-06
+22   8.0  32.0       78kgs       Scpy       Doo        76   m  06-12
+23   8.0  32.0       78kgs       Scpy       Doo        75   m  12-18
+24  10.0  12.0       45kgs      Louie    McDuck        92   f  00-06
+25  10.0  12.0       45kgs      Louie    McDuck        95   f  06-12
+26  10.0  12.0       45kgs      Louie    McDuck        87   f  12-18
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>更多练习：</p>
+<p><a href="https://github.com/computational-class/data_cleaning">https://github.com/computational-class/data_cleaning</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+</main>
+
+            </div>
+            <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/06-data-cleaning-preprocessing.html">
+      〈 <span class="u-margin-right-tiny"></span> Preprocessing Big Data
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/06-data-cleaning-tweets.html">
+      Data Cleaning of OWS tweets <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

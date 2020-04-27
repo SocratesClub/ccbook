@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Using selenium for clicking</title>
+  <meta name="description" content="&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;     url = &#39;https://www.tripadvisor.cn/Hotel_Review-g2...">
+
+  <link rel="canonical" href="https://computational-class.github.io/ccbook/04-crawler-tripadvisor.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+
+  <meta property="og:url"         content="https://computational-class.github.io/ccbook/04-crawler-tripadvisor.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Using selenium for clicking" />
+<meta property="og:description" content="&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;     url = &#39;https://www.tripadvisor.cn/Hotel_Review-g2..." />
+<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://computational-class.github.io/ccbook/04-crawler-tripadvisor.html",
+  "headline": "Using selenium for clicking",
+  "datePublished": "2019-12-19T15:40:38+08:00",
+  "dateModified": "2019-12-19T15:40:38+08:00",
+  "description": "&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;     url = &#39;https://www.tripadvisor.cn/Hotel_Review-g2...",
+  "author": {
+    "@type": "Person",
+    "name": "王成军"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://computational-class.github.io/ccbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://computational-class.github.io/ccbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/ccbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/regular.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/solid.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/ccbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    }
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/ccbook/assets/js/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/ccbook/assets/js/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/ccbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/ccbook/assets/js/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" async></script>
+  <script src="/ccbook/assets/js/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/ccbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/ccbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/ccbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/ccbook/assets/js/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/ccbook/assets/js/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/ccbook/assets/css/styles.css",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://computational-class.github.io/ccbook/"><img src="/ccbook/img/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Elements of Computational Communication</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/00-preface.html"
+        >
+          
+          Preface
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/00-acknowledgement.html"
+        >
+          
+          Acknowledgement
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/01-intro2cjc.html"
+        >
+          
+            1.
+          
+          Introduction to Computational Communication
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/02-bigdata.html"
+                >
+                  
+                    1.1
+                  
+                  Understanding Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/03-python-intro.html"
+        >
+          
+            2.
+          
+          Introduction of Python Programming
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/04-crawler-beautifulsoup.html"
+        >
+          
+            3.
+          
+          Data Collection
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-wechat.html"
+                >
+                  
+                    3.1
+                  
+                  Crawling WeChat Public Accounts
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-douban.html"
+                >
+                  
+                    3.2
+                  
+                  Crawling Douban Movies
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-cppcc.html"
+                >
+                  
+                    3.3
+                  
+                  Collecting CPPCC proposals
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-selenium.html"
+                >
+                  
+                    3.4
+                  
+                  Introduction of Selenium
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/ccbook/04-crawler-tripadvisor.html"
+                >
+                  
+                    3.5
+                  
+                  Using selenium for clicking
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-netease-music.html"
+                >
+                  
+                    3.6
+                  
+                  Crawling Music Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-gov-report.html"
+                >
+                  
+                    3.7
+                  
+                  Crawling Government Reports
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/06-data-cleaning-intro.html"
+        >
+          
+            4.
+          
+          Data Cleaning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-preprocessing.html"
+                >
+                  
+                    4.1
+                  
+                  Preprocessing Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-pandas.html"
+                >
+                  
+                    4.2
+                  
+                  Data Processing with Pandas
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-tweets.html"
+                >
+                  
+                    4.3
+                  
+                  Data Cleaning of OWS tweets
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/07-data-cleaning-occupy-central-news.html"
+                >
+                  
+                    4.4
+                  
+                  Cleaning the News of Occupy Central
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-music-list.html"
+                >
+                  
+                    4.5
+                  
+                  Cleaning A Music List
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/08-01-statistics-thinking.html"
+        >
+          
+            5.
+          
+          Statistics Thinking
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-02-linear-algebra.html"
+                >
+                  
+                    5.1
+                  
+                  Linear Algebra
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-03-probability.html"
+                >
+                  
+                    5.2
+                  
+                  Probability
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-04-hypothesis-inference.html"
+                >
+                  
+                    5.3
+                  
+                  Hypothesis Inference
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-05-gradient-descent.html"
+                >
+                  
+                    5.4
+                  
+                  Gradient Descent
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-06-regression.html"
+                >
+                  
+                    5.5
+                  
+                  Linear Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-06-statsmodels.html"
+                >
+                  
+                    5.6
+                  
+                  Introduction to statsmodels
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-07-analyzing-titanic-dataset.html"
+                >
+                  
+                    5.7
+                  
+                  Analyzing Titanic Dataset
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/09-01-machine-learning-with-sklearn.html"
+        >
+          
+            6.
+          
+          Machine Learning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-03-hyperparameters-and-model-validation.html"
+                >
+                  
+                    6.1
+                  
+                  Hyperparameters and Model Validation
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-04-feature-engineering.html"
+                >
+                  
+                    6.2
+                  
+                  Feature Engineering
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-05-naive-bayes.html"
+                >
+                  
+                    6.3
+                  
+                  Naive Bayes
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-06-linear-regression.html"
+                >
+                  
+                    6.4
+                  
+                  Linear Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-07-support-vector-machines.html"
+                >
+                  
+                    6.5
+                  
+                  Support Vector Machines
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-08-random-forests.html"
+                >
+                  
+                    6.6
+                  
+                  Random Forests
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-09-machine-learning-summary.html"
+                >
+                  
+                    6.7
+                  
+                  Summary
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-10-future-employment.html"
+                >
+                  
+                    6.8
+                  
+                  Case study of future employment
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/09-neural-network.html"
+        >
+          
+            7.
+          
+          Neural Network
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-neural-network-advanced.html"
+                >
+                  
+                    7.1
+                  
+                  Advanced Topics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/10-text-minning-gov-report.html"
+        >
+          
+            8.
+          
+          Text Mining
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/10-word2vec.html"
+                >
+                  
+                    8.1
+                  
+                  Word2vec
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/11-sentiment-analysis-with-dict.html"
+                >
+                  
+                    8.2
+                  
+                  Sentiment Analysis with Dictionary
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/11-sentiment-classifier.html"
+                >
+                  
+                    8.3
+                  
+                  Sentiment Analysis with Machine Learning
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/12-topic-models-update.html"
+                >
+                  
+                    8.4
+                  
+                  Topic Models
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/12-topic-models-with-turicreate.html"
+                >
+                  
+                    8.5
+                  
+                  Topic Models with Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/13-recsys-intro.html"
+        >
+          
+            9.
+          
+          Recommendation System
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/14-millionsong.html"
+                >
+                  
+                    9.1
+                  
+                  The Case of Million Song
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/14-movielens.html"
+                >
+                  
+                    9.2
+                  
+                  The Case of Movielens
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/15-network-science-intro.html"
+        >
+          
+            10.
+          
+          Network Science
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/16-network-science-models.html"
+                >
+                  
+                    10.1
+                  
+                  Network Models
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/17-networkx.html"
+                >
+                  
+                    10.2
+                  
+                  networkx
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/18-network-analysis-of-tianya-bbs.html"
+                >
+                  
+                    10.3
+                  
+                  The case of Tianya BBS
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/18-network-epidemics.html"
+                >
+                  
+                    10.4
+                  
+                  Network Epidemics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/19-visualization-with-seaborn.html"
+        >
+          
+            11.
+          
+          Visualization
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-datashader.html"
+                >
+                  
+                    11.1
+                  
+                  datashader
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-with-pyecharts.html"
+                >
+                  
+                    11.2
+                  
+                  pyecharts
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-maps-using-folium.html"
+                >
+                  
+                    11.3
+                  
+                  folium
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/0-common-questions.html"
+        >
+          
+            12.
+          
+          Appendix
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-jupyter-notebook.html"
+                >
+                  
+                    12.1
+                  
+                  Appendix of Using Jupyter Notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-slides.html"
+                >
+                  
+                    12.2
+                  
+                  Appendix of Making Slides with RISE
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-turicreate.html"
+                >
+                  
+                    12.3
+                  
+                  Appendix of Using Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Resources</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/jupyter/jupyter-book"
+        >
+          
+          Jupyter Book
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/computational-class/ccbook"
+        >
+          
+          GitHub repository
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button">
+      <img src="/ccbook/assets/images/download-solid.svg" height="15" width="15" alt="Download" />
+      <!-- PDF -->
+    </button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+<a href="https://mybinder.org/v2/gh/computational-class/ccbook/gh-pages?filepath=content%2F04-crawler-tripadvisor.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/ccbook/assets/images/logo_binder.svg" alt="Interact" />Interact</button></a>
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/ccbook/search.html" class="topbar-right-button" id="search-button"><i class="fa fa-search"></i></a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <main class="jupyter-page">
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;">&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;<a class="anchor-link" href="#&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#25152;&#26377;&#29992;&#25143;&#35780;&#35770;"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="k">import</span> <span class="n">webdriver</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS&#39;</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> 
+
+<span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;#component_10 &gt; div &gt; div:nth-child(3) &gt; div.location-review-filters-hr-ReviewFilters__filters_wrap--3zsVa &gt; div.ui_columns &gt; div.ui_column.is-3-tablet.is-shown-at-tablet &gt; ul &gt; li:nth-child(1) &gt; label &gt; span.location-review-review-list-parts-LanguageFilter__no_wrap--2Dckv&#39;</span>
+
+<span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">page_source</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">comments</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span><span class="s1">&#39;hotels-community-tab-common-Card__card--ihfZB hotels-community-tab-common-Card__section--4r93H&#39;</span><span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;div class=&#34;hotels-community-tab-common-Card__card--ihfZB hotels-community-tab-common-Card__section--4r93H&#34; data-test-target=&#34;HR_CC_CARD&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-MachineTranslationHeader__mt_wrap--2uRXX&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-MachineTranslationHeader__qtext--2lhyR&#34;&gt;这些点评为英文的机器翻译。 显示机器翻译？&lt;/span&gt; &lt;div class=&#34;ui_radio&#34;&gt;&lt;input checked=&#34;&#34; id=&#34;autoTranslateYes&#34; type=&#34;radio&#34; value=&#34;true&#34;/&gt;&lt;label for=&#34;autoTranslateYes&#34;&gt;是&lt;/label&gt;&lt;/div&gt;&lt;div class=&#34;ui_radio&#34;&gt;&lt;input id=&#34;autoTranslateNo&#34; type=&#34;radio&#34; value=&#34;false&#34;/&gt;&lt;label for=&#34;autoTranslateNo&#34;&gt;否&lt;/label&gt;&lt;/div&gt;&lt;span class=&#34;ui_icon information-circle-fill location-review-review-list-parts-MachineTranslationHeader__tip--2EQEh&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__member_event_block--1Kusx&#34;&gt;&lt;a class=&#34;styleguide-avatar-Avatar__avatar--2NStU ui_social_avatar inline&#34; href=&#34;https://www.tripadvisor.com/Profile/kimlette&#34; target=&#34;_self&#34;&gt;&lt;img src=&#34;https://ccm.ddcdn.com/ext/photo-t/01/2e/70/81/avatar002.jpg&#34;/&gt;&lt;/a&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__event_wrap--1YkeG&#34;&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__member_actions--2uzIM&#34;&gt;&lt;div class=&#34;overflow&#34;&gt;&lt;span class=&#34;_3-zQ1eyd _4nIC4qqF&#34;&gt;&lt;span class=&#34;_35pfga6W _2HBN-k68&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span class=&#34;social-section-overflow-SectionOverflowMenu__float--3mJ5J&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__event_type--3njyv&#34;&gt;&lt;span&gt;&lt;a class=&#34;ui_header_link social-member-event-MemberEventOnObjectBlock__member--35-jC&#34; href=&#34;https://www.tripadvisor.com/Profile/kimlette&#34;&gt;kimlette&lt;/a&gt; 写了一条点评 12月12日 &lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;social-member-MemberHeaderStats__event_info--30wFs&#34;&gt;&lt;span class=&#34;social-member-MemberHeaderStats__hometown_stat_item--231iN&#34;&gt;&lt;span class=&#34;default social-member-common-MemberHometown__hometown--3kM9S small&#34;&gt;&lt;span class=&#34;ui_icon map-pin-fill social-member-common-MemberHometown__icon--3WpeC&#34;&gt;&lt;/span&gt;新加坡新加坡&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-SingleReview__mainCol--1hApa&#34; data-reviewid=&#34;671457443&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-RatingLine__container--2bjtw&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-RatingLine__bubbles--GcJvM&#34; data-test-target=&#34;review-rating&#34;&gt;&lt;span class=&#34;ui_bubble_rating bubble_10&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-ReviewTitle__reviewTitle--2GO9Z&#34; data-test-target=&#34;review-title&#34; dir=&#34;ltr&#34;&gt;&lt;a class=&#34;location-review-review-list-parts-ReviewTitle__reviewTitleText--2tFRT&#34; href=&#34;/ShowUserReviews-g294213-d1459920-r671457443-Somerset_Jiefangbei_Chongqing-Chongqing.html&#34;&gt;&lt;span lang=&#34;zh-x-mtfrom-en&#34;&gt;&lt;span&gt;不要留在这里：在线图片欺骗&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-ExpandableReview__containerStyles--1G0AE&#34;&gt;&lt;div class=&#34;_2f_ruteS _1bona3Pu _2uD5bLZZ&#34;&gt;&lt;div class=&#34;cPQsENeY&#34; style=&#34;max-height: initial;&#34;&gt;&lt;q class=&#34;location-review-review-list-parts-ExpandableReview__reviewText--gOmRC&#34; lang=&#34;zh-x-mtfrom-en&#34;&gt;&lt;span&gt;入住3晚，但在12月第一周晚1晚后退房。 Somerset ppty真是太可惜了，房间简朴而舒适。我们已经预订了3间客房，所以我们没有。房间布局中，只有一个可行的是09堆栈。所有级别只有一个09型单位。布局不好的是03面，所以如果不幸的话避免呆在这里。大堂和餐厅/餐厅的日子已经好过了，管理层需要尽快对其进行翻新。早餐太可悲了。我们有了早餐券，但是晚上睡不好后就没有吃。第二天早上尽快退房。不要留在这里！在公共区域也有难闻的气味。  唯一的好处是-接待女士们确实很有帮助和理解。在我们急忙离开的时候，我忘了问他们的名字了！&lt;/span&gt;&lt;/q&gt;&lt;/div&gt;&lt;span class=&#34;_36B4Vw6t&#34; style=&#34;line-height: 20px;&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-ExpandableReview__ctaLine--24Qlb&#34; data-test-target=&#34;expand-review&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-ExpandableReview__cta--2mR2g&#34;&gt;阅读更多&lt;/span&gt;&lt;span class=&#34;ui_icon caret-down location-review-review-list-parts-ExpandableReview__caret--3Ud_i&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;hotels-community-tab-reviews-ReviewsTabContent__footer--2FHIK&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-EventDate__event_date--1epHa&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-EventDate__bold--3b3PE&#34;&gt;入住日期：&lt;/span&gt;2019年12月&lt;/span&gt;&lt;span class=&#34;hotels-community-tab-reviews-ReviewsTabContent__hiddenReviewContent--FCrPr&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-TripType__trip_type--3w17i&#34;&gt;&lt;span class=&#34;trip_type_label&#34;&gt;旅行类型： &lt;/span&gt;结伴旅行&lt;/span&gt;&lt;/span&gt;&lt;div class=&#34;hotels-rate-mt-footer-rate-mt-footer__mtFooter--vvI3I&#34;&gt;&lt;span class=&#34;public-reviews-MTProviderLogo__provider_img--1z6u0&#34;&gt;&lt;img alt=&#34;Google&#34; src=&#34;/img2/langs/zh/branding/partners/powered_by_google_translate.png&#34;/&gt;&lt;/span&gt;&lt;div class=&#34;hotels-rate-mt-footer-rate-mt-footer__inlinify--2w_D9&#34;&gt;&lt;div class=&#34;ui_button small ui_link standard hotels-rate-mt-footer-rate-mt-footer__rateButton--1mDkC&#34;&gt;为译文打分 &lt;span class=&#34;ui_icon caret-down&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-social-bar-SocialBar__bar--3YwG5&#34;&gt;&lt;span class=&#34;social-statistics-bar-SocialStatisticsBar__bar--L8RDK&#34;&gt;&lt;/span&gt;&lt;div class=&#34;social-actions-SocialActionBar__social_action_bar--2_j8Y&#34;&gt;&lt;span class=&#34;social-actions-SocialAction__social_action--1RrZ-&#34;&gt;&lt;span class=&#34;ui_icon thumbs-up-fill social-actions-SocialAction__icon--2WCF0&#34;&gt;&lt;/span&gt;&lt;span class=&#34;ui_link social-actions-SocialAction__text--1yJuk&#34;&gt;推荐&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;social-actions-NestedSocialAction__nested_social_action--2mhpU&#34;&gt;&lt;div&gt;&lt;span&gt;&lt;div class=&#34;public-share-cta-ShareCta__social_action--2yJtr&#34;&gt;&lt;span&gt;&lt;span class=&#34;ui_icon repost-fill public-share-cta-ShareCta__icon--1Bvb0&#34;&gt;&lt;/span&gt;&lt;span class=&#34;ui_link public-share-cta-ShareCta__text--1tWKH socialCTA&#34;&gt;分享 &lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-OwnerResponse__containerStyles--1wv-S&#34;&gt;&lt;span class=&#34;styleguide-avatar-Avatar__avatar--2NStU ui_social_avatar small inline location-review-review-list-parts-OwnerResponse__ownerAvatar--3bb01&#34;&gt;&lt;span class=&#34;ui_icon member-fill&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;div class=&#34;location-review-review-list-parts-OwnerResponse__header--2jRig&#34;&gt;回复来自重庆盛捷解放碑服务公寓的前厅部经理SomersetChongqing&lt;div class=&#34;location-review-review-list-parts-OwnerResponse__responseDate--4i8wE&#34; title=&#34;2019-12-15&#34;&gt;回复时间：3天前&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;location-review-review-list-parts-GoogleTranslateButton__buttonDiv--3bQd_&#34;&gt;&lt;button class=&#34;ui_button secondary small&#34;&gt;Google翻译&lt;/button&gt;&lt;/div&gt;&lt;div class=&#34;_2f_ruteS _1bona3Pu location-review-review-list-parts-OwnerResponse__responseReadMore--eB9_V _2uD5bLZZ&#34;&gt;&lt;div class=&#34;cPQsENeY&#34; style=&#34;max-height: 60px;&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-OwnerResponse__reviewText--108-V&#34;&gt;&lt;span&gt;I have noted your observations and recommendations for improvements to the breakfast and refurbishment. Please be assured that I will coordinate the plans for these enhancements with the respective departments.  We seek your patience and understanding as the recommendations may require time to be implemented, we will continue in our improvement efforts to provide excellent service and products to our residents. &lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span class=&#34;_36B4Vw6t&#34; style=&#34;line-height: 20px;&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-OwnerResponse__cta--2QSGH&#34;&gt;阅读更多&lt;/span&gt;&lt;span class=&#34;ui_icon caret-down location-review-review-list-parts-OwnerResponse__caret--1-bUW&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># user id</span>
+<span class="c1"># https://www.tripadvisor.com/Profile/kimlette</span>
+<span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;ui_header_link social-member-event-MemberEventOnObjectBlock__member--35-jC&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;kimlette&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;default social-member-common-MemberHometown__hometown--3kM9S small&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;新加坡新加坡&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># comment title</span>
+<span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;location-review-review-list-parts-ReviewTitle__reviewTitleText--2tFRT&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;不要留在这里：在线图片欺骗&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># comment body text</span>
+<span class="n">comments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;location-review-review-list-parts-ExpandableReview__reviewText--gOmRC&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;入住3晚，但在12月第一周晚1晚后退房。 Somerset ppty真是太可惜了，房间简朴而舒适。我们已经预订了3间客房，所以我们没有。房间布局中，只有一个可行的是09堆栈。所有级别只有一个09型单位。布局不好的是03面，所以如果不幸的话避免呆在这里。大堂和餐厅/餐厅的日子已经好过了，管理层需要尽快对其进行翻新。早餐太可悲了。我们有了早餐券，但是晚上睡不好后就没有吃。第二天早上尽快退房。不要留在这里！在公共区域也有难闻的气味。  唯一的好处是-接待女士们确实很有帮助和理解。在我们急忙离开的时候，我忘了问他们的名字了！&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+</main>
+
+            </div>
+            <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/04-crawler-selenium.html">
+      〈 <span class="u-margin-right-tiny"></span> Introduction of Selenium
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/04-crawler-netease-music.html">
+      Crawling Music Data <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

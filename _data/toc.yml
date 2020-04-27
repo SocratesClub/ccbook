@@ -87,6 +87,8 @@
       url: 04-crawler-cppcc
     - title: Introduction of Selenium
       url: 04-crawler-selenium
+    - title: Using selenium for clicking
+      url: 04-crawler-tripadvisor
     - title: Crawling Music Data
       url: 04-crawler-netease-music
     - title: Crawling Government Reports
@@ -98,6 +100,8 @@
   sections:
     - title: Preprocessing Big Data
       url: 06-data-cleaning-preprocessing
+    - title: Data Processing with Pandas
+      url: 06-data-cleaning-pandas
     - title: Data Cleaning of OWS tweets
       url: 06-data-cleaning-tweets
     - title: Cleaning the News of Occupy Central
@@ -142,6 +146,8 @@
       url: 09-08-random-forests
     - title: Summary
       url: 09-09-machine-learning-summary
+    - title: Case study of future employment
+      url: 09-10-future-employment
 
 # chapter 7
 - title: Neural Network
