@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Case study of future employment</title>
-  <meta name="description" content="The future of employment How susceptible are jobs to computerisation?We examine how susceptible jobs are to computerisation. To assess this, we begin by impl...">
+  <meta name="description" content="            The future of employment How susceptible are jobs to computerisation?We examine how susceptible jobs are to computerisation. To assess this, we b...">
 
-  <link rel="canonical" href="https://computational-class.github.io/ccbook/09-10-future-employment.html">
-  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/ccbook/09-10-future-employment.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="http://localhost:4000/ccbook/feed.xml">
 
-  <meta property="og:url"         content="https://computational-class.github.io/ccbook/09-10-future-employment.html" />
+  <meta property="og:url"         content="http://localhost:4000/ccbook/09-10-future-employment.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Case study of future employment" />
-<meta property="og:description" content="The future of employment How susceptible are jobs to computerisation?We examine how susceptible jobs are to computerisation. To assess this, we begin by impl..." />
-<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+<meta property="og:description" content="            The future of employment How susceptible are jobs to computerisation?We examine how susceptible jobs are to computerisation. To assess this, we b..." />
+<meta property="og:image"       content="http://localhost:4000/ccbook/img/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
 
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://computational-class.github.io/ccbook/09-10-future-employment.html",
+  "mainEntityOfPage": "http://localhost:4000/ccbook/09-10-future-employment.html",
   "headline": "Case study of future employment",
-  "datePublished": "2019-12-19T15:40:38+08:00",
-  "dateModified": "2019-12-19T15:40:38+08:00",
-  "description": "The future of employment How susceptible are jobs to computerisation?We examine how susceptible jobs are to computerisation. To assess this, we begin by impl...",
+  "datePublished": "2020-04-29T13:36:01+08:00",
+  "dateModified": "2020-04-29T13:36:01+08:00",
+  "description": "            The future of employment How susceptible are jobs to computerisation?We examine how susceptible jobs are to computerisation. To assess this, we b...",
   "author": {
     "@type": "Person",
     "name": "王成军"
@@ -38,14 +38,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://computational-class.github.io/ccbook",
+      "url": "http://localhost:4000/ccbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://computational-class.github.io/ccbook",
+    "url": "http://localhost:4000/ccbook",
     "height": 60,
     "width": 60
   }
@@ -207,7 +207,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -1864,9 +1864,9 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <main class="jupyter-page">
-
-<div class="jb_cell">
+                  <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2353,8 +2353,8 @@ Parameters:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span> 
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">explained_variance_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">explained_variance_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">accuracy_score</span>
 
 <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                   <span class="n">train_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
@@ -2374,7 +2374,7 @@ Parameters:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <span class="n">GaussianNB</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="n">bayes</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">bayes</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">y1</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
 <span class="n">y2_model</span> <span class="o">=</span> <span class="n">bayes</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>  
@@ -2412,7 +2412,7 @@ Parameters:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestRegressor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 <span class="n">forest</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)</span>
 <span class="n">forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">y1</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
 <span class="n">y2_model</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
@@ -2451,7 +2451,7 @@ ROC_AUC score = 0.8461538461538461
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVC</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> 
 <span class="c1"># &quot;Support vector classifier&quot;</span>
 <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                   <span class="n">train_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
@@ -2527,7 +2527,7 @@ ROC_AUC score = 0.8846153846153846
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 <span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1E10</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">cross_validation</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
@@ -2568,7 +2568,7 @@ ROC_AUC score = 0.8846153846153846
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 <span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1E10</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">cross_validation</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
@@ -2803,25 +2803,24 @@ ROC_AUC score = 0.9230769230769231
  
 
 
-</main>
-
+    </main>
+    
             </div>
             <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/09-09-machine-learning-summary.html">
-      〈 <span class="u-margin-right-tiny"></span> Summary
+      〈 <span class="u-margin-right-tiny"></span> 
     </a>
   
 
   
     
     <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/09-neural-network.html">
-      Neural Network <span class="u-margin-right-tiny"></span> 〉
+       <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
-
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>

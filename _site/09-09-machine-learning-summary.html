@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Summary</title>
-  <meta name="description" content="&#35745;&#31639;&#20256;&#25773;&#19982;&#26426;&#22120;&#23398;&#20064; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.com1&#12289; &#30...">
+  <meta name="description" content="            &#35745;&#31639;&#20256;&#25773;&#19982;&#26426;&#22120;&#23398;&#20064; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.com1&...">
 
-  <link rel="canonical" href="https://computational-class.github.io/ccbook/09-09-machine-learning-summary.html">
-  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/ccbook/09-09-machine-learning-summary.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="http://localhost:4000/ccbook/feed.xml">
 
-  <meta property="og:url"         content="https://computational-class.github.io/ccbook/09-09-machine-learning-summary.html" />
+  <meta property="og:url"         content="http://localhost:4000/ccbook/09-09-machine-learning-summary.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Summary" />
-<meta property="og:description" content="&#35745;&#31639;&#20256;&#25773;&#19982;&#26426;&#22120;&#23398;&#20064; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.com1&#12289; &#30..." />
-<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+<meta property="og:description" content="            &#35745;&#31639;&#20256;&#25773;&#19982;&#26426;&#22120;&#23398;&#20064; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.com1&..." />
+<meta property="og:image"       content="http://localhost:4000/ccbook/img/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
 
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://computational-class.github.io/ccbook/09-09-machine-learning-summary.html",
+  "mainEntityOfPage": "http://localhost:4000/ccbook/09-09-machine-learning-summary.html",
   "headline": "Summary",
-  "datePublished": "2019-12-19T15:40:38+08:00",
-  "dateModified": "2019-12-19T15:40:38+08:00",
-  "description": "&#35745;&#31639;&#20256;&#25773;&#19982;&#26426;&#22120;&#23398;&#20064; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.com1&#12289; &#30...",
+  "datePublished": "2020-04-29T13:36:01+08:00",
+  "dateModified": "2020-04-29T13:36:01+08:00",
+  "description": "            &#35745;&#31639;&#20256;&#25773;&#19982;&#26426;&#22120;&#23398;&#20064; 王成军wangchengjun@nju.edu.cn计算传播网 http://computational-communication.com1&...",
   "author": {
     "@type": "Person",
     "name": "王成军"
@@ -38,14 +38,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://computational-class.github.io/ccbook",
+      "url": "http://localhost:4000/ccbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://computational-class.github.io/ccbook",
+    "url": "http://localhost:4000/ccbook",
     "height": 60,
     "width": 60
   }
@@ -207,7 +207,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -1864,9 +1864,9 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <main class="jupyter-page">
-
-<div class="jb_cell">
+                  <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2025,11 +2025,11 @@ reward can be defined as win or lose at the end of the game:</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">sklearn</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">classification_report</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">scale</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">scale</span>
 </pre></div>
 
     </div>
@@ -2348,7 +2348,7 @@ strong multicollinearity or other numerical problems.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="n">Xs_train</span><span class="p">,</span> <span class="n">Xs_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
                 <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> 
                 <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> 
@@ -2508,7 +2508,7 @@ strong multicollinearity or other numerical problems.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 
 <span class="n">regr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regr</span><span class="p">,</span> <span class="n">boston</span><span class="o">.</span><span class="n">data</span> <span class="p">,</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
@@ -3028,7 +3028,7 @@ strong multicollinearity or other numerical problems.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="n">Xs_train</span><span class="p">,</span> <span class="n">Xs_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">click_log</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">reply_log</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Create linear regression object</span>
@@ -3108,7 +3108,7 @@ strong multicollinearity or other numerical problems.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 
 <span class="n">regr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regr</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">click_log</span><span class="p">,</span> \
@@ -3313,7 +3313,7 @@ $$logit(x) = ln(\frac{p}{1-p}) = b_0+b_1X_1+b_2X_2+b_3X_3....+b_kX_k$$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;repost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">repost</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_X</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">repost</span><span class="p">)</span>
@@ -3513,7 +3513,7 @@ avg / total       0.66      0.70      0.64        20
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="n">Xs_train</span><span class="p">,</span> <span class="n">Xs_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data_X</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">repost</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 
@@ -3799,7 +3799,7 @@ $$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">naive_bayes</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">naive_bayes</span>
 <span class="s1">&#39;  &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">naive_bayes</span><span class="p">))</span> 
 </pre></div>
 
@@ -3850,7 +3850,7 @@ $$
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import Library of Gaussian Naive Bayes model</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1">#assigning predictor and target variables</span>
@@ -4004,7 +4004,7 @@ $$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">[[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">click</span><span class="p">],</span>\
@@ -4116,7 +4116,7 @@ $$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">tree</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -4337,7 +4337,7 @@ $$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">svm</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
 <span class="c1"># Create SVM classification object </span>
 <span class="n">model</span><span class="o">=</span><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span> 
 </pre></div>
@@ -4539,7 +4539,7 @@ $$
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">tree</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
 <span class="kn">import</span> <span class="nn">warnings</span>  
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  
 </pre></div>
@@ -5022,7 +5022,7 @@ $$
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import the `RandomForestClassifier`</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
 <span class="c1">#We want the Pclass, Age, Sex, Fare,SibSp, Parch, and Embarked variables</span>
 <span class="n">features_forest</span> <span class="o">=</span> <span class="n">train</span><span class="p">[[</span><span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="s2">&quot;Fare&quot;</span><span class="p">,</span> <span class="s2">&quot;SibSp&quot;</span><span class="p">,</span> <span class="s2">&quot;Parch&quot;</span><span class="p">,</span> <span class="s2">&quot;Embarked&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
@@ -5138,25 +5138,24 @@ $$
  
 
 
-</main>
-
+    </main>
+    
             </div>
             <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/09-08-random-forests.html">
-      〈 <span class="u-margin-right-tiny"></span> Random Forests
+      〈 <span class="u-margin-right-tiny"></span> 
     </a>
   
 
   
     
     <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/09-10-future-employment.html">
-      Case study of future employment <span class="u-margin-right-tiny"></span> 〉
+       <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
-
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>

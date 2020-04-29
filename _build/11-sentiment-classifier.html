@@ -1,22 +1,24 @@
 ---
 interact_link: content/11-sentiment-classifier.ipynb
 kernel_name: conda-env-anaconda-py
+kernel_path: content
 has_widgets: false
 title: |-
   Sentiment Analysis with Machine Learning
+pagenum: 41
 prev_page:
   url: /11-sentiment-analysis-with-dict.html
-  title: |-
-    Sentiment Analysis with Dictionary
 next_page:
   url: /12-topic-models-update.html
-  title: |-
-    Topic Models
+suffix: .ipynb
+search: classifier sentiment using com reviews dataset create analysis features words following bag classification github review train data movie frequency need code textblob imdb sframe function command test emotion python easy learning classifiers kaggles file construct used calculate new column labeled computational img classify different text textmind nltk www org libraries nlp movies machine turicreate notebook model recipe before datasets kaggle wordvec n evaluate constructed part accuracy grams cn opinion jpg e naive bayes trained lexicon positive negative get unique feature victorneo twitter sentimental blob master ch r en site douban widget notes note prediction explain based demonstrate meets bags popcorn
+
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-<main class="jupyter-page">
 
-<div class="jb_cell">
+    <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -669,8 +671,8 @@ WekaClassifier
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">LinearSVC</span>
-<span class="kn">from</span> <span class="nn">nltk.classify.scikitlearn</span> <span class="k">import</span> <span class="n">SklearnClassifier</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="kn">from</span> <span class="nn">nltk.classify.scikitlearn</span> <span class="kn">import</span> <span class="n">SklearnClassifier</span>
 <span class="n">classif</span> <span class="o">=</span> <span class="n">SklearnClassifier</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">())</span>
 <span class="n">svm_classifier</span> <span class="o">=</span> <span class="n">classif</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training_set</span><span class="p">)</span>
 </pre></div>
@@ -777,7 +779,7 @@ WekaClassifier
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">textblob</span> <span class="k">import</span> <span class="n">TextBlob</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">The titular threat of The Blob has always struck me as the ultimate movie</span>
@@ -959,8 +961,8 @@ Then, I will demonstrate how these classifiers can be utilized to solve Kaggle's
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">turicreate</span> <span class="k">as</span> <span class="nn">tc</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 </pre></div>
 
     </div>
@@ -3165,4 +3167,5 @@ PROGRESS: Selecting SVMClassifier based on validation set performance.
  
 
 
-</main>
+    </main>
+    

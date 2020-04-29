@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Advanced Topics</title>
-  <meta name="description" content="Intro to Neural Networks Handwritten Digits RecognizationThe Neuron: A Biological Information Processordentrites -   the receiverssoma -   neuron cell body (...">
+  <meta name="description" content="            Intro to Neural Networks Handwritten Digits RecognizationThe Neuron: A Biological Information Processordentrites -   the receiverssoma -   neuron...">
 
-  <link rel="canonical" href="https://computational-class.github.io/ccbook/09-neural-network-advanced.html">
-  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/ccbook/09-neural-network-advanced.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="http://localhost:4000/ccbook/feed.xml">
 
-  <meta property="og:url"         content="https://computational-class.github.io/ccbook/09-neural-network-advanced.html" />
+  <meta property="og:url"         content="http://localhost:4000/ccbook/09-neural-network-advanced.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Advanced Topics" />
-<meta property="og:description" content="Intro to Neural Networks Handwritten Digits RecognizationThe Neuron: A Biological Information Processordentrites -   the receiverssoma -   neuron cell body (..." />
-<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+<meta property="og:description" content="            Intro to Neural Networks Handwritten Digits RecognizationThe Neuron: A Biological Information Processordentrites -   the receiverssoma -   neuron..." />
+<meta property="og:image"       content="http://localhost:4000/ccbook/img/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
 
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://computational-class.github.io/ccbook/09-neural-network-advanced.html",
+  "mainEntityOfPage": "http://localhost:4000/ccbook/09-neural-network-advanced.html",
   "headline": "Advanced Topics",
-  "datePublished": "2019-12-19T15:40:38+08:00",
-  "dateModified": "2019-12-19T15:40:38+08:00",
-  "description": "Intro to Neural Networks Handwritten Digits RecognizationThe Neuron: A Biological Information Processordentrites -   the receiverssoma -   neuron cell body (...",
+  "datePublished": "2020-04-29T13:36:01+08:00",
+  "dateModified": "2020-04-29T13:36:01+08:00",
+  "description": "            Intro to Neural Networks Handwritten Digits RecognizationThe Neuron: A Biological Information Processordentrites -   the receiverssoma -   neuron...",
   "author": {
     "@type": "Person",
     "name": "王成军"
@@ -38,14 +38,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://computational-class.github.io/ccbook",
+      "url": "http://localhost:4000/ccbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://computational-class.github.io/ccbook",
+    "url": "http://localhost:4000/ccbook",
     "height": 60,
     "width": 60
   }
@@ -207,7 +207,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -1864,9 +1864,9 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <main class="jupyter-page">
-
-<div class="jb_cell">
+                  <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2332,7 +2332,7 @@ $e_i = \frac{1}{2}  ( t_i - o_i ) ^ 2$</p>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 <span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
-<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="k">import</span> <span class="n">Variable</span>
+<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
@@ -2340,15 +2340,15 @@ $e_i = \frac{1}{2}  ( t_i - o_i ) ^ 2$</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="k">import</span> <span class="n">LineCollection</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">Isomap</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">TSNE</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">MDS</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">Isomap</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">MDS</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 </pre></div>
 
     </div>
@@ -3790,25 +3790,24 @@ $$softmax = \frac{e^x}{\sum e^x}$$
  
 
 
-</main>
-
+    </main>
+    
             </div>
             <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/09-neural-network.html">
-      〈 <span class="u-margin-right-tiny"></span> Neural Network
+      〈 <span class="u-margin-right-tiny"></span> 
     </a>
   
 
   
     
     <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/10-text-minning-gov-report.html">
-      Text Mining <span class="u-margin-right-tiny"></span> 〉
+       <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
-
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>

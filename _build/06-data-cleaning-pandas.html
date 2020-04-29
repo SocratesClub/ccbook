@@ -1,26 +1,28 @@
 ---
 interact_link: content/06-data-cleaning-pandas.ipynb
 kernel_name: python3
+kernel_path: content
 has_widgets: false
 title: |-
   Data Processing with Pandas
+pagenum: 15
 prev_page:
   url: /06-data-cleaning-preprocessing.html
-  title: |-
-    Preprocessing Big Data
 next_page:
   url: /06-data-cleaning-tweets.html
-  title: |-
-    Data Cleaning of OWS tweets
+suffix: .ipynb
+search: pandas data com n www datacleaning columnname axis cnblogs boyceyang p html jpg imdb csv head column nan kgs lbs python img credit pic zhimg v ebeeedeber nannot kaggle carolzhangdc movie dataset raw githubusercontent sundeepblue movieratingprediction master moviemetadata describe columnsname where condition t r ascii weight index readcsv dropna github computational class
+
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-<main class="jupyter-page">
 
-<div class="jb_cell">
+    <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927;">&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927;<a class="anchor-link" href="#&#20351;&#29992;Pandas&#25968;&#25454;&#28165;&#27927;"> </a></h1>
+<h1 id="&#20351;&#29992;Pandas&#36827;&#34892;&#25968;&#25454;&#28165;&#27927;">&#20351;&#29992;Pandas&#36827;&#34892;&#25968;&#25454;&#28165;&#27927;<a class="anchor-link" href="#&#20351;&#29992;Pandas&#36827;&#34892;&#25968;&#25454;&#28165;&#27927;"> </a></h1>
 </div>
 </div>
 </div>
@@ -119,8 +121,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <h3 id="&#26816;&#26597;&#25968;&#25454;">&#26816;&#26597;&#25968;&#25454;<a class="anchor-link" href="#&#26816;&#26597;&#25968;&#25454;"> </a></h3><p>检查一下我们刚刚读入数据的基本结构，Pandas 提供了 head() 方法打印输出前五行数据。目的是让我们对读入的数据有一个大致的了解。</p>
 
 <pre><code>data.head()</code></pre>
-<p>我们可以通过上面介绍的 Pandas 的方法查看数据，也可以通过传统的 Excel 程序查看数据，这个时候，我们可以开始记录数据上的问题，然后，我们再想办法解决问题。</p>
-<p>Pandas 提供了一些选择的方法，这些选择的方法可以把数据切片，也可以把数据切块。下面我们简单介绍一下：</p>
+<p>Pandas 提供了一些选择的方法（数据切片、数据切块）：</p>
 <ul>
 <li>查看一列的一些基本统计信息：data.columnname.describe()</li>
 <li>选择一列：data['columnname']</li>
@@ -338,20 +339,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#19968;&#12289;&#32570;&#22833;&#25968;&#25454;">&#19968;&#12289;&#32570;&#22833;&#25968;&#25454;<a class="anchor-link" href="#&#19968;&#12289;&#32570;&#22833;&#25968;&#25454;"> </a></h3><p>为什么要考虑数值缺失的情况？</p>
 <ul>
-<li><p>真实世界的数据很少是干净和一致的</p>
-</li>
-<li><p>许多有趣的数据集都会丢失一些数据</p>
-</li>
-<li><p>不同的数据源可能以不同的方式表示缺失的数据</p>
-</li>
+<li>真实世界的数据很少是干净和一致的</li>
+<li>许多有趣的数据集都会丢失一些数据</li>
+<li>不同的数据源可能以不同的方式表示缺失的数据</li>
 </ul>
 <p>缺失数据是最常见的问题之一。产生这个问题可能的原因</p>
-<p>① 从来没有填正确过</p>
-<p>② 数据不可用</p>
-<p>③ 计算错误</p>
-<h5 id="&#26080;&#35770;&#20160;&#20040;&#21407;&#22240;&#65292;&#21482;&#35201;&#26377;&#31354;&#30333;&#20540;&#24471;&#23384;&#22312;&#65292;&#23601;&#20250;&#24341;&#36215;&#21518;&#32493;&#30340;&#25968;&#25454;&#20998;&#26512;&#30340;&#38169;&#35823;&#12290;&#19979;&#38754;&#20171;&#32461;&#20960;&#20010;&#22788;&#29702;&#32570;&#22833;&#25968;&#25454;&#30340;&#26041;&#27861;&#65306;">&#26080;&#35770;&#20160;&#20040;&#21407;&#22240;&#65292;&#21482;&#35201;&#26377;&#31354;&#30333;&#20540;&#24471;&#23384;&#22312;&#65292;&#23601;&#20250;&#24341;&#36215;&#21518;&#32493;&#30340;&#25968;&#25454;&#20998;&#26512;&#30340;&#38169;&#35823;&#12290;&#19979;&#38754;&#20171;&#32461;&#20960;&#20010;&#22788;&#29702;&#32570;&#22833;&#25968;&#25454;&#30340;&#26041;&#27861;&#65306;<a class="anchor-link" href="#&#26080;&#35770;&#20160;&#20040;&#21407;&#22240;&#65292;&#21482;&#35201;&#26377;&#31354;&#30333;&#20540;&#24471;&#23384;&#22312;&#65292;&#23601;&#20250;&#24341;&#36215;&#21518;&#32493;&#30340;&#25968;&#25454;&#20998;&#26512;&#30340;&#38169;&#35823;&#12290;&#19979;&#38754;&#20171;&#32461;&#20960;&#20010;&#22788;&#29702;&#32570;&#22833;&#25968;&#25454;&#30340;&#26041;&#27861;&#65306;"> </a></h5><p>一、补充缺失值</p>
-<p>二、删除缺失值</p>
-<p>三、不处理</p>
+<p>① 从来没有填正确过② 数据不可用③ 计算错误</p>
+<p>处理缺失数据的方法：
+一、补充缺失值; 二、删除缺失值; 三、不处理</p>
 
 </div>
 </div>
@@ -362,7 +357,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="1.&#20351;&#29992;&#40664;&#35748;&#20540;--&#26469;&#22635;&#34917;&#32570;&#22833;">1.&#20351;&#29992;&#40664;&#35748;&#20540;  &#26469;&#22635;&#34917;&#32570;&#22833;<a class="anchor-link" href="#1.&#20351;&#29992;&#40664;&#35748;&#20540;--&#26469;&#22635;&#34917;&#32570;&#22833;"> </a></h4>
+<h4 id="1.-&#20351;&#29992;&#40664;&#35748;&#20540;&#22635;&#34917;&#32570;&#22833;">1. &#20351;&#29992;&#40664;&#35748;&#20540;&#22635;&#34917;&#32570;&#22833;<a class="anchor-link" href="#1.-&#20351;&#29992;&#40664;&#35748;&#20540;&#22635;&#34917;&#32570;&#22833;"> </a></h4>
 </div>
 </div>
 </div>
@@ -4458,4 +4453,5 @@ Name: director_name, Length: 5043, dtype: object</pre>
  
 
 
-</main>
+    </main>
+    

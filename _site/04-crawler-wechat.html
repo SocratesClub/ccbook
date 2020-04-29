@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Crawling WeChat Public Accounts</title>
-  <meta name="description" content="&#25968;&#25454;&#25235;&#21462;&#65306; &#25235;&#21462;&#24494;&#20449;&#20844;&#20247;&#21495;&#25991;&#31456;&#20869;&#23481; 王成军wangchengjun@nju.edu.cn计...">
+  <meta name="description" content="            &#25968;&#25454;&#25235;&#21462;&#65306; &#25235;&#21462;&#24494;&#20449;&#20844;&#20247;&#21495;&#25991;&#31456;&#20869;&#23481; 王成军wangchengjun...">
 
-  <link rel="canonical" href="https://computational-class.github.io/ccbook/04-crawler-wechat.html">
-  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/ccbook/04-crawler-wechat.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="http://localhost:4000/ccbook/feed.xml">
 
-  <meta property="og:url"         content="https://computational-class.github.io/ccbook/04-crawler-wechat.html" />
+  <meta property="og:url"         content="http://localhost:4000/ccbook/04-crawler-wechat.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Crawling WeChat Public Accounts" />
-<meta property="og:description" content="&#25968;&#25454;&#25235;&#21462;&#65306; &#25235;&#21462;&#24494;&#20449;&#20844;&#20247;&#21495;&#25991;&#31456;&#20869;&#23481; 王成军wangchengjun@nju.edu.cn计..." />
-<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+<meta property="og:description" content="            &#25968;&#25454;&#25235;&#21462;&#65306; &#25235;&#21462;&#24494;&#20449;&#20844;&#20247;&#21495;&#25991;&#31456;&#20869;&#23481; 王成军wangchengjun..." />
+<meta property="og:image"       content="http://localhost:4000/ccbook/img/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
 
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://computational-class.github.io/ccbook/04-crawler-wechat.html",
+  "mainEntityOfPage": "http://localhost:4000/ccbook/04-crawler-wechat.html",
   "headline": "Crawling WeChat Public Accounts",
-  "datePublished": "2019-12-19T15:40:38+08:00",
-  "dateModified": "2019-12-19T15:40:38+08:00",
-  "description": "&#25968;&#25454;&#25235;&#21462;&#65306; &#25235;&#21462;&#24494;&#20449;&#20844;&#20247;&#21495;&#25991;&#31456;&#20869;&#23481; 王成军wangchengjun@nju.edu.cn计...",
+  "datePublished": "2020-04-29T13:36:01+08:00",
+  "dateModified": "2020-04-29T13:36:01+08:00",
+  "description": "            &#25968;&#25454;&#25235;&#21462;&#65306; &#25235;&#21462;&#24494;&#20449;&#20844;&#20247;&#21495;&#25991;&#31456;&#20869;&#23481; 王成军wangchengjun...",
   "author": {
     "@type": "Person",
     "name": "王成军"
@@ -38,14 +38,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://computational-class.github.io/ccbook",
+      "url": "http://localhost:4000/ccbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://computational-class.github.io/ccbook",
+    "url": "http://localhost:4000/ccbook",
     "height": 60,
     "width": 60
   }
@@ -207,7 +207,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -1864,9 +1864,9 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <main class="jupyter-page">
-
-<div class="jb_cell">
+                  <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1891,7 +1891,7 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display_html</span><span class="p">,</span> <span class="n">HTML</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_html</span><span class="p">,</span> <span class="n">HTML</span>
 <span class="n">HTML</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://mp.weixin.qq.com/s?__biz=MzA3MjQ5MTE3OA==&amp;mid=206241627&amp;idx=1&amp;sn=471e59c6cf7c8dae452245dbea22c8f3&amp;3rd=MzA3MDU4NTYzMw==&amp;scene=6#rd&#39;</span><span class="p">)</span>
 <span class="c1"># the webpage we would like to crawl</span>
 </pre></div>
@@ -1930,7 +1930,7 @@ initFunction(initPrint)
         </script>
         <title>
 </title>
-        
+
 <style>.radius_avatar{display:inline-block;background-color:#fff;padding:3px;border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;overflow:hidden;vertical-align:middle}.radius_avatar img{display:block;width:100%;height:100%;border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;background-color:#eee}.rich_media_inner{word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}.rich_media_area_primary{padding:20px 16px 12px;padding:calc(20px + constant(safe-area-inset-top)) calc(16px + constant(safe-area-inset-right)) 12px calc(16px + constant(safe-area-inset-left));padding:calc(20px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) 12px calc(16px + env(safe-area-inset-left));background-color:#fafafa}.rich_media_area_primary.voice{padding-top:66px}.rich_media_area_primary .weui-loadmore_line .weui-loadmore__tips{color:rgba(0,0,0,0.3);background-color:#fafafa}.rich_media_area_extra{padding:0 16px 16px;padding:0 calc(16px + constant(safe-area-inset-right)) calc(16px + constant(safe-area-inset-bottom)) calc(16px + constant(safe-area-inset-left));padding:0 calc(16px + env(safe-area-inset-right)) calc(16px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left))}.rich_media_extra{padding-top:30px}.mpda_bottom_container .rich_media_extra{padding-top:24px}.mpda_bottom_container .rich_media_extra .mpad_more_list{right:-10px}html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.6}body{-webkit-touch-callout:none;font-family:-apple-system-font,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif;color:#333;background-color:#f2f2f2;letter-spacing:.034em}h1,h2,h3,h4,h5,h6{font-weight:400;font-size:16px}*{margin:0;padding:0}a{color:#576b95;text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rich_media_title{font-size:22px;line-height:1.4;margin-bottom:14px}@supports(-webkit-overflow-scrolling:touch){.rich_media_title{font-weight:700}}.rich_media_meta_list{margin-bottom:22px;line-height:20px;font-size:0;word-wrap:break-word;word-break:break-all}.rich_media_meta_list em{font-style:normal}.rich_media_meta{display:inline-block;vertical-align:middle;margin:0 10px 10px 0;font-size:15px;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rich_media_meta.icon_appmsg_tag{margin-right:4px}.rich_media_meta.meta_tag_text{margin-right:0}.rich_media_meta_primary{display:block;margin-bottom:10px;font-size:15px}.meta_original_tag{padding:0 .5em;font-size:12px;line-height:1.4;background-color:#f2f2f2;color:#888}.meta_enterprise_tag img{width:30px;height:30px!important;display:block;position:relative;margin-top:-3px;border:0}.rich_media_meta_link{color:#576b95}.rich_media_meta_text{color:rgba(0,0,0,0.3)}.rich_media_meta_text.rich_media_meta_split{padding-left:10px}.rich_media_meta_text.rich_media_meta_split:before{position:absolute;top:50%;left:0;margin-top:-6px;content:' ';display:block;border-left:1px solid #888;width:200%;height:130%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-transform:scale(0.5);transform:scale(0.5);-webkit-transform-origin:0 0;transform-origin:0 0}.rich_media_meta_text.article_modify_tag{position:relative}.rich_media_meta_nickname{position:relative}.rich_media_thumb_wrp{margin-bottom:6px}.rich_media_thumb_wrp .original_img_wrp{display:block}.rich_media_thumb{display:block;width:100%}.rich_media_content{overflow:hidden;color:#333;font-size:17px;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;text-align:justify;position:relative;z-index:0}.rich_media_content *{max-width:100%!important;box-sizing:border-box!important;-webkit-box-sizing:border-box!important;word-wrap:break-word!important}.rich_media_content p{clear:both;min-height:1em}.rich_media_content em{font-style:italic}.rich_media_content fieldset{min-width:0}.rich_media_content .list-paddingleft-1,.rich_media_content .list-paddingleft-2,.rich_media_content .list-paddingleft-3{padding-left:2.2em}.rich_media_content .list-paddingleft-1 .list-paddingleft-2,.rich_media_content .list-paddingleft-2 .list-paddingleft-2,.rich_media_content .list-paddingleft-3 .list-paddingleft-2{padding-left:30px}.rich_media_content .list-paddingleft-1{padding-left:1.2em}.rich_media_content .list-paddingleft-3{padding-left:3.2em}.rich_media_content .code-snippet,.rich_media_content .code-snippet__fix{max-width:1000%!important}.rich_media_content .code-snippet *,.rich_media_content .code-snippet__fix *{max-width:1000%!important}img{height:auto!important}@media screen and (min-width:1024px){.rich_media_area_primary_inner,.rich_media_area_extra_inner{max-width:677px;margin-left:auto;margin-right:auto}.rich_media_area_primary{padding-top:32px}}blockquote{padding-left:10px;border-left:3px solid #dbdbdb;color:rgba(0,0,0,0.5);font-size:15px;padding-top:4px;margin:1em 0}.blockquote_info{color:rgba(0,0,0,0.3);margin-top:1.1764705882352942em;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}.blockquote_article{display:block}.appmsg_share_notice{font-size:16px;color:#888;position:relative;padding:1.25em 0;margin-bottom:1.75em}.appmsg_share_notice:before{content:" ";position:absolute;left:0;top:0;right:0;height:1px;border-top:1px solid #dfdfdf;-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleY(0.5);transform:scaleY(0.5)}.appmsg_share_notice:after{content:" ";position:absolute;left:0;bottom:0;right:0;height:1px;border-bottom:1px solid #dfdfdf;-webkit-transform-origin:0 100%;transform-origin:0 100%;-webkit-transform:scaleY(0.5);transform:scaleY(0.5)}.appmsg_share_notice_hd{font-weight:700;padding-bottom:.2em}.dn{display:none}.qa__card{font-size:15px;margin:20px 0;background-color:rgba(0,0,0,0.03)}.qa__card .qa__item{padding:24px 0 16px 16px}.qa__card .qa__item-question{padding-right:16px}.qa__card .qa__item-question-info{display:flex;align-items:center;color:rgba(0,0,0,0.7);margin-bottom:9px;font-size:15px}.qa__card .qa__item-info-avatar{width:24px;height:24px;border-radius:2px;overflow:hidden;margin-right:8px}.qa__card .qa__item-info-avatar img{width:100%}.qa__card .qa__item-info-account{margin-right:.5em}.qa__card .qa__item-question{margin-bottom:24px}.qa__card .qa__answers-question-title{font-size:15px;margin-bottom:8px}.qa__card .qa__detail-question-content{color:rgba(0,0,0,0.5);font-size:15px}.qa__card .qa__item-reply-content{padding-right:16px}.qa__card .qa__item-reply-head{color:rgba(0,0,0,0.6);position:relative;padding-left:10px;margin-bottom:9px}.qa__card .qa__item-reply-head::before{content:"";display:block;width:2px;height:15px;background-color:#1aad19;position:absolute;left:0;top:50%;transform:translateY(-50%)}.qa__card .qa__detail-question-imgs{margin-top:4px;color:#576b95}.qa__card .qa__show_detail{position:relative;padding:16px 0;display:block;margin-top:16px;margin-bottom:-16px;color:#576b95}.qa__card .qa__show_detail::before{content:'';position:absolute;display:block;width:100%;border-top:1px solid rgba(0,0,0,0.1);transform:scaleY(0.5);left:0;top:0;transform-origin:left top}.qa__card .qa__show_detail::after{content:'';display:block;width:8px;height:8px;border-top:2px solid rgba(0,0,0,0.3);border-right:2px solid rgba(0,0,0,0.3);transform:rotate(45deg) translateY(-50%);position:absolute;right:16px;top:50%;border-radius:2px;transform-origin:center}.qa__card-empty{line-height:115px;color:rgba(0,0,0,0.3);text-align:center}.code-snippet{margin:10px 0;display:block;overflow-x:auto;font-size:14px;padding:1em 1em 1em 3em;color:#333;position:relative;background-color:#fafafa;border:1px solid #f0f0f0;border-radius:2px;counter-reset:line;white-space:normal;-webkit-overflow-scrolling:touch}.code-snippet code{text-align:left;font-size:14px;display:block;white-space:pre-wrap;position:relative;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace}.code-snippet code::before{position:absolute;min-width:1.5em;text-align:right;left:-2.5em;counter-increment:line;content:counter(line);display:inline;margin-right:12px;color:rgba(0,0,0,0.15)}.code-snippet_nowrap code{white-space:pre;display:flex}.code-snippet__fix{font-size:14px;margin:10px 0;display:block;color:#333;position:relative;background-color:rgba(0,0,0,0.03);border:1px solid #f0f0f0;border-radius:2px;display:flex;line-height:26px}.code-snippet__fix pre{overflow-x:auto;padding:1em;padding-left:0;white-space:normal;flex:1;-webkit-overflow-scrolling:touch}.code-snippet__fix code{text-align:left;font-size:14px;display:block;white-space:pre;display:flex;position:relative;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace}.code-snippet__fix .code-snippet__line-index{counter-reset:line;flex-shrink:0;height:100%;padding:1em;list-style-type:none}.code-snippet__fix .code-snippet__line-index li{list-style-type:none;text-align:right}.code-snippet__fix .code-snippet__line-index li::before{min-width:1.5em;text-align:right;left:-2.5em;counter-increment:line;content:counter(line);display:inline;color:rgba(0,0,0,0.15)}.code-snippet__comment,.code-snippet__quote{color:#afafaf;font-style:italic}.code-snippet__keyword,.code-snippet__selector-tag,.code-snippet__subst{color:#ca7d37}.code-snippet__number,.code-snippet__literal,.code-snippet__variable,.code-snippet__template-variable,.code-snippet__tag .code-snippet__attr{color:#0e9ce5}.code-snippet__string,.code-snippet__doctag{color:#d14}.code-snippet__title,.code-snippet__section,.code-snippet__selector-id{color:#d14}.code-snippet__subst{font-weight:normal}.code-snippet__type,.code-snippet__class .code-snippet__title{color:#0e9ce5}.code-snippet__tag,.code-snippet__name,.code-snippet__attribute{color:#0e9ce5;font-weight:normal}.code-snippet__regexp,.code-snippet__link{color:#ca7d37}.code-snippet__symbol,.code-snippet__bullet{color:#d14}.code-snippet__built_in,.code-snippet__builtin-name{color:#ca7d37}.code-snippet__meta{color:#afafaf}.code-snippet__deletion{background:#fdd}.code-snippet__addition{background:#dfd}.code-snippet__emphasis{font-style:italic}.code-snippet__strong{font-weight:bold}.cell{padding:.8em 0;display:block;position:relative}.cell_hd,.cell_bd,.cell_ft{display:table-cell;vertical-align:middle;word-wrap:break-word;word-break:break-all;white-space:nowrap}.cell_primary{width:2000px;white-space:normal}.flex_cell{padding:10px 0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}.flex_cell_primary{width:100%;-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;box-flex:1;flex:1}.original_tool_area{display:block;padding:.75em 1em 0;-webkit-tap-highlight-color:rgba(0,0,0,0);color:#333;border:1px solid #eaeaea;margin:20px 0}.original_tool_area .tips_global{position:relative;padding-bottom:.5em;font-size:15px}.original_tool_area .tips_global:after{content:" ";position:absolute;left:0;bottom:0;right:0;height:1px;border-bottom:1px solid #dbdbdb;-webkit-transform-origin:0 100%;transform-origin:0 100%;-webkit-transform:scaleY(0.5);transform:scaleY(0.5)}.original_tool_area .radius_avatar{width:27px;height:27px;padding:0;margin-right:.5em}.original_tool_area .radius_avatar img{height:100%!important}.original_tool_area .flex_cell_bd{width:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal}.original_tool_area .flex_cell_ft{font-size:14px;color:#888;padding-left:1em;white-space:nowrap}.original_tool_area .icon_access:after{content:" ";display:inline-block;height:8px;width:8px;border-width:1px 1px 0 0;border-color:#cbcad0;border-style:solid;transform:matrix(0.71,0.71,-0.71,0.71,0,0);-ms-transform:matrix(0.71,0.71,-0.71,0.71,0,0);-webkit-transform:matrix(0.71,0.71,-0.71,0.71,0,0);position:relative;top:-2px;top:-1px}.rich_media_global_msg{position:fixed;top:0;left:0;right:0;padding:.85em 35px .85em 15px;z-index:2;background-color:#c6e0f8;color:#888;font-size:12px}.rich_media_global_msg .icon_closed{position:absolute;right:15px;top:50%;margin-top:-5px;line-height:300px;overflow:hidden;-webkit-tap-highlight-color:rgba(0,0,0,0);background:transparent url(//res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/icon_appmsg_msg_closed_sprite.2x42f400.png) no-repeat 0 0;width:11px;height:11px;vertical-align:middle;display:inline-block;-webkit-background-size:100% auto;background-size:100% auto}.rich_media_global_msg .icon_closed:active{background-position:0 -17px}.rich_media_global_msg.voice{color:#1aad19;background-color:#e8f6e8;padding-left:43.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rich_media_global_msg.voice .ic_voice{position:absolute;top:50%;margin-top:-10px;left:15px;display:inline-block;width:13.3px;height:18.3px;background:url(data:image/png;base64,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) no-repeat center;background-size:contain}.rich_media_global_msg.voice .icon_more{position:absolute;right:15px;top:50%;margin-top:-6.5px;width:8px;height:13px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAmCAYAAADeB1slAAAAAXNSR0IArs4c6QAAA49JREFUSA2tVk1IVFEUPveOmhQk1ibfvLFZSJtACqJIIpCIoB+imcFV2Z9ZUVnRomgRGFn2i6mFf5XVotCZMYmgIMhlq6BFENFiwjfPAosgFzXOvNu5o3fmeue98Y16F3PP+c453/fu/xCQmvZSWwwJaC0G6P8WND9IoTmbVFRycpqAdgBWkwRo94V960RsPn1aoPpN9RI6CR0WsDWcjAErtUiqTR/S18+HnNcSTv5zYrwDSatVMgLkH6aciwfj79WYW5+OT4xfsyPnBIgvwt872qBW45ZQzaMlJXCfMPJbDQgfRUoIhduVUW2TwArpaWyX+bnYU9JAAH44FaJIccqCW76Ib7NTjhOOvFPN/8q/IvE3cR+npFJgao9rkiSUXjD2GCNqzMnPbNPYjth3mqINlJAvTsk4kiJmWa3eQe8WpxwVzwjwgFFn/CorL29EkY9qovC5CFDrKq7JVoHl6zNTJCf53/lLk78SN/FcbJRx2cZCixC4ZATGXsu4as8YgQjGamN/q5atOotn4K3A1J4BUMbgsh7Wt6sx2bcV4AkjtSPJxkDjRQL0hVwg21zEglSzN+rdKeOybTtFcgK39ajWZDFWr+IZHxfGQ8mV0YA5nMGmDVcCPNcb8R5gYJ1UCWQfp6PFCI4NyZhrAV6EIiHGrPOAB0ImkW2c0la8u8ICc0wUCWrvC1dsw+3TnN6uanDaJ4zeiIfiA9wtWIAX8XspxeA6iuBlaN88hNzCNXk+JwFOuXJYW5tMQmc+EcqgzXGb2n9XFk1NstX5yKczl89JAF+6vRaBM1m5XAu//qkRGrtb8BThTtqH2/V0LmUWwbvsiREw8X0vcJHxxNbjNm3KUuVaMjmPFuWm2CPesHc/kp+yj06hFMhj/PIOOcfVFLk6xZT0G3vMTpmc27MusityZk/OBfKOwA05MPLIDJn3OJldcxTQotpBYOyEXVEWIw/NoInvuHOznSJfVDs0GzneNw9mI+eyOSPQI9phfCqPO38TFhHaFw/Eu/LliNiMESB5w6zkzD05F8mMYJr8mFC263Fa+vAadvXloj4toEcrjlgMjgrQrseHpBcfkm67WD6M6MN6lTWZeoZjyYxGLcB57MGnsEfF3fjU2G189QBpcUqmBLrnSs4504s8GjLxrwm5qYrg3dKFf6x6VbwQ3yOS/wz8+bS0ruwfELaBY2nyoNkn4gvW65GKRn4WForwP+dONHDaOHeZAAAAAElFTkSuQmCC) no-repeat center;background-size:contain}.preview_appmsg .rich_media_title{margin-top:2.3em}@media screen and (min-width:1024px){.rich_media_global_msg{position:relative;margin-bottom:32px}.preview_appmsg .rich_media_title.rich_media_title{margin-top:0}}.pages_reset{color:#333;line-height:1.6;font-size:16px;font-weight:400;font-style:normal;text-indent:0;letter-spacing:normal;text-align:left;text-decoration:none;white-space:normal}.weapp_element,.weapp_display_element,.mp-miniprogram{display:block;margin:1em 0}.share_audio_context{margin:16px 0}.weapp_text_link{font-size:17px}.weapp_text_link:before{content:'';display:inline-block;line-height:1;background-size:contain;background-repeat:no-repeat;background-image:url('data:image/png;base64,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');vertical-align:middle;font-size:11px;color:#888;margin-right:6px;margin-top:-3px;background-position:center;height:20px;width:20px}.flex_context{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.flex_bd{-webkit-box-flex:1;-webkit-flex:1;flex:1;word-wrap:break-word;word-break:break-all}.original_page{background-color:#fff;font-size:16px}.account_info{padding:0 0 20px}.account_info .flex_bd{padding-left:.85em}.radius_avatar.account_avatar{width:40px;height:40px;padding:0}.account_nickname{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;line-height:1.2;color:#576b95;font-size:14px}.account_nickname_inner{font-weight:400;vertical-align:top}.account_desc{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;color:#b2b2b2;font-size:13px;line-height:1.2;padding-top:.3em}.account_desc_inner{display:inline;vertical-align:top}.share_notice{margin-bottom:20px;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}.share_media{padding-bottom:18px}.original_panel{padding:20px;background-color:#fcfcfc;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;overflow:hidden;position:relative}.original_panel:after{content:" ";border:1px solid #d8d8d8;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;position:absolute;top:0;left:0;width:200%;height:200%;-webkit-transform:scale(0.5);transform:scale(0.5);-webkit-transform-origin:0 0;transform-origin:0 0;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}.original_panel .original_account{margin-bottom:18px;position:relative;z-index:1}.original_panel .original_account_avatar{width:28px;height:28px;padding:0}.original_panel .original_account_nickname{padding-left:.85em;font-size:15px;color:#576b95}.original_panel_title{font-size:23px;color:#000;margin:0 0 16px}.original_panel_content{color:#333}.original_panel_tool{padding-top:20px;position:relative;z-index:1}.original_tool_area.disabled{padding:0}.original_tool_area.disabled .flex_cell_bd{-webkit-box-flex:initial;-webkit-flex:initial;-ms-flex:initial;box-flex:initial;flex:initial}.original_tool_area.disabled .flex_cell_ft{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;box-flex:1;flex:1;padding:0}.original_tool_area.disabled .original_tool_tips:after{content:"："}.original_tool_area.disabled .original_cell_nickname{color:rgba(0,0,0,0.3);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;white-space:normal;max-width:none;min-height:1.6em}.original_tool_area.disabled:before,.original_tool_area.disabled:after,.original_tool_area.disabled .radius_avatar,.original_tool_area.disabled .icon_access:after{display:none}.original_cell_nickname{display:inline-block;vertical-align:middle;font-weight:400;width:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;max-width:8em;color:#000}.original_tool_area{padding:1.17em 0;border-width:0;position:relative}.original_tool_area:before{content:" ";position:absolute;left:0;top:0;right:0;height:1px;border-top:1px solid #dfdfdf;-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleY(0.5);transform:scaleY(0.5)}.original_tool_area:after{content:" ";position:absolute;left:0;bottom:0;right:0;height:1px;border-bottom:1px solid #dfdfdf;-webkit-transform-origin:0 100%;transform-origin:0 100%;-webkit-transform:scaleY(0.5);transform:scaleY(0.5)}.original_tool_area .radius_avatar{width:20px;height:20px;margin-right:.2em}.original_tool_area .flex_cell{padding:0;font-size:14px}.original_tool_area .icon_access:after{margin-right:4px;top:0}.preview_appmsg .rich_media_title{margin-top:1.5em}.preview_appmsg .account_info{padding-top:3em}.original_page{background-color:transparent}.account_info{-webkit-tap-highlight-color:rgba(0,0,0,0);outline:0;padding-bottom:20px;font-size:14px}.account_info.appmsg_account_info{padding-bottom:32px}.account_info .radius_avatar img{background-color:transparent}.share_notice{font-size:16px;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}.original_panel{background-color:#fafafa}.original_panel:after{border-color:#e6e6e6}.original_panel .original_account_avatar{width:30px;height:30px}.original_panel_tool{font-size:14px}.original_panel_tool a{color:#576b95}.original_panel_content{font-size:17px}.share_media{padding-bottom:30px}.icon_appmsg_tag{display:inline-block;vertical-align:middle;padding:0 .5em;font-size:12px;line-height:1.5;background-color:#c3c3c3;color:#fff;border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;width:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;max-width:70%}.icon_appmsg_tag.primary{color:#3bb638;padding:4px .78em;background-color:rgba(9,187,7,0.08);font-size:12px;border-top-left-radius:.95em 50%;-moz-border-radius-topleft:.95em 50%;-webkit-border-top-left-radius:.95em 50%;border-top-right-radius:.95em 50%;-moz-border-radius-topright:.95em 50%;-webkit-border-top-right-radius:.95em 50%;border-bottom-left-radius:.95em 50%;-moz-border-radius-bottomleft:.95em 50%;-webkit-border-bottom-left-radius:.95em 50%;border-bottom-right-radius:.95em 50%;-moz-border-radius-bottomright:.95em 50%;-webkit-border-bottom-right-radius:.95em 50%}.icon_appmsg_tag.default{border:1px solid rgba(0,0,0,0.1);color:rgba(0,0,0,0.3);background-color:transparent;padding:0 .54em;font-size:15px;line-height:1.3;border-top-left-radius:.67em 50%;-moz-border-radius-topleft:.67em 50%;-webkit-border-top-left-radius:.67em 50%;border-top-right-radius:.67em 50%;-moz-border-radius-topright:.67em 50%;-webkit-border-top-right-radius:.67em 50%;border-bottom-left-radius:.67em 50%;-moz-border-radius-bottomleft:.67em 50%;-webkit-border-bottom-left-radius:.67em 50%;border-bottom-right-radius:.67em 50%;-moz-border-radius-bottomright:.67em 50%;-webkit-border-bottom-right-radius:.67em 50%}.rich_media_meta_list .icon_appmsg_tag.default{margin-top:-1px}.icon_appmsg_tag.title_tag{background-color:#d04b4e}.icon_global_tag_wrp{text-align:right;padding-bottom:12px}.icon_global_tag{background-color:rgba(118,118,118,0.16);color:rgba(0,0,0,0.41);line-height:2.2;border-top-left-radius:1em 50%;-moz-border-radius-topleft:1em 50%;-webkit-border-top-left-radius:1em 50%;border-bottom-left-radius:1em 50%;-moz-border-radius-bottomleft:1em 50%;-webkit-border-bottom-left-radius:1em 50%;padding:0 1.8em 0 1.34em;font-size:12px;margin-right:-24px;display:inline-block;vertical-align:top}.global_plain_btn{display:inline-block;vertical-align:middle;padding:0 1em;line-height:2;font-size:14px;-webkit-tap-highlight-color:rgba(0,0,0,0);border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px}.global_plain_btn.primary{color:#1aad19;border:1px solid currentColor}.global_plain_btn.primary:active{color:rgba(26,173,25,0.6)}.wx_video_context{color:#fefefe;position:relative;background-color:#000}.wx_video_thumb,.wx_video_thumb_primary{position:absolute;left:0;width:100%;height:100%!important;top:0}.wx_video_thumb_primary{-webkit-background-size:cover;background-size:cover;background-position:50% 50%;background-repeat:no-repeat}.wx_video_play_btn{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);margin-top:-2px;font-size:0;border-width:0;background-color:transparent;padding:0;outline:0;z-index:2}.wx_video_play_btn:before{content:" ";display:inline-block;width:0;height:0;border-width:14px 0 14px 25px;border-color:transparent transparent transparent #fff;border-style:dotted dotted dotted solid}.wx_video_mask{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background-color:rgba(0,0,0,0.5)}.place_audio_area{min-height:100px;background-color:#fdfdfd;display:block;margin:16px 0}.place_music_area{min-height:68px;background-color:#fdfdfd;display:block;margin:17px 0 16px}.rich_media_empty_extra{background-color:#fafafa}.appmsg_skin_default.rich_media_empty_extra{background-color:#fff}.appmsg_skin_default .rich_media_area_primary{background-color:#fff}.appmsg_skin_default .rich_media_area_primary .weui-loadmore_line .weui-loadmore__tips{background-color:#fff}.appmsg_style_default .rich_media_tool{padding-top:15px}.rich_media_title_ios{font-weight:700}.read-more__area{margin:30px 0}.read-more__desc{margin-bottom:10px}.read-more__article__extra{font-size:14px;color:rgba(0,0,0,0.5)}.read-more__article__item{margin-bottom:10px}</style>
 
 <style>
@@ -1941,7 +1941,7 @@ initFunction(initPrint)
 
     </head>
     <body id="activity-detail" class="zh_CN mm_appmsg  appmsg_skin_default appmsg_style_default ">
-        
+
 <script nonce="1627523344" type="text/javascript">
     var biz = "MzA3MjQ5MTE3OA=="||"";
     var sn = "471e59c6cf7c8dae452245dbea22c8f3" || ""|| "";
@@ -1949,8 +1949,8 @@ initFunction(initPrint)
     var idx = "1" || "" || "";
     var LANG= "zh_CN";
     window.__allowLoadResFromMp = true; 
-    
-        
+
+
 </script>
 <script nonce="1627523344" type="text/javascript">
 var page_begintime=+new Date,is_rumor="",norumor="";
@@ -2021,12 +2021,12 @@ this[e](t,r);
 <script nonce="1627523344" type="text/javascript">
     String.prototype.html = function(encode) {
         var replace =["&#39;", "'", "&quot;", '"', "&nbsp;", " ", "&gt;", ">", "&lt;", "<", "&yen;", "¥", "&amp;", "&"];
-        
-		
-		
-		
-		
-        
+
+
+
+
+
+
         var replaceReverse = ["&", "&amp;", "¥", "&yen;", "<", "&lt;", ">", "&gt;", " ", "&nbsp;", '"', "&quot;", "'", "&#39;"];
 	    var target;
 	    if (encode) {
@@ -2081,41 +2081,41 @@ this[e](t,r);
             window.no_moon_ls = 0;
     </script>
 
-        
+
 <script nonce="1627523344" type="text/javascript">
     var write_sceen_time = (+new Date());
 </script>
 
 <div id="js_article" class="rich_media">
-    
+
     <div id="js_top_ad_area" class="top_banner"></div>
-    
+
     <div class="rich_media_inner">
 
-        
-        
+
+
 		<div id="page-content" class="rich_media_area_primary">
 
 		  <div class="rich_media_area_primary_inner">
 
-            
-                          
-                        
+
+
+
 
             <div id="img-content">
 
-                
+
                 <h2 class="rich_media_title" id="activity-name">
-                    
-                    
-                    
+
+
+
             南大新传 | 微议题：地震中民族自豪—“中国人先撤”
                       </h2>
                 <div id="meta_content" class="rich_media_meta_list">
                                                                                 <span class="rich_media_meta rich_media_meta_text">
                                                 南大新传院
                                             </span>
-                                        
+
                                         <span class="rich_media_meta rich_media_meta_nickname" id="profileBt">
                       <a href="javascript:void(0);" id="js_name">
                         微议题排行榜                      </a>
@@ -2133,7 +2133,7 @@ this[e](t,r);
                               <label class="profile_meta_label">功能介绍</label>
                               <span class="profile_meta_value">感谢关注《微议题排行榜》。我们是南京大学新闻传播学院，计算传播学实验中心，致力于研究社会化媒体时代的公共议程，发布新媒体平台的议题排行榜。</span>
                               </p>
-                              
+
                           </div>
                           <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
                               <i class="profile_arrow arrow_out"></i>
@@ -2150,21 +2150,21 @@ this[e](t,r);
 
 
                 </div>
-                
-                
-                
-                
-                                                
-                                                                
-                                
-                
+
+
+
+
+
+
+
+
                 <div class="rich_media_content " id="js_content">
-                    
 
-                    
 
-                    
-                    
+
+
+
+
                     <fieldset style="border: 0px rgb(142, 201, 101); text-align: inherit; vertical-align: top; margin: 0.8em 0px; font-size: 1em; font-family: inherit; font-weight: inherit; text-decoration: inherit; color: rgb(64, 84, 115); box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="width: 100%; border-top-width: 2px; border-top-style: solid; border-color: rgb(142, 201, 101); border-bottom-width: 2px; border-bottom-style: solid; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="width: 12px; height: 12px; margin: -7px 0px 5px 55%; background-color: rgb(255, 255, 255); border-left-width: 2px; border-left-style: solid; border-color: rgb(142, 201, 101); border-top-width: 2px; border-top-style: solid; -webkit-transform: rotate(45deg); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="text-align: center; width: 100%; margin: -0.5em 0px 0.1em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; vertical-align: top; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">点击上方<span style="color: rgb(249, 110, 87); font-size: 1.2em; box-sizing: border-box;" class="tn-Powered-by-XIUMI">“微议题排行榜”</span>可以订阅哦！</section></section></section></section></fieldset><fieldset style="border: 0px; margin: 1em; padding: 0px; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="font-size: 112.5%; font-family: inherit; font-weight: bold; text-align: inherit; text-decoration: inherit; color: rgb(255, 255, 255); border-color: rgb(142, 201, 101); box-sizing: border-box;"><section style="display: inline-block; padding: 3px 8px; line-height: 1.4; border-top-left-radius: 8px; border-top-right-radius: 8px; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">导读</section></section><section style="margin-top: -1px; box-sizing: border-box; border: 1px solid rgb(142, 201, 101); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 88.8889%; font-family: inherit; font-weight: normal; text-align: inherit; text-decoration: inherit; color: rgb(51, 51, 51);" class="tn-Powered-by-XIUMI"><section style="padding: 16px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; line-height: 1.4; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="box-sizing: border-box;" class="tn-Powered-by-XIUMI">2015年4月25日，尼泊尔发生8.1级地震，造成至少7000多人死亡，中国西藏、印度、孟加拉国、不丹等地均出现人员伤亡。尼泊尔地震后，祖国派出救援机接国人回家，这一“先撤”行为被大量报道，上演了一出霸道总裁不由分说爱国民的新闻。</section><section style="box-sizing: border-box;" class="tn-Powered-by-XIUMI"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section><section style="box-sizing: border-box;" class="tn-Powered-by-XIUMI">我们对“地震”中人的关注，远远小于国民尊严的保护。通过“撤离”速度来证明中国的影响力也显得有失妥当，灾难应急管理、救援和灾后重建能力才应是“地震”关注焦点。</section><section style="box-sizing: border-box;" class="tn-Powered-by-XIUMI"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></section></section></section></fieldset><fieldset style="border: none rgb(142, 201, 101); margin: 0.5em 0px 0px; font-size: 112.5%; font-family: inherit; font-weight: bold; text-align: center; text-decoration: inherit; color: rgb(249, 110, 87); box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="width: 100%; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><img style="float: left; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrdHPLuCEfN6oLqdibKEgTKS5Ys5yBpMVUMRglQfBprDI2Xqq5Jb3Agjg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrTGdZ9QKdWY3iaiaDTlUF7kadAo5NJn85Nsoiamwam8PEu9hpWGbJuVZuw/0" class="tn-Powered-by-XIUMI" data-ratio="0.9444444444444444" data-w="18"  /> <img style="float: right; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9zia4LDL0BGdMyODDttemDXDPQzDyeDR3GLTiaZxibNpkVmncf9GFlia5g/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -0.8em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="float: left; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="float: right; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section><section style="width: 100%; padding: 0px 0.5em; margin-top: -1.5em; line-height: 1.3em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">热词图现</section></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><img style="width: 1em; float: left; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWric6UwyR9ylXvb7F2gbteyJhoM4udYonbznd6XBKsd183743JviaSy1Fg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; float: right; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9LJYysPnIEIw4VLmvHVZkkVF3zpRLMF48DHO1xiaPdlMGKtrTFSbx8w/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -1.6em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; vertical-align: middle; width: 98%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; clear: both; margin: 0.8em 0px 0px; padding: 0px 0.5em 0.5em 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%; border: 0.3em solid white; -webkit-box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em; box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLu7ofZuLVAR7QKdwZfSTND57HeOuR8taHO55YjicgiaNmyUqsyNqNIMM2Q/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="0.9571428571428572" data-w="490"  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">本文以“地震”为关键词，选取了2015年4月10日至4月30日期间微议题TOP100阅读排行进行分析。根据微议题TOP100标题的词频统计，我们可以看出有关“地震”的话题最热词汇的有“尼泊尔”、“油价”、“发改委”。4月25日尼泊尔发生了8级地震，深受人们的关注。面对国外灾难性事件，微媒体的重心却转向“油价”、“发改委”、“祖国先撤”，致力于将世界重大事件与中国政府关联起来。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: none rgb(142, 201, 101); margin: 0.5em 0px 0px; font-size: 112.5%; font-family: inherit; font-weight: bold; text-align: center; text-decoration: inherit; color: rgb(249, 110, 87); box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="width: 100%; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><img style="float: left; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrdHPLuCEfN6oLqdibKEgTKS5Ys5yBpMVUMRglQfBprDI2Xqq5Jb3Agjg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrTGdZ9QKdWY3iaiaDTlUF7kadAo5NJn85Nsoiamwam8PEu9hpWGbJuVZuw/0" class="tn-Powered-by-XIUMI" data-ratio="0.9444444444444444" data-w="18"  /> <img style="float: right; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9zia4LDL0BGdMyODDttemDXDPQzDyeDR3GLTiaZxibNpkVmncf9GFlia5g/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -0.8em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="float: left; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="float: right; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section><section style="width: 100%; padding: 0px 0.5em; margin-top: -1.5em; line-height: 1.3em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">微议题演化趋势</section></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><img style="width: 1em; float: left; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWric6UwyR9ylXvb7F2gbteyJhoM4udYonbznd6XBKsd183743JviaSy1Fg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; float: right; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9LJYysPnIEIw4VLmvHVZkkVF3zpRLMF48DHO1xiaPdlMGKtrTFSbx8w/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -1.6em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; vertical-align: middle; width: 98%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 112.5%; font-family: inherit; font-weight: bold; text-align: center; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">总文章数</section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; clear: both; margin: 0.8em 0px 0px; padding: 0px 0.5em 0.5em 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%; border: 0.3em solid white; -webkit-box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em; box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLu60NdQLT6iaHAVFAERaaC7HqduicLMvdnD7oeVAnVvgOyVyGPed8le1Ww/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="0.5877551020408164" data-w="490"  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 112.5%; font-family: inherit; font-weight: bold; text-align: center; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">总阅读数</section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; clear: both; margin: 0.8em 0px 0px; padding: 0px 0.5em 0.5em 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%; border: 0.3em solid white; -webkit-box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em; box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLuicBA1IV1HGFCEXPygTV8I0LXU1xE4eW9KKEswhjCjw0ZYuzecnicVh3Q/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="0.5591836734693878" data-w="490"  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">从4月10日到4月30日，有关“地震”议题出现三个峰值，分别是在4月15日内蒙古地震，20日台湾地震和25日尼泊尔地震。其中对台湾地震与内蒙古地震报道文章较少，而对尼泊尔地震却给予了极大的关注，无论是在文章量还是阅读量上都空前增多。内蒙古、台湾地震由于级数较小，关注少，议程时间也比较短，一般3天后就会淡出公共视野。而尼泊尔地震虽然接近性较差，但规模大，且衍生话题性较强，其讨论热度持续了一周以上。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: none rgb(142, 201, 101); margin: 0.5em 0px 0px; font-size: 112.5%; font-family: inherit; font-weight: bold; text-align: center; text-decoration: inherit; color: rgb(249, 110, 87); box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="width: 100%; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><img style="float: left; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrdHPLuCEfN6oLqdibKEgTKS5Ys5yBpMVUMRglQfBprDI2Xqq5Jb3Agjg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrTGdZ9QKdWY3iaiaDTlUF7kadAo5NJn85Nsoiamwam8PEu9hpWGbJuVZuw/0" class="tn-Powered-by-XIUMI" data-ratio="0.9444444444444444" data-w="18"  /> <img style="float: right; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9zia4LDL0BGdMyODDttemDXDPQzDyeDR3GLTiaZxibNpkVmncf9GFlia5g/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -0.8em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="float: left; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="float: right; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section><section style="width: 100%; padding: 0px 0.5em; margin-top: -1.5em; line-height: 1.3em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="box-sizing: border-box;" class="tn-Powered-by-XIUMI">议题分类</section></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><img style="width: 1em; float: left; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWric6UwyR9ylXvb7F2gbteyJhoM4udYonbznd6XBKsd183743JviaSy1Fg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; float: right; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9LJYysPnIEIw4VLmvHVZkkVF3zpRLMF48DHO1xiaPdlMGKtrTFSbx8w/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -1.6em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; vertical-align: middle; width: 98%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; clear: both; margin: 0.8em 0px 0px; padding: 0px 0.5em 0.5em 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%; -webkit-box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em; box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLuPxiciaMVXy1UBEcNKBmrJJKK1NVRf2azNtZoNW5XFu7uUqwjyoqrfoYg/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="0.4718875502008032" data-w="498"  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">如图，我们将此议题分为6大类。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; margin: 0.8em 0px 0.5em; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; padding: 0px 2px 2px; box-sizing: border-box; border-bottom-width: 2px; border-bottom-style: solid; border-color: rgb(142, 201, 101); line-height: 1; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: center; text-decoration: inherit; color: rgb(255, 255, 255);" class="tn-Powered-by-XIUMI"><section style="display: inline-block; margin: 0px; padding: 0.3em 0.4em; min-width: 1.8em; min-height: 1.6em; border-top-left-radius: 80%; border-top-right-radius: 100%; border-bottom-right-radius: 90%; border-bottom-left-radius: 20%; line-height: 1; font-size: 1em; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">1</section></section><span style="display: inline-block; margin-left: 0.4em; max-width: 100%; color: rgb(0, 112, 192); line-height: 1.4; font-size: 1em; word-wrap: break-word !important; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><span style="max-width: 100%; font-size: 1em; font-family: inherit; font-weight: bolder; text-align: inherit; text-decoration: inherit; color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">尼泊尔地震</section></span></span></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">这类文章是对4月25日尼泊尔地震的新闻报道，包括现场视频，地震强度、规模，损失程度、遇难人员介绍等。更进一步的，有对尼泊尔地震原因探析，认为其处在板块交界处，灾难是必然的。因尼泊尔是佛教圣地，也有从佛学角度解释地震的启示。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; margin: 0.8em 0px 0.5em; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; padding: 0px 2px 2px; box-sizing: border-box; border-bottom-width: 2px; border-bottom-style: solid; border-color: rgb(142, 201, 101); line-height: 1; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: center; text-decoration: inherit; color: rgb(255, 255, 255);" class="tn-Powered-by-XIUMI"><section style="display: inline-block; margin: 0px; padding: 0.3em 0.4em; min-width: 1.8em; min-height: 1.6em; border-top-left-radius: 80%; border-top-right-radius: 100%; border-bottom-right-radius: 90%; border-bottom-left-radius: 20%; line-height: 1; font-size: 1em; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">2</section></section><span style="display: inline-block; margin-left: 0.4em; max-width: 100%; color: rgb(0, 112, 192); line-height: 1.4; font-size: 1em; word-wrap: break-word !important; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><span style="max-width: 100%; font-size: 1em; font-family: inherit; font-weight: bolder; text-align: inherit; text-decoration: inherit; color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">国内地震报道</section></span></span></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">主要是对10日内蒙古、甘肃、山西等地的地震，以及20日台湾地震的报道。偏重于对硬新闻的呈现，介绍地震范围、级数、伤亡情况，少数几篇是对甘肃地震的辟谣，称其只是微震。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; margin: 0.8em 0px 0.5em; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; padding: 0px 2px 2px; box-sizing: border-box; border-bottom-width: 2px; border-bottom-style: solid; border-color: rgb(142, 201, 101); line-height: 1; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: center; text-decoration: inherit; color: rgb(255, 255, 255);" class="tn-Powered-by-XIUMI"><section style="display: inline-block; margin: 0px; padding: 0.3em 0.4em; min-width: 1.8em; min-height: 1.6em; border-top-left-radius: 80%; border-top-right-radius: 100%; border-bottom-right-radius: 90%; border-bottom-left-radius: 20%; line-height: 1; font-size: 1em; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">3</section></section><span style="display: inline-block; margin-left: 0.4em; max-width: 100%; color: rgb(0, 112, 192); line-height: 1.4; font-size: 1em; word-wrap: break-word !important; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><span style="max-width: 100%; font-size: 1em; font-family: inherit; font-weight: bolder; text-align: inherit; text-decoration: inherit; color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">中国救援回应</section></span></span></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">地震救援的报道大多是与尼泊尔地震相关，并且80%的文章是中国政府做出迅速反应派出救援机接国人回家。以“中国人又先撤了”，来为祖国点赞。少数几篇是滴滴快的、腾讯基金、万达等为尼泊尔捐款的消息。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; margin: 0.8em 0px 0.5em; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; padding: 0px 2px 2px; box-sizing: border-box; border-bottom-width: 2px; border-bottom-style: solid; border-color: rgb(142, 201, 101); line-height: 1; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: center; text-decoration: inherit; color: rgb(255, 255, 255);" class="tn-Powered-by-XIUMI"><section style="display: inline-block; margin: 0px; padding: 0.3em 0.4em; min-width: 1.8em; min-height: 1.6em; border-top-left-radius: 80%; border-top-right-radius: 100%; border-bottom-right-radius: 90%; border-bottom-left-radius: 20%; line-height: 1; font-size: 1em; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">4</section></section><span style="display: inline-block; margin-left: 0.4em; max-width: 100%; color: rgb(0, 112, 192); line-height: 1.4; font-size: 1em; word-wrap: break-word !important; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><span style="max-width: 100%; font-size: 1em; font-family: inherit; font-weight: bolder; text-align: inherit; text-decoration: inherit; color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">发改委与地震</section></span></span></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">这类文章内容相似，纯粹是对发改委的调侃。称其“预测”地震非常准确，只要一上调油价，便会发生地震。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; margin: 0.8em 0px 0.5em; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; padding: 0px 2px 2px; box-sizing: border-box; border-bottom-width: 2px; border-bottom-style: solid; border-color: rgb(142, 201, 101); line-height: 1; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: center; text-decoration: inherit; color: rgb(255, 255, 255);" class="tn-Powered-by-XIUMI"><section style="display: inline-block; margin: 0px; padding: 0.3em 0.4em; min-width: 1.8em; min-height: 1.6em; border-top-left-radius: 80%; border-top-right-radius: 100%; border-bottom-right-radius: 90%; border-bottom-left-radius: 20%; line-height: 1; font-size: 1em; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">5</section></section><span style="display: inline-block; margin-left: 0.4em; max-width: 100%; color: rgb(0, 112, 192); line-height: 1.4; font-size: 1em; word-wrap: break-word !important; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><span style="max-width: 100%; font-size: 1em; font-family: inherit; font-weight: bolder; text-align: inherit; text-decoration: inherit; color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">地震常识介绍</section></span></span></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">该类文章介绍全国地震带、地震频发地，地震逃生注意事项，“专家传受活命三角”，如何用手机自救等小常识。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; margin: 0.8em 0px 0.5em; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; padding: 0px 2px 2px; box-sizing: border-box; border-bottom-width: 2px; border-bottom-style: solid; border-color: rgb(142, 201, 101); line-height: 1; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: center; text-decoration: inherit; color: rgb(255, 255, 255);" class="tn-Powered-by-XIUMI"><section style="display: inline-block; margin: 0px; padding: 0.3em 0.4em; min-width: 1.8em; min-height: 1.6em; border-top-left-radius: 80%; border-top-right-radius: 100%; border-bottom-right-radius: 90%; border-bottom-left-radius: 20%; line-height: 1; font-size: 1em; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">6</section></section><span style="display: inline-block; margin-left: 0.4em; max-width: 100%; color: rgb(0, 112, 192); line-height: 1.4; font-size: 1em; word-wrap: break-word !important; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><span style="max-width: 100%; font-size: 1em; font-family: inherit; font-weight: bolder; text-align: inherit; text-decoration: inherit; color: rgb(142, 201, 101); box-sizing: border-box; word-wrap: break-word !important;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">地震中的故事</section></span></span></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">讲述地震中的感人瞬间，回忆汶川地震中的故事，传递“：地震无情，人间有情”的正能量。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; clear: both; margin: 0.8em 0px 0px; padding: 0px 0.5em 0.5em 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%; -webkit-box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em; box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLu2qS3Eo9Ydvic1ckhiaQrXhvEaSqh9gmM6oWib6INsZicc8iby5Kf4PTSoww/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="1.214859437751004" data-w="498"  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; display: inline-block; margin: 0.8em 0px 0.5em; line-height: 1; overflow: hidden; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="border-bottom-style: solid; border-bottom-width: 1px; border-color: rgb(142, 201, 101); font-size: 112.5%; font-family: inherit; font-weight: inherit; text-align: inherit; text-decoration: inherit; color: rgb(255, 255, 255); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; height: 1.2em; padding: 0.1em; line-height: 1em; font-size: 112.5%; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">   </section></section><section style="display: inline-block; padding: 0.2em; line-height: 1; font-size: 88.8889%; font-family: inherit; font-weight: bold; text-align: inherit; text-decoration: inherit; color: rgb(42, 52, 58); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">国内外地震关注差异大</section></section></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">关于“地震”本身的报道仍旧是媒体关注的重点，尼泊尔地震与国内地震报道占一半的比例。而关于尼泊尔话题的占了45%，国内地震相关的只有22%。微媒体对国内外地震关注有明显的偏差，而且在衍生话题方面也相差甚大。尼泊尔地震中，除了硬新闻报道外，还有对其原因分析、中国救援情况等，而国内地震只是集中于硬新闻。地震常识介绍只占9%，地震知识普及还比较欠缺。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: none rgb(142, 201, 101); margin: 0.5em 0px 0px; font-size: 112.5%; font-family: inherit; font-weight: bold; text-align: center; text-decoration: inherit; color: rgb(249, 110, 87); box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="width: 100%; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><img style="float: left; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrdHPLuCEfN6oLqdibKEgTKS5Ys5yBpMVUMRglQfBprDI2Xqq5Jb3Agjg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrTGdZ9QKdWY3iaiaDTlUF7kadAo5NJn85Nsoiamwam8PEu9hpWGbJuVZuw/0" class="tn-Powered-by-XIUMI" data-ratio="0.9444444444444444" data-w="18"  /> <img style="float: right; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9zia4LDL0BGdMyODDttemDXDPQzDyeDR3GLTiaZxibNpkVmncf9GFlia5g/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -0.8em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="float: left; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="float: right; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section><section style="width: 100%; padding: 0px 0.5em; margin-top: -1.5em; line-height: 1.3em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">阅读与点赞分析</section></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><img style="width: 1em; float: left; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWric6UwyR9ylXvb7F2gbteyJhoM4udYonbznd6XBKsd183743JviaSy1Fg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; float: right; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9LJYysPnIEIw4VLmvHVZkkVF3zpRLMF48DHO1xiaPdlMGKtrTFSbx8w/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -1.6em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; vertical-align: middle; width: 98%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; clear: both; margin: 0.8em 0px 0px; padding: 0px 0.5em 0.5em 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%; -webkit-box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em; box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLuWqm06dCbL0ib7yB4Evr6WpIGe8A2QIlVy9ZX5DgiaxEMvLUnQRPIYv6Q/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="0.6104417670682731" data-w="498"  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; clear: both; margin: 0.8em 0px 0px; padding: 0px 0.5em 0.5em 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%; -webkit-box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em; box-shadow: rgb(102, 102, 102) 0.2em 0.2em 0.5em;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLuCwuycsSW7n6Y8WzjMtxXnSgkSW8EuESpTB60zAo38Ta0F1a0JmMHGA/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="0.5863453815261044" data-w="498"  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; display: inline-block; margin: 0.8em 0px 0.5em; line-height: 1; overflow: hidden; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="border-bottom-style: solid; border-bottom-width: 1px; border-color: rgb(142, 201, 101); font-size: 112.5%; font-family: inherit; font-weight: inherit; text-align: inherit; text-decoration: inherit; color: rgb(255, 255, 255); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; height: 1.2em; padding: 0.1em; line-height: 1em; font-size: 112.5%; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">   </section></section><section style="display: inline-block; padding: 0.2em; line-height: 1; font-size: 88.8889%; font-family: inherit; font-weight: bold; text-align: inherit; text-decoration: inherit; color: rgb(42, 52, 58); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">爱国新闻容易激起点赞狂潮</section></section></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">整体上来说，网民对地震议题关注度较高，自然灾害类话题一旦爆发，很容易引起人们情感共鸣，掀起热潮。但从点赞数来看，“中国救援回应”类的总点赞与平均点赞都是最高的，网民对地震的关注点并非地震本身，而是与之相关的“政府行动”。尼泊尔地震后，祖国派出救援机接国人回家，这一“先撤”行为被大量报道，上演了一出霸道总裁不由分说爱国民的新闻。而爱国新闻则往往是最容易煽动民族情绪，产生民族优越感，激起点赞狂潮。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; display: inline-block; margin: 0.8em 0px 0.5em; line-height: 1; overflow: hidden; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="border-bottom-style: solid; border-bottom-width: 1px; border-color: rgb(142, 201, 101); font-size: 112.5%; font-family: inherit; font-weight: inherit; text-align: inherit; text-decoration: inherit; color: rgb(255, 255, 255); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; height: 1.2em; padding: 0.1em; line-height: 1em; font-size: 112.5%; font-family: inherit; background-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">   </section></section><section style="display: inline-block; padding: 0.2em; line-height: 1; font-size: 88.8889%; font-family: inherit; font-weight: bold; text-align: inherit; text-decoration: inherit; color: rgb(42, 52, 58); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">人的关注小于国民尊严的保护</section></section></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">另一方面，国内地震的关注度却很少，不仅体现在政府救援的报道量小，网民的兴趣点与评价也较低。我们对“地震”中人的关注，远远小于国民尊严的保护。通过“撤离”速度来证明中国的影响力也显得有失妥当，灾难应急管理、救援和灾后重建能力才应是“地震”关注焦点。“发改委与地震”的点赞量也相对较高，网民对发改委和地震的调侃，反映出的是对油价上涨的不满，这种“怨气”也容易产生共鸣。一面是民族优越感，一面是对政策不满，两种情绪虽矛盾，但同时体现了网民心理趋同。</section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: none rgb(142, 201, 101); margin: 0.5em 0px 0px; font-size: 112.5%; font-family: inherit; font-weight: bold; text-align: center; text-decoration: inherit; color: rgb(249, 110, 87); box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="width: 100%; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><img style="float: left; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrdHPLuCEfN6oLqdibKEgTKS5Ys5yBpMVUMRglQfBprDI2Xqq5Jb3Agjg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWrTGdZ9QKdWY3iaiaDTlUF7kadAo5NJn85Nsoiamwam8PEu9hpWGbJuVZuw/0" class="tn-Powered-by-XIUMI" data-ratio="0.9444444444444444" data-w="18"  /> <img style="float: right; width: 1em; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9zia4LDL0BGdMyODDttemDXDPQzDyeDR3GLTiaZxibNpkVmncf9GFlia5g/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -0.8em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="float: left; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="float: right; width: 45%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section><section style="width: 100%; padding: 0px 0.5em; margin-top: -1.5em; line-height: 1.3em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">数据附表</section></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><img style="width: 1em; float: left; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWric6UwyR9ylXvb7F2gbteyJhoM4udYonbznd6XBKsd183743JviaSy1Fg/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /> <img style="width: 1em; float: right; background-color: rgb(142, 201, 101); box-sizing: border-box;" data-src="http://mmbiz.qpic.cn/mmbiz/ugnYPLVSd8tqywic0Lga3KLW2Qbv9YJWr9LJYysPnIEIw4VLmvHVZkkVF3zpRLMF48DHO1xiaPdlMGKtrTFSbx8w/0" class="tn-Powered-by-XIUMI" data-ratio="1" data-w="18"  /></section><section style="width: 100%; display: inline-block; vertical-align: top; margin-top: -1.6em; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="display: inline-block; vertical-align: middle; width: 98%; border-top-width: 1px; border-top-style: solid; border-color: rgb(142, 201, 101); box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 100%; font-family: inherit; font-weight: bold; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">微文章排行TOP50：</section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; margin: 0.8em 0px 0.2em; clear: both; padding: 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLuXNMBbia4JTib1MRj2X6xGPdhwibDqobf7BArmSPCkZqXD5icictpL6HU3YQ/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="4.017786561264822" data-w=""  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 100%; font-family: inherit; font-weight: bold; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">公众号排行TOP20：</section></fieldset><fieldset style="border: 0px; box-sizing: border-box; width: 100%; margin: 0.8em 0px 0.2em; clear: both; padding: 0px;" class="tn-Powered-by-XIUMI"><img style="box-sizing: border-box; width: 100%;" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLuQYfToOZPNP3ZKfKOY9wkL6hQWMIqdEFdsiaXdTLnqNRvZ9yp40drfVg/0?wx_fmt=png" class="tn-Powered-by-XIUMI" data-type="png" data-ratio="2.391304347826087" data-w=""  /></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; margin: 0px; clear: both; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section style="padding: 8px; margin: 0px; border-left-width: 6px; border-left-style: solid; border-color: rgb(142, 201, 101); font-size: 1em; line-height: 1.4; text-align: inherit; font-family: inherit; font-weight: inherit; text-decoration: inherit; color: rgb(51, 51, 51); box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">作者：晏雪菲</section></section></fieldset><fieldset style="border: 0px; margin-top: 0px; margin-bottom: 0px; clear: both; font-size: 1em; font-family: inherit; font-weight: inherit; text-align: justify; text-decoration: inherit; color: inherit; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"><br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section></fieldset><fieldset style="border: 0px; margin: 0.5em 0px; box-sizing: border-box; padding: 0px;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="font-size: 1em; font-family: inherit; font-weight: inherit; text-align: inherit; text-decoration: inherit; color: rgb(51, 51, 51); border-color: rgb(142, 201, 101); box-sizing: border-box;"><section style="height: 16px; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="height: 100%; width: 24px; float: left; border-top-width: 6px; border-top-style: solid; border-color: rgb(142, 201, 101); border-left-width: 6px; border-left-style: solid; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="height: 100%; width: 24px; float: right; border-top-width: 6px; border-top-style: solid; border-color: rgb(142, 201, 101); border-right-width: 6px; border-right-style: solid; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="display: inline-block; color: transparent; clear: both; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section><section style="margin: -13px 3px; padding: 12px; border: 1px solid rgb(142, 201, 101); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; line-height: 1.4; word-break: break-all; word-wrap: break-word; box-sizing: border-box; font-family: inherit;" class="tn-Powered-by-XIUMI"><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">出品单位：南京大学计算传播学实验中心<br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">技术支持：南京大学谷尼舆情监测分析实验室<br class="tn-Powered-by-XIUMI" style="box-sizing: border-box;"  /></section><section class="tn-Powered-by-XIUMI" style="box-sizing: border-box;">题图鸣谢：谷尼舆情新微榜、图悦词云</section></section><section style="height: 16px; box-sizing: border-box;" class="tn-Powered-by-XIUMI"><section style="height: 100%; width: 24px; float: left; border-bottom-width: 6px; border-bottom-style: solid; border-color: rgb(142, 201, 101); border-left-width: 6px; border-left-style: solid; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section><section style="height: 100%; width: 24px; float: right; border-bottom-width: 6px; border-bottom-style: solid; border-color: rgb(142, 201, 101); border-right-width: 6px; border-right-style: solid; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section></section></section></fieldset><p><br  /></p><p><img data-s="300,640" data-type="jpeg" data-src="http://mmbiz.qpic.cn/mmbiz/LsWWX18C1Xic1TJUYpx8Efe9ET27nwrLqicKYyjXeXQCSKRxearAmbicAhCmu0OaoMfFDniamw0otmfZpZnMLMALcg/0" data-ratio="0.5553359683794467" data-w=""  /><br  /></p>
                 </div>
                 <script nonce="1627523344" type="text/javascript">
@@ -2174,7 +2174,7 @@ this[e](t,r);
                         document.getElementById('js_content').addEventListener("selectstart",function(e){ e.preventDefault(); });
                     }
 
-                    
+
                     (function(){
                         if (navigator.userAgent.indexOf("WindowsWechat") != -1){
                             var link = document.createElement('link');
@@ -2187,21 +2187,21 @@ this[e](t,r);
                     })();
                 </script>
 
-                
+
   <div class="ct_mpda_wrp" id="js_sponsor_ad_area" style="display: none;"></div>
 
 
-                
+
                 <div class="read-more__area" id="js_more_read_area" style="display:none;">
-                    
+
                 </div>
 
-                
+
                                 <div class="reward_area tc reward_area_primary" id="js_preview_reward_author" style="display:none;">
                     <div class="reward-avatar" style="display: none;" id="js_preview_reward_author_avatar">
                         <img src="" alt="" id="js_preview_reward_author_head">
                     </div>
-                    
+
                                         <div class="reward-author" id="js_preview_reward_author_name">南大新传院</div>
                                         <p class="reward_tips" id="js_preview_reward_author_wording" style="display:none;"></p>
                     <p>
@@ -2215,20 +2215,20 @@ this[e](t,r);
                     <span class="reward_qrcode_img_wrp"><img class="reward_qrcode_img" src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/pic/appmsg/pic_reward_qrcode.2x42f400.png"></span>
                     <p class="tips_global">受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。</p>
                 </div>
-                                
-                
+
+
                             </div>
-                                    
-                        
 
 
-                        
+
+
+
             <ul id="js_hotspot_area" class="article_extend_area"></ul>
 
 
-            
 
-            
+
+
 
 
 <div class="rich_media_tool" id="js_toobar3">
@@ -2245,7 +2245,7 @@ this[e](t,r);
         <i class="icon_praise_gray"></i><span class="praise_num" id="likeNum_old"></span>
     </span>
 
-      
+
     <span class="media_tool_meta meta_extra meta_share" style="display: none;">
         <button class="share_btn" id="js_share_btn">分享</button>
     </span>
@@ -2271,7 +2271,7 @@ this[e](t,r);
         </div>
     </div>
 
-    
+
     </div>
 
 <div style="display: none;" id="js_like_educate" class="like_skin_primary like_comment_primary_pop">
@@ -2290,7 +2290,7 @@ this[e](t,r);
   <div class="like_comment_primary_mask" id="js_mask_3"></div>
 </div>
 
-  
+
   <div class="like_comment_wrp" id="js_a_like_comment" style="display: none;">
     <div class="like_comment_inner">
       <div class="like_comment_hd" style="display:none" id="js_like_title"></div>
@@ -2365,27 +2365,27 @@ this[e](t,r);
         <div class="rich_media_area_primary sougou" id="sg_tj" style="display:none"></div>
 
 
-        
+
         <div class="rich_media_area_extra">
           <div class="rich_media_area_extra_inner">
-              
+
               <div id="js_share_appmsg">
               </div>
 
-              
-  
-      <div class="mpda_bottom_container" id="js_bottom_ad_area"></div>
-                
-              <div id="js_iframetest" style="display:none;"></div>
-                            
-              <div class="rich_media_extra rich_media_extra_discuss" id="js_cmt_container" style="display:none">
-                
 
-                
+
+      <div class="mpda_bottom_container" id="js_bottom_ad_area"></div>
+
+              <div id="js_iframetest" style="display:none;"></div>
+
+              <div class="rich_media_extra rich_media_extra_discuss" id="js_cmt_container" style="display:none">
+
+
+
                 <div class="discuss_mod" id="js_friend_cmt_area" style="display:none">
-                  
-                  
-                  
+
+
+
                 </div>
 
                                 <div class="discuss_mod" id="js_preview_cmt" style="display:none">
@@ -2401,7 +2401,7 @@ this[e](t,r);
           </div>
         </div>
 
-        
+
         <div id="js_pc_qr_code" class="qr_code_pc_outer" style="display:none;">
             <div class="qr_code_pc_inner">
                 <div class="qr_code_pc">
@@ -2433,10 +2433,10 @@ this[e](t,r);
     </div>
 </div>
 
-        
+
         <script nonce="1627523344" type="text/javascript">
   (function () {
-    
+
     var ajaxWhiteList = {
       1: { 
         reg: /^https?:\/\/mp\.weixin\.qq\.com\/mp\/appmsg_like/,
@@ -2454,30 +2454,30 @@ this[e](t,r);
         reg: /^https?:\/\/mp\.weixin\.qq\.com\/mp\/authorreward/,
         times: 0
       }
-      
-      
-      
-      
+
+
+
+
     };
 
-    
+
     if (!performance || !performance.getEntries) return;
 
-    
+
     var hasReported = false;
 
-    
+
     var reportResLoadTime = function () {
-      
+
       if (hasReported) return;
 
-      
+
       var notSupport = false;
 
-      
+
       var ajaxEntries = [];
 
-      
+
       var entries = performance.getEntries().map(function (entry) {
         if (typeof entry !== 'object') {
           notSupport = true;
@@ -2487,12 +2487,12 @@ this[e](t,r);
           entry.entryType !== 'navigation' &&
           entry.entryType !== 'resource'
         ) {
-          
+
           return null;
         } else if (entry.initiatorType === undefined) {
           notSupport = true;
         } else if (entry.initiatorType === 'xmlhttprequest') {
-          
+
           if (entry.name === undefined || entry.duration === undefined) {
             notSupport = true;
           } else {
@@ -2516,10 +2516,10 @@ this[e](t,r);
         return entry;
       });
 
-      
+
       if (notSupport || ajaxEntries.length === 0) return;
 
-      
+
       var data = {
         stat_list: ajaxEntries
       };
@@ -2528,7 +2528,7 @@ this[e](t,r);
       hasReported = true;
     };
 
-    
+
     window.addEventListener('beforeunload', reportResLoadTime, false);
     window.addEventListener('unload', reportResLoadTime, false);
 
@@ -2558,7 +2558,7 @@ this[e](t,r);
 			window.vConsole.addPlugin(p);
 		}
 	}
-	
+
 	function _addVConsole(uri, cb) {
 		totalCount++;
 		var node = document.createElement('SCRIPT');
@@ -2576,13 +2576,13 @@ this[e](t,r);
 	) {
 		window.vConsolePlugins = [];
 		_addVConsole('//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/3.2.2/vconsole.min440203.js', function() {
-			
+
 			_addVConsole('//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/plugin/vconsole-mpopt/1.0.1/vconsole-mpopt42f400.js', _loadVConsolePlugin);
 		});
 	}
 })();
 </script>
-        
+
 <script nonce="1627523344" type="text/javascript">
 if (location.href.match(/fontScale=\d+/) && /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
 
@@ -2642,7 +2642,7 @@ if (typeof getComputedStyle == 'undefined') {
 }
 (function(){
     window.__zoom = 1;
-    
+
     (function(){
         var validArr = ","+([0.875, 1, 1.125, 1.25, 1.375]).join(",")+",";
         var match = window.location.href.match(/winzoom=(\d+(?:\.\d+)?)/);
@@ -2719,19 +2719,19 @@ if (typeof getComputedStyle == 'undefined') {
         }
     };
     var getQuery = function(name,url){
-        
+
         var u  = arguments[1] || window.location.search,
             reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"),
             r = u.substr(u.indexOf("\?")+1).match(reg);
         return r!=null?r[2]:"";
     };
 
-    
+
     function setImgSize(item, widthNum, widthUnit, ratio, breakParentWidth) {
         setTimeout(function () {
             var img_padding_border = getOuterW(item) || 0;
             var img_padding_border_top_bottom = getOuterH(item) || 0;
-            
+
             if (widthNum > getParentWidth(item) && !breakParentWidth) {
                 widthNum = getParentWidth(item);
             }
@@ -2764,7 +2764,7 @@ if (typeof getComputedStyle == 'undefined') {
             var src_ = imageItem.getAttribute('data-src');
             var realSrc = imageItem.getAttribute('src');
             if (!src_ || realSrc) continue;
-            
+
             var originWidth = imageItem.getAttribute('data-w');
             var ratio_ = 1 * imageItem.getAttribute('data-ratio');
 
@@ -2773,15 +2773,15 @@ if (typeof getComputedStyle == 'undefined') {
                 var parent_width = getParentWidth(imageItem) || max_width;
                 var initWidth = imageItem.style.width || imageItem.getAttribute('width') || originWidth || parent_width;
                 initWidth = parseFloat(initWidth, 10) > max_width ? max_width : initWidth;
-                
+
                 if (initWidth) {
                     imageItem.setAttribute('_width', !isNaN(initWidth * 1) ? initWidth + 'px' : initWidth);
                 }
-                
+
                 if (typeof initWidth === 'string' && initWidth.indexOf('%') !== -1) {
                     initWidth = parseFloat(initWidth.replace('%', ''), 10) / 100 * parent_width;
                 }
-                
+
                 if (initWidth === 'auto') {
                     initWidth = originWidth;
                 }
@@ -2790,9 +2790,9 @@ if (typeof getComputedStyle == 'undefined') {
                 var widthNum = res && res.length >= 2 ? res[1] : 0;
                 var widthUnit = res && res.length >= 3 && res[2] ? res[2] : 'px';
 
-                
+
                 setImgSize(imageItem, widthNum, widthUnit, ratio_, true);
-                
+
                 (function (item, widthNumber, unit, ratio) {
                     setTimeout(function () {
                         setImgSize(item, widthNumber, unit, ratio, false);
@@ -2867,7 +2867,7 @@ if (typeof getComputedStyle == 'undefined') {
 
             videoPlaceHolderSpan.className = "js_img_loading db";
             videoPlaceHolderSpan.setAttribute("data-vid", vid);
-            
+
 
             videoPlayerIconSpan.className = 'wx_video_context db'; 
             videoPlayerIconSpan.style.display = 'none';
@@ -2876,8 +2876,8 @@ if (typeof getComputedStyle == 'undefined') {
             mydiv.className = "img_loading";
 
             mydiv.src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==";
-            
-            
+
+
             videoPlaceHolderSpan.style.cssText = "width: " + obj.w + "px !important;";
             mydiv.style.cssText += ";width: " + obj.w + "px";
             videoPlaceHolderSpan.appendChild(videoPlayerIconSpan);
@@ -3007,7 +3007,7 @@ if (typeof getComputedStyle == 'undefined') {
     var msg_cdn_url = "http://mmbiz.qpic.cn/mmbiz/LsWWX18C1X96vmarydNeesjbpKSicFcLuUW3p4Q3Toia7h8yErYuwkegnpnNk7r8YoADxjqCRbJOwoK65wpZmECQ/0?wx_fmt=jpeg"; 
     var cdn_url_1_1  = ""; 
     var cdn_url_235_1 = ""; 
-    
+
     var msg_link = "http://mp.weixin.qq.com/s?__biz=MzA3MjQ5MTE3OA==&amp;mid=206241627&amp;idx=1&amp;sn=471e59c6cf7c8dae452245dbea22c8f3#rd"; 
     var user_uin = "0"*1;
     var msg_source_url = '';
@@ -3026,14 +3026,14 @@ if (typeof getComputedStyle == 'undefined') {
     var devicetype = "";
     var source_encode_biz = "";
     var source_username = "";
-    
+
     var reprint_ticket = "";
     var source_mid = "";
     var source_idx = "";
     var source_biz = "";
     var author_id = "";
 
-    
+
     var optimizing_flag = "0" * 1;
     var ad_abtest_padding = "0" * 1;
 
@@ -3090,43 +3090,43 @@ if (typeof getComputedStyle == 'undefined') {
     var reprint_style = ''*1;
     var wxa_img_alert = "" != 'false';
 
-    
+
     var more_read_type = '0'*1;
 
-    
-    
-    
-    
 
-    
+
+
+
+
+
     var weapp_sn_arr_json = "" || "";
 
-    
+
     var ban_scene = "0" * 1;
 
     var svr_time = "1559957977" * 1;
-    
+
     var is_transfer_msg = ""*1||0;
 
     var malicious_title_reason_id = "0" * 1; 
     var malicious_content_type = "0" * 1; 
 
-    
+
     var modify_time = "";
 
-    
+
     var isprofileblock = "0";
 
-    
+
     var hotspotInfoList = [
                     ];
 
         window.wxtoken = "777";
-        
-    
-    
-    
-    
+
+
+
+
+
     window.is_login = '0' * 1; 
 
     window.__moon_initcallback = function(){
@@ -3150,12 +3150,12 @@ if (typeof getComputedStyle == 'undefined') {
             });
         }
     }
-        
+
     var title ="微议题排行榜";
 
     var is_new_msg=true;
-    
-    
+
+
 
     var is_wash = '' * 1;
     var show_top_bar  = '0' * 1;
@@ -3166,7 +3166,7 @@ if (typeof getComputedStyle == 'undefined') {
 <script nonce="1627523344" type="text/javascript">
 (function(_g){
     _g.appmsg_like_type = "2" * 1 ? "2" * 1 : 1;
-    
+
     _g.clientversion = "";
     _g.passparam = ""; 
     if(!_g.msg_link) {
@@ -3666,7 +3666,7 @@ __moonf__(); }, 25);</script><script nonce="1627523344" type="text/javascript">
         });
     }
 
-    
+
 </script>
 
     </body>
@@ -4165,25 +4165,24 @@ You should consider upgrading via the &#39;pip install --upgrade pip&#39; comman
  
 
 
-</main>
-
+    </main>
+    
             </div>
             <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/04-crawler-beautifulsoup.html">
-      〈 <span class="u-margin-right-tiny"></span> Data Collection
+      〈 <span class="u-margin-right-tiny"></span> 
     </a>
   
 
   
     
     <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/04-crawler-douban.html">
-      Crawling Douban Movies <span class="u-margin-right-tiny"></span> 〉
+       <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
-
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>

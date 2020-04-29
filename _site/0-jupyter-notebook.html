@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Appendix of Using Jupyter Notebooks</title>
-  <meta name="description" content="The Jupyter Notebook It is a web application that allows you to create and share documents that containlive codeequationsvisualizationsexplanatory textTable ...">
+  <meta name="description" content="            The Jupyter Notebook It is a web application that allows you to create and share documents that containlive codeequationsvisualizationsexplanator...">
 
-  <link rel="canonical" href="https://computational-class.github.io/ccbook/0-jupyter-notebook.html">
-  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/ccbook/0-jupyter-notebook.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="http://localhost:4000/ccbook/feed.xml">
 
-  <meta property="og:url"         content="https://computational-class.github.io/ccbook/0-jupyter-notebook.html" />
+  <meta property="og:url"         content="http://localhost:4000/ccbook/0-jupyter-notebook.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Appendix of Using Jupyter Notebooks" />
-<meta property="og:description" content="The Jupyter Notebook It is a web application that allows you to create and share documents that containlive codeequationsvisualizationsexplanatory textTable ..." />
-<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+<meta property="og:description" content="            The Jupyter Notebook It is a web application that allows you to create and share documents that containlive codeequationsvisualizationsexplanator..." />
+<meta property="og:image"       content="http://localhost:4000/ccbook/img/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
 
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://computational-class.github.io/ccbook/0-jupyter-notebook.html",
+  "mainEntityOfPage": "http://localhost:4000/ccbook/0-jupyter-notebook.html",
   "headline": "Appendix of Using Jupyter Notebooks",
-  "datePublished": "2019-12-19T15:40:38+08:00",
-  "dateModified": "2019-12-19T15:40:38+08:00",
-  "description": "The Jupyter Notebook It is a web application that allows you to create and share documents that containlive codeequationsvisualizationsexplanatory textTable ...",
+  "datePublished": "2020-04-29T13:36:01+08:00",
+  "dateModified": "2020-04-29T13:36:01+08:00",
+  "description": "            The Jupyter Notebook It is a web application that allows you to create and share documents that containlive codeequationsvisualizationsexplanator...",
   "author": {
     "@type": "Person",
     "name": "王成军"
@@ -38,14 +38,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://computational-class.github.io/ccbook",
+      "url": "http://localhost:4000/ccbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://computational-class.github.io/ccbook",
+    "url": "http://localhost:4000/ccbook",
     "height": 60,
     "width": 60
   }
@@ -207,7 +207,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -1864,9 +1864,9 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <main class="jupyter-page">
-
-<div class="jb_cell">
+                  <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1896,7 +1896,7 @@ initFunction(initPrint)
 
 <div class="jb_cell tag_popout">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered tag_popout"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Publish-on-Github-Pages">Publish on Github Pages<a class="anchor-link" href="#Publish-on-Github-Pages"> </a></h1><ol>
 <li>Confirm that your book's HTML is built in the <strong>_site</strong> folder.</li>
@@ -2116,7 +2116,7 @@ ghp-import -n -p -f _site
 
 <div class="jb_cell tag_blockquote">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered tag_blockquote"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p>Here's an example of an epigraph quote. Note that in this case, the quote itself is a bit larger and italicized. You probably shouldn't make this too long so that they don't stand out too much. - Jo the Jovyan</p>
 </blockquote>
@@ -2128,7 +2128,7 @@ ghp-import -n -p -f _site
 
 <div class="jb_cell tag_popout">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered tag_popout"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For example, here's some popout content! It was created by adding the popout tag to a cell in the notebook. Jupyter Book automatically converts these cells into helpful side content.</p>
 <p>To enable the cell tag editor, go click View -&gt; Cell Toolbar -&gt; Tags. This will enable the tags UI. Here's what the menu looks like.</p>
@@ -2206,7 +2206,7 @@ ghp-import -n -p -f _site
 
 <div class="jb_cell tag_popout tag_hide_input">
 
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing code_cell rendered tag_popout tag_hide_input">
 <div class="input">
 
 <div class="inner_cell">
@@ -2509,25 +2509,24 @@ You should consider upgrading via the &#39;pip install --upgrade pip&#39; comman
  
 
 
-</main>
-
+    </main>
+    
             </div>
             <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/0-common-questions.html">
-      〈 <span class="u-margin-right-tiny"></span> Appendix
+      〈 <span class="u-margin-right-tiny"></span> 
     </a>
   
 
   
     
     <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/0-slides.html">
-      Appendix of Making Slides with RISE <span class="u-margin-right-tiny"></span> 〉
+       <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
-
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>

@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Visualization</title>
-  <meta name="description" content="    %matplotlib inlineimport numpy as np; np.random.seed(22)import seaborn as sns; sns.set(color_codes=True)x = np.linspace(0, 15, 15)data = np.sin(x) + np.r...">
+  <meta name="description" content="            Visualization with Seaborn Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing att...">
 
-  <link rel="canonical" href="https://computational-class.github.io/ccbook/19-visualization-with-seaborn.html">
-  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/ccbook/19-visualization-with-seaborn.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="http://localhost:4000/ccbook/feed.xml">
 
-  <meta property="og:url"         content="https://computational-class.github.io/ccbook/19-visualization-with-seaborn.html" />
+  <meta property="og:url"         content="http://localhost:4000/ccbook/19-visualization-with-seaborn.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Visualization" />
-<meta property="og:description" content="    %matplotlib inlineimport numpy as np; np.random.seed(22)import seaborn as sns; sns.set(color_codes=True)x = np.linspace(0, 15, 15)data = np.sin(x) + np.r..." />
-<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
+<meta property="og:description" content="            Visualization with Seaborn Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing att..." />
+<meta property="og:image"       content="http://localhost:4000/ccbook/img/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
 
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://computational-class.github.io/ccbook/19-visualization-with-seaborn.html",
+  "mainEntityOfPage": "http://localhost:4000/ccbook/19-visualization-with-seaborn.html",
   "headline": "Visualization",
-  "datePublished": "2019-12-19T15:40:38+08:00",
-  "dateModified": "2019-12-19T15:40:38+08:00",
-  "description": "    %matplotlib inlineimport numpy as np; np.random.seed(22)import seaborn as sns; sns.set(color_codes=True)x = np.linspace(0, 15, 15)data = np.sin(x) + np.r...",
+  "datePublished": "2020-04-29T13:36:01+08:00",
+  "dateModified": "2020-04-29T13:36:01+08:00",
+  "description": "            Visualization with Seaborn Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing att...",
   "author": {
     "@type": "Person",
     "name": "王成军"
@@ -38,14 +38,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://computational-class.github.io/ccbook",
+      "url": "http://localhost:4000/ccbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "https://computational-class.github.io/ccbook",
+    "url": "http://localhost:4000/ccbook",
     "height": 60,
     "width": 60
   }
@@ -207,7 +207,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -1864,7 +1864,32 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-              <main class="jupyter-page">
+                  <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Visualization-with-Seaborn">Visualization with Seaborn<a class="anchor-link" href="#Visualization-with-Seaborn"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Seaborn is a Python data visualization library based on matplotlib. </li>
+<li>It provides a high-level interface for drawing attractive and informative statistical graphics.</li>
+<li>it integrates with the functionality provided by Pandas DataFrames.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
 
 <div class="jb_cell">
 
@@ -1877,45 +1902,38 @@ initFunction(initPrint)
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> 
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">tsplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/datalab/Applications/anaconda/lib/python3.5/site-packages/seaborn/timeseries.py:183: UserWarning: The tsplot function is deprecated and will be removed or replaced (in a substantially altered version) in a future release.
-  warnings.warn(msg, UserWarning)
-</pre>
 </div>
 </div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
 
+<div class="jb_cell">
 
-
-<div class="output_png output_subarea ">
-<img src="images/19-visualization-with-seaborn_0_1.png"
->
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To be fair, the Matplotlib team is addressing this:</p>
+<ul>
+<li>it has recently added the plt.style tools, </li>
+<li>is starting to handle Pandas data more seamlessly.</li>
+</ul>
 
 </div>
 </div>
 </div>
 </div>
 
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Matplotlib-Styles">Matplotlib Styles<a class="anchor-link" href="#Matplotlib-Styles"> </a></h2>
+</div>
+</div>
 </div>
 </div>
 
@@ -1926,7 +1944,7 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">available</span>
 </pre></div>
 
     </div>
@@ -1942,76 +1960,32 @@ initFunction(initPrint)
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[ 0.6726167 ,  1.42526277,  1.72616519,  2.32083315,  1.54461515,
-         1.40149227,  0.87580901,  0.80441429, -0.07224181,  0.29857697,
-        -0.48424123,  0.31981954,  0.99846686,  1.42437645,  1.31025412,
-         1.40829701,  2.22555828,  2.22047545,  1.57821254,  0.68658331,
-         0.6881278 ,  0.27267873, -0.14865056,  0.20390982,  0.35513849,
-         0.98212391,  1.58695872,  1.37983576,  2.37803345,  2.3879375 ,
-         1.79185478],
-       [-0.43621914, -0.72288203, -0.21215386,  0.64103881,  0.42284559,
-        -0.12482161, -0.96193001, -1.09788291, -1.47241293, -1.89764937,
-        -2.14464665, -1.49924358, -1.41491481, -0.97105382,  0.1104314 ,
-         0.5558068 , -0.11681849, -0.3038328 , -0.34620543, -1.10897653,
-        -0.99378228, -1.50366581, -1.78787403, -1.12480698, -1.05900142,
-        -1.0789754 , -0.64372858,  0.11116598,  0.07264423,  0.61504814,
-        -0.4948404 ],
-       [-1.15693699, -0.77244812,  0.10712619,  0.35502433,  0.18285087,
-        -0.69500184, -0.47143782, -1.81628184, -1.87017035, -1.49539289,
-        -1.48815891, -2.15350233, -1.07741052, -1.0917767 , -0.24589205,
-        -0.29088809, -0.32379686, -0.16896109, -0.48709739, -1.07620973,
-        -1.50686489, -2.02695517, -1.58450287, -2.09462768, -1.14549613,
-        -0.90213673, -0.3536208 , -0.636773  ,  0.17690764,  0.46320646,
-        -0.3141777 ],
-       [ 1.25380463,  1.24138729,  1.36265852,  2.12250743,  2.03812837,
-         0.9775839 ,  1.25258492,  0.42041733,  0.41556718, -0.29395437,
-        -0.43533777,  0.48780799,  0.64445138,  1.36813161,  1.0068781 ,
-         1.96345548,  2.07351304,  1.51558318,  0.92671363,  0.41493084,
-         0.66663361,  0.17240521,  0.20836271, -0.28724893,  0.44840531,
-         0.68982403,  1.25599442,  1.69034134,  1.34628125,  2.12844035,
-         1.32152215],
-       [-0.84609652, -0.89816345, -0.49457141,  0.54579892, -0.26359758,
-        -0.06168502, -0.84582269, -0.99970035, -1.49066269, -1.43749266,
-        -1.72981359, -2.05344609, -1.54883698, -0.41343364, -0.27623244,
-         0.15767716,  0.46806644, -0.08612928, -0.15592946, -0.81101017,
-        -1.47042735, -2.03572856, -1.54874078, -1.75006712, -1.89485388,
-        -1.2967029 , -0.05614918, -0.54595656,  0.07716932, -0.37122121,
-        -0.19485513],
-       [-0.53838073, -0.70212995,  0.54650868,  0.19485874,  0.64734142,
-        -0.25855414, -0.5139151 , -1.30725201, -1.81140672, -1.69939543,
-        -1.19462958, -1.43073257, -1.17288844, -0.83052925, -0.53301551,
-         0.25857166,  0.2395146 ,  0.42424807, -0.41349669, -1.04744752,
-        -0.77941367, -1.31466412, -2.17077125, -1.79316715, -1.68731229,
-        -0.55432485, -0.56025323, -0.07883656,  0.41328362,  0.53601282,
-         0.13839468],
-       [ 0.23229141,  1.08228128,  1.05600827,  1.48742917,  0.91770588,
-         1.27248518,  0.80114066, -0.06003443, -0.70538254, -1.14511358,
-        -0.59191008, -0.36992571, -0.40628147,  0.6107723 ,  1.46427013,
-         1.57202347,  1.40603705,  1.41391492,  1.01592868,  0.19941683,
-        -0.32228602, -0.42298825, -1.07494005, -0.85824756, -0.62460032,
-         0.75777946,  1.05374853,  1.08352002,  0.99758181,  0.76573615,
-         1.15801937],
-       [ 0.03610165,  1.02871206,  0.96814603,  0.7247723 ,  1.14117985,
-         0.2259254 ,  0.24353815,  0.06743878, -0.72757369, -0.91510488,
-        -0.44771336, -0.38857891, -0.12696506, -0.11729812,  0.99414654,
-         0.8724561 ,  1.44012495,  1.00738892,  0.44502326,  0.14066926,
-        -0.81797799, -0.90072781, -0.46746009, -0.74213525, -0.40410056,
-        -0.23328721,  0.62472249,  0.58969376,  1.5430677 ,  0.79848609,
-         0.82322971],
-       [ 1.272267  ,  1.67428346,  2.10571679,  2.08500924,  1.52768777,
-         1.76673356,  1.5941398 ,  0.31618267,  0.56094535, -0.05904032,
-         0.06489984,  0.13607848,  0.79207021,  1.17543317,  1.59665543,
-         1.89809518,  2.21612089,  2.04581354,  1.2798722 ,  0.53176206,
-         0.39540754, -0.14805861,  0.0922169 ,  0.5504571 ,  0.06085842,
-         0.50808191,  1.00334308,  1.68968381,  1.56194559,  1.51686319,
-         1.79781106],
-       [ 2.75843589,  3.02276048,  3.64803647,  3.2642171 ,  3.67946998,
-         3.74785894,  3.17628364,  2.70551084,  1.66156679,  2.19246399,
-         1.62189055,  1.60772731,  1.97773633,  2.89555072,  3.39132847,
-         3.1445841 ,  3.75955263,  3.05460622,  2.76118641,  2.38280821,
-         2.22139674,  2.04374881,  1.87766694,  1.96670548,  2.05080123,
-         2.57914958,  3.18484661,  3.32652216,  4.02001749,  3.91133834,
-         3.13133477]])</pre>
+<pre>[&#39;seaborn-dark&#39;,
+ &#39;seaborn-darkgrid&#39;,
+ &#39;seaborn-ticks&#39;,
+ &#39;fivethirtyeight&#39;,
+ &#39;seaborn-whitegrid&#39;,
+ &#39;classic&#39;,
+ &#39;_classic_test&#39;,
+ &#39;fast&#39;,
+ &#39;seaborn-talk&#39;,
+ &#39;seaborn-dark-palette&#39;,
+ &#39;seaborn-bright&#39;,
+ &#39;seaborn-pastel&#39;,
+ &#39;grayscale&#39;,
+ &#39;seaborn-notebook&#39;,
+ &#39;ggplot&#39;,
+ &#39;seaborn-colorblind&#39;,
+ &#39;seaborn-muted&#39;,
+ &#39;seaborn&#39;,
+ &#39;Solarize_Light2&#39;,
+ &#39;seaborn-paper&#39;,
+ &#39;bmh&#39;,
+ &#39;tableau-colorblind10&#39;,
+ &#39;seaborn-white&#39;,
+ &#39;dark_background&#39;,
+ &#39;seaborn-poster&#39;,
+ &#39;seaborn-deep&#39;]</pre>
 </div>
 
 </div>
@@ -2024,12 +1998,31 @@ initFunction(initPrint)
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The basic way to switch to a stylesheet is to call</p>
+<div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;stylename&#39;</span><span class="p">)</span>
+</pre></div>
+<p>But keep in mind that this will change the style for the rest of the session!
+Alternatively, you can use the style context manager, which sets a style temporarily:</p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;stylename&#39;</span><span class="p">):</span>
+    <span class="n">make_a_plot</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">tsplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">err_style</span><span class="o">=</span><span class="s2">&quot;ci_bars&quot;</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
 </pre></div>
 
     </div>
@@ -2042,20 +2035,10 @@ initFunction(initPrint)
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/chengjun/anaconda3/lib/python3.6/site-packages/seaborn/timeseries.py:183: UserWarning: The tsplot function is deprecated and will be removed or replaced (in a substantially altered version) in a future release.
-  warnings.warn(msg, UserWarning)
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
 
 
 <div class="output_png output_subarea ">
-<img src="images/19-visualization-with-seaborn_2_1.png"
+<img src="images/19-visualization-with-seaborn_7_0.png"
 >
 </div>
 
@@ -2074,7 +2057,54 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">tsplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="p">[</span><span class="mi">68</span><span class="p">,</span> <span class="mi">95</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/19-visualization-with-seaborn_8_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Seaborn-Datasets">Seaborn Datasets<a class="anchor-link" href="#Seaborn-Datasets"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">get_dataset_names</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -2088,8 +2118,11 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/chengjun/anaconda3/lib/python3.6/site-packages/seaborn/timeseries.py:183: UserWarning: The tsplot function is deprecated and will be removed or replaced (in a substantially altered version) in a future release.
-  warnings.warn(msg, UserWarning)
+<pre>/Users/datalab/anaconda3/lib/python3.7/site-packages/seaborn/utils.py:376: UserWarning: No parser was explicitly specified, so I&#39;m using the best available HTML parser for this system (&#34;lxml&#34;). This usually isn&#39;t a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 376 of the file /Users/datalab/anaconda3/lib/python3.7/site-packages/seaborn/utils.py. To get rid of this warning, pass the additional argument &#39;features=&#34;lxml&#34;&#39; to the BeautifulSoup constructor.
+
+  gh_list = BeautifulSoup(http)
 </pre>
 </div>
 </div>
@@ -2099,8 +2132,184 @@ initFunction(initPrint)
 
 
 
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;anscombe&#39;,
+ &#39;attention&#39;,
+ &#39;brain_networks&#39;,
+ &#39;car_crashes&#39;,
+ &#39;diamonds&#39;,
+ &#39;dots&#39;,
+ &#39;exercise&#39;,
+ &#39;flights&#39;,
+ &#39;fmri&#39;,
+ &#39;gammas&#39;,
+ &#39;iris&#39;,
+ &#39;mpg&#39;,
+ &#39;planets&#39;,
+ &#39;tips&#39;,
+ &#39;titanic&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="lineplot">lineplot<a class="anchor-link" href="#lineplot"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;fmri&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fmri</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>subject</th>
+      <th>timepoint</th>
+      <th>event</th>
+      <th>region</th>
+      <th>signal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>s13</td>
+      <td>18.0</td>
+      <td>stim</td>
+      <td>parietal</td>
+      <td>-0.017552</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>s5</td>
+      <td>14.0</td>
+      <td>stim</td>
+      <td>parietal</td>
+      <td>-0.080883</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>s12</td>
+      <td>18.0</td>
+      <td>stim</td>
+      <td>parietal</td>
+      <td>-0.081033</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>s11</td>
+      <td>18.0</td>
+      <td>stim</td>
+      <td>parietal</td>
+      <td>-0.046134</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>s10</td>
+      <td>18.0</td>
+      <td>stim</td>
+      <td>parietal</td>
+      <td>-0.037970</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">err_style</span><span class="o">=</span><span class="s2">&quot;band&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
 <div class="output_png output_subarea ">
-<img src="images/19-visualization-with-seaborn_3_1.png"
+<img src="images/19-visualization-with-seaborn_14_0.png"
 >
 </div>
 
@@ -2119,7 +2328,7 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">tsplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="s2">&quot;sd&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">err_style</span><span class="o">=</span><span class="s2">&quot;bars&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2132,20 +2341,10 @@ initFunction(initPrint)
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/chengjun/anaconda3/lib/python3.6/site-packages/seaborn/timeseries.py:183: UserWarning: The tsplot function is deprecated and will be removed or replaced (in a substantially altered version) in a future release.
-  warnings.warn(msg, UserWarning)
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
 
 
 <div class="output_png output_subarea ">
-<img src="images/19-visualization-with-seaborn_4_1.png"
+<img src="images/19-visualization-with-seaborn_15_0.png"
 >
 </div>
 
@@ -2164,7 +2363,8 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">tsplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mi">95</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mi">68</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2177,20 +2377,10 @@ initFunction(initPrint)
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/chengjun/anaconda3/lib/python3.6/site-packages/seaborn/timeseries.py:183: UserWarning: The tsplot function is deprecated and will be removed or replaced (in a substantially altered version) in a future release.
-  warnings.warn(msg, UserWarning)
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
 
 
 <div class="output_png output_subarea ">
-<img src="images/19-visualization-with-seaborn_5_1.png"
+<img src="images/19-visualization-with-seaborn_16_0.png"
 >
 </div>
 
@@ -2209,7 +2399,7 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">tsplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">err_style</span><span class="o">=</span><span class="s2">&quot;boot_traces&quot;</span><span class="p">,</span> <span class="n">n_boot</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="s1">&#39;sd&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2222,20 +2412,81 @@ initFunction(initPrint)
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/chengjun/anaconda3/lib/python3.6/site-packages/seaborn/timeseries.py:183: UserWarning: The tsplot function is deprecated and will be removed or replaced (in a substantially altered version) in a future release.
-  warnings.warn(msg, UserWarning)
-</pre>
+
+
+<div class="output_png output_subarea ">
+<img src="images/19-visualization-with-seaborn_17_0.png"
+>
+</div>
+
 </div>
 </div>
 </div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
 
 
 <div class="output_png output_subarea ">
-<img src="images/19-visualization-with-seaborn_6_1.png"
+<img src="images/19-visualization-with-seaborn_18_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#ax = sns.tsplot(data=data, err_style=&quot;boot_traces&quot;, n_boot=500)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">err_style</span><span class="o">=</span><span class="s2">&quot;band&quot;</span><span class="p">,</span> <span class="n">n_boot</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/19-visualization-with-seaborn_19_0.png"
 >
 </div>
 
@@ -2253,6 +2504,16 @@ initFunction(initPrint)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="http://seaborn.pydata.org/generated/seaborn.barplot.html#seaborn.barplot">http://seaborn.pydata.org/generated/seaborn.barplot.html#seaborn.barplot</a></p>
 
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Bar-Plot">Bar Plot<a class="anchor-link" href="#Bar-Plot"> </a></h2>
 </div>
 </div>
 </div>
@@ -2284,7 +2545,7 @@ initFunction(initPrint)
 
 
 <div class="output_png output_subarea ">
-<img src="images/19-visualization-with-seaborn_8_0.png"
+<img src="images/19-visualization-with-seaborn_22_0.png"
 >
 </div>
 
@@ -2319,7 +2580,220 @@ initFunction(initPrint)
 
 
 <div class="output_png output_subarea ">
-<img src="images/19-visualization-with-seaborn_9_0.png"
+<img src="images/19-visualization-with-seaborn_23_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Clustermap">Clustermap<a class="anchor-link" href="#Clustermap"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Discovering structure in heatmap data</strong></p>
+<p><a href="http://seaborn.pydata.org/examples/structured_heatmap.html">http://seaborn.pydata.org/examples/structured_heatmap.html</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;titanic&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>adult_male</th>
+      <th>alone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>survived</th>
+      <td>1.000000</td>
+      <td>-0.338481</td>
+      <td>-0.077221</td>
+      <td>-0.035322</td>
+      <td>0.081629</td>
+      <td>0.257307</td>
+      <td>-0.557080</td>
+      <td>-0.203367</td>
+    </tr>
+    <tr>
+      <th>pclass</th>
+      <td>-0.338481</td>
+      <td>1.000000</td>
+      <td>-0.369226</td>
+      <td>0.083081</td>
+      <td>0.018443</td>
+      <td>-0.549500</td>
+      <td>0.094035</td>
+      <td>0.135207</td>
+    </tr>
+    <tr>
+      <th>age</th>
+      <td>-0.077221</td>
+      <td>-0.369226</td>
+      <td>1.000000</td>
+      <td>-0.308247</td>
+      <td>-0.189119</td>
+      <td>0.096067</td>
+      <td>0.280328</td>
+      <td>0.198270</td>
+    </tr>
+    <tr>
+      <th>sibsp</th>
+      <td>-0.035322</td>
+      <td>0.083081</td>
+      <td>-0.308247</td>
+      <td>1.000000</td>
+      <td>0.414838</td>
+      <td>0.159651</td>
+      <td>-0.253586</td>
+      <td>-0.584471</td>
+    </tr>
+    <tr>
+      <th>parch</th>
+      <td>0.081629</td>
+      <td>0.018443</td>
+      <td>-0.189119</td>
+      <td>0.414838</td>
+      <td>1.000000</td>
+      <td>0.216225</td>
+      <td>-0.349943</td>
+      <td>-0.583398</td>
+    </tr>
+    <tr>
+      <th>fare</th>
+      <td>0.257307</td>
+      <td>-0.549500</td>
+      <td>0.096067</td>
+      <td>0.159651</td>
+      <td>0.216225</td>
+      <td>1.000000</td>
+      <td>-0.182024</td>
+      <td>-0.271832</td>
+    </tr>
+    <tr>
+      <th>adult_male</th>
+      <td>-0.557080</td>
+      <td>0.094035</td>
+      <td>0.280328</td>
+      <td>-0.253586</td>
+      <td>-0.349943</td>
+      <td>-0.182024</td>
+      <td>1.000000</td>
+      <td>0.404744</td>
+    </tr>
+    <tr>
+      <th>alone</th>
+      <td>-0.203367</td>
+      <td>0.135207</td>
+      <td>0.198270</td>
+      <td>-0.584471</td>
+      <td>-0.583398</td>
+      <td>-0.271832</td>
+      <td>0.404744</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Draw the full plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">,</span>
+               <span class="c1">#row_colors=network_colors, col_colors=network_colors,</span>
+               <span class="n">linewidths</span><span class="o">=.</span><span class="mi">75</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/19-visualization-with-seaborn_27_0.png"
 >
 </div>
 
@@ -2334,25 +2808,24 @@ initFunction(initPrint)
  
 
 
-</main>
-
+    </main>
+    
             </div>
             <nav class="c-page__nav">
   
     
     <a id="js-page__nav__prev" class="c-page__nav__prev" href="/ccbook/18-network-epidemics.html">
-      〈 <span class="u-margin-right-tiny"></span> Network Epidemics
+      〈 <span class="u-margin-right-tiny"></span> 
     </a>
   
 
   
     
     <a id="js-page__nav__next" class="c-page__nav__next" href="/ccbook/19-visualization-datashader.html">
-      datashader <span class="u-margin-right-tiny"></span> 〉
+       <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>
-
             <footer>
   <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
 </footer>

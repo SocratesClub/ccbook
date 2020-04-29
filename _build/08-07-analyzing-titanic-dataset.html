@@ -1,22 +1,24 @@
 ---
 interact_link: content/08-07-analyzing-titanic-dataset.ipynb
 kernel_name: python3
+kernel_path: content
 has_widgets: false
 title: |-
   Analyzing Titanic Dataset
+pagenum: 26
 prev_page:
   url: /08-06-statsmodels.html
-  title: |-
-    Introduction to statsmodels
 next_page:
   url: /09-01-machine-learning-with-sklearn.html
-  title: |-
-    Machine Learning
+suffix: .ipynb
+search: test chi statsmodels data statistical models tests hypothesis statistics pandas collar img square null squared distribution text png python estimate plotting functions dataframe org html white neighborhood frac scipy sourceforge net explore extensive analysis linear statistic independent sample million expected frequencies lectures com statsmodelshybibanner module allows users perform list descriptive result available different types estimator researchers across fields fully meets needs computing describe columns features shape regression t stats assumption sum city residents b c d blue persons total take proportion workers independence under observed fobs fexp ddof arraylike category optional www index introduction basics wangchengjun nju edu cn computational
+
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-<main class="jupyter-page">
 
-<div class="jb_cell">
+    <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2796,7 +2798,7 @@ Name: date, dtype: datetime64[ns]</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tools</span> <span class="k">import</span> <span class="n">plotting</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tools</span> <span class="kn">import</span> <span class="n">plotting</span>
 
 <span class="c1"># fig = plt.figure(figsize=(10, 10))</span>
 <span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;reply&#39;</span><span class="p">,</span>\
@@ -4065,7 +4067,7 @@ Name: click, dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">click</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="o">.</span><span class="n">repost</span><span class="p">)</span>
 </pre></div>
 
@@ -4300,7 +4302,7 @@ $</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">chisquare</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chisquare</span>
 <span class="n">chisquare</span><span class="p">([</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> \
           <span class="n">f_exp</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
 </pre></div>
@@ -4347,7 +4349,7 @@ $</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">chi2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi2</span>
 <span class="c1"># p_value = chi2.sf(chi_statistic, df)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">chi2</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -4963,7 +4965,7 @@ Warnings:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="k">import</span> <span class="n">ols</span>
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
 
 <span class="n">moore</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_rdataset</span><span class="p">(</span><span class="s2">&quot;Moore&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span>
                                  <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># load data</span>
@@ -5081,4 +5083,5 @@ Warnings:
  
 
 
-</main>
+    </main>
+    

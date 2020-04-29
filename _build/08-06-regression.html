@@ -1,22 +1,24 @@
 ---
 interact_link: content/08-06-regression.ipynb
-kernel_name: conda-env-anaconda-py
+kernel_name: python3
+kernel_path: content
 has_widgets: false
 title: |-
   Linear Regression
+pagenum: 24
 prev_page:
   url: /08-05-gradient-descent.html
-  title: |-
-    Gradient Descent
 next_page:
   url: /08-06-statsmodels.html
-  title: |-
-    Introduction to statsmodels
+suffix: .ipynb
+search: x y hat yi beta alpha correlation xi w b bar linear sum regression well frac error xit squared prediction standard n r f simple relationship between model constant increase zero varepsiloni q get xy sy sx pt statistics xw xt statsmodels statistical function measure variables where user small least squares fit represent written m since errors means increases standarddeviation case perfectly correlated deviation results deviations text values align operatorname sample coefficient kenney j keeping e s ch mathematics rd ed princeton nj van nostrand pp data matrix used strength applications knowing such exists isnt enough want able understand nature
+
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-<main class="jupyter-page">
 
-<div class="jb_cell">
+    <main class="jupyter-page">
+    <div id="page-info"></div>
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -402,7 +404,7 @@ $$\hat w = (X^T X)^{-1}X^T y$$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">linalg</span><span class="p">,</span> <span class="n">corrcoef</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">linalg</span><span class="p">,</span> <span class="n">corrcoef</span>
 
 <span class="k">def</span> <span class="nf">standRegres</span><span class="p">(</span><span class="n">xArr</span><span class="p">,</span><span class="n">yArr</span><span class="p">):</span>
     <span class="n">xMat</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="n">xArr</span><span class="p">);</span> <span class="n">yMat</span> <span class="o">=</span> <span class="n">mat</span><span class="p">(</span><span class="n">yArr</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
@@ -904,4 +906,5 @@ Warnings:
  
 
 
-</main>
+    </main>
+    
