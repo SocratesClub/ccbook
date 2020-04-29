@@ -4,7 +4,7 @@
 # cd ..
 # jupyter-book build ccbook/ --overwrite
 # cd ccbook
-make serve
+#make serve
 
 # Publish your book's HTML manually to GitHub-pages
 # publish the _site folder of the master branch to the gh-pages branch
