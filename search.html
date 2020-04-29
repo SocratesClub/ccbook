@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Search the site</title>
+  <meta name="description" content="        ">
+
+  <link rel="canonical" href="http://localhost:4000/ccbook/search">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="http://localhost:4000/ccbook/feed.xml">
+
+  <meta property="og:url"         content="http://localhost:4000/ccbook/search" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Search the site" />
+<meta property="og:description" content="        " />
+<meta property="og:image"       content="http://localhost:4000/ccbook/img/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "http://localhost:4000/ccbook/search",
+  "headline": "Search the site",
+  "datePublished": "2020-04-29T13:29:13+08:00",
+  "dateModified": "2020-04-29T13:29:13+08:00",
+  "description": "        ",
+  "author": {
+    "@type": "Person",
+    "name": "王成军"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:4000/ccbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "http://localhost:4000/ccbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/ccbook/assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/regular.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/solid.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/ccbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    }
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/ccbook/assets/js/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/ccbook/assets/js/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/ccbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/ccbook/assets/js/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" async></script>
+  <script src="/ccbook/assets/js/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/ccbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/ccbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/ccbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+<script>
+/**
+  * To auto-embed hub URLs in interact links if given in a RESTful fashion
+ */
+
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+    
+function dict2param(dict) {
+    params = Object.keys(dict).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(dict[k])
+    });
+    return params.join('&')
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return dict2param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = document.querySelectorAll("a").forEach(function(link) {
+    var href = link.href;
+    // If the link is an internal link...
+    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['jupyterhub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'jupyterhub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + dict2param(params);
+      link.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+
+// Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    jupyterHubUrl = rest['jupyterhub'];
+    var hubType = null;
+    var hubUrl = null;
+    if (jupyterHubUrl !== undefined) {
+      hubType = 'jupyterhub';
+      hubUrl = jupyterHubUrl;
+    }
+
+    if (hubType !== null) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      var interactButtons = document.querySelectorAll("button.interact-button")
+      var lastButton = interactButtons[interactButtons.length-1];
+      var link = lastButton.parentElement;
+
+      // If we've already run this, skip the link updating
+      if (link.nextElementSibling !== null) {
+        return;
+      }
+
+      // Update the link and add context div
+      var href = link.getAttribute('href');
+      if (lastButton.id === 'interact-button-binder') {
+        // If binder links exist, we need to re-work them for jupyterhub
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // If localhost, assume we're working from a local Jupyter server and remove `/hub`
+          first = [hubUrl, 'git-sync'].join('/')
+        } else {
+          first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+        }
+        href = first + '?' + binder2Jupyterhub(href);
+      } else {
+        // If interact button isn't binderhub, assume it's jupyterhub
+        // If JupyterHub links, we only need to replace the hub url
+        href = href.replace("", hubUrl);
+        if (hubUrl.indexOf('http%3A%2F%2Flocalhost') > -1) {
+          // Assume we're working from a local Jupyter server and remove `/hub`
+          href = href.replace("/hub/user-redirect", "");
+        }
+      }
+      link.setAttribute('href', decodeURIComponent(href));
+
+      // Add text after interact link saying where we're launching
+      hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+      link.insertAdjacentHTML('afterend', '<div class="interact-context">on ' + hubUrlNoHttp + '</div>');
+
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+runWhenDOMLoaded(updateInteractLink)
+document.addEventListener('turbolinks:load', updateInteractLink)
+</script>
+
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/ccbook/assets/js/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/ccbook/assets/js/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/ccbook/assets/css/styles.css",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://computational-class.github.io/ccbook/"><img src="/ccbook/img/logo/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Elements of Computational Communication</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/00-preface.html"
+        >
+          
+          Preface
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/00-acknowledgement.html"
+        >
+          
+          Acknowledgement
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/01-intro2cjc.html"
+        >
+          
+            1.
+          
+          Introduction to Computational Communication
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/02-bigdata.html"
+                >
+                  
+                    1.1
+                  
+                  Understanding Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/03-python-intro.html"
+        >
+          
+            2.
+          
+          Introduction of Python Programming
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/04-crawler-beautifulsoup.html"
+        >
+          
+            3.
+          
+          Data Collection
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-wechat.html"
+                >
+                  
+                    3.1
+                  
+                  Crawling WeChat Public Accounts
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-douban.html"
+                >
+                  
+                    3.2
+                  
+                  Crawling Douban Movies
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-cppcc.html"
+                >
+                  
+                    3.3
+                  
+                  Collecting CPPCC proposals
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-selenium.html"
+                >
+                  
+                    3.4
+                  
+                  Introduction of Selenium
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-tripadvisor.html"
+                >
+                  
+                    3.5
+                  
+                  Using selenium for clicking
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-netease-music.html"
+                >
+                  
+                    3.6
+                  
+                  Crawling Music Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-gov-report.html"
+                >
+                  
+                    3.7
+                  
+                  Crawling Government Reports
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/06-data-cleaning-intro.html"
+        >
+          
+            4.
+          
+          Data Cleaning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-preprocessing.html"
+                >
+                  
+                    4.1
+                  
+                  Preprocessing Big Data
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-pandas.html"
+                >
+                  
+                    4.2
+                  
+                  Data Processing with Pandas
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-tweets.html"
+                >
+                  
+                    4.3
+                  
+                  Data Cleaning of OWS tweets
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/07-data-cleaning-occupy-central-news.html"
+                >
+                  
+                    4.4
+                  
+                  Cleaning the News of Occupy Central
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/06-data-cleaning-music-list.html"
+                >
+                  
+                    4.5
+                  
+                  Cleaning A Music List
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/08-01-statistics-thinking.html"
+        >
+          
+            5.
+          
+          Statistics Thinking
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-02-linear-algebra.html"
+                >
+                  
+                    5.1
+                  
+                  Linear Algebra
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-03-probability.html"
+                >
+                  
+                    5.2
+                  
+                  Probability
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-04-hypothesis-inference.html"
+                >
+                  
+                    5.3
+                  
+                  Hypothesis Inference
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-05-gradient-descent.html"
+                >
+                  
+                    5.4
+                  
+                  Gradient Descent
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-06-regression.html"
+                >
+                  
+                    5.5
+                  
+                  Linear Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-06-statsmodels.html"
+                >
+                  
+                    5.6
+                  
+                  Introduction to statsmodels
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-07-analyzing-titanic-dataset.html"
+                >
+                  
+                    5.7
+                  
+                  Analyzing Titanic Dataset
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/09-01-machine-learning-with-sklearn.html"
+        >
+          
+            6.
+          
+          Machine Learning
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-03-hyperparameters-and-model-validation.html"
+                >
+                  
+                    6.1
+                  
+                  Hyperparameters and Model Validation
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-04-feature-engineering.html"
+                >
+                  
+                    6.2
+                  
+                  Feature Engineering
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-05-naive-bayes.html"
+                >
+                  
+                    6.3
+                  
+                  Naive Bayes
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-06-linear-regression.html"
+                >
+                  
+                    6.4
+                  
+                  Linear Regression
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-07-support-vector-machines.html"
+                >
+                  
+                    6.5
+                  
+                  Support Vector Machines
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-08-random-forests.html"
+                >
+                  
+                    6.6
+                  
+                  Random Forests
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-09-machine-learning-summary.html"
+                >
+                  
+                    6.7
+                  
+                  Summary
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-10-future-employment.html"
+                >
+                  
+                    6.8
+                  
+                  Case study of future employment
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/09-neural-network.html"
+        >
+          
+            7.
+          
+          Neural Network
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/09-neural-network-advanced.html"
+                >
+                  
+                    7.1
+                  
+                  Advanced Topics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/10-text-minning-gov-report.html"
+        >
+          
+            8.
+          
+          Text Mining
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/10-word2vec.html"
+                >
+                  
+                    8.1
+                  
+                  Word2vec
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/11-sentiment-analysis-with-dict.html"
+                >
+                  
+                    8.2
+                  
+                  Sentiment Analysis with Dictionary
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/11-sentiment-classifier.html"
+                >
+                  
+                    8.3
+                  
+                  Sentiment Analysis with Machine Learning
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/12-topic-models-update.html"
+                >
+                  
+                    8.4
+                  
+                  Topic Models
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/12-topic-models-with-turicreate.html"
+                >
+                  
+                    8.5
+                  
+                  Topic Models with Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/13-recsys-intro.html"
+        >
+          
+            9.
+          
+          Recommendation System
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/14-millionsong.html"
+                >
+                  
+                    9.1
+                  
+                  The Case of Million Song
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/14-movielens.html"
+                >
+                  
+                    9.2
+                  
+                  The Case of Movielens
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/15-network-science-intro.html"
+        >
+          
+            10.
+          
+          Network Science
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/16-network-science-models.html"
+                >
+                  
+                    10.1
+                  
+                  Network Models
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/17-networkx.html"
+                >
+                  
+                    10.2
+                  
+                  networkx
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/18-network-analysis-of-tianya-bbs.html"
+                >
+                  
+                    10.3
+                  
+                  The case of Tianya BBS
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/18-network-epidemics.html"
+                >
+                  
+                    10.4
+                  
+                  Network Epidemics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/19-visualization-with-seaborn.html"
+        >
+          
+            11.
+          
+          Visualization
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-datashader.html"
+                >
+                  
+                    11.1
+                  
+                  datashader
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-with-pyecharts.html"
+                >
+                  
+                    11.2
+                  
+                  pyecharts
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/19-visualization-maps-using-folium.html"
+                >
+                  
+                    11.3
+                  
+                  folium
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/ccbook/0-common-questions.html"
+        >
+          
+            12.
+          
+          Appendix
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-jupyter-notebook.html"
+                >
+                  
+                    12.1
+                  
+                  Appendix of Using Jupyter Notebooks
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-slides.html"
+                >
+                  
+                    12.2
+                  
+                  Appendix of Making Slides with RISE
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/0-turicreate.html"
+                >
+                  
+                    12.3
+                  
+                  Appendix of Using Turicreate
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+        <li><h2 class="c-sidebar__title">Resources</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/jupyter/jupyter-book"
+        >
+          
+          Jupyter Book
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/computational-class/ccbook"
+        >
+          
+          GitHub repository
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button">
+      <img src="/ccbook/assets/images/download-solid.svg" height="15" width="15" alt="Download" />
+      <!-- PDF -->
+    </button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/ccbook/search.html" class="topbar-right-button" id="search-button"><i class="fa fa-search"></i></a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <div class="search-content__inner-wrap">
+    <input type="text" id="lunr_search" class="search-input" tabindex="-1" placeholder="'Enter your search term...''" />
+    <div id="results" class="results"></div>
+</div>
+
+<script>
+    // Add the lunr store since we will now search it
+    var store = [{
+        "title": "Appendix",
+        
+        "excerpt":
+            "在anaconda 环境中运行jupyter notebook &#38382;&#39064;&#21450;&#20854;&#35299;&#20915;&#26041;&#27861; Mac&#30005;&#33041;&#22914;&#20309;&#24555;&#36895;&#25214;&#21040;&#29992;&#25143;&#30446;&#24405; 　 1、在finder的偏好设置中选择边栏选中个人收藏下房子的图标，然后在边栏就可以看到用户目录，然后就可以找到目录了。 2、在finder的偏好设置中选择通用，然后选择磁盘，磁盘就出现在桌面了，这样也可以很方便的进入根目录，进而找到用户目录； 3、桌面目录下，菜单前往-个人也可以进入用户目录 &#22914;&#20309;&#25171;&#24320;jupyter notebook Mac users： 打开terminal （可以在launchpad中找到），输入：jupyter notebook windows users: 在电脑左下角输入'cmd'打开terminal, 输入：jupyter notebook &#22312;terminal&#37324;&#25104;&#21151;&#23433;&#35013;&#31532;&#19977;&#26041;&#30340;&#21253;&#65292;&#32467;&#26524;&#21457;&#29616;&#22312;notebook&#37324;&#26080;&#27861;import 这个问题多出现于mac用户，因为mac有一个系统自带的python，成功安装的第三方包都被安装到了系统自带的python里。因此需要确保我们使用的是conda自己的pip，即需要指定pip的路径名，比如我的pip路径名在：/Users/datalab/anaconda/bin/pip,那么在terminal里输入： /Users/datalab/anaconda/bin/pip install package_name 或者在notebook的初始页面，右上方-new-terminal,在这个terminal里输入 pip install package_name 或者通过anaconda自带的spyder安装 常用的包也可以直接 conda install package_name &#22914;&#20309;&#26597;&#30475;anaconda&#33258;&#24102;&#30340;&#21253;&#21644;&#24050;&#32463;&#23433;&#35013;&#30340;&#21253;&#65311; 打开terminal，输入： conda list windows&#29992;&#25143;&#23433;&#35013;graphlab-create&#20986;&#38169;&#65306;unistall tornado, permission denied&#65306; tornado/speedup.pdy, &#35299;&#20915;&#26041;&#27861;&#65306; 首先，卸载tornado：conda remove tornado 然后，重新运行：pip install -U graphlab-create 添加Anaconda的国内镜像，快速安装Python包 添加清华镜像 https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/ conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/ conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.sjtug.sjtu.edu.cn/anaconda/cloud/conda-forge/ conda config --set show_channel_urls yes &#35774;&#32622;&#25628;&#32034;&#26102;&#26174;&#31034;&#36890;&#36947;&#22320;&#22336; conda config --set show_channel_urls yes 如果命令行方法添加不上，可以在用户目录下的.condarc中添加https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/： 如果没有该文件可以直接创建，Windows为C://Users/username/.condarc，Linux/Mac为~/.condarc To install a different version of Python without overwriting the current version https://conda.io/docs/user-guide/tasks/manage-python.html Creating a new environment...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/0-common-questions.html",
+        "teaser":null},{
+        "title": "Appendix of Using Jupyter Notebooks",
+        
+        "excerpt":
+            "The Jupyter Notebook It is a web application that allows you to create and share documents that contain live code equations visualizations explanatory text Table of Contents The Jupyter NotebookPublish on Github PagesWorkflow引用一级标题二级标题搜狗输入法表情和符号运行C代码Jupyter 魔术命令References Publish on Github Pages Confirm that your book's HTML is built in the _site folder. Install the ghp-import tool. pip install ghp-import Use ghp-import to push your book's HTML onto the gh-pages branch of your repository. ghp-import -n -p -f _site https://jupyterbook.org/guide/publish/github-pages.html Workflow #!/bin/bash # open github master branch # open atom master branch cd .. jupyter-book build ccbook/ cd ccbook make serve # Publish your...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/0-jupyter-notebook.html",
+        "teaser":null},{
+        "title": "Appendix of Making Slides with RISE",
+        
+        "excerpt":
+            "&#20351;&#29992;Jupyter&#21046;&#20316;Slides&#30340;&#20171;&#32461; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com RISE: \"Live\" Reveal.js Jupyter/IPython Slideshow Extension https://github.com/damianavila/RISE Installation Downnload from https://github.com/damianavila/RISE open your teminal, cd to the RISE folder, e.g., cd /github/RISE/ To install this nbextension, simply run python setup.py install from the RISE repository. In the notebook toolbar, a new button (\"Enter/Exit Live Reveal Slideshow\") will be available. The notebook toolbar also contains a \"Cell Toolbar\" dropdown menu that gives you access to metadata for each cell. If you select the Slideshow preset, you will see in the right corner of each cell a little box where you can select the cell type (similar...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/0-slides.html",
+        "teaser":null},{
+        "title": "Appendix of Using Turicreate",
+        
+        "excerpt":
+            "Turicreate: Departure from Graphlab Turi Create simplifies the development of custom machine learning models. https://github.com/apple/turicreate You don't have to be a machine learning expert to add recommendations, object detection, image classification, image similarity activity classification to your app. https://apple.github.io/turicreate/docs/userguide/ https://apple.github.io/turicreate/docs/api/index.html pip install -U turicreate import turicreate as tc actions = tc.SFrame.read_csv(&#39;/Users/datalab/bigdata/cjc/ml-1m/ratings.dat&#39;, delimiter=&#39;\\n&#39;, header=False)[&#39;X1&#39;].apply(lambda x: x.split(&#39;::&#39;)).unpack() for col in actions.column_names(): actions[col] = actions[col].astype(int) actions = actions.rename({&#39;X.0&#39;: &#39;user_id&#39;, &#39;X.1&#39;: &#39;movie_id&#39;, &#39;X.2&#39;: &#39;rating&#39;, &#39;X.3&#39;: &#39;timestamp&#39;}) #actions.save(&#39;ratings&#39;) Finished parsing file /Users/datalab/bigdata/cjc/ml-1m/ratings.dat Parsing completed. Parsed 100 lines in 0.348264 secs. ------------------------------------------------------ Inferred types from first 100 line(s) of file as column_type_hints=[str] If parsing fails due...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/0-turicreate.html",
+        "teaser":null},{
+        "title": "Acknowledgement",
+        
+        "excerpt":
+            "                    &#33268;&#35874;              首先，我需要感谢周葆华和祝建华两位老师。本书起源于王成军在2016年开始为复旦大学开设的《计算新闻传播学》新媒体硕士课程。最初的课程框架由香港城市大学祝建华老师、复旦大学周葆华两位老师和王成军三个人商定，旨在为新闻传播学院的学生提供关于计算传播学应用的基本架构，内容注重计算思维的训练和实战应用，体现了实用性和案例化教学的特点。按照数据分析的流程分为数据收集、数据清洗、统计分析、机器学习（神经网络）、文本挖掘、推荐系统、网络科学、可视化等多个模块。其后，王成军在南京大学开设名为《大数据挖掘与分析》课程，基本上遵循相同的框架。同时，需要感谢参与此课程的所有同学，因为与同学们的互动，本书所使用的案例得以不断更新。  其次，我想感谢Anaconda Python和Jupyter项目。本书及其相关课程遵循可计算化的思路，采用Python作为编程工具，所有课程内容，包括文字、图片、代码等，均通过Jupyter Notebook展示。Jupyter Notebook是数据科学和计算社会科学的必备工具，它使得程序运行的结果被非常好地记录下来，确保了数据分析结果更容易被复制出来，利于传播和展示。借助于RISE，所有的Jupyter Notebook还可以非常方便地在本地以幻灯片的形式展示。为更好地方便教学、交流以及更新课程内容，特将课程相关的Jupyter notebook通过Jupyter Book整理为在线图书的形式。我在给学生上课的时候经常鼓吹Jupyter Notebook的高明之处，尤其是支持Markdown的写作体验非常好，因此可以用来写书。但是，我之前从来没有认真尝试过真正这样做。Jupyter Book终于让我的这个愿望成真。综上，笔者非常感谢Jupyter项目：一方面，如果没有Jupyter Notebook就很难有相关的课程；另一方面，如果没有Jupyter Book项目的成熟，将课程内容整理为在线电子图书也是一个巨大的工程。  另外，我想感谢Github平台对于本书和相关课程起到了非常重要的作用。为便于教学，课程中使用的所有Jupyter Notebook形式的代码、数据、图片均通过Github完整的记录下来并对所有人开放。借助于nbviewer平台，读者可以非常便利地查看所有的Jupyter Notebook，并在幻灯片和代码两种模式中自由切换。当然，实现这一结果的基础是所有的Jupyter Notebook存储在Github平台上。本书的电子版本也通过Github Pages展现。每次更新的结果，均通过Github进行更新。每年开设两次相关课程使得本书所涉及到的内容可以迅速迭代。”苟日新，又日新“。聚沙成塔，集腋成裘，古人诚不我欺也。  最后，需要声明的是，本在线书籍中不少应用内容来源于多本其它重要书籍，并非笔者独创。因本书内容驳杂，而个人能力有限，难免存在诸多谬误；对于其中涉及的错误，笔者皆愿意承担。  王成军  2019年10月11日                     ",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/00-acknowledgement.html",
+        "teaser":null},{
+        "title": "Preface",
+        
+        "excerpt":
+            "                    &#23547;&#25214;&#20154;&#31867;&#20256;&#25773;&#34892;&#20026;&#30340;&#22522;&#22240;: &#35745;&#31639;&#20256;&#25773;&#23398;&#22522;&#30784;              二十一世纪是计算社会科学的时代。1998年邓肯·瓦茨关于小世界网络的模型和1999年阿尔伯特·巴拉巴西关于幂律和无标度网络的研究复兴了网络科学。一石激起千层浪，在学术领域产生了深远的影响。对于万维网上的人类行为的研究也形成了一个子领域，被称之为万维网科学(Web Science)；伴随着社交媒体等数字媒体的发展，社会网络分析开始受到前所未有的重视，社交网络上的信息流动网络研究也引起广泛的兴趣；与此同时，机器学习和数据科学取得了突飞猛进的发展，进一步加速了计算化的浪潮；在新闻传播产业当中，数据驱动的新闻生产、计算广告和媒体推荐系统开始成为席卷世界的潮流。面对海量的互联网数据、持续困扰人类的重大社会问题、崭新的理论视角、诱人的物理学模型，在世界大战中发展起来的新闻传播学研究会走向什么地方？这构成了困扰我们的时代问题，而计算传播学正是试图回应这一时代叩问的一种尝试。  邓肯·瓦茨2008年在《自然》杂志上发表了题为《一个二十一世纪的科学》的文章。瓦茨认为社会科学才是二十一世纪的科学。社会系统当中充满了海量的异质性个体构成，这些个体之间的互动使得社会过程充满了复杂性。相比于自然科学，社会科学内部的复杂性更高，也更难研究。人类对于自然现象当中的很多规律已经非常了解，但对于社会现象的理解则通常非常有限。面对这些挑战，或许很多人可以做一群鸵鸟，只盯住让自己感觉舒适的领域，当危险来的时候干脆把头埋进沙子里，但是年轻人没有逃避的理由。年轻研究者唯有敢于冒险，才能走出不一样的路来。瓦茨指出网络科学的视角和大规模的互联网数据与实验为社会科学的发展提供了前所未有的理想条件，并乐观地认为“基于因特网的传播数据和互动将会变革我们对于人类群体行为的理解”。  “计算传播学”这个词语的提出源于香港城市大学互联网挖掘实验室成员之间在2012年初的一次组会讨论。互联网挖掘实验室由祝建华老师在2000年创建，最初起源于香港互联网使用调查项目。祝建华老师每周都会组织实验室成员进行讨论，讨论的主要内容除了每个人的研究进展之外，还包括文献分享、经验见闻等内容。置身于这样的一个实验室当中，使得我们较早就感受到在互联网人类传播行为的研究领域里来自跨学科的学术创新。这种范式的革新确立的一个标志是2009年大卫·拉泽等人发表在《科学》杂志上的一篇名为《计算社会科学》的文章。以拉泽为首的一群来自社会科学、计算机科学、网络科学等领域的资深研究者们宣告了计算社会科学的诞生。计算社会科学以大规模数据收集和数据分析作为主要的工具，采用网络科学作为主要的研究视角，力图揭示个体和群体行为的模式。  2010年我作为博士生进入到香港城市大学互联网挖掘实验室以来，切身感受到了传播学研究者在互联网时代的身份焦虑。2012年1月，我在博客上写了一篇题为《计算传播学：宣言与版图》的短文，试图走一条计算驱动的研究道路，强调了将寻找人类传播行为的可计算基因作为计算传播学的发展使命。在更早一些时候，这篇小文章首先在一个名为《数字媒体阅读报告》的小圈子里流传。2012年2月，合作者林武来实验室交流，分享了关于Python编程基础、数据抓取、Hadoop使用等方面的知识。我们在此期间的一次组会中再次讨论了我们自己期待传播学将走向什么地方这一时代问题，并提出了计算传播（computational communication）的思路，激发了大家的进一步讨论的兴趣。在吴令飞的提议之下，计算传播学谷歌邮件组在2012年2月建立；2012年3月，计算传播学豆瓣小站正式建立；2012年底，吴令飞在多贝网上发布了一个名为计算传播学的系列课程；2014年暑假，我在腾讯实习期间，计算传播网正式建立。在此期间，我和许小可老师进行了一次讨论，我介绍了计算传播学的发展思路。当时，许小可、胡海波和张伦老师在写作一本关于社交网络上的信息传播的书，小可敏锐地觉察到他们所探索的研究范式可以采用计算传播学作为一个理论框架来进行理解，我也加入了这本书的写作。作为第一本计算传播学的图书，《社交网络上的计算传播学》于2015年在科学出版社正式出版。  2014年之后，计算传播学开始步入学科建制化的发展阶段。南京大学新闻传播学院计算传播学实验中心经过半年多的筹备在2015年2月成立；2016年1月国际传播学会（ICA）计算方法兴趣小组建立；2016年9月25日第一届计算传播学论坛在南京成功举办，此次会议的主题是“计算传播时代”，旨在让人们认识到基于互联网传播产生的数据和互动性正在变革我们对人类传播行为的认知，传播学研究面临着新的问题与挑战，以人类传播行为的可计算性基础为研究中心的计算传播学为传播学的发展提供了更广阔的空间与可能性；2017年9月14日，第六届全国社会媒体处理大会（SMP2017）在北京举办，张伦和我一起在SMP讲习班介绍了《计算社会科学视角下的计算传播学》，此次会议还设有计算传播学分论坛；2017年9月22-24日，第二届计算传播学论坛暨工作坊在南京大学成功举办。 2017年计算传播学工作坊为期一天半，分为两个子题并行进行，分别为“信息传播的网络分析”(Network Approaches to Information Diffusion)和“文本数据处理方法”(Processing Text Data)。前者定位为高级程度，聚焦于计算传播学研究中的一个核心而又困难的题目，以探讨研究设计、理论模型、数据要求、方法选择等问题为主、操作问题为辅，适合已掌握基本方法并有一定研究经验者。后者定位为入门程度，介绍用于文本数据处理的各个步骤上的方法、工具、算法等，含有众多动手操作。这次工作坊“信息传播的网络分析”部分由张子柯和王成军主讲《网络信息传播基础》、许小可讲《网络信息传播实证研究》、胡海波和阮中远讲解《网络信息传播模型》，“文本数据处理方法”部分由张伦主讲《文本分析的基本步骤与方法》、王成军介绍《主题模型》、汪臻真主讲《情感分析》。在酝酿在大数据和人工智能时代，未来的计算社会科学家更需要训练问题意识、培养计算思维、增强数据挖掘和分析的能力，而这正是本书写作的一个重要目的。  第二届计算传播学论坛暨工作坊的过程中，许小可、胡海波、张伦和我开始计划写一本《计算传播学导论》书。按照祝建华老师的建议，我们曾对参加了2016年第一届计算传播学论坛的研究者公开征集计算传播学工作坊的题目。经过汇总整理之后的题目包括：计算机模拟/多主体建模、社交媒体数据爬取、传播文本挖掘和主题模型分析、使用深度学习进行传播学研究、社交媒体数据的时间序列分析和空间分析、传播学研究和数据新闻的可视化方法、传播网络分析（社区识别、复杂网络与信息流动）、机器学习、意见形成、Python编程，以及如何教授新闻传播学专业的学生网络分析/数据新闻/编程。我们的想法是每年遴选两个主题组织计算传播学工作坊，系统地整理和组织工作坊教学材料，基于此形成《计算传播学导论》一书的基本材料。  计算传播学作为一个概念的提出主要源于计算社会科学的发展。直到计算社会科学成为研究热点之后，计算传播作为一个概念才被正式提出。另外一种定义计算传播学的思路是计算传播的产业实践，可以将计算传播定义为数据驱动的、借助于可计算方法所进行的传播过程，而分析计算传播现象的研究领域就是计算传播学。计算传播的应用有很多，例如数据新闻、计算广告、媒体推荐系统等，在过去的几年里，产生了深远的影响。数据新闻风靡全球，重要的国际媒体和国内媒体纷纷采用数据新闻，以开放数据、数据挖掘、可视化的方式提供信息；计算广告备受瞩目，不管是门户网站、搜索引擎，还是社交媒体，纷纷将计算广告当做数据变现的重要渠道，以可计算的方法对广告进行拍卖，实现媒体、内容和用户三方的匹配；媒体推荐系统成为个性化信息获取的重要途径，既包括传统的社交新闻网站，也包括今日头条这种后起之秀，它们纷纷采用协同过滤的方法为用户提供信息，建立了新的信息把关模式。  计算传播学将传播学研究置于数据和计算方法的坚固基础上。数据作为一种新的石油，解放了社会科学家对于理论的过度依赖。随着数字媒体的发展，人类社会积累的人类传播行为数据的规模日趋庞大，详尽地记录了社会发展和人类互动的各种细节。运用这些生动的人类传播行为数据，可以从更细的颗粒度、更大的样本规模上让我们捕捉社会的发展。毫无疑问，对于数据的挖掘依赖于人类的计算能力的提高，依赖于跨学科的研究方法和研究视角。我们人类传播行为的基因恰恰隐藏在互动性当中，但这种人类传播行为的互动性本身也使得传播过程充满了复杂性。网络科学为捕捉到纷繁复杂的人类互动提供了一个很好的视角。从数据出发，借助于计算方法和好的理论视角，就可以更好地刻画人类传播行为的模式和法则。需要指出的是，不管是模式还是法则，本身并没有能够回答我们所观察到的社会现实是由何种社会机制构成，因而需要通过建构数学和物理模型的方式来解释社会机制并基于社会机制预测具体的社会现实。社会机制虽然可能非常复杂，但背后的普适性原理却可以非常简单。计算传播学试图从重大的社会问题出发，系统地收集并分析人类传播行为的数据，刻画数据背后的行为模式，探索模式背后的社会机制，试图上升到一般性的原理，达到更好地解释和预测人类传播行为的目的。一个好的理论应当尝试捕捉到这种普适性的原理，基于一般性的原理生成机制，基于因果机制解释行为模式，基于模式预测现实，最终回答重要的社会问题。  王成军  wangchengjun@nju.edu.cn                     ",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/00-preface.html",
+        "teaser":null},{
+        "title": "Introduction to Computational Communication",
+        
+        "excerpt":
+            "&#31532;&#19968;&#31456; &#35745;&#31639;&#20256;&#25773;&#23398;&#31616;&#20171; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com 内容简介 一、引言：大数据时代 二、如何认识世界 三、科学的四重境界 四、可计算性 五、定义计算传播 六、通往计算传播学之路 方法\\工具\\案例 &#19968;&#12289;&#24341;&#35328;&#65306;&#31038;&#20250;&#31185;&#23398; Feynman on social sciences Pseudo-science Forms Laws &#35745;&#31639;&#31038;&#20250;&#31185;&#23398; Lazer et al (2009) Compuational social science. Science. V323. 6 Feb 2009 计算社会科学正在涌现 大规模的数据收集和数据分析 网络科学视角 揭示个体和群体行为的模式 D. Watts, A twenty-first century science. Nature 445, 489 (2007). 互联网大数据 网络科学视角 &#20135;&#29983;&#32972;&#26223; 网络科学（network science） 计算语言学 （computational linguistics） 数据科学（data science） 社会计算 （social computing） 普适计算（ubiquitous computing） 可视化 （visualization） 数据新闻学 (data journalism) 计算广告学 (computational advising) &#22914;&#20309;&#35748;&#35782;&#35745;&#31639;&#31038;&#20250;&#31185;&#23398;&#65311; &#35745;&#31639;&#31038;&#20250;&#31185;&#23398;&#31038;&#21306;&#30340;&#21457;&#23637; 王成军（2015）计算传播学:作为计算社会科学的传播学.《中国网络传播研究》8.193-208 &#36328;&#23398;&#31185;&#35270;&#37326; 被引用数量前十名的期刊 王成军（2015）计算传播学:作为计算社会科学的传播学.《中国网络传播研究》8.193-208 &#30740;&#31350;&#33033;&#32476; 被引用数量前十名的文献 王成军（2015）计算传播学:作为计算社会科学的传播学.《中国网络传播研究》8.193-208 &#35745;&#31639;&#31038;&#20250;&#31185;&#23398;&#26159;&#31185;&#23398;&#21527;&#65311; Geology is not a real science Sheldon from the big bang theory http://www.youtube.com/watch?v=sYMFHON8LFw &#20108;&#12289;&#22914;&#20309;&#35748;&#35782;&#19990;&#30028;&#65311; 洞穴之喻 开放思维 康德：“我们所有的知识起源于感知，然后发展为理解，终结为理性。没有比理性更高的东西。” Immanuel...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/01-intro2cjc.html",
+        "teaser":null},{
+        "title": "Understanding Big Data",
+        
+        "excerpt":
+            "&#25968;&#25454;&#31185;&#23398;&#30340;&#32534;&#31243;&#24037;&#20855;&#65306;&#22823;&#25968;&#25454; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#20851;&#20110;&#22823;&#25968;&#25454;&#30340;&#22270;&#29255; &#25968;&#23383; &#32593;&#32476; &#25991;&#26412; Big data is like teenage sex: Everyone talks about it, nobody really knows how to do it, everyone thinks everyone else is doing it, so everyone claims they are doing it. Dan Ariely, Duke University Big data is a broad term for data sets so large or complex that traditional data processing applications are inadequate. Challenges include analysis, capture, data curation , search, sharing , storage, transfer, visualization, and information privacy . (WIKIPEDIA) &#20113;&#35745;&#31639; 2006: AWS EC2 (cloud-based computing clusters) Tools in the Ecosystem: \"Hadoop\" and Map/Reduce 阿里云 百度云 Map/Reduce Google...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/02-bigdata.html",
+        "teaser":null},{
+        "title": "Introduction of Python Programming",
+        
+        "excerpt":
+            "&#25968;&#25454;&#31185;&#23398;&#30340;&#32534;&#31243;&#24037;&#20855; Python&#20351;&#29992;&#31616;&#20171; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#20154;&#29983;&#33510;&#30701;&#65292;&#25105;&#29992;Python&#12290; Python（/ˈpaɪθən/）是一种面向对象、解释型计算机程序设计语言 由Guido van Rossum于1989年底发明 第一个公开发行版发行于1991年 Python语法简洁而清晰 具有强大的标准库和丰富的第三方模块 它常被昵称为胶水语言 TIOBE编程语言排行榜“2010年度编程语言” &#29305;&#28857; 免费、功能强大、使用者众多 与R和MATLAB相比，Python是一门更易学、更严谨的程序设计语言。使用Python编写的脚本更易于理解和维护。 如同其它编程语言一样，Python语言的基础知识包括：类型、列表（list）和元组（tuple）、字典（dictionary）、条件、循环、异常处理等。 关于这些，初阶读者可以阅读《Beginning Python》一书（Hetland, 2005)。 Python&#20013;&#21253;&#21547;&#20102;&#20016;&#23500;&#30340;&#31867;&#24211;&#12290; 众多开源的科学计算软件包都提供了Python的调用接口，例如著名的计算机视觉库OpenCV。 Python本身的科学计算类库发展也十分完善，例如NumPy、SciPy和matplotlib等。 就社会网络分析而言，igraph, networkx, graph-tool, Snap.py等类库提供了丰富的网络分析工具 Python&#36719;&#20214;&#19982;IDE 目前最新的Python版本为3.0，更稳定的2.7版本。 编译器是编写程序的重要工具。 免费的Python编译器有Spyder、PyCharm(免费社区版)、Ipython、Vim、 Emacs、 Eclipse(加上PyDev插件)。 Installing Anaconda Python Use the Anaconda Python http://continuum.io/downloads.html &#31532;&#19977;&#26041;&#21253;&#21487;&#20197;&#20351;&#29992;pip install&#30340;&#26041;&#27861;&#23433;&#35013;&#12290; 可以点击ToolsOpen command prompt 然后在打开的命令窗口中输入： pip install beautifulsoup4 pip install beautifulsoup4 NumPy /SciPy for scientific computing pandas to make Python usable for data analysis matplotlib to make graphics scikit-learn for machine learning %matplotlib inline import random, datetime import numpy as np import matplotlib.pyplot as plt import matplotlib import statsmodels.api as sm from scipy.stats import norm from scipy.stats.stats import pearsonr...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/03-python-intro.html",
+        "teaser":null},{
+        "title": "Data Collection",
+        
+        "excerpt":
+            "&#25968;&#25454;&#25235;&#21462;&#65306; Requests&#21644;Beautifulsoup&#31616;&#20171; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#22522;&#26412;&#21407;&#29702; 爬虫就是请求网站并提取数据的自动化程序。其中请求，提取，自动化是爬虫的关键！ &#29228;&#34411;&#30340;&#22522;&#26412;&#27969;&#31243; 发起请求 通过HTTP库向目标站点发起请求，也就是发送一个Request，请求可以包含额外的header等信息，等待服务器响应 获取响应内容 如果服务器能正常响应，会得到一个Response，Response的内容便是所要获取的页面内容，类型可能是HTML,Json字符串，二进制数据（图片或者视频）等类型 解析内容 得到的内容可能是HTML,可以用正则表达式，页面解析库进行解析，可能是Json,可以直接转换为Json对象解析，可能是二进制数据，可以做保存或者进一步的处理 保存数据 保存形式多样，可以存为文本，也可以保存到数据库，或者保存特定格式的文件 浏览器发送消息给网址所在的服务器，这个过程就叫做Http Request;服务器收到浏览器发送的消息后，能够根据浏览器发送消息的内容，做相应的处理，然后把消息回传给浏览器，这个过程就是Http Response. http://www.cnblogs.com/zhaof/p/6898138.html &#38656;&#35201;&#35299;&#20915;&#30340;&#38382;&#39064; 页面解析 获取Javascript隐藏源数据 自动翻页 自动登录 连接API接口 一般的数据抓取，使用requests和beautifulsoup配合就可以了。 尤其是对于翻页时url出现规则变化的网页，只需要处理规则化的url就可以了。 以简单的例子是抓取天涯论坛上关于某一个关键词的帖子。 在天涯论坛，关于雾霾的帖子的第一页是： http://bbs.tianya.cn/list.jsp?item=free&amp;nextid=0&amp;order=8&amp;k=雾霾 第二页是： http://bbs.tianya.cn/list.jsp?item=free&amp;nextid=1&amp;order=8&amp;k=雾霾 &#31532;&#19968;&#20010;&#29228;&#34411; Beautifulsoup Quick Start http://www.crummy.com/software/BeautifulSoup/bs4/doc/ http://computational-class.github.io/bigdata/data/test.html 'Once upon a time there were three little sisters,' the Dormouse began in a great hurry; 'and their names were Elsie, Lacie, and Tillie; and they lived at the bottom of a well--' 'What did they live on?' said Alice, who always took a great interest in questions of eating and drinking. 'They lived on treacle,' said the Dormouse, after...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/04-crawler-beautifulsoup.html",
+        "teaser":null},{
+        "title": "Collecting CPPCC proposals",
+        
+        "excerpt":
+            "&#25235;&#21462;&#27743;&#33487;&#30465;&#25919;&#21327;&#21313;&#24180;&#25552;&#26696; 打开http://www.jszx.gov.cn/zxta/2019ta/ 点击下一页，url不变! 所以数据的更新是使用js推送的 分析network中的内容，发现proposalList.jsp 查看它的header，并发现了form_data http://www.jszx.gov.cn/zxta/2019ta/ import requests from bs4 import BeautifulSoup form_data = {&#39;year&#39;:2019, &#39;pagenum&#39;:1, &#39;pagesize&#39;:20 } url = &#39;http://www.jszx.gov.cn/wcm/zxweb/proposalList.jsp&#39; content = requests.get(url, form_data) content.encoding = &#39;utf-8&#39; js = content.json() js[&#39;data&#39;][&#39;totalcount&#39;] &#39;424&#39; dat = js[&#39;data&#39;][&#39;list&#39;] pagenum = js[&#39;data&#39;][&#39;pagecount&#39;] for i in range(2, pagenum+1): print(i) form_data[&#39;pagenum&#39;] = i content = requests.get(url, form_data) content.encoding = &#39;utf-8&#39; js = content.json() for j in js[&#39;data&#39;][&#39;list&#39;]: dat.append(j) 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 len(dat) 424 dat[0] {&#39;personnel_name&#39;: &#39;邹正&#39;, &#39;pkid&#39;: &#39;18b1b347f9e34badb8934c2acec80e9e&#39;, &#39;proposal_number&#39;: &#39;0001&#39;, &#39;publish_time&#39;: &#39;2019-01-12 16:04:48&#39;, &#39;reason&#39;: &#39;关于完善城市环卫公厕指引系统的建议&#39;, &#39;rownum&#39;:...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/04-crawler-cppcc.html",
+        "teaser":null},{
+        "title": "Crawling Douban Movies",
+        
+        "excerpt":
+            "requests + Xpath&#26041;&#27861;&#20171;&#32461;&#65306;&#20197;&#35910;&#29923;&#30005;&#24433;&#20026;&#20363; Xpath 即为 XML 路径语言（XML Path Language），它是一种用来确定 XML 文档中某部分位置的语言。 Xpath 基于 XML 的树状结构，提供在数据结构树中找寻节点的能力。起初 Xpath 的提出的初衷是将其作为一个通用的、介于 Xpointer 与 XSL 间的语法模型。但是Xpath 很快的被开发者采用来当作小型查询语言。 获取元素的Xpath信息并获得文本： 这里的“元素的Xpath信息”是需要我们手动获取的，获取方式为： 定位目标元素 在网站上依次点击：右键 &gt; 检查 copy xpath xpath + '/text()' 参考：https://mp.weixin.qq.com/s/zx3_eflBCrrfOqFEWjAUJw import requests from lxml import etree url = &#39;https://movie.douban.com/subject/26611804/&#39; data = requests.get(url).text s = etree.HTML(data) 豆瓣电影的名称对应的的xpath为xpath_title，那么title表达为： title = s.xpath('xpath_info/text()') 其中，xpath_info为： //*[@id=\"content\"]/h1/span[1] title = s.xpath(&#39;//*[@id=&quot;content&quot;]/h1/span[1]/text()&#39;)[0] director = s.xpath(&#39;//*[@id=&quot;info&quot;]/span[1]/span[2]/a/text()&#39;) actors = s.xpath(&#39;//*[@id=&quot;info&quot;]/span[3]/span[2]/a/text()&#39;) type1 = s.xpath(&#39;//*[@id=&quot;info&quot;]/span[5]/text()&#39;) type2 = s.xpath(&#39;//*[@id=&quot;info&quot;]/span[6]/text()&#39;) type3 = s.xpath(&#39;//*[@id=&quot;info&quot;]/span[7]/text()&#39;) time = s.xpath(&#39;//*[@id=&quot;info&quot;]/span[11]/text()&#39;) length = s.xpath(&#39;//*[@id=&quot;info&quot;]/span[13]/text()&#39;) score = s.xpath(&#39;//*[@id=&quot;interest_sectl&quot;]/div[1]/div[2]/strong/text()&#39;)[0] print(title, director, actors, type1, type2, type3, time, length, score) 三块广告牌 Three Billboards Outside Ebbing, Missouri [&#39;马丁·麦克唐纳&#39;] [&#39;弗兰西斯·麦克多蒙德&#39;, &#39;伍迪·哈里森&#39;,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/04-crawler-douban.html",
+        "teaser":null},{
+        "title": "Crawling Government Reports",
+        
+        "excerpt":
+            "&#25968;&#25454;&#25235;&#21462; &#25235;&#21462;&#21382;&#23626;&#25919;&#24220;&#24037;&#20316;&#25253;&#21578; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com import requests from bs4 import BeautifulSoup from IPython.display import display_html, HTML HTML(&#39;&lt;iframe src=http://www.hprc.org.cn/wxzl/wxysl/lczf/ width=1000 height=500&gt;&lt;/iframe&gt;&#39;) # the webpage we would like to crawl Inspect ·&nbsp;2016年政府工作报告 &lt;td width=\"274\" class=\"bl\"&gt;·&nbsp;&lt;a href=\"./d12qgrdzfbg/201603/t20160318_369509.html\" target=\"_blank\" title=\"2016年政府工作报告\"&gt;2016年政府工作报告&lt;/a&gt;&lt;/td&gt; # get the link for each year url = &quot;http://www.hprc.org.cn/wxzl/wxysl/lczf/&quot; content = requests.get(url) content.encoding &#39;ISO-8859-1&#39; Encoding ASCII 7位字符集 美国标准信息交换代码（American Standard Code for Information Interchange）的缩写, 为美国英语通信所设计。 它由128个字符组成，包括大小写字母、数字0-9、标点符号、非打印字符（换行符、制表符等4个）以及控制字符（退格、响铃等）组成。 iso8859-1 通常叫做Latin-1。 和ascii编码相似。 属于单字节编码，最多能表示的字符范围是0-255，应用于英文系列。比如，字母a的编码为0x61=97。 无法表示中文字符。 单字节编码，和计算机最基础的表示单位一致，所以很多时候，仍旧使用iso8859-1编码来表示。在很多协议上，默认使用该编码。 gb2312/gbk/gb18030 是汉字的国标码，专门用来表示汉字，是双字节编码，而英文字母和iso8859-1一致（兼容iso8859-1编码）。 其中gbk编码能够用来同时表示繁体字和简体字,K 为汉语拼音 Kuo Zhan（扩展）中“扩”字的声母 gb2312只能表示简体字，gbk是兼容gb2312编码的。 gb18030，全称：国家标准 GB 18030-2005《信息技术中文编码字符集》，是中华人民共和国现时最新的内码字集 unicode 最统一的编码，用来表示所有语言的字符。 占用更多的空间，定长双字节（也有四字节的）编码，包括英文字母在内。 不兼容iso8859-1等其它编码。相对于iso8859-1编码来说，uniocode编码只是在前面增加了一个0字节，比如字母a为\"00 61\"。 定长编码便于计算机处理（注意GB2312/GBK不是定长编码），unicode又可以用来表示所有字符，所以在很多软件内部是使用unicode编码来处理的，比如java。 UTF unicode不便于传输和存储，产生了utf编码 utf编码兼容iso8859-1编码，同时也可以用来表示所有语言的字符 utf编码是不定长编码，每一个字符的长度从1-6个字节不等。 其中，utf8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，又称万国码。 由Ken Thompson于1992年创建。现在已经标准化为RFC 3629。 decode urllib2.urlopen(url).read().decode('gb18030') content.encoding =...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/04-crawler-gov-report.html",
+        "teaser":null},{
+        "title": "Crawling Music Data",
+        
+        "excerpt":
+            "&#25968;&#25454;&#25235;&#21462; &#32593;&#26131;&#20113;&#38899;&#20048; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com https://github.com/RitterHou/music-163 爬取网易云音乐的所有的歌曲的评论数。以下为主要思路： 爬取所有的歌手信息（artists.py）； 根据上一步爬取到的歌手信息去爬取所有的专辑信息（album_by _artist.py）； 根据专辑信息爬取所有的歌曲信息（music_by _album.py）； 根据歌曲信息爬取其评论条数（comments_by _music.py） &#29228;&#21462;&#25152;&#26377;&#30340;&#27468;&#25163;&#20449;&#24687;&#65288;artists.py&#65289; 观察网易云音乐官网页面HTML结构 http://music.163.com/ http://music.163.com/#/discover/artist/cat http://music.163.com/#/discover/artist/cat?id=4003&amp;initial=0 import requests from bs4 import BeautifulSoup headers = { &#39;Accept&#39;: &#39;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate, sdch&#39;, &#39;Accept-Language&#39;: &#39;zh-CN,zh;q=0.8,en;q=0.6&#39;, &#39;Cache-Control&#39;: &#39;no-cache&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Cookie&#39;: &#39;_ntes_nnid=7eced19b27ffae35dad3f8f2bf5885cd,1476521011210; _ntes_nuid=7eced19b27ffae35dad3f8f2bf5885cd; usertrack=c+5+hlgB7TgnsAmACnXtAg==; Province=025; City=025; NTES_PASSPORT=6n9ihXhbWKPi8yAqG.i2kETSCRa.ug06Txh8EMrrRsliVQXFV_orx5HffqhQjuGHkNQrLOIRLLotGohL9s10wcYSPiQfI2wiPacKlJ3nYAXgM; P_INFO=hourui93@163.com|1476523293|1|study|11&amp;12|jis&amp;1476511733&amp;mail163#jis&amp;320100#10#0#0|151889&amp;0|g37_client_check&amp;mailsettings&amp;mail163&amp;study&amp;blog|hourui93@163.com; NTES_SESS=Fa2uk.YZsGoj59AgD6tRjTXGaJ8_1_4YvGfXUkS7C1NwtMe.tG1Vzr255TXM6yj2mKqTZzqFtoEKQrgewi9ZK60ylIqq5puaG6QIaNQ7EK5MTcRgHLOhqttDHfaI_vsBzB4bibfamzx1.fhlpqZh_FcnXUYQFw5F5KIBUmGJg7xdasvGf_EgfICWV; S_INFO=1476597594|1|0&amp;80##|hourui93; NETEASE_AUTH_SOURCE=space; NETEASE_AUTH_USERNAME=hourui93; _ga=GA1.2.1405085820.1476521280; JSESSIONID-WYYY=cbd082d2ce2cffbcd5c085d8bf565a95aee3173ddbbb00bfa270950f93f1d8bb4cb55a56a4049fa8c828373f630c78f4a43d6c3d252c4c44f44b098a9434a7d8fc110670a6e1e9af992c78092936b1e19351435ecff76a181993780035547fa5241a5afb96e8c665182d0d5b911663281967d675ff2658015887a94b3ee1575fa1956a5a%3A1476607977016; _iuqxldmzr_=25; __utma=94650624.1038096298.1476521011.1476595468.1476606177.8; __utmb=94650624.20.10.1476606177; __utmc=94650624; __utmz=94650624.1476521011.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)&#39;, &#39;DNT&#39;: &#39;1&#39;, &#39;Host&#39;: &#39;music.163.com&#39;, &#39;Pragma&#39;: &#39;no-cache&#39;, &#39;Referer&#39;: &#39;http://music.163.com/&#39;, &#39;Upgrade-Insecure-Requests&#39;: &#39;1&#39;, &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36&#39; } group_id = 1001 initial = 67 params = {&#39;id&#39;: group_id, &#39;initial&#39;: initial} r = requests.get(&#39;http://music.163.com/discover/artist/cat&#39;, params=params,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/04-crawler-netease-music.html",
+        "teaser":null},{
+        "title": "Introduction of Selenium",
+        
+        "excerpt":
+            "&#25968;&#25454;&#25235;&#21462; &#20351;&#29992;Selenium&#25805;&#32437;&#27983;&#35272;&#22120; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com Selenium 是一套完整的web应用程序测试系统，包含了 测试的录制（selenium IDE） 编写及运行（Selenium Remote Control） 测试的并行处理（Selenium Grid）。 Selenium的核心Selenium Core基于JsUnit，完全由JavaScript编写，因此可以用于任何支持JavaScript的浏览器上。selenium可以模拟真实浏览器，自动化测试工具，支持多种浏览器，爬虫中主要用来解决JavaScript渲染问题。https://www.cnblogs.com/zhaof/p/6953241.html 上面我们知道了selenium支持很多的浏览器，但是如果想要声明并调用浏览器则需要： https://pypi.org/project/selenium/ !pip install -U selenium Collecting selenium Downloading https://files.pythonhosted.org/packages/80/d6/4294f0b4bce4de0abf13e17190289f9d0613b0a44e5dd6a7f5ca98459853/selenium-3.141.0-py2.py3-none-any.whl (904kB) 100% |████████████████████████████████| 911kB 9.3MB/s ta 0:00:011 Requirement already satisfied: urllib3 in /Users/datalab/anaconda3/lib/python3.7/site-packages (from selenium) (1.24.1) Installing collected packages: selenium Successfully installed selenium-3.141.0 Webdriver 主要用的是selenium的Webdriver 我们可以通过下面的方式先看看Selenium.Webdriver支持哪些浏览器 from selenium import webdriver help(webdriver) Help on package selenium.webdriver in selenium: NAME selenium.webdriver DESCRIPTION # Licensed to the Software Freedom Conservancy (SFC) under one # or more contributor license agreements. See the NOTICE file # distributed with this work for additional information # regarding copyright ownership. The...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/04-crawler-selenium.html",
+        "teaser":null},{
+        "title": "Using selenium for clicking",
+        
+        "excerpt":
+            "&#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#29992;&#25143;&#35780;&#35770; tripadvisor中文网站叫做猫途鹰 www.tripadvisor.cn/ 。 对于酒店和景点的用户评论。 但是默认只显示中文评论！ 需要点击所有评论才能显示其它语言的用户评论。 url = &#39;https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS&#39; print(url) https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS from selenium import webdriver browser = webdriver.Chrome() url = &#39;https://www.tripadvisor.cn/Hotel_Review-g294213-d1459920-Reviews-Somerset_Jiefangbei_Chongqing-Chongqing.html#REVIEWS&#39; browser.get(url) loc = &#39;#component_10 &gt; div &gt; div:nth-child(3) &gt; div.location-review-filters-hr-ReviewFilters__filters_wrap--3zsVa &gt; div.ui_columns &gt; div.ui_column.is-3-tablet.is-shown-at-tablet &gt; ul &gt; li:nth-child(1) &gt; label &gt; span.location-review-review-list-parts-LanguageFilter__no_wrap--2Dckv&#39; browser.find_element_by_css_selector(loc).click() source = browser.page_source soup = BeautifulSoup(source, &#39;html.parser&#39;) comments = soup.find_all(&#39;div&#39;, {&#39;class&#39;:&#39;hotels-community-tab-common-Card__card--ihfZB hotels-community-tab-common-Card__section--4r93H&#39;}) comments[0] &lt;div class=&#34;hotels-community-tab-common-Card__card--ihfZB hotels-community-tab-common-Card__section--4r93H&#34; data-test-target=&#34;HR_CC_CARD&#34;&gt;&lt;div class=&#34;location-review-review-list-parts-MachineTranslationHeader__mt_wrap--2uRXX&#34;&gt;&lt;span class=&#34;location-review-review-list-parts-MachineTranslationHeader__qtext--2lhyR&#34;&gt;这些点评为英文的机器翻译。 显示机器翻译？&lt;/span&gt; &lt;div class=&#34;ui_radio&#34;&gt;&lt;input checked=&#34;&#34; id=&#34;autoTranslateYes&#34; type=&#34;radio&#34; value=&#34;true&#34;/&gt;&lt;label for=&#34;autoTranslateYes&#34;&gt;是&lt;/label&gt;&lt;/div&gt;&lt;div class=&#34;ui_radio&#34;&gt;&lt;input id=&#34;autoTranslateNo&#34; type=&#34;radio&#34; value=&#34;false&#34;/&gt;&lt;label for=&#34;autoTranslateNo&#34;&gt;否&lt;/label&gt;&lt;/div&gt;&lt;span class=&#34;ui_icon information-circle-fill location-review-review-list-parts-MachineTranslationHeader__tip--2EQEh&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__member_event_block--1Kusx&#34;&gt;&lt;a class=&#34;styleguide-avatar-Avatar__avatar--2NStU ui_social_avatar inline&#34; href=&#34;https://www.tripadvisor.com/Profile/kimlette&#34; target=&#34;_self&#34;&gt;&lt;img src=&#34;https://ccm.ddcdn.com/ext/photo-t/01/2e/70/81/avatar002.jpg&#34;/&gt;&lt;/a&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__event_wrap--1YkeG&#34;&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__member_actions--2uzIM&#34;&gt;&lt;div class=&#34;overflow&#34;&gt;&lt;span class=&#34;_3-zQ1eyd _4nIC4qqF&#34;&gt;&lt;span class=&#34;_35pfga6W _2HBN-k68&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;span class=&#34;social-section-overflow-SectionOverflowMenu__float--3mJ5J&#34;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;social-member-event-MemberEventOnObjectBlock__event_type--3njyv&#34;&gt;&lt;span&gt;&lt;a class=&#34;ui_header_link social-member-event-MemberEventOnObjectBlock__member--35-jC&#34; href=&#34;https://www.tripadvisor.com/Profile/kimlette&#34;&gt;kimlette&lt;/a&gt; 写了一条点评...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/04-crawler-tripadvisor.html",
+        "teaser":null},{
+        "title": "Crawling WeChat Public Accounts",
+        
+        "excerpt":
+            "&#25968;&#25454;&#25235;&#21462;&#65306; &#25235;&#21462;&#24494;&#20449;&#20844;&#20247;&#21495;&#25991;&#31456;&#20869;&#23481; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com from IPython.display import display_html, HTML HTML(url = &#39;http://mp.weixin.qq.com/s?__biz=MzA3MjQ5MTE3OA==&amp;mid=206241627&amp;idx=1&amp;sn=471e59c6cf7c8dae452245dbea22c8f3&amp;3rd=MzA3MDU4NTYzMw==&amp;scene=6#rd&#39;) # the webpage we would like to crawl 南大新传 | 微议题：地震中民族自豪—“中国人先撤” 南大新传院 微议题排行榜 微议题排行榜 微信号 IssuesRank 功能介绍 感谢关注《微议题排行榜》。我们是南京大学新闻传播学院，计算传播学实验中心，致力于研究社会化媒体时代的公共议程，发布新媒体平台的议题排行榜。 点击上方“微议题排行榜”可以订阅哦！导读2015年4月25日，尼泊尔发生8.1级地震，造成至少7000多人死亡，中国西藏、印度、孟加拉国、不丹等地均出现人员伤亡。尼泊尔地震后，祖国派出救援机接国人回家，这一“先撤”行为被大量报道，上演了一出霸道总裁不由分说爱国民的新闻。我们对“地震”中人的关注，远远小于国民尊严的保护。通过“撤离”速度来证明中国的影响力也显得有失妥当，灾难应急管理、救援和灾后重建能力才应是“地震”关注焦点。 热词图现 本文以“地震”为关键词，选取了2015年4月10日至4月30日期间微议题TOP100阅读排行进行分析。根据微议题TOP100标题的词频统计，我们可以看出有关“地震”的话题最热词汇的有“尼泊尔”、“油价”、“发改委”。4月25日尼泊尔发生了8级地震，深受人们的关注。面对国外灾难性事件，微媒体的重心却转向“油价”、“发改委”、“祖国先撤”，致力于将世界重大事件与中国政府关联起来。 微议题演化趋势 总文章数总阅读数从4月10日到4月30日，有关“地震”议题出现三个峰值，分别是在4月15日内蒙古地震，20日台湾地震和25日尼泊尔地震。其中对台湾地震与内蒙古地震报道文章较少，而对尼泊尔地震却给予了极大的关注，无论是在文章量还是阅读量上都空前增多。内蒙古、台湾地震由于级数较小，关注少，议程时间也比较短，一般3天后就会淡出公共视野。而尼泊尔地震虽然接近性较差，但规模大，且衍生话题性较强，其讨论热度持续了一周以上。 议题分类 如图，我们将此议题分为6大类。1尼泊尔地震这类文章是对4月25日尼泊尔地震的新闻报道，包括现场视频，地震强度、规模，损失程度、遇难人员介绍等。更进一步的，有对尼泊尔地震原因探析，认为其处在板块交界处，灾难是必然的。因尼泊尔是佛教圣地，也有从佛学角度解释地震的启示。2国内地震报道主要是对10日内蒙古、甘肃、山西等地的地震，以及20日台湾地震的报道。偏重于对硬新闻的呈现，介绍地震范围、级数、伤亡情况，少数几篇是对甘肃地震的辟谣，称其只是微震。3中国救援回应地震救援的报道大多是与尼泊尔地震相关，并且80%的文章是中国政府做出迅速反应派出救援机接国人回家。以“中国人又先撤了”，来为祖国点赞。少数几篇是滴滴快的、腾讯基金、万达等为尼泊尔捐款的消息。4发改委与地震这类文章内容相似，纯粹是对发改委的调侃。称其“预测”地震非常准确，只要一上调油价，便会发生地震。5地震常识介绍该类文章介绍全国地震带、地震频发地，地震逃生注意事项，“专家传受活命三角”，如何用手机自救等小常识。6地震中的故事讲述地震中的感人瞬间，回忆汶川地震中的故事，传递“：地震无情，人间有情”的正能量。 国内外地震关注差异大关于“地震”本身的报道仍旧是媒体关注的重点，尼泊尔地震与国内地震报道占一半的比例。而关于尼泊尔话题的占了45%，国内地震相关的只有22%。微媒体对国内外地震关注有明显的偏差，而且在衍生话题方面也相差甚大。尼泊尔地震中，除了硬新闻报道外，还有对其原因分析、中国救援情况等，而国内地震只是集中于硬新闻。地震常识介绍只占9%，地震知识普及还比较欠缺。 阅读与点赞分析 爱国新闻容易激起点赞狂潮整体上来说，网民对地震议题关注度较高，自然灾害类话题一旦爆发，很容易引起人们情感共鸣，掀起热潮。但从点赞数来看，“中国救援回应”类的总点赞与平均点赞都是最高的，网民对地震的关注点并非地震本身，而是与之相关的“政府行动”。尼泊尔地震后，祖国派出救援机接国人回家，这一“先撤”行为被大量报道，上演了一出霸道总裁不由分说爱国民的新闻。而爱国新闻则往往是最容易煽动民族情绪，产生民族优越感，激起点赞狂潮。 人的关注小于国民尊严的保护另一方面，国内地震的关注度却很少，不仅体现在政府救援的报道量小，网民的兴趣点与评价也较低。我们对“地震”中人的关注，远远小于国民尊严的保护。通过“撤离”速度来证明中国的影响力也显得有失妥当，灾难应急管理、救援和灾后重建能力才应是“地震”关注焦点。“发改委与地震”的点赞量也相对较高，网民对发改委和地震的调侃，反映出的是对油价上涨的不满，这种“怨气”也容易产生共鸣。一面是民族优越感，一面是对政策不满，两种情绪虽矛盾，但同时体现了网民心理趋同。 数据附表 微文章排行TOP50：公众号排行TOP20：作者：晏雪菲出品单位：南京大学计算传播学实验中心技术支持：南京大学谷尼舆情监测分析实验室题图鸣谢：谷尼舆情新微榜、图悦词云 南大新传院 赞赏 长按二维码向我转账 受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。 阅读 分享 在看 已同步到看一看 取消 发送 我知道了 朋友会在“发现-看一看”看到你“在看”的内容 确定 已同步到看一看写下你的想法 最多200字，当前共字 发送 已发送 朋友将在看一看看到 确定 写下你的想法... 取消 发布到看一看 确定 最多200字，当前共字 发送中 留言 微信扫一扫关注该公众号 微信扫一扫使用小程序 即将打开\"\"小程序 取消 打开 &#26597;&#30475;&#28304;&#20195;&#30721; Inspect url = &quot;http://mp.weixin.qq.com/s?__biz=MzA3MjQ5MTE3OA==&amp;mid=206241627&amp;idx=1&amp;sn=471e59c6cf7c8dae452245dbea22c8f3&amp;3rd=MzA3MDU4NTYzMw==&amp;scene=6#rd&quot; content = requests.get(url).text #获取网页的html文本 soup = BeautifulSoup(content, &#39;html.parser&#39;) title = soup.select(&quot;#activity-name&quot;) # #activity-name title[0].text.strip() &#39;南大新传 | 微议题：地震中民族自豪—“中国人先撤”&#39;...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/04-crawler-wechat.html",
+        "teaser":null},{
+        "title": "Data Cleaning",
+        
+        "excerpt":
+            "                    &#25968;&#25454;&#28165;&#27927;    王成军  wangchengjun@nju.edu.cn  计算传播网 http://computational-communication.com            &#25968;&#25454;&#28165;&#27927;&#65288;data cleaning&#65289;  是数据分析的重要步骤，其主要目标是将混杂的数据清洗为可以被直接分析的数据，一般需要将数据转化为数据框（data frame）的样式。  本章将以推特文本的清洗作为例子，介绍数据清洗的基本逻辑。   介绍通过按行或块的方式对大规模数据进行预处理 使用Pandas进行数据清洗 清洗错误行和列 提取所要分析的内容                     ",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/06-data-cleaning-intro.html",
+        "teaser":null},{
+        "title": "Cleaning A Music List",
+        
+        "excerpt":
+            "&#28165;&#27927;&#38899;&#20048;&#21015;&#34920;&#127925; https://music.163.com/#/djradio?id=527084660&amp;order=2&amp;_hash=programlist&amp;limit=200&amp;offset=0 music_list = &#39;&#39;&#39; 1 1 敏浩共伙诱骗允浩 罗文姬母子搬沙发 播放12644 赞23 2018-05-06 26:20 2 2 申智偷欲赴俄罗斯 李民永帮偷小俊熙 播放6449 赞10 2018-05-07 27:25 3 3 李顺才庸医无门诊 徐敏静住进民勇家 播放5790 赞2 2018-05-07 27:47 4 4 李敏浩初遇姜尤美 罗文姬苦寻开成嫂 播放5126 赞1 2018-05-07 26:53 5 5 李俊河佯当家作主 罗文姬偷设阁楼梯 播放6349 赞5 2018-05-07 29:19 6 6 五男人关进小阁楼 申智在俄遇健美男 播放6475 赞5 2018-05-07 26:37 7 7 徐敏静班级树威信 朴海美佯装贤媳妇 播放5920 赞2 2018-05-07 31:19 8 8 李俊河便秘难医治 罗文姬买药制劫匪 播放6101 赞4 2018-05-07 31:31 9 9 海美民永针锋相对 敏浩闯尤美家犯险 播放5399 赞2 2018-05-07 33:09 10 10 食神罗文姬失胃口 申智遇麻烦偷回国 播放5920 赞4 2018-05-07 29:06 11 11 敏浩金范救火英雄 海美遭遇马桶堵塞 播放5551 赞1 2018-05-07 31:41 12 12 敏浩为钱帮助允浩 民永好心申智误会 播放5126 赞1 2018-05-07...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/06-data-cleaning-music-list.html",
+        "teaser":null},{
+        "title": "Data Processing with Pandas",
+        
+        "excerpt":
+            "&#20351;&#29992;Pandas&#36827;&#34892;&#25968;&#25454;&#28165;&#27927; &#31616;&#20171; Pandas 是 Python 中很流行的类库，使用它可以进行数据科学计算和数据分。 数据分析结果的好坏依赖于数据的好坏。 很多数据集存在数据缺失，或数据格式不统一（畸形数据），或错误数据的情况。 不管是不完善的报表，还是技术处理数据的失当都会不可避免的引起“脏”数据。 Pandas 提供功能强大的类库，帮助我们清洗数据👇 准备工作 检查数据 处理缺失数据 添加默认值 删除不完整的行 删除不完整的列 规范化数据类型 必要的转换 重命名列名 保存结果 https://www.cnblogs.com/BoyceYang/p/8182053.html Credit: 来源 &#26696;&#20363;1&#65306; &#30005;&#24433;&#25968;&#25454;&#28165;&#27927; 这个数据集包含了很多信息，演员、导演、预算、总输入，以及 IMDB 评分和上映时间。有一些列的值是缺失的，有些列的默认值是0，有的是 NaN（Not a Number）。下面我们通过使用 Pandas 提供的功能来清洗“脏”数据。 数据来源: https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset https://raw.githubusercontent.com/sundeepblue/movie_rating_prediction/master/movie_metadata.csv import pandas as pd data = pd.read_csv(&#39;../data/movie_metadata.csv&#39;) &#26816;&#26597;&#25968;&#25454; 检查一下我们刚刚读入数据的基本结构，Pandas 提供了 head() 方法打印输出前五行数据。目的是让我们对读入的数据有一个大致的了解。 data.head() Pandas 提供了一些选择的方法（数据切片、数据切块）： 查看一列的一些基本统计信息：data.columnname.describe() 选择一列：data['columnname'] 选择一列的前几行数据：data['columnsname'][:n] 选择多列：data[['column1','column2']] Where 条件过滤：data[data['columnname'] &gt; condition] data.head() color director_name num_critic_for_reviews duration director_facebook_likes actor_3_facebook_likes actor_2_name actor_1_facebook_likes gross genres ... num_user_for_reviews language country content_rating budget title_year actor_2_facebook_likes imdb_score aspect_ratio movie_facebook_likes 0 Color James Cameron 723.0 178.0 0.0 855.0 Joel David Moore 1000.0 760505847.0 Action|Adventure|Fantasy|Sci-Fi ... 3054.0 English USA...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/06-data-cleaning-pandas.html",
+        "teaser":null},{
+        "title": "Preprocessing Big Data",
+        
+        "excerpt":
+            "&#23545;&#22823;&#25968;&#25454;&#36827;&#34892;&#39044;&#22788;&#29702; 以占领华尔街推特数据为例 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#23383;&#33410;&#65288;Byte /bait/&#65289; 计算机信息技术用于计量存储容量的一种计量单位，通常情况下一字节等于有八位， [1] 也表示一些计算机编程语言中的数据类型和语言字符。 1B（byte，字节）= 8 bit； 1KB=1000B；1MB=1000KB=1000×1000B。其中1000=10^3。 1KB（kilobyte，千字节）=1000B= 10^3 B； 1MB（Megabyte，兆字节，百万字节，简称“兆”）=1000KB= 10^6 B； 1GB（Gigabyte，吉字节，十亿字节，又称“千兆”）=1000MB= 10^9 B； &#25353;&#29031;Chunk&#35835;&#21462;&#25968;&#25454;&#24182;&#36827;&#34892;&#22788;&#29702; Lazy Method for Reading Big File in Python? bigfile = open(&#39;/Users/chengjun/百度云同步盘/Writing/OWS/ows-raw.txt&#39;, &#39;r&#39;) chunkSize = 1000000 chunk = bigfile.readlines(chunkSize) print(len(chunk)) with open(&quot;/Users/chengjun/GitHub/cjc/data/ows_tweets_sample.txt&quot;, &#39;w&#39;) as f: for i in chunk: f.write(i) 2752 # https://stackoverflow.com/questions/519633/lazy-method-for-reading-big-file-in-python?lq=1 import csv bigfile = open(&#39;/Users/datalab/bigdata/cjc/ows-raw.txt&#39;, &#39;r&#39;) chunkSize = 10**8 chunk = bigfile.readlines(chunkSize) num, num_lines = 0, 0 while chunk: lines = csv.reader((line.replace(&#39;\\x00&#39;,&#39;&#39;) for line in chunk), delimiter=&#39;,&#39;, quotechar=&#39;&quot;&#39;) #do sth. num_lines += len(list(lines)) print(num, num_lines) num += 1 chunk = bigfile.readlines(chunkSize) # read...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/06-data-cleaning-preprocessing.html",
+        "teaser":null},{
+        "title": "Data Cleaning of OWS tweets",
+        
+        "excerpt":
+            "&#25968;&#25454;&#28165;&#27927;&#20043;&#25512;&#29305;&#25968;&#25454; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#25968;&#25454;&#28165;&#27927;&#65288;data cleaning&#65289; 是数据分析的重要步骤，其主要目标是将混杂的数据清洗为可以被直接分析的数据，一般需要将数据转化为数据框（data frame）的样式。 本章将以推特文本的清洗作为例子，介绍数据清洗的基本逻辑。 清洗错误行 正确分列 提取所要分析的内容 介绍通过按行、chunk的方式对大规模数据进行预处理 1. &#25277;&#21462;tweets&#26679;&#26412;&#20570;&#23454;&#39564; 此节学生略过 2. &#28165;&#27927;&#38169;&#34892;&#30340;&#24773;&#20917; with open(&quot;../data/ows_tweets_sample.txt&quot;, &#39;r&#39;) as f: lines = f.readlines() # 总行数 len(lines) 2753 # 查看第一行 lines[15] &#39;121813245488140288,&#34;@HumanityCritic i\\&#39;m worried that the #ows sells out to the hamsher-norquist spitefuck, and tries to unite with the teahad.&#34;,http://a2.twimg.com/profile_images/627683576/flytits_normal.jpg,2011-10-06,5,5,&#34;2011-10-06 05:05:15&#34;,N;,fucentarmal,27480502,en,HumanityCritic,230431,&#34;&amp;lt;a href=&amp;quot;http://www.tweetdeck.com&amp;quot; rel=&amp;quot;nofollow&amp;quot;&amp;gt;TweetDeck&amp;lt;/a&amp;gt;&#34;\\n&#39; help(lines[1].split) Help on built-in function split: split(...) method of builtins.str instance S.split(sep=None, maxsplit=-1) -&gt; list of strings Return a list of the words in S, using sep as the delimiter string. If maxsplit is given, at most maxsplit splits are done. If sep is...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/06-data-cleaning-tweets.html",
+        "teaser":null},{
+        "title": "Cleaning the News of Occupy Central",
+        
+        "excerpt":
+            "&#25968;&#25454;&#28165;&#27927;&#65306; &#23545;&#21344;&#20013;&#26032;&#38395;&#36827;&#34892;&#25968;&#25454;&#28165;&#27927; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com # 使用with open读取每一行数据 with open(&quot;../data/occupycentral/zz-hk-2014-10.rtf&quot;, encoding = &#39;gb18030&#39;) as f: news = f.readlines() # 查看总共有多少行 len(news) 16541 # 注意：标题和版面之间存在一个空行！所以title是block的第4个元素。 for i in range(1, 80): print(news[i]) ~~~~~~~~~~~~~~~~~~~~~~~~~~ #1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\par am730 | 2014-10-31 \\par A16| NEWS| C观点| By 施永青 \\par 法治有整合社会功能 \\par \\par ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\par \\par\\par 前文已介绍过塔尔科特·帕森斯的AGIL理论中的Adaptation(适应)与Goal Attainment(达标)的社会功能，今天续谈Integration(整合)的功能。人类社会是一个复杂系统，大系统内还有很多次系统，这些系统既独立，又牵连；既矛盾，又互适；有时互相促进，有时互相制约。正如一个人，既是社会的成员，又是公司的雇员；既是别人的儿子，又是朋辈中的「大哥」；其言行会同时受所处的不同系统所影响。\\par\\par 这些错综复杂的系统之间不可能没有冲突，为了避免社会因纠纷得不到恰当的处理而分崩离析，社会必须发展出一套整合矛盾的方式，这就需要有司法制度。\\par\\par 按帕森斯的说法，法治的基础是先要界定产权。这样才能避免因争夺资源而产生无休止的冲突。再者，交易亦需要在产权获得界定后才能进行。有交易才有市场，才能透过市场机制进行公平竞争，推动经济发展。\\par\\par 另一方面，社会亦需要为人权下定义，这样，政府才能在有认受性的情况下组成，才能有效地去处理公众事务。此外，社会还需要有一套合乎公义的会议程序，以决定如何汇聚众人的意愿。\\par\\par 有了这些基础之后，社会就可以发展出一整套司法制度，让成员知所行止，令社会的矛盾不会恶化。\\par\\par 英国人为香港留下的，可不只是一套可以依据的律例，而是一整套法治的理念与司法程序。香港的回归能进行得相对平稳，与特区政府基本上原封不动地承继了原有的司法系统有莫大的关系。\\par\\par 回归后，虽有人危言耸听，说香港的法治已死，但世人仍公认香港的法治达国际一流水准，而港人亦可以如常在香港生活与做生意，不觉有失去法治的实质威胁。直到\\loch\\af0\\hich\\af0\\dbch\\f15 \\b\\cf6 占中\\loch\\af0\\hich\\af0\\dbch\\f15 \\b0\\cf0 运动的出现，香港人才真正感受到失去法治的害处。\\par\\par \\loch\\af0\\hich\\af0\\dbch\\f15 \\b\\cf6 占中\\loch\\af0\\hich\\af0\\dbch\\f15 \\b0\\cf0 运动挑战的可不只是个别「恶法」，而是侵犯了整个法治的根基——产权、人权与政府的执法权。\\par\\par 占领区的物业，地契上列明有Right of way，但现在占领者却不容停车场的车辆出入。这分明损害了这些物业的产权。现在政府却无法加以维护；法庭出了禁制令，\\loch\\af0\\hich\\af0\\dbch\\f15 \\b\\cf6 占中\\loch\\af0\\hich\\af0\\dbch\\f15 \\b0\\cf0 者却一样藐视。这样发展下去，谁敢在香港置业？\\par\\par 其实，损害产权等同损害人权，因为人权的一项重要内容，就是个人的财产应获保障。此外，人人都应有追求幸福的权利，但现在占领区生意难做，怎会不妨碍别人追求幸福？\\par\\par \\loch\\af0\\hich\\af0\\dbch\\f15 \\b\\cf6 占中\\loch\\af0\\hich\\af0\\dbch\\f15 \\b0\\cf0 者把自己的行为说成是公民抗命，但公民抗命只是个人行为在道德上的解释，用来拒绝遵守某些个人不认同的法令还讲得通，但绝不可以借此损害他人的产权与人权。\\par\\par 再者，\\loch\\af0\\hich\\af0\\dbch\\f15 \\b\\cf6 占中\\loch\\af0\\hich\\af0\\dbch\\f15 \\b0\\cf0 者现时在争取的是宪政改革，本应获社会上绝大多数人赞同才有条件实施，不宜用占领交通要津的方式去逼其他人就范。如果祭起公民抗命的旗帜就可以欲所欲为，只会天下大乱，令法治失去协调与整合作用。 \\par \\par 文章编号: 201410315301186 \\par ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\par 本内容之版权由相关传媒机构 / 版权持有人拥有。除非获得明确授权，否则严禁复制、改编、分发或发布本内容。版权持有人保留一切权利。 本内容经慧科的电子服务提供。 \\page ~~~~~~~~~~~~~~~~~~~~~~~~~~ #2...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/07-data-cleaning-occupy-central-news.html",
+        "teaser":null},{
+        "title": "Statistics Thinking",
+        
+        "excerpt":
+            "Introduction to Statistical Thinking Introduction A Crash Course in Python Visualizing Data Linear Algebra Statistics Probability Hypothesis and Inference Gradient Descent The School of Athens by Raphael (1509–1510), fresco at the Apostolic Palace, Vatican City. https://en.wikipedia.org/wiki/Platonic_Academy The School of Athens by Raphael (1509–1510), fresco at the Apostolic Palace, Vatican City. https://en.wikipedia.org/wiki/Platonic_Academy Plato &amp; Typological Thinking Pythagoras held that all things are number the cosmos comes from numerical principles. The theory of Forms or theory of Ideas is a philosophical theory, concept, or world-view, attributed to Plato, that the physical world is not as real or true as timeless, absolute, unchangeable...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/08-01-statistics-thinking.html",
+        "teaser":null},{
+        "title": "Linear Algebra",
+        
+        "excerpt":
+            "Linear algebra Linear algebra is the branch of mathematics that deals with vector spaces. import re, math, random # regexes, math functions, random numbers import matplotlib.pyplot as plt # pyplot from collections import defaultdict, Counter from functools import partial, reduce Vectors Vectors are points in some finite-dimensional space. v = [1, 2] w = [2, 1] vectors = [v, w] def vector_add(v, w): &quot;&quot;&quot;adds two vectors componentwise&quot;&quot;&quot; return [v_i + w_i for v_i, w_i in zip(v,w)] vector_add(v, w) [3, 3] def vector_subtract(v, w): &quot;&quot;&quot;subtracts two vectors componentwise&quot;&quot;&quot; return [v_i - w_i for v_i, w_i in zip(v,w)] vector_subtract(v, w) [-1, 1]...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/08-02-linear-algebra.html",
+        "teaser":null},{
+        "title": "Probability",
+        
+        "excerpt":
+            "Probability Probability is a way to quantify the uncertainty associated with events chosen from a some universe of events. The laws of probability, so true in general, so fallacious in particular. —Edward Gibbon P(E) means “the probability of the event E.” We’ll use probability theory to build and evaluate models. Dependence and Independence Roughly speaking, we say that two events E and F are dependent if knowing something about whether E happens gives us information about whether F happens (and vice versa). Otherwise they are independent. When two events E and F are independent, then by definition we have: $$P(E,F)...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/08-03-probability.html",
+        "teaser":null},{
+        "title": "Hypothesis Inference",
+        
+        "excerpt":
+            "Statistical Hypothesis Testing The statistics of hypothesis can be thought of as observations of random variables from known distributions, which allows us to make statements about how likely those assumptions are to hold. H1: data scientists prefer Python to R. H2: people tends to jump onto the bandwagon of collective gatekeepers. H3: media agenda determines the public agenda. H4: the rich people can better use mobile phone compared with the poor. The logic of falsification 证伪的逻辑 Null hypothesis H0 represents some default position Alternative hypothesis H1 We use statistics to decide whether we can reject H0 as false or not....",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/08-04-hypothesis-inference.html",
+        "teaser":null},{
+        "title": "Gradient Descent",
+        
+        "excerpt":
+            "Introduction to Gradient Descent The Idea Behind Gradient Descent 梯度下降 如何找到最快下山的路？ 假设此时山上的浓雾很大，下山的路无法确定; 假设你摔不死！ 你只能利用自己周围的信息去找到下山的路径。 以你当前的位置为基准，寻找这个位置最陡峭的方向，从这个方向向下走。 Gradient is the vector of partial derivatives One approach to maximizing a function is to pick a random starting point, compute the gradient, take a small step in the direction of the gradient, and repeat with a new staring point. Let's represent parameters as $\\Theta$, learning rate as $\\alpha$, and gradient as $\\bigtriangledown J(\\Theta)$, To the find the best model is an optimization problem “minimizes the error of the model” “maximizes the likelihood of the data.” We’ll frequently need to maximize (or minimize) functions. to...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/08-05-gradient-descent.html",
+        "teaser":null},{
+        "title": "Linear Regression",
+        
+        "excerpt":
+            "Simple Linear Regression We used the correlation function to measure the strength of the linear relationship between two variables. For most applications, knowing that such a linear relationship exists isn’t enough. We’ll want to be able to understand the nature of the relationship. This is where we’ll use simple linear regression. The Model $$y_i = \\beta x_i + \\alpha + \\epsilon_i$$where $y_i$ is the number of minutes user i spends on the site daily, $x_i$ is the number of friends user i has $\\alpha$ is the constant when x = 0. $ε_i$ is a (hopefully small) error term representing the...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/08-06-regression.html",
+        "teaser":null},{
+        "title": "Introduction to statsmodels",
+        
+        "excerpt":
+            "Statistical Modeling with Python statsmodels is better suited for traditional stats # the statsmodels.api uses numpy array notation # statsmodels.formula.api use formula notation (similar to R&#39;s formula notation) import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns import statsmodels.api as sm import statsmodels.formula.api as smf A minimal OLS example Four pairs of points x = np.array([1,2,3,4]) y = np.array([2,6,4,8]) plt.scatter(x,y, marker = &#39;.&#39;) plt.xlim(0,5) plt.ylim(0,10) plt.show() # make a dataframe of our data d = pd.DataFrame({&#39;x&#39;:x, &#39;y&#39;:y}) print(d) x y 0 1 2 1 2 6 2 3 4 3 4 8 Seaborn...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/08-06-statsmodels.html",
+        "teaser":null},{
+        "title": "Analyzing Titanic Dataset",
+        
+        "excerpt":
+            "Introduction to the Basics of Statistics 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#19968;&#12289;&#20351;&#29992;Pandas&#28165;&#27927;&#27888;&#22374;&#23612;&#20811;&#25968;&#25454; 练习使用Pandas &#20108;&#12289;&#20998;&#26512;&#22825;&#28079;&#22238;&#24086;&#25968;&#25454; 学习使用Statsmodels %matplotlib inline import matplotlib.pyplot as plt import pandas as pd Statsmodels http://statsmodels.sourceforge.net/ Statsmodels is a Python module that allows users to explore data, estimate statistical models, and perform statistical tests. An extensive list of descriptive statistics, statistical tests, plotting functions, and result statistics are available for different types of data and each estimator. Researchers across fields may find that statsmodels fully meets their needs for statistical computing and data analysis in Python. &#20351;&#29992;pandas&#28165;&#27927;&#27888;&#22374;&#23612;&#20811;&#25968;&#25454; &#20174;&#26412;&#26426;&#35835;&#21462;&#25968;&#25454; import pandas as pd train = pd.read_csv(&#39;../data/tatanic_train.csv&#39;,\\ sep = &quot;,&quot;, header=0) test...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/08-07-analyzing-titanic-dataset.html",
+        "teaser":null},{
+        "title": "Machine Learning",
+        
+        "excerpt":
+            "Introducing Scikit-Learn for Machine Learning This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on GitHub. The text is released under the CC-BY-NC-ND license, and code is released under the MIT license. If you find this content useful, please consider supporting the work by buying the book! &lt; What Is Machine Learning? | Contents | Hyperparameters and Model Validation &gt; Python machine learning Scikit-Learn provides efficient versions of a large number of common algorithms. Scikit-Learn is characterized by a clean, uniform, and streamlined API, as well as by very useful and...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-01-machine-learning-with-sklearn.html",
+        "teaser":null},{
+        "title": "Hyperparameters and Model Validation",
+        
+        "excerpt":
+            "Hyperparameters and Model Validation This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on GitHub. The text is released under the CC-BY-NC-ND license, and code is released under the MIT license. If you find this content useful, please consider supporting the work by buying the book! &lt; Introducing Scikit-Learn | Contents | Feature Engineering &gt; In the previous section, we saw the basic recipe for applying a supervised machine learning model: Choose a class of model Choose model hyperparameters Fit the model to the training data Use the model to predict...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-03-hyperparameters-and-model-validation.html",
+        "teaser":null},{
+        "title": "Feature Engineering",
+        
+        "excerpt":
+            "Feature Engineering This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on GitHub. The text is released under the CC-BY-NC-ND license, and code is released under the MIT license. If you find this content useful, please consider supporting the work by buying the book! &lt; Hyperparameters and Model Validation | Contents | In Depth: Naive Bayes Classification &gt; numerical data in a tidy, [n_samples, n_features] format VS. Real world. Feature engineering taking whatever information you have about your problem and turning it into numbers that you can use to build your...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-04-feature-engineering.html",
+        "teaser":null},{
+        "title": "Naive Bayes",
+        
+        "excerpt":
+            "In Depth: Naive Bayes Classification This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on GitHub. The text is released under the CC-BY-NC-ND license, and code is released under the MIT license. If you find this content useful, please consider supporting the work by buying the book! &lt; Feature Engineering | Contents | In Depth: Linear Regression &gt; Naive Bayes models are a group of extremely fast and simple classification algorithms that are often suitable for very high-dimensional datasets. A quick-and-dirty baseline for a classification problem. so fast so few tunable...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-05-naive-bayes.html",
+        "teaser":null},{
+        "title": "Linear Regression",
+        
+        "excerpt":
+            "In Depth: Linear Regression This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on GitHub. The text is released under the CC-BY-NC-ND license, and code is released under the MIT license. If you find this content useful, please consider supporting the work by buying the book! &lt; In Depth: Naive Bayes Classification | Contents | In-Depth: Support Vector Machines &gt; Naive Bayes (discussed earlier in In Depth: Naive Bayes Classification) is a good starting point for classification tasks linear regression models are a good starting point for regression tasks. can be...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-06-linear-regression.html",
+        "teaser":null},{
+        "title": "Support Vector Machines",
+        
+        "excerpt":
+            "In-Depth: Support Vector Machines This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on GitHub. The text is released under the CC-BY-NC-ND license, and code is released under the MIT license. If you find this content useful, please consider supporting the work by buying the book! &lt; In Depth: Linear Regression | Contents | In-Depth: Decision Trees and Random Forests &gt; Support vector machines (SVMs) a particularly powerful and flexible class of supervised algorithms for both classification and regression. In this section, To develop the intuition behind support vector machines To...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-07-support-vector-machines.html",
+        "teaser":null},{
+        "title": "Random Forests",
+        
+        "excerpt":
+            "In-Depth: Decision Trees and Random Forests This notebook contains an excerpt from the Python Data Science Handbook by Jake VanderPlas; the content is available on GitHub. The text is released under the CC-BY-NC-ND license, and code is released under the MIT license. If you find this content useful, please consider supporting the work by buying the book! &lt; In-Depth: Support Vector Machines | Contents | In Depth: Principal Component Analysis &gt; Previously simple generative classifier (naive Bayes; see In Depth: Naive Bayes Classification) powerful discriminative classifier (support vector machines; see In-Depth: Support Vector Machines). Random Forests Another powerful &amp; non-parametric...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-08-random-forests.html",
+        "teaser":null},{
+        "title": "Summary",
+        
+        "excerpt":
+            "&#35745;&#31639;&#20256;&#25773;&#19982;&#26426;&#22120;&#23398;&#20064; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com 1&#12289; &#30417;&#30563;&#24335;&#23398;&#20064; 工作机制： 这个算法由一个目标变量或结果变量（或因变量）组成。 这些变量由已知的一系列预示变量（自变量）预测而来。 利用这一系列变量，我们生成一个将输入值映射到期望输出值的函数。 这个训练过程会一直持续，直到模型在训练数据上获得期望的精确度。 监督式学习的例子有：回归、决策树、随机森林、K – 近邻算法、逻辑回归等。 2&#12289;&#38750;&#30417;&#30563;&#24335;&#23398;&#20064; 工作机制： 在这个算法中，没有任何目标变量或结果变量要预测或估计。 这个算法用在不同的组内聚类分析。 这种分析方式被广泛地用来细分客户，根据干预的方式分为不同的用户组。 非监督式学习的例子有：关联算法和 K–均值算法。 3&#12289;&#24378;&#21270;&#23398;&#20064; 工作机制： 这个算法训练机器进行决策。 它是这样工作的：机器被放在一个能让它通过反复试错来训练自己的环境中。 机器从过去的经验中进行学习，并且尝试利用了解最透彻的知识作出精确的商业判断。 强化学习的例子有马尔可夫决策过程。alphago Chess. Here, the agent decides upon a series of moves depending on the state of the board (the environment), and the reward can be defined as win or lose at the end of the game: 线性回归 逻辑回归 决策树 SVM 朴素贝叶斯 K最近邻算法 K均值算法 随机森林算法 降维算法 Gradient Boost 和 Adaboost 算法 &#20351;&#29992;sklearn&#20570;&#32447;&#24615;&#22238;&#24402; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#32447;&#24615;&#22238;&#24402; 通常用于估计连续性变量的实际数值（房价、呼叫次数、总销售额等）。 通过拟合最佳直线来建立自变量X和因变量Y的关系。 这条最佳直线叫做回归线，并且用 $Y= \\beta *X + C$ 这条线性等式来表示。 系数 $\\beta$ 和 C 可以通过最小二乘法获得 %matplotlib inline import...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-09-machine-learning-summary.html",
+        "teaser":null},{
+        "title": "Case study of future employment",
+        
+        "excerpt":
+            "The future of employment How susceptible are jobs to computerisation? We examine how susceptible jobs are to computerisation. To assess this, we begin by implementing a novel methodology to estimate the probability of computerisation for 702 detailed occupations, using a Gaussian process classifier. Based on these estimates, we examine expected impacts of future computerisation on US labour market outcomes, with the primary objective of analysing the number of jobs at risk and the relationship between an occupations probability of computerisation, wages and educational attainment. C. Frey, M. Osborne The future of employment: How susceptible are jobs to computerisation? Technological Forecasting...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-10-future-employment.html",
+        "teaser":null},{
+        "title": "Advanced Topics",
+        
+        "excerpt":
+            "Intro to Neural Networks Handwritten Digits Recognization The Neuron: A Biological Information Processor dentrites - the receivers soma - neuron cell body (sums input signals) axon - the transmitter synapse 突触 - point of transmission neuron activates after a certain threshold is met Learning occurs via electro-chemical changes in effectiveness of synaptic junction. An Artificial Neuron: The Perceptron simulated on hardware or by software input connections - the receivers node, unit, or PE simulates neuron body output connection - the transmitter activation function employs a threshold or bias connection weights act as synaptic junctions Learning occurs via changes in value...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-neural-network-advanced.html",
+        "teaser":null},{
+        "title": "Neural Network",
+        
+        "excerpt":
+            "Introduction to Neural Network http://playground.tensorflow.org/ Deep Learning http://www.deeplearningbook.org An MIT Press book by Ian Goodfellow, Yoshua Bengio and Aaron Courville Neural Networks and Deep Learning http://neuralnetworksanddeeplearning.com/index.html A free online book explaining the core ideas behind artificial neural networks and deep learning. Code. By Michael Nielsen / Dec 2017 House Price Let’s start with a simple example. Say you’re helping a friend who wants to buy a house. She was quoted $400,000 for a 2000 sq ft house (185 meters). Is this a good price or not? So you ask your friends who have bought houses in that same neighborhoods, and...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/09-neural-network.html",
+        "teaser":null},{
+        "title": "Text Mining",
+        
+        "excerpt":
+            "&#25991;&#26412;&#25366;&#25496;&#31616;&#20171; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com What can be learned from 5 million books http://v.youku.com/v_show/id_XMzA3OTA5MjUy.html This talk by Jean-Baptiste Michel and Erez Lieberman Aiden is phenomenal. Michel, J.-B., et al. (2011). Quantitative Analysis of Culture Using Millions of Digitized Books. Science, 331, 176–182. 试一下谷歌图书的数据: https://books.google.com/ngrams/ 数据下载： http://www.culturomics.org/home Bag-of-words model &#65288;BOW) Represent text as numerical feature vectors We create a vocabulary of unique tokens—for example, words—from the entire set of documents. We construct a feature vector from each document that contains the counts of how often each word occurs in the particular document. Since the unique words in each document represent only...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/10-text-minning-gov-report.html",
+        "teaser":null},{
+        "title": "Word2vec",
+        
+        "excerpt":
+            "Introduction to Word Embeddings Analyzing Meaning through Word Embeddings Using vectors to represent things one of the most fascinating ideas in machine learning. Word2vec is a method to efficiently create word embeddings. Mikolov et al. (2013). Efficient Estimation of Word Representations in Vector Space Mikolov et al. (2013). Distributed representations of words and phrases and their compositionality The Geometry of Culture Analyzing Meaning through Word Embeddings Austin C. Kozlowski; Matt Taddy; James A. Evans https://arxiv.org/abs/1803.09288 Word embeddings represent semantic relations between words as geometric relationships between vectors in a high-dimensional space, operationalizing a relational model of meaning consistent with contemporary...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/10-word2vec.html",
+        "teaser":null},{
+        "title": "Sentiment Analysis with Dictionary",
+        
+        "excerpt":
+            "&#22522;&#20110;&#23383;&#20856;&#30340;&#24773;&#24863;&#20998;&#26512; 以下内容来自邓旭东HIT https://zhuanlan.zhihu.com/p/23225934 情感分析就是分析一句话说得是很主观还是客观描述，分析这句话表达的是积极的情绪还是消极的情绪。 &#21407;&#29702; 比如这么一句话： “这手机的画面极好，操作也比较流畅。不过拍照真的太烂了！系统也不好。” ① 情感词 要分析一句话是积极的还是消极的，最简单最基础的方法就是找出句子里面的情感词，积极的情感词比如：赞，好，顺手，华丽等，消极情感词比如：差，烂，坏，坑爹等。出现一个积极词就+1，出现一个消极词就-1。 里面就有“好”，“流畅”两个积极情感词，“烂”一个消极情感词。那它的情感分值就是1+1-1+1=2. 很明显这个分值是不合理的，下面一步步修改它。 ② 程度词 “好”，“流畅”和‘烂“前面都有一个程度修饰词。”极好“就比”较好“或者”好“的情感更强，”太烂“也比”有点烂“情感强得多。所以需要在找到情感词后往前找一下有没有程度修饰，并给不同的程度一个权值。比如”极“，”无比“，”太“就要把情感分值4，”较“，”还算“就情感分值2，”只算“，”仅仅“这些就0.5了。那么这句话的情感分值就是：41+12-14+1=3 ③ 感叹号 可以发现太烂了后面有感叹号，叹号意味着情感强烈。因此发现叹号可以为情感值+2. 那么这句话的情感分值就变成了：41+12-1*4-2+1 = 1 ④ 否定词 明眼人一眼就看出最后面那个”好“并不是表示”好“，因为前面还有一个”不“字。所以在找到情感词的时候，需要往前找否定词。比如”不“，”不能“这些词。而且还要数这些否定词出现的次数，如果是单数，情感分值就-1，但如果是偶数，那情感就没有反转，还是1。在这句话里面，可以看出”好“前面只有一个”不“，所以”好“的情感值应该反转，-1。 因此这句话的准确情感分值是：41+12-14-2+1*-1 = -1 ⑤ 积极和消极分开来 再接下来，很明显就可以看出，这句话里面有褒有贬，不能用一个分值来表示它的情感倾向。而且这个权值的设置也会影响最终的情感分值，敏感度太高了。因此对这句话的最终的正确的处理，是得出这句话的一个积极分值，一个消极分值（这样消极分值也是正数，无需使用负数了）。它们同时代表了这句话的情感倾向。所以这句评论应该是”积极分值：6，消极分值：7“ ⑥ 以分句的情感为基础 再仔细一步，详细一点，一条评论的情感分值是由不同的分句加起来的，因此要得到一条评论的情感分值，就要先计算出评论中每个句子的情感分值。这条例子评论有四个分句，因此其结构如下（[积极分值, 消极分值]）：[[4, 0], [2, 0], [0, 6], [0, 1]] 以上就是使用情感词典来进行情感分析的主要流程了，算法的设计也会按照这个思路来实现。 &#31639;&#27861;&#35774;&#35745; 第一步：读取评论数据，对评论进行分句。 第二步：查找对分句的情感词，记录积极还是消极，以及位置。 第三步：往情感词前查找程度词，找到就停止搜寻。为程度词设权值，乘以情感值。 第四步：往情感词前查找否定词，找完全部否定词，若数量为奇数，乘以-1，若为偶数，乘以1。 第五步：判断分句结尾是否有感叹号，有叹号则往前寻找情感词，有则相应的情感值+2。 第六步：计算完一条评论所有分句的情感值，用数组（list）记录起来。 第七步：计算并记录所有评论的情感值。 第八步：通过分句计算每条评论的积极情感均值，消极情感均值，积极情感方差，消极情感方差。 import csv import jieba import numpy as np #打开词典文件，返回列表 def open_dict(Dict, path): path = path + &#39;%s.txt&#39; % Dict dictionary = open(path, &#39;r&#39;, encoding=&#39;utf-8&#39;) dict = [] for word in dictionary: word = word.strip(&#39;\\n&#39;) dict.append(word) return dict def judgeodd(num): if (num % 2) == 0: return &#39;even&#39; else: return...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/11-sentiment-analysis-with-dict.html",
+        "teaser":null},{
+        "title": "Sentiment Analysis with Machine Learning",
+        
+        "excerpt":
+            "&#22522;&#20110;&#26426;&#22120;&#23398;&#20064;&#30340;&#24773;&#24863;&#20998;&#26512; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com 情感分析(sentiment analysis)和意见挖掘(opinion mining)虽然相关，但是从社会科学的角度而言，二者截然不同。这里主要是讲情感分析(sentiment or emotion)，而非意见挖掘（opinion, 后者通过机器学习效果更可信）。 classify emotion Different types of emotion: anger, disgust, fear, joy, sadness, and surprise. The classification can be performed using different algorithms: e.g., naive Bayes classiﬁer trained on Carlo Strapparava and Alessandro Valitutti’s emotions lexicon. classify polarity To classify some text as positive or negative. In this case, the classification can be done by using a naive Bayes algorithm trained on Janyce Wiebe’s subjectivity lexicon. LIWC &amp; TextMind http://ccpl.psych.ac.cn/textmind/ “文心(TextMind)”中文心理分析系统是由中科院心理所计算网络心理实验室研发的，针对中文文本进行语言分析的软件系统，通过“文心”，您可以便捷地分析文本中使用的不同类别语言的程度、偏好等特点。针对中国大陆地区简体环境下的语言特点，参照LIWC2007和正體中文C-LIWC词库，我们开发了“文心（TextMind）”中文心理分析系统。“文心”为用户提供从简体中文自动分词，到语言心理分析的一揽子分析解决方案，其词库、文字和符号等处理方法专门针对简体中文语境，词库分类体系也与LIWC兼容一致。 Preparing the data NLTK Anaconda自带的（默认安装的）第三方包。http://www.nltk.org/ NLTK is a leading platform for building Python programs to work with human language data....",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/11-sentiment-classifier.html",
+        "teaser":null},{
+        "title": "Topic Models",
+        
+        "excerpt":
+            "2017&#24180;&#35745;&#31639;&#20256;&#25773;&#23398;&#24037;&#20316;&#22346; &#20027;&#39064;&#27169;&#22411; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com 2014年高考前夕，百度“基于海量作文范文和搜索数据，利用概率主题模型，预测2014年高考作文的命题方向”。如上图所示，共分为了六个主题：时间、生命、民族、教育、心灵、发展。而每个主题下面又包括了一些具体的关键词。比如，生命的主题对应：平凡、自由、美丽、梦想、奋斗、青春、快乐、孤独。 Read more latent Dirichlet allocation (LDA) 潜在狄利克雷分配 The simplest topic model (on which all others are based) is latent Dirichlet allocation (LDA). LDA is a generative model that infers unobserved meanings from a large set of observations. Reference Blei DM, Ng J, Jordan MI. Latent dirichlet allocation. J Mach Learn Res. 2003; 3: 993–1022. Blei DM, Lafferty JD. Correction: a correlated topic model of science. Ann Appl Stat. 2007; 1: 634. Blei DM. Probabilistic topic models. Commun ACM. 2012; 55: 55–65. Chandra Y, Jiang LC, Wang C-J (2016) Mining Social Entrepreneurship Strategies Using...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/12-topic-models-update.html",
+        "teaser":null},{
+        "title": "Topic Models with Turicreate",
+        
+        "excerpt":
+            "Topic Modeling Using Turicreate 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com import turicreate as tc Download Data: http://select.cs.cmu.edu/code/graphlab/datasets/wikipedia/wikipedia_raw/w15 sf = tc.SFrame.read_csv(&quot;/Users/datalab/bigdata/cjc/w15&quot;, header=False) Finished parsing file /Users/datalab/bigdata/cjc/w15 Parsing completed. Parsed 100 lines in 0.447868 secs. ------------------------------------------------------ Inferred types from first 100 line(s) of file as column_type_hints=[str] If parsing fails due to incorrect types, you can correct the inferred type list above and pass it to read_csv in the column_type_hints argument ------------------------------------------------------ Read 12278 lines. Lines per second: 16914.5 Finished parsing file /Users/datalab/bigdata/cjc/w15 Parsing completed. Parsed 72269 lines in 1.73223 secs. sf X1 aynrand born and educatedin russia rand migrated ... asphalt in americanenglish asphalt...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/12-topic-models-with-turicreate.html",
+        "teaser":null},{
+        "title": "Recommendation System",
+        
+        "excerpt":
+            "&#35745;&#31639;&#20256;&#25773;&#24212;&#29992; &#25512;&#33616;&#31995;&#32479;&#31616;&#20171; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com &#38598;&#20307;&#26234;&#24935;&#32534;&#31243; 集体智慧是指为了创造新想法，将一群人的行为、偏好或思想组合在一起。一般基于聪明的算法（Netflix, Google）或者提供内容的用户(Wikipedia)。 集体智慧编程所强调的是前者，即通过编写计算机程序、构造具有智能的算法收集并分析用户的数据，发现新的信息甚至是知识。 Netflix Google Wikipedia Toby Segaran, 2007, Programming Collective Intelligence. O'Reilly. https://github.com/computational-class/programming-collective-intelligence-code/blob/master/chapter2/recommendations.py &#25512;&#33616;&#31995;&#32479; 目前互联网世界最常见的智能产品形式。 从信息时代过渡到注意力时代： 信息过载（information overload） 注意力稀缺 推荐系统的基本任务是联系用户和物品，帮助用户快速发现有用信息，解决信息过载的问题。 针对长尾分布问题，找到个性化需求，优化资源配置 &#25512;&#33616;&#31995;&#32479;&#30340;&#31867;&#22411; 社会化推荐（Social Recommendation） 让朋友帮助推荐物品 基于内容的推荐 （Content-based filtering） 基于用户已经消费的物品内容，推荐新的物品。例如根据看过的电影的导演和演员，推荐新影片。 基于协同过滤的推荐（collaborative filtering） 找到和某用户的历史兴趣一致的用户，根据这些用户之间的相似性或者他们所消费物品的相似性，为该用户推荐物品 &#21327;&#21516;&#36807;&#28388;&#31639;&#27861; 基于邻域的方法（neighborhood-based method） 基于用户的协同过滤（user-based filtering） 基于物品的协同过滤 （item-based filtering） 隐语义模型（latent factor model） 基于图的随机游走算法（random walk on graphs） UserCF&#21644;ItemCF&#30340;&#27604;&#36739; UserCF较为古老， 1992年应用于电子邮件个性化推荐系统Tapestry, 1994年应用于Grouplens新闻个性化推荐， 后来被Digg采用 推荐那些与个体有共同兴趣爱好的用户所喜欢的物品（群体热点，社会化） 反映用户所在小型群体中物品的热门程度 ItemCF相对较新，应用于电子商务网站Amazon和DVD租赁网站Netflix 推荐那些和用户之前喜欢的物品相似的物品 （历史兴趣，个性化） 反映了用户自己的兴趣传承 新闻更新快，物品数量庞大，相似度变化很快，不利于维护一张物品相似度的表格，电影、音乐、图书则可以。 &#25512;&#33616;&#31995;&#32479;&#35780;&#27979; 用户满意度 预测准确度 $r_{ui}$用户实际打分， $\\hat{r_{ui}}$推荐算法预测打分, T为测量次数 均方根误差RMSE $RMSE = \\sqrt{\\frac{\\sum_{u, i \\in T} (r_{ui} - \\hat{r_{ui}})}{ T }^2} $ 平均绝对误差MAE $ MAE = \\frac{\\sum_{u, i \\in T} \\left | r_{ui} - \\hat{r_{ui}} \\right|}{...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/13-recsys-intro.html",
+        "teaser":null},{
+        "title": "The Case of Million Song",
+        
+        "excerpt":
+            "&#20351;&#29992;Turicreate&#36827;&#34892;&#38899;&#20048;&#25512;&#33616; import turicreate as tc &#19979;&#36733;&#25968;&#25454; http://s3.amazonaws.com/dato-datasets/millionsong/10000.txt #train_file = &#39;http://s3.amazonaws.com/dato-datasets/millionsong/10000.txt&#39; train_file = &#39;/Users/datalab/bigdata/cjc/millionsong/song_usage_10000.txt&#39; sf = tc.SFrame.read_csv(train_file, header=False, delimiter=&#39;\\t&#39;, verbose=False) sf = sf.rename({&#39;X1&#39;:&#39;user_id&#39;, &#39;X2&#39;:&#39;music_id&#39;, &#39;X3&#39;:&#39;rating&#39;}) train_set, test_set = sf.random_split(0.8, seed=1) popularity_model = tc.popularity_recommender.create(train_set, &#39;user_id&#39;, &#39;music_id&#39;, target = &#39;rating&#39;) Preparing data set. Data has 1599753 observations with 76085 users and 10000 items. Data prepared in: 0.907738s 1599753 observations to process; with 10000 unique items. item_sim_model = tc.item_similarity_recommender.create(train_set, &#39;user_id&#39;, &#39;music_id&#39;, target = &#39;rating&#39;, similarity_type=&#39;cosine&#39;) Preparing data set. Data has 1599753 observations with 76085 users and 10000 items. Data prepared in: 0.939059s Training model from provided data. Gathering per-item and per-user statistics. +--------------------------------+------------+ |...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/14-millionsong.html",
+        "teaser":null},{
+        "title": "The Case of Movielens",
+        
+        "excerpt":
+            "&#20351;&#29992;Turicreate&#36827;&#34892;&#30005;&#24433;&#25512;&#33616; import turicreate as tc # set canvas to show sframes and sgraphs in ipython notebook # import matplotlib.pyplot as plt # %matplotlib inline # download data from: http://files.grouplens.org/datasets/movielens/ml-1m.zip data = tc.SFrame.read_csv(&#39;/Users/datalab/bigdata/cjc/ml-1m/ratings.dat&#39;, delimiter=&#39;\\n&#39;, header=False)[&#39;X1&#39;].apply(lambda x: x.split(&#39;::&#39;)).unpack() for col in data.column_names(): data[col] = data[col].astype(int) data = data.rename({&#39;X.0&#39;: &#39;user_id&#39;, &#39;X.1&#39;: &#39;movie_id&#39;, &#39;X.2&#39;: &#39;rating&#39;, &#39;X.3&#39;: &#39;timestamp&#39;}) #data.save(&#39;ratings&#39;) Finished parsing file /Users/datalab/bigdata/cjc/ml-1m/ratings.dat Parsing completed. Parsed 100 lines in 0.281192 secs. ------------------------------------------------------ Inferred types from first 100 line(s) of file as column_type_hints=[str] If parsing fails due to incorrect types, you can correct the inferred type list above and pass it to read_csv in the column_type_hints...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/14-movielens.html",
+        "teaser":null},{
+        "title": "Network Science",
+        
+        "excerpt":
+            "&#32593;&#32476;&#31185;&#23398;&#29702;&#35770; &#32593;&#32476;&#31185;&#23398;&#31616;&#20171; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com FROM SADDAM HUSSEIN TO NETWORK THEORY A SIMPLE STORY (1) The fate of Saddam and network science SADDAM HUSSEIN: the fifth President of Iraq, serving in this capacity from 16 July 1979 until 9 April 2003 Invasion that started in March 19, 2003. Many of the regime's high ranking officials, including Saddam Hussein, avoided capture. Hussein was last spotted kissing a baby in Baghdad in April 2003, and then his trace went cold. Designed a deck of cards, each card engraved with the images of the 55 most wanted. It worked: by May 1,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/15-network-science-intro.html",
+        "teaser":null},{
+        "title": "Network Models",
+        
+        "excerpt":
+            "&#32593;&#32476;&#31185;&#23398;&#29702;&#35770; &#32593;&#32476;&#31185;&#23398;&#27169;&#22411; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com The random network model &#38543;&#26426;&#32593;&#32476;&#27169;&#22411; Erd&#246;s-R&#233;nyi model (1960) Definition: A random graph is a graph of N nodes where each pair of nodes is connected by probability p. G(N, L) Model N lableled nodes are connected with L randomly placed links. Erdös-Rényi(1959) G(N, p) Model Each pair of N labeled nodes is connected with probability p. Gilbert (1959) To construct a random network: 1) Start with $N$ isolated nodes. 2) Select a node pair and generate a random number between 0 and 1. If the number exceeds $p$, connect the selected node pair with...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/16-network-science-models.html",
+        "teaser":null},{
+        "title": "networkx",
+        
+        "excerpt":
+            "&#32593;&#32476;&#31185;&#23398;&#29702;&#35770; &#32593;&#32476;&#31185;&#23398;&#65306;&#20351;&#29992;NetworkX&#20998;&#26512;&#22797;&#26434;&#32593;&#32476; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com http://networkx.readthedocs.org/en/networkx-1.11/tutorial/ %matplotlib inline import networkx as nx import matplotlib.cm as cm import matplotlib.pyplot as plt import networkx as nx G=nx.Graph() # G = nx.DiGraph() # 有向网络 # 添加（孤立）节点 G.add_node(&quot;spam&quot;) # 添加节点和链接 G.add_edge(1,2) print(G.nodes()) print(G.edges()) [&#39;spam&#39;, 1, 2] [(1, 2)] # 绘制网络 nx.draw(G, with_labels = True) WWW Data download http://www3.nd.edu/~networks/resources.htm https://pan.baidu.com/s/1o86ZaTc World-Wide-Web: [README] [DATA] Réka Albert, Hawoong Jeong and Albert-László Barabási: Diameter of the World Wide Web Nature 401, 130 (1999) [ PDF ] &#20316;&#19994;&#65306; 下载www数据 构建networkx的网络对象g（提示：有向网络） 将www数据添加到g当中 计算网络中的节点数量和链接数量 G = nx.Graph() n = 0 with open (&#39;/Users/datalab/bigdata/cjc/www.dat.gz.txt&#39;) as f: for line in f: n...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/17-networkx.html",
+        "teaser":null},{
+        "title": "The case of Tianya BBS",
+        
+        "excerpt":
+            "&#32593;&#32476;&#31185;&#23398;&#29702;&#35770;&#31616;&#20171; &#22825;&#28079;&#35770;&#22363;&#30340;&#22238;&#24086;&#32593;&#32476;&#20998;&#26512; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com %matplotlib inline import matplotlib.pyplot as plt dtt = [] file_path = &#39;../data/tianya_bbs_threads_network.txt&#39; with open(file_path, &#39;r&#39;) as f: for line in f: pnum, link, time, author_id, author,\\ content = line.replace(&#39;\\n&#39;, &#39;&#39;).split(&#39;\\t&#39;) dtt.append([pnum, link, time, author_id, author, content]) len(dtt) 8079 import pandas as pd dt = pd.DataFrame(dtt) dt=dt.rename(columns = {0:&#39;page_num&#39;, 1:&#39;link&#39;, 2:&#39;time&#39;, 3:&#39;author&#39;,4:&#39;author_name&#39;, 5:&#39;reply&#39;}) dt[:5] page_num link time author author_name reply 0 1 /post-free-2849477-1.shtml 2012-10-29 07:59:00 50499450 贾也 先生是一位真爷们！第161期导语：人人宁波，面朝大海，春暖花开!　　宁波的事，怎谈？无从谈，... 1 1 /post-free-2849477-1.shtml 2012-10-29 08:13:54 22122799 三平67 我们中国人都在一条船，颠簸已久，我们都想做宁波人，希望有一个风平浪静的港湾，面朝大海，春暖花... 2 1 /post-free-2849477-1.shtml 2012-10-29 08:27:02 39027950 赶浪头 默默围观~ 3 1 /post-free-2849477-1.shtml 2012-10-29 08:43:15 53986501 m408833176 不能收藏？ 4 1 /post-free-2849477-1.shtml...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/18-network-analysis-of-tianya-bbs.html",
+        "teaser":null},{
+        "title": "Network Epidemics",
+        
+        "excerpt":
+            "Epidemics on Networks Mathematics of Epidemics on Networks by Kiss, Miller, and Simon (Springer, 2017). Github: https://github.com/springer-math/Mathematics-of-Epidemics-on-Networks Documentation: https://epidemicsonnetworks.readthedocs.io/en/latest/GettingStarted.html#quickstart-guide import networkx as nx import matplotlib.pyplot as plt import EoN !pip install EoN Collecting EoN Downloading https://files.pythonhosted.org/packages/81/4a/765f1cfa8d3a59fa14c772b4577ab70804ddc13c7521fbad00fc35b21795/EoN-1.0.3.tar.gz (65kB) 100% |████████████████████████████████| 71kB 12kB/s ta 0:00:0121 Requirement already satisfied: networkx in /Users/datalab/Applications/anaconda/lib/python3.5/site-packages (from EoN) (2.1) Requirement already satisfied: scipy in /Users/datalab/Applications/anaconda/lib/python3.5/site-packages (from EoN) (1.1.0) Requirement already satisfied: matplotlib in /Users/datalab/Applications/anaconda/lib/python3.5/site-packages (from EoN) (3.0.1) Requirement already satisfied: decorator&gt;=4.1.0 in /Users/datalab/Applications/anaconda/lib/python3.5/site-packages (from networkx-&gt;EoN) (4.2.1) Requirement already satisfied: python-dateutil&gt;=2.1 in /Users/datalab/Applications/anaconda/lib/python3.5/site-packages (from matplotlib-&gt;EoN) (2.6.1) Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /Users/datalab/Applications/anaconda/lib/python3.5/site-packages (from matplotlib-&gt;EoN) (2.1.4) Requirement already satisfied:...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/18-network-epidemics.html",
+        "teaser":null},{
+        "title": "datashader",
+        
+        "excerpt":
+            "PyViz http://pyviz.org/ Datashader Datashader is part of the PyViz initiative for making Python-based visualization tools work well together. http://datashader.org/index.html Datashader is supported and mantained by Anaconda !conda install datashader Table of Contents PyVizDatashaderUS CensusNYC CrimeEND US Census import datashader as ds import datashader.transfer_functions as tf import dask.dataframe as dd import numpy as np df = dd.io.parquet.read_parquet(&#39;/Users/datalab/bigdata/census.snappy.parq&#39;) df = df.persist() df.head() easting northing race 0 -13700737.0 6275190.0 w 1 -13700711.0 6275195.0 w 2 -13702081.0 6274898.5 w 3 -13701948.0 6274931.0 w 4 -13701793.0 6275088.5 w USA = ((-124.72, -66.95), (23.55, 50.06)) LakeMichigan = (( -91.68, -83.97), (40.75, 44.08)) Chicago = (( -88.29,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/19-visualization-datashader.html",
+        "teaser":null},{
+        "title": "folium",
+        
+        "excerpt":
+            "&#22797;&#26086;&#22823;&#23398;&#26032;&#38395;&#23398;&#38498;&#26032;&#23186;&#20307;&#30805;&#22763;&#35838;&#31243; &#20351;&#29992;folium&#20570;&#22320;&#22270;&#21487;&#35270;&#21270; 王成军 wangchengjun@nju.edu.cn 计算传播网 http://computational-communication.com !pip install folium Collecting folium Downloading https://files.pythonhosted.org/packages/72/ff/004bfe344150a064e558cb2aedeaa02ecbf75e60e148a55a9198f0c41765/folium-0.10.0-py2.py3-none-any.whl (91kB) 100% |████████████████████████████████| 92kB 72kB/s ta 0:00:0111 Collecting branca&gt;=0.3.0 (from folium) Using cached https://files.pythonhosted.org/packages/63/36/1c93318e9653f4e414a2e0c3b98fc898b4970e939afeedeee6075dd3b703/branca-0.3.1-py3-none-any.whl Requirement already satisfied: numpy in /Users/datalab/anaconda3/lib/python3.7/site-packages (from folium) (1.16.2) Requirement already satisfied: requests in /Users/datalab/anaconda3/lib/python3.7/site-packages (from folium) (2.21.0) Requirement already satisfied: jinja2&gt;=2.9 in /Users/datalab/anaconda3/lib/python3.7/site-packages (from folium) (2.10) Requirement already satisfied: six in /Users/datalab/anaconda3/lib/python3.7/site-packages (from branca&gt;=0.3.0-&gt;folium) (1.12.0) Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/datalab/anaconda3/lib/python3.7/site-packages (from requests-&gt;folium) (2019.3.9) Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /Users/datalab/anaconda3/lib/python3.7/site-packages (from requests-&gt;folium) (3.0.4) Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /Users/datalab/anaconda3/lib/python3.7/site-packages (from requests-&gt;folium) (2.8) Requirement already satisfied: urllib3&lt;1.25,&gt;=1.21.1 in /Users/datalab/anaconda3/lib/python3.7/site-packages (from requests-&gt;folium) (1.24.1) Requirement...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/19-visualization-maps-using-folium.html",
+        "teaser":null},{
+        "title": "pyecharts",
+        
+        "excerpt":
+            "pyecharts pyecharts is a library to generate charts using Echarts. It simply provides the interface of 28+ kinds of charts between Echarts and Python. https://github.com/pyecharts/pyecharts pip install pyecharts pip install echarts-countries-pypkg pip install echarts-china-provinces-pypkg pip install echarts-china-cities-pypkg http://nbviewer.jupyter.org/github/pyecharts/pyecharts-users-cases/blob/master/notebook-users-cases/notebook-user-cases.ipynb Bar from pyecharts import Bar attr = [&quot;衬衫&quot;, &quot;羊毛衫&quot;, &quot;雪纺衫&quot;, &quot;裤子&quot;, &quot;高跟鞋&quot;, &quot;袜子&quot;] v1 = [5, 20, 36, 10, 75, 90] v2 = [10, 25, 8, 60, 20, 80] bar = Bar(&quot;柱状图数据堆叠示例&quot;) bar.add(&quot;商家A&quot;, attr, v1, is_stack=True) bar.add(&quot;商家B&quot;, attr, v2, is_stack=True) bar bar = Bar(&quot;柱状图示例&quot;) bar.add(&quot;商家A&quot;, attr, v1, is_stack=False) bar.add(&quot;商家B&quot;, attr, v2, is_stack=False) bar bar = Bar(&quot;标记线和标记点示例&quot;) bar.add(&quot;商家A&quot;, attr, v1, mark_point=[&quot;average&quot;]) bar.add(&quot;商家B&quot;, attr,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/19-visualization-with-pyecharts.html",
+        "teaser":null},{
+        "title": "Visualization",
+        
+        "excerpt":
+            "Visualization with Seaborn Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics. it integrates with the functionality provided by Pandas DataFrames. %matplotlib inline import numpy as np; np.random.seed(22) import seaborn as sns; import pylab as plt To be fair, the Matplotlib team is addressing this: it has recently added the plt.style tools, is starting to handle Pandas data more seamlessly. Matplotlib Styles plt.style.available [&#39;seaborn-dark&#39;, &#39;seaborn-darkgrid&#39;, &#39;seaborn-ticks&#39;, &#39;fivethirtyeight&#39;, &#39;seaborn-whitegrid&#39;, &#39;classic&#39;, &#39;_classic_test&#39;, &#39;fast&#39;, &#39;seaborn-talk&#39;, &#39;seaborn-dark-palette&#39;, &#39;seaborn-bright&#39;, &#39;seaborn-pastel&#39;, &#39;grayscale&#39;, &#39;seaborn-notebook&#39;, &#39;ggplot&#39;, &#39;seaborn-colorblind&#39;, &#39;seaborn-muted&#39;, &#39;seaborn&#39;, &#39;Solarize_Light2&#39;, &#39;seaborn-paper&#39;, &#39;bmh&#39;, &#39;tableau-colorblind10&#39;, &#39;seaborn-white&#39;, &#39;dark_background&#39;,...",
+        "categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ccbook/19-visualization-with-seaborn.html",
+        "teaser":null},]
+</script>
+            </div>
+            <nav class="c-page__nav">
+  
+
+  
+</nav>
+            <footer>
+  <p class="footer">This page was created by <a href="https://github.com/jupyter/jupyter-book/graphs/contributors">The Jupyter Book Community</a></p>
+</footer>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
