@@ -8,14 +8,14 @@
   <title>Using selenium for clicking</title>
   <meta name="description" content="            &#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#29992;&#25143;&#35780;&#35770; tripadvisor中文网站叫做猫途鹰 www.tripadvisor.cn/ 。对于酒店和景点的用户评论。但是默认只显...">
 
-  <link rel="canonical" href="http://localhost:4000/ccbook/04-crawler-tripadvisor.html">
-  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="http://localhost:4000/ccbook/feed.xml">
+  <link rel="canonical" href="https://computational-class.github.io/ccbook/04-crawler-tripadvisor.html">
+  <link rel="alternate" type="application/rss+xml" title="Elements of Computational Communication" href="https://computational-class.github.io/ccbook/feed.xml">
 
-  <meta property="og:url"         content="http://localhost:4000/ccbook/04-crawler-tripadvisor.html" />
+  <meta property="og:url"         content="https://computational-class.github.io/ccbook/04-crawler-tripadvisor.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Using selenium for clicking" />
 <meta property="og:description" content="            &#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#29992;&#25143;&#35780;&#35770; tripadvisor中文网站叫做猫途鹰 www.tripadvisor.cn/ 。对于酒店和景点的用户评论。但是默认只显..." />
-<meta property="og:image"       content="http://localhost:4000/ccbook/img/logo/logo.png" />
+<meta property="og:image"       content="https://computational-class.github.io/ccbook/img/logo/logo.png" />
 
 <meta name="twitter:card" content="summary">
 
@@ -24,10 +24,10 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "http://localhost:4000/ccbook/04-crawler-tripadvisor.html",
+  "mainEntityOfPage": "https://computational-class.github.io/ccbook/04-crawler-tripadvisor.html",
   "headline": "Using selenium for clicking",
-  "datePublished": "2020-04-29T13:36:01+08:00",
-  "dateModified": "2020-04-29T13:36:01+08:00",
+  "datePublished": "2020-05-09T12:47:49+08:00",
+  "dateModified": "2020-05-09T12:47:49+08:00",
   "description": "            &#20351;&#29992;Selenium&#25235;&#21462;TripAdvisor&#29992;&#25143;&#35780;&#35770; tripadvisor中文网站叫做猫途鹰 www.tripadvisor.cn/ 。对于酒店和景点的用户评论。但是默认只显...",
   "author": {
     "@type": "Person",
@@ -38,14 +38,14 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:4000/ccbook",
+      "url": "https://computational-class.github.io/ccbook",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "http://localhost:4000/ccbook",
+    "url": "https://computational-class.github.io/ccbook",
     "height": 60,
     "width": 60
   }
@@ -207,7 +207,7 @@ function addParamToInternalLinks(hub) {
   var links = document.querySelectorAll("a").forEach(function(link) {
     var href = link.href;
     // If the link is an internal link...
-    if (href.search("http://localhost:4000") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+    if (href.search("https://computational-class.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
       // Assume we're an internal link, add the hub param to it
       var params = getJsonFromUrl(href);
       if (params !== false) {
@@ -926,10 +926,29 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/ccbook/08-04-hypothesis-inference.html"
+                  href="/ccbook/08-03-distributions.html"
                 >
                   
                     5.3
+                  
+                  Distribution
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-04-hypothesis-inference.html"
+                >
+                  
+                    5.4
                   
                   Hypothesis Inference
                 </a>
@@ -948,7 +967,7 @@ initFunction(initPrint)
                   href="/ccbook/08-05-gradient-descent.html"
                 >
                   
-                    5.4
+                    5.5
                   
                   Gradient Descent
                 </a>
@@ -967,7 +986,7 @@ initFunction(initPrint)
                   href="/ccbook/08-06-regression.html"
                 >
                   
-                    5.5
+                    5.6
                   
                   Linear Regression
                 </a>
@@ -986,7 +1005,7 @@ initFunction(initPrint)
                   href="/ccbook/08-06-statsmodels.html"
                 >
                   
-                    5.6
+                    5.7
                   
                   Introduction to statsmodels
                 </a>
@@ -1005,9 +1024,28 @@ initFunction(initPrint)
                   href="/ccbook/08-07-analyzing-titanic-dataset.html"
                 >
                   
-                    5.7
+                    5.8
                   
                   Analyzing Titanic Dataset
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-08-covid19-grangercausality.html"
+                >
+                  
+                    5.9
+                  
+                  Granger Causality of Covid19
                 </a>
 
                 

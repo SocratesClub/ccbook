@@ -117,6 +117,8 @@
       url: 08-02-linear-algebra
     - title: Probability
       url: 08-03-probability
+    - title: Distribution
+      url: 08-03-distributions
     - title: Hypothesis Inference
       url: 08-04-hypothesis-inference
     - title: Gradient Descent
@@ -127,7 +129,8 @@
       url: 08-06-statsmodels
     - title: Analyzing Titanic Dataset
       url: 08-07-analyzing-titanic-dataset
-
+    - title: Granger Causality of Covid19
+      url: 08-08-covid19-grangercausality
 # chapter 6
 - title: Machine Learning
   url: 09-01-machine-learning-with-sklearn
