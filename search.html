@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/search",
   "headline": "Search the site",
-  "datePublished": "2020-05-09T12:47:49+08:00",
-  "dateModified": "2020-05-09T12:47:49+08:00",
+  "datePublished": "2020-05-14T13:57:33+08:00",
+  "dateModified": "2020-05-14T13:57:33+08:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -1040,12 +1040,31 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/ccbook/08-08-covid19-grangercausality.html"
+                  href="/ccbook/08-07-covid19-pew-survey.html"
                 >
                   
                     5.9
                   
-                  Granger Causality of Covid19
+                  Analysing the Pew Survey Data of COVID19
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/08-08-covid19-grangercausality.html"
+                >
+                  
+                    5.10
+                  
+                  Granger Causality of COVID19
                 </a>
 
                 
@@ -2153,7 +2172,15 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/08-07-analyzing-titanic-dataset.html",
         "teaser":null},{
-        "title": "Granger Causality of Covid19",
+        "title": "Analysing the Pew Survey Data of COVID19",
+        
+        "excerpt":
+            "Analysing the Pew Survey Data of COVID19 American Trends Panel Wave 48 阅读 https://www.journalism.org/dataset/election-news-pathways-april-2020-survey/ 下载Pathways-April-2020-ATP-W66-1.zip 数据，该数据来自pewresearch针对2020年总统选举所做的panel study中的一次，其中加入了关于covid19的部分问题。 https://www.people-press.org/dataset/american-trends-panel-wave-48/ https://www.journalism.org/2020/05/08/americans-views-of-the-news-media-during-the-covid-19-outbreak/ # the statsmodels.api uses numpy array notation # statsmodels.formula.api use formula notation (similar to R&#39;s formula notation) import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns import statsmodels.api as sm import statsmodels.formula.api as smf cd &quot;/Users/datalab/bigdata/Pathways April 2020 (ATP W66)/&quot; /Users/datalab/bigdata/Pathways April 2020 (ATP W66) ls Pathways April 2020 (ATP W66) Methodology.pdf* Pathways April 2020 (ATP W66) Questionnaire.pdf* Pathways April 2020 (ATP W66) Readme.txt* Pathways April 2020 (ATP W66) Topline.pdf* Pathways April 2020 (ATP...",
+        "categories": [],
+        "tags": [],
+        "url": "https://computational-class.github.io/ccbook/08-07-covid19-pew-survey.html",
+        "teaser":null},{
+        "title": "Granger Causality of COVID19",
         
         "excerpt":
             "&#31038;&#20132;&#23186;&#20307;&#21487;&#20197;&#39044;&#27979;&#26032;&#20896;&#30123;&#24773;&#21527;&#65311; 基于知微事见数据 http://xgml.zhiweidata.net/?from=floating#/ %%html &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=900 height=600 src=&quot;//xgml.zhiweidata.net/?from=floating#/&quot;&gt; &lt;/iframe&gt; import pylab as plt import pandas as pd import seaborn as sns import json #j = json.load(open(&#39;../data/zhiwei_line.json&#39;)) j = json.load(open(&#39;../data/zhiwei_line0417.json&#39;)) df = pd.DataFrame(j) df.tail() time voice heat case allCase 100 2020-04-08 225533 63 81865 101 2020-04-09 197162 42 81907 102 2020-04-10 212046 31 81953 103 2020-04-11 164010 31 82052 104 2020-04-12 157726 31 82160 df.info() &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt; RangeIndex: 105 entries, 0 to 104 Data columns (total 5 columns): # Column Non-Null Count Dtype --- ------ -------------- ----- 0 time 105 non-null object 1 voice 105 non-null object...",
@@ -2380,7 +2407,7 @@ initFunction(initPrint)
         "title": "pyecharts",
         
         "excerpt":
-            "pyecharts pyecharts is a library to generate charts using Echarts. It simply provides the interface of 28+ kinds of charts between Echarts and Python. https://github.com/pyecharts/pyecharts pip install pyecharts pip install echarts-countries-pypkg pip install echarts-china-provinces-pypkg pip install echarts-china-cities-pypkg http://nbviewer.jupyter.org/github/pyecharts/pyecharts-users-cases/blob/master/notebook-users-cases/notebook-user-cases.ipynb Bar from pyecharts import Bar attr = [&quot;衬衫&quot;, &quot;羊毛衫&quot;, &quot;雪纺衫&quot;, &quot;裤子&quot;, &quot;高跟鞋&quot;, &quot;袜子&quot;] v1 = [5, 20, 36, 10, 75, 90] v2 = [10, 25, 8, 60, 20, 80] bar = Bar(&quot;柱状图数据堆叠示例&quot;) bar.add(&quot;商家A&quot;, attr, v1, is_stack=True) bar.add(&quot;商家B&quot;, attr, v2, is_stack=True) bar bar = Bar(&quot;柱状图示例&quot;) bar.add(&quot;商家A&quot;, attr, v1, is_stack=False) bar.add(&quot;商家B&quot;, attr, v2, is_stack=False) bar bar = Bar(&quot;标记线和标记点示例&quot;) bar.add(&quot;商家A&quot;, attr, v1, mark_point=[&quot;average&quot;]) bar.add(&quot;商家B&quot;, attr,...",
+            "Visualization with PyEcharts Echarts https://echarts.apache.org/examples/zh/index.html 第一步，选取图类型 第二步，修改图 第三步，点击download下载html文件 第四步，修改下载的html文件 案例1：散点图 https://echarts.apache.org/examples/zh/editor.html?c=bubble-gradient 案例2：Put echarts into a html Note: set the height of section. Question: How to add more echarts into a html? 案例3：读取json数据 https://echarts.apache.org/examples/zh/editor.html?c=scatter-life-expectancy-timeline 前端的开发的html给我们的时候，由于内部有一些ajax请求的json的数据，需要在一个web server中查看，每次放到http服务器太麻烦。还是直接用python造一个最方便。最简单的，直接用 python3 -m http.server 同时，读取json数据时，需要调用jquery &lt;script type=\"text/javascript\" src=\"https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js\"&gt;&lt;/script&gt; pyecharts&#23433;&#35013; https://github.com/pyecharts/pyecharts pip install pyecharts -U pip install echarts-countries-pypkg pip install echarts-china-provinces-pypkg pip install echarts-china-cities-pypkg pyecharts&#20351;&#29992;&#31616;&#20171; Echarts 是一个由百度开源的数据可视化，凭借着良好的交互性，精巧的图表设计，得到了众多开发者的认可。而 Python 是一门富有表达力的语言，很适合用于数据处理。当数据分析遇上数据可视化时，pyecharts 诞生了。https://pyecharts.org/#/ 配置项: 全局配置项 | 系列配置项 基本使用: 图表 API | 示例数据 | 全局变量 图表类型: 基本图表 | 直角坐标系图表 | 地理图表 | 3D 图表 | 组合图表 | HTML 组件 进阶话题: 参数传递 | 数据格式 | 定制主题 | 定制地图 | 渲染图片 | Notebook...",
         "categories": [],
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/19-visualization-with-pyecharts.html",
