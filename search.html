@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/search",
   "headline": "Search the site",
-  "datePublished": "2020-05-14T13:57:33+08:00",
-  "dateModified": "2020-05-14T13:57:33+08:00",
+  "datePublished": "2020-05-26T12:27:42+08:00",
+  "dateModified": "2020-05-26T12:27:42+08:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -666,10 +666,29 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/ccbook/04-crawler-tripadvisor.html"
+                  href="/ccbook/04-crawler-selenium-people-com-search.html"
                 >
                   
                     3.5
+                  
+                  Using Selenium for searching
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-tripadvisor.html"
+                >
+                  
+                    3.6
                   
                   Using selenium for clicking
                 </a>
@@ -688,7 +707,7 @@ initFunction(initPrint)
                   href="/ccbook/04-crawler-netease-music.html"
                 >
                   
-                    3.6
+                    3.7
                   
                   Crawling Music Data
                 </a>
@@ -707,7 +726,7 @@ initFunction(initPrint)
                   href="/ccbook/04-crawler-gov-report.html"
                 >
                   
-                    3.7
+                    3.8
                   
                   Crawling Government Reports
                 </a>
@@ -1927,7 +1946,7 @@ initFunction(initPrint)
         "title": "Appendix of Using Jupyter Notebooks",
         
         "excerpt":
-            "The Jupyter Notebook It is a web application that allows you to create and share documents that contain live code equations visualizations explanatory text Table of Contents The Jupyter NotebookPublish on Github PagesWorkflow引用一级标题二级标题搜狗输入法表情和符号运行C代码Jupyter 魔术命令References Publish on Github Pages Confirm that your book's HTML is built in the _site folder. Install the ghp-import tool. pip install ghp-import Use ghp-import to push your book's HTML onto the gh-pages branch of your repository. ghp-import -n -p -f _site https://jupyterbook.org/guide/publish/github-pages.html Workflow #!/bin/bash # open github master branch # open atom master branch cd .. jupyter-book build ccbook/ cd ccbook make serve # Publish your...",
+            "The Jupyter Notebook It is a web application that allows you to create and share documents that contain live code equations visualizations explanatory text Table of Contents The Jupyter NotebookCopy and Paste imagesSet the layout of figuresPublish on Github PagesWorkflow引用一级标题二级标题搜狗输入法表情和符号运行C代码Jupyter 魔术命令References Copy and Paste images Set the layout of figures first copy and paste a figure into notebook, and you will get this line of script: ![image.png](attachment:image.png) Second, replace it with the following script: &lt;div&gt; &lt;img src=\"attachment:image.png\" align=\"right\" width = \"200px\"/&gt; &lt;/div&gt; “Know thyself.” ― Socrates “The unexamined life is not worth living.” ― Socrates “Wonder is the beginning of...",
         "categories": [],
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/0-jupyter-notebook.html",
@@ -2027,6 +2046,14 @@ initFunction(initPrint)
         "categories": [],
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/04-crawler-netease-music.html",
+        "teaser":null},{
+        "title": null,
+        
+        "excerpt":
+            "http://search.people.com.cn/cnpeople/news/getNewsResult.jsp 点击下一页页面的URL不变 鼠标右键查看页码 url = &#39;http://search.people.com.cn/cnpeople/search.do?pageNum=&#39; path = &#39;&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId=&#39; page_num = range(1, 28) urls = [url+str(i)+path for i in page_num] for i in urls[:3]: print(i) http://search.people.com.cn/cnpeople/search.do?pageNum=1&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= http://search.people.com.cn/cnpeople/search.do?pageNum=2&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= http://search.people.com.cn/cnpeople/search.do?pageNum=3&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= &#26080;&#27861;&#36890;&#36807;requests&#30452;&#25509;&#33719;&#21462; 提醒：您的访问可能对网站造成危险，已被云防护安全拦截 import requests from bs4 import BeautifulSoup content = requests.get(urls[0]) content.encoding = 'utf-8' soup = BeautifulSoup(content.text, 'html.parser') soup from selenium import webdriver import time browser = webdriver.Chrome() dat = [] for k, j in enumerate(urls): print(k+1) time.sleep(1) browser.get(j) source = browser.page_source soup = BeautifulSoup(source, &#39;html.parser&#39;) d = soup.find_all(&#39;ul&#39;) for i in d[1:]: urli = i.find(&#39;a&#39;)[&#39;href&#39;] title = i.find(&#39;a&#39;).text time_stamp = i.find_all(&#39;li&#39;)[-1].text.split(&#39;\\xa0&#39;)[-1] dat.append([k+1, urli, title, time_stamp]) len(dat) 1 2 3 4 5...",
+        "categories": [],
+        "tags": null,
+        "url": "https://computational-class.github.io/ccbook/04-crawler-selenium-people-com-search.html",
         "teaser":null},{
         "title": "Introduction of Selenium",
         

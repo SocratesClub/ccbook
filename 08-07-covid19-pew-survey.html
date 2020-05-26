@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/08-07-covid19-pew-survey.html",
   "headline": "Analysing the Pew Survey Data of COVID19",
-  "datePublished": "2020-05-14T13:57:33+08:00",
-  "dateModified": "2020-05-14T13:57:33+08:00",
+  "datePublished": "2020-05-26T12:27:42+08:00",
+  "dateModified": "2020-05-26T12:27:42+08:00",
   "description": "            Analysing the Pew Survey Data of COVID19 American Trends Panel Wave 48 阅读 https://www.journalism.org/dataset/election-news-pathways-april-2020-su...",
   "author": {
     "@type": "Person",
@@ -666,10 +666,29 @@ initFunction(initPrint)
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/ccbook/04-crawler-tripadvisor.html"
+                  href="/ccbook/04-crawler-selenium-people-com-search.html"
                 >
                   
                     3.5
+                  
+                  Using Selenium for searching
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/ccbook/04-crawler-tripadvisor.html"
+                >
+                  
+                    3.6
                   
                   Using selenium for clicking
                 </a>
@@ -688,7 +707,7 @@ initFunction(initPrint)
                   href="/ccbook/04-crawler-netease-music.html"
                 >
                   
-                    3.6
+                    3.7
                   
                   Crawling Music Data
                 </a>
@@ -707,7 +726,7 @@ initFunction(initPrint)
                   href="/ccbook/04-crawler-gov-report.html"
                 >
                   
-                    3.7
+                    3.8
                   
                   Crawling Government Reports
                 </a>
@@ -2767,7 +2786,8 @@ Name: COVIDNEWSPAIR_a_W66, dtype: float64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;republic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;F_PARTYLN_FINAL&#39;</span><span class="p">]</span> <span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># dummy coding</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;republic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;F_PARTYLN_FINAL&#39;</span><span class="p">]</span> <span class="p">]</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;edu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="o">-</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;F_EDUCCAT2&#39;</span><span class="p">]]</span>
 </pre></div>
 
