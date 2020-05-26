@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://computational-class.github.io/ccbook/search",
   "headline": "Search the site",
-  "datePublished": "2020-05-26T12:27:42+08:00",
-  "dateModified": "2020-05-26T12:27:42+08:00",
+  "datePublished": "2020-05-26T12:42:47+08:00",
+  "dateModified": "2020-05-26T12:42:47+08:00",
   "description": "        ",
   "author": {
     "@type": "Person",
@@ -2047,12 +2047,12 @@ initFunction(initPrint)
         "tags": [],
         "url": "https://computational-class.github.io/ccbook/04-crawler-netease-music.html",
         "teaser":null},{
-        "title": null,
+        "title": "Using Selenium for searching",
         
         "excerpt":
-            "http://search.people.com.cn/cnpeople/news/getNewsResult.jsp 点击下一页页面的URL不变 鼠标右键查看页码 url = &#39;http://search.people.com.cn/cnpeople/search.do?pageNum=&#39; path = &#39;&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId=&#39; page_num = range(1, 28) urls = [url+str(i)+path for i in page_num] for i in urls[:3]: print(i) http://search.people.com.cn/cnpeople/search.do?pageNum=1&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= http://search.people.com.cn/cnpeople/search.do?pageNum=2&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= http://search.people.com.cn/cnpeople/search.do?pageNum=3&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= &#26080;&#27861;&#36890;&#36807;requests&#30452;&#25509;&#33719;&#21462; 提醒：您的访问可能对网站造成危险，已被云防护安全拦截 import requests from bs4 import BeautifulSoup content = requests.get(urls[0]) content.encoding = 'utf-8' soup = BeautifulSoup(content.text, 'html.parser') soup from selenium import webdriver import time browser = webdriver.Chrome() dat = [] for k, j in enumerate(urls): print(k+1) time.sleep(1) browser.get(j) source = browser.page_source soup = BeautifulSoup(source, &#39;html.parser&#39;) d = soup.find_all(&#39;ul&#39;) for i in d[1:]: urli = i.find(&#39;a&#39;)[&#39;href&#39;] title = i.find(&#39;a&#39;).text time_stamp = i.find_all(&#39;li&#39;)[-1].text.split(&#39;\\xa0&#39;)[-1] dat.append([k+1, urli, title, time_stamp]) len(dat) 1 2 3 4 5...",
+            "&#25968;&#25454;&#25235;&#21462; 使用Selenium提取人民网搜索数据 http://search.people.com.cn/cnpeople/news/getNewsResult.jsp 点击下一页页面的URL不变 鼠标右键查看页码 url = &#39;http://search.people.com.cn/cnpeople/search.do?pageNum=&#39; path = &#39;&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId=&#39; page_num = range(1, 28) urls = [url+str(i)+path for i in page_num] for i in urls[:3]: print(i) http://search.people.com.cn/cnpeople/search.do?pageNum=1&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= http://search.people.com.cn/cnpeople/search.do?pageNum=2&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= http://search.people.com.cn/cnpeople/search.do?pageNum=3&amp;keyword=%D0%C2%B9%DA+%D6%D0%D2%BD&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId= &#26080;&#27861;&#36890;&#36807;requests&#30452;&#25509;&#33719;&#21462; 提醒：您的访问可能对网站造成危险，已被云防护安全拦截 import requests from bs4 import BeautifulSoup content = requests.get(urls[0]) content.encoding = 'utf-8' soup = BeautifulSoup(content.text, 'html.parser') soup from selenium import webdriver import time browser = webdriver.Chrome() dat = [] for k, j in enumerate(urls): print(k+1) time.sleep(1) browser.get(j) source = browser.page_source soup = BeautifulSoup(source, &#39;html.parser&#39;) d = soup.find_all(&#39;ul&#39;) for i in d[1:]: urli = i.find(&#39;a&#39;)[&#39;href&#39;] title = i.find(&#39;a&#39;).text time_stamp = i.find_all(&#39;li&#39;)[-1].text.split(&#39;\\xa0&#39;)[-1] dat.append([k+1, urli, title, time_stamp]) len(dat) 1 2 3...",
         "categories": [],
-        "tags": null,
+        "tags": [],
         "url": "https://computational-class.github.io/ccbook/04-crawler-selenium-people-com-search.html",
         "teaser":null},{
         "title": "Introduction of Selenium",
