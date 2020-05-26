@@ -87,6 +87,8 @@
       url: 04-crawler-cppcc
     - title: Introduction of Selenium
       url: 04-crawler-selenium
+    - title: Using Selenium for searching
+      url: 04-crawler-selenium-people-com-search
     - title: Using selenium for clicking
       url: 04-crawler-tripadvisor
     - title: Crawling Music Data
@@ -129,8 +131,11 @@
       url: 08-06-statsmodels
     - title: Analyzing Titanic Dataset
       url: 08-07-analyzing-titanic-dataset
-    - title: Granger Causality of Covid19
+    - title: Analysing the Pew Survey Data of COVID19
+      url: 08-07-covid19-pew-survey
+    - title: Granger Causality of COVID19
       url: 08-08-covid19-grangercausality
+
 # chapter 6
 - title: Machine Learning
   url: 09-01-machine-learning-with-sklearn
