@@ -1,6 +1,6 @@
 ---
 interact_link: content/13-recsys-intro.ipynb
-kernel_name: conda-env-anaconda-py
+kernel_name: python3
 kernel_path: content
 has_widgets: false
 title: |-
@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /14-millionsong.html
 suffix: .ipynb
-search: item model create based users items filtering similarity rating recommendations user img r recommender data wikipedia ui target t similar used org ratings models observations popularity graphlab com programming collective intelligence method src png width px night products movielens songs en wiki code chapter recommendation hat function given following userid compare performance our testset using cosine factorization factorizationrecommender docs song computational netflix google toby segaran oreilly blob master py collaborative latent usercf grouplens rmse frac sum u mae right pearson recommending tobyrose rosenight recommend between tobynight system turicreate coursetalk loading trainset its column provided computed mean contains example uses rank
+search: model item create based users items filtering similarity rating recommendations user r recommender data ui target wikipedia t similar used org ratings models observations popularity graphlab com programming collective intelligence method src png width night products img movielens songs en wiki code chapter recommendation hat function given following userid compare performance our testset using cosine factorization factorizationrecommender docs song computational toby segaran oreilly blob master py collaborative latent grouplens rmse frac sum u mae right pearson recommending divimg attachment image div tobyrose rosenight recommend between tobynight px system turicreate coursetalk loading trainset its column provided computed mean contains example uses
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -22,7 +22,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#35745;&#31639;&#20256;&#25773;&#24212;&#29992;">&#35745;&#31639;&#20256;&#25773;&#24212;&#29992;<a class="anchor-link" href="#&#35745;&#31639;&#20256;&#25773;&#24212;&#29992;"> </a></h3><hr>
+<hr>
 <hr>
 <h1 id="&#25512;&#33616;&#31995;&#32479;&#31616;&#20171;">&#25512;&#33616;&#31995;&#32479;&#31616;&#20171;<a class="anchor-link" href="#&#25512;&#33616;&#31995;&#32479;&#31616;&#20171;"> </a></h1><hr>
 <hr>
@@ -39,14 +39,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#38598;&#20307;&#26234;&#24935;&#32534;&#31243;">&#38598;&#20307;&#26234;&#24935;&#32534;&#31243;<a class="anchor-link" href="#&#38598;&#20307;&#26234;&#24935;&#32534;&#31243;"> </a></h1><blockquote><p>集体智慧是指为了创造新想法，将一群人的行为、偏好或思想组合在一起。一般基于聪明的算法（Netflix, Google）或者提供内容的用户(Wikipedia)。</p>
+<h2 id="&#38598;&#20307;&#26234;&#24935;&#32534;&#31243;">&#38598;&#20307;&#26234;&#24935;&#32534;&#31243;<a class="anchor-link" href="#&#38598;&#20307;&#26234;&#24935;&#32534;&#31243;"> </a></h2><blockquote><p>集体智慧是指为了创造新想法，将一群人的行为、偏好或思想组合在一起。一般基于聪明的算法（Netflix, Google）或者提供内容的用户(Wikipedia)。</p>
 </blockquote>
 <p>集体智慧编程所强调的是前者，即通过编写计算机程序、构造具有智能的算法收集并分析用户的数据，发现新的信息甚至是知识。</p>
-<ul>
-<li>Netflix</li>
-<li>Google</li>
-<li>Wikipedia</li>
-</ul>
 <p>Toby Segaran, 2007, Programming Collective Intelligence. O'Reilly.</p>
 <p><a href="https://github.com/computational-class/programming-collective-intelligence-code/blob/master/chapter2/recommendations.py">https://github.com/computational-class/programming-collective-intelligence-code/blob/master/chapter2/recommendations.py</a></p>
 
@@ -59,7 +54,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#25512;&#33616;&#31995;&#32479;">&#25512;&#33616;&#31995;&#32479;<a class="anchor-link" href="#&#25512;&#33616;&#31995;&#32479;"> </a></h1><ul>
+<h2 id="&#25512;&#33616;&#31995;&#32479;">&#25512;&#33616;&#31995;&#32479;<a class="anchor-link" href="#&#25512;&#33616;&#31995;&#32479;"> </a></h2><ul>
 <li>目前互联网世界最常见的智能产品形式。</li>
 <li>从信息时代过渡到注意力时代：<ul>
 <li>信息过载（information overload）</li>
@@ -81,7 +76,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#25512;&#33616;&#31995;&#32479;&#30340;&#31867;&#22411;">&#25512;&#33616;&#31995;&#32479;&#30340;&#31867;&#22411;<a class="anchor-link" href="#&#25512;&#33616;&#31995;&#32479;&#30340;&#31867;&#22411;"> </a></h1><ul>
+<h2 id="&#25512;&#33616;&#31995;&#32479;&#30340;&#31867;&#22411;">&#25512;&#33616;&#31995;&#32479;&#30340;&#31867;&#22411;<a class="anchor-link" href="#&#25512;&#33616;&#31995;&#32479;&#30340;&#31867;&#22411;"> </a></h2><ul>
 <li>社会化推荐（Social Recommendation）<ul>
 <li>让朋友帮助推荐物品</li>
 </ul>
@@ -92,23 +87,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </li>
 <li>基于协同过滤的推荐（collaborative filtering）<ul>
 <li>找到和某用户的历史兴趣一致的用户，根据这些用户之间的相似性或者他们所消费物品的相似性，为该用户推荐物品</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;">&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;<a class="anchor-link" href="#&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;"> </a></h1><ul>
-<li>基于邻域的方法（neighborhood-based method）<ul>
-<li>基于用户的协同过滤（user-based filtering）</li>
-<li>基于物品的协同过滤 （item-based filtering）</li>
 </ul>
 </li>
 <li>隐语义模型（latent factor model）</li>
@@ -124,7 +102,24 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="UserCF&#21644;ItemCF&#30340;&#27604;&#36739;">UserCF&#21644;ItemCF&#30340;&#27604;&#36739;<a class="anchor-link" href="#UserCF&#21644;ItemCF&#30340;&#27604;&#36739;"> </a></h1><ul>
+<h2 id="&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;">&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;<a class="anchor-link" href="#&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;"> </a></h2><ul>
+<li>基于邻域的方法（neighborhood-based method）<ul>
+<li>基于用户的协同过滤（user-based filtering）</li>
+<li>基于物品的协同过滤 （item-based filtering）</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="UserCF&#21644;ItemCF&#30340;&#27604;&#36739;">UserCF&#21644;ItemCF&#30340;&#27604;&#36739;<a class="anchor-link" href="#UserCF&#21644;ItemCF&#30340;&#27604;&#36739;"> </a></h2><ul>
 <li>UserCF较为古老， 1992年应用于电子邮件个性化推荐系统Tapestry, 1994年应用于Grouplens新闻个性化推荐， 后来被Digg采用<ul>
 <li>推荐那些与个体有共同兴趣爱好的用户所喜欢的物品（群体热点，社会化）<ul>
 <li>反映用户所在小型群体中物品的热门程度</li>
@@ -151,7 +146,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#25512;&#33616;&#31995;&#32479;&#35780;&#27979;">&#25512;&#33616;&#31995;&#32479;&#35780;&#27979;<a class="anchor-link" href="#&#25512;&#33616;&#31995;&#32479;&#35780;&#27979;"> </a></h1><ul>
+<h2 id="&#25512;&#33616;&#31995;&#32479;&#35780;&#27979;">&#25512;&#33616;&#31995;&#32479;&#35780;&#27979;<a class="anchor-link" href="#&#25512;&#33616;&#31995;&#32479;&#35780;&#27979;"> </a></h2><ul>
 <li>用户满意度</li>
 <li><p>预测准确度</p>
 <p>$r_{ui}$用户实际打分， $\hat{r_{ui}}$推荐算法预测打分, T为测量次数</p>
@@ -297,7 +292,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Snakes on a Plane&#39;: 4.5, &#39;Superman Returns&#39;: 4.0, &#39;You, Me and Dupree&#39;: 1.0}</pre>
+<pre>{&#39;Snakes on a Plane&#39;: 4.5, &#39;You, Me and Dupree&#39;: 1.0, &#39;Superman Returns&#39;: 4.0}</pre>
 </div>
 
 </div>
@@ -313,8 +308,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h1 id="1.-User-based-filtering">1. User-based filtering<a class="anchor-link" href="#1.-User-based-filtering"> </a></h1><hr>
-<h2 id="1.0-Finding-similar-users">1.0 Finding similar users<a class="anchor-link" href="#1.0-Finding-similar-users"> </a></h2>
+<h2 id="1.-User-based-filtering">1. User-based filtering<a class="anchor-link" href="#1.-User-based-filtering"> </a></h2><hr>
+<h3 id="1.0-Finding-similar-users">1.0 Finding similar users<a class="anchor-link" href="#1.0-Finding-similar-users"> </a></h3>
 </div>
 </div>
 </div>
@@ -422,9 +417,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <span class="c1"># if they have no ratings in common, return 0</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">si</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
     <span class="c1"># Add up the squares of all the differences</span>
-    <span class="n">sum_of_squares</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">prefs</span><span class="p">[</span><span class="n">person1</span><span class="p">][</span><span class="n">item</span><span class="p">]</span><span class="o">-</span><span class="n">prefs</span><span class="p">[</span><span class="n">person2</span><span class="p">][</span><span class="n">item</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
-                           <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">prefs</span><span class="p">[</span><span class="n">person1</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">prefs</span><span class="p">[</span><span class="n">person2</span><span class="p">]])</span>
-                           <span class="c1">#for item in si.keys()])# </span>
+    <span class="n">sum_of_squares</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">prefs</span><span class="p">[</span><span class="n">person1</span><span class="p">][</span><span class="n">item</span><span class="p">]</span><span class="o">-</span><span class="n">prefs</span><span class="p">[</span><span class="n">person2</span><span class="p">][</span><span class="n">item</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">si</span><span class="p">])</span>
     <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sum_of_squares</span><span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
@@ -473,7 +466,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pearson-correlation-coefficient">Pearson correlation coefficient<a class="anchor-link" href="#Pearson-correlation-coefficient"> </a></h2>
+<h3 id="Pearson-correlation-coefficient">Pearson correlation coefficient<a class="anchor-link" href="#Pearson-correlation-coefficient"> </a></h3>
 </div>
 </div>
 </div>
@@ -559,6 +552,47 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">si</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">[</span><span class="s1">&#39;Lisa Rose&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">[</span><span class="s1">&#39;Toby&#39;</span><span class="p">]]</span>
+<span class="n">score1</span> <span class="o">=</span> <span class="p">[</span><span class="n">critics</span><span class="p">[</span><span class="s1">&#39;Lisa Rose&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">si</span><span class="p">]</span>
+<span class="n">score2</span> <span class="o">=</span> <span class="p">[</span><span class="n">critics</span><span class="p">[</span><span class="s1">&#39;Toby&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">si</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">score1</span><span class="p">,</span> <span class="n">score2</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="images/13-recsys-intro_20_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Returns the best matches for person from the prefs dictionary.</span>
 <span class="c1"># Number of results and similarity function are optional params.</span>
 <span class="k">def</span> <span class="nf">topMatches</span><span class="p">(</span><span class="n">prefs</span><span class="p">,</span><span class="n">person</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">similarity</span><span class="o">=</span><span class="n">sim_pearson</span><span class="p">):</span>
@@ -617,7 +651,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.1-Recommending-Items">1.1 Recommending Items<a class="anchor-link" href="#1.1-Recommending-Items"> </a></h2>
+<h2 id="1.1-Recommending-Items">1.1 Recommending Items<a class="anchor-link" href="#1.1-Recommending-Items"> </a></h2><div><img src="attachment:image.png" width =1000></div>
 </div>
 </div>
 </div>
@@ -627,9 +661,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src='./img/usercf.png' width = 700px></p>
+<p>Toby相似的五个用户（Rose, Reymour, Puig, LaSalle, Matthews）及相似度（依次为0.99， 0.38， 0.89， 0.92, 0.66）</p>
 <ul>
-<li>Toby相似的五个用户（Rose, Reymour, Puig, LaSalle, Matthews）及相似度（依次为0.99， 0.38， 0.89， 0.92, 0.66）</li>
 <li>这五个用户看过的三个电影（Night,Lady, Luck）及其评分<ul>
 <li>例如，Rose对Night评分是3.0</li>
 </ul>
@@ -719,7 +752,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[(3.3477895267131013, &#39;The Night Listener&#39;),
+<pre>[(3.3477895267131017, &#39;The Night Listener&#39;),
  (2.8325499182641614, &#39;Lady in the Water&#39;),
  (2.530980703765565, &#39;Just My Luck&#39;)]</pre>
 </div>
@@ -757,7 +790,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_text output_subarea output_execute_result">
 <pre>[(3.457128694491423, &#39;The Night Listener&#39;),
- (2.778584003814923, &#39;Lady in the Water&#39;),
+ (2.778584003814924, &#39;Lady in the Water&#39;),
  (2.422482042361917, &#39;Just My Luck&#39;)]</pre>
 </div>
 
@@ -774,9 +807,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h1 id="2.-Item-based-filtering">2. Item-based filtering<a class="anchor-link" href="#2.-Item-based-filtering"> </a></h1><hr>
+<h2 id="2.-Item-based-filtering">2. Item-based filtering<a class="anchor-link" href="#2.-Item-based-filtering"> </a></h2><hr>
 <p>Now you know how to find similar people and recommend products for a given person</p>
-<h3 id="But-what-if-you-want-to-see-which-products-are-similar-to-each-other?">But what if you want to see which products are similar to each other?<a class="anchor-link" href="#But-what-if-you-want-to-see-which-products-are-similar-to-each-other?"> </a></h3><p>This is actually the same method we used earlier to determine similarity between people—</p>
+<p><strong>But what if you want to see which products are similar to each other?</strong></p>
+<p>This is actually the same method we used earlier to determine similarity between people—</p>
 
 </div>
 </div>
@@ -938,9 +972,18 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src = './img/itemcf1.png' width=800px></p>
+<div><img src="attachment:image.png" width = 1200></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Toby看过三个电影（snakes、Superman、dupree）和评分（依次是4.5、4.0、1.0）</p>
 <ul>
-<li>Toby看过三个电影（snakes、Superman、dupree）和评分（依次是4.5、4.0、1.0）</li>
 <li>表格2-3给出这三部电影与另外三部电影的相似度<ul>
 <li>例如superman与night的相似度是0.103</li>
 </ul>
@@ -1097,7 +1140,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src = './img/itemcfNetwork.png' width = 700px></p>
-<h1 id="&#22522;&#20110;&#29289;&#21697;&#30340;&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;&#30340;&#32593;&#32476;&#34920;&#31034;&#26041;&#27861;">&#22522;&#20110;&#29289;&#21697;&#30340;&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;&#30340;&#32593;&#32476;&#34920;&#31034;&#26041;&#27861;<a class="anchor-link" href="#&#22522;&#20110;&#29289;&#21697;&#30340;&#21327;&#21516;&#36807;&#28388;&#31639;&#27861;&#30340;&#32593;&#32476;&#34920;&#31034;&#26041;&#27861;"> </a></h1>
+<p><strong>基于物品的协同过滤算法的网络表示方法</strong></p>
+
 </div>
 </div>
 </div>
@@ -1107,7 +1151,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#22522;&#20110;&#22270;&#30340;&#27169;&#22411;">&#22522;&#20110;&#22270;&#30340;&#27169;&#22411;<a class="anchor-link" href="#&#22522;&#20110;&#22270;&#30340;&#27169;&#22411;"> </a></h1><p>使用二分图表示用户行为，因此基于图的算法可以应用到推荐系统当中。</p>
+<h2 id="&#22522;&#20110;&#22270;&#30340;&#27169;&#22411;">&#22522;&#20110;&#22270;&#30340;&#27169;&#22411;<a class="anchor-link" href="#&#22522;&#20110;&#22270;&#30340;&#27169;&#22411;"> </a></h2><p>使用二分图表示用户行为，因此基于图的算法可以应用到推荐系统当中。</p>
 <p><img src = './img/graphrec.png' width = 500px></p>
 
 </div>
@@ -1178,7 +1222,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>dict_keys([&#39;A&#39;, &#39;d&#39;, &#39;b&#39;, &#39;C&#39;, &#39;a&#39;, &#39;c&#39;, &#39;B&#39;])
+<pre>dict_keys([&#39;A&#39;, &#39;a&#39;, &#39;c&#39;, &#39;B&#39;, &#39;b&#39;, &#39;d&#39;, &#39;C&#39;])
 </pre>
 </div>
 </div>
@@ -1213,12 +1257,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;A&#39;: {&#39;a&#39;: 1, &#39;c&#39;: 1},
- &#39;B&#39;: {&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;c&#39;: 1, &#39;d&#39;: 1},
- &#39;C&#39;: {&#39;c&#39;: 1, &#39;d&#39;: 1},
  &#39;a&#39;: {&#39;A&#39;: 1, &#39;B&#39;: 1},
- &#39;b&#39;: {&#39;B&#39;: 1},
  &#39;c&#39;: {&#39;A&#39;: 1, &#39;B&#39;: 1, &#39;C&#39;: 1},
- &#39;d&#39;: {&#39;B&#39;: 1, &#39;C&#39;: 1}}</pre>
+ &#39;B&#39;: {&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;c&#39;: 1, &#39;d&#39;: 1},
+ &#39;b&#39;: {&#39;B&#39;: 1},
+ &#39;d&#39;: {&#39;B&#39;: 1, &#39;C&#39;: 1},
+ &#39;C&#39;: {&#39;c&#39;: 1, &#39;d&#39;: 1}}</pre>
 </div>
 
 </div>
@@ -1238,7 +1282,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ri</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">wij</span> <span class="ow">in</span> <span class="n">ri</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">wij</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">wij</span><span class="p">)</span> 
 </pre></div>
 
     </div>
@@ -1254,20 +1298,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>A a 1
 A c 1
-d C 1
-d B 1
-b B 1
-C d 1
-C c 1
-a B 1
 a A 1
-c C 1
-c B 1
+a B 1
 c A 1
+c B 1
+c C 1
 B a 1
-B d 1
-B c 1
 B b 1
+B c 1
+B d 1
+b B 1
+d B 1
+d C 1
+C c 1
+C d 1
 </pre>
 </div>
 </div>
@@ -1335,26 +1379,26 @@ B b 1
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0 {&#39;c&#39;: 0.4, &#39;d&#39;: 0.0, &#39;b&#39;: 0.0, &#39;C&#39;: 0.0, &#39;a&#39;: 0.4, &#39;A&#39;: 0.3999999999999999, &#39;B&#39;: 0.0}
-1 {&#39;c&#39;: 0.15999999999999998, &#39;d&#39;: 0.0, &#39;b&#39;: 0.0, &#39;C&#39;: 0.10666666666666669, &#39;a&#39;: 0.15999999999999998, &#39;A&#39;: 0.6666666666666666, &#39;B&#39;: 0.2666666666666667}
-2 {&#39;c&#39;: 0.3626666666666667, &#39;d&#39;: 0.09600000000000003, &#39;b&#39;: 0.053333333333333344, &#39;C&#39;: 0.04266666666666666, &#39;a&#39;: 0.32, &#39;A&#39;: 0.5066666666666666, &#39;B&#39;: 0.10666666666666665}
-3 {&#39;c&#39;: 0.24106666666666665, &#39;d&#39;: 0.03839999999999999, &#39;b&#39;: 0.02133333333333333, &#39;C&#39;: 0.13511111111111113, &#39;a&#39;: 0.22399999999999998, &#39;A&#39;: 0.624711111111111, &#39;B&#39;: 0.3057777777777778}
-4 {&#39;c&#39;: 0.36508444444444443, &#39;d&#39;: 0.11520000000000002, &#39;b&#39;: 0.06115555555555557, &#39;C&#39;: 0.07964444444444443, &#39;a&#39;: 0.31104, &#39;A&#39;: 0.5538844444444444, &#39;B&#39;: 0.1863111111111111}
-5 {&#39;c&#39;: 0.29067377777777775, &#39;d&#39;: 0.06911999999999999, &#39;b&#39;: 0.03726222222222222, &#39;C&#39;: 0.14343585185185187, &#39;a&#39;: 0.258816, &#39;A&#39;: 0.6217718518518518, &#39;B&#39;: 0.31677629629629633}
-6 {&#39;c&#39;: 0.3694383407407408, &#39;d&#39;: 0.12072960000000002, &#39;b&#39;: 0.06335525925925926, &#39;C&#39;: 0.1051610074074074, &#39;a&#39;: 0.312064, &#39;A&#39;: 0.5810394074074073, &#39;B&#39;: 0.2384971851851852}
-7 {&#39;c&#39;: 0.322179602962963, &#39;d&#39;: 0.08976384000000001, &#39;b&#39;: 0.047699437037037044, &#39;C&#39;: 0.14680873086419757, &#39;a&#39;: 0.2801152, &#39;A&#39;: 0.6233424908641975, &#39;B&#39;: 0.322318538271605}
-8 {&#39;c&#39;: 0.37252419634567907, &#39;d&#39;: 0.12318720000000004, &#39;b&#39;: 0.06446370765432101, &#39;C&#39;: 0.12182009679012348, &#39;a&#39;: 0.313800704, &#39;A&#39;: 0.5979606407901235, &#39;B&#39;: 0.27202572641975314}
-9 {&#39;c&#39;: 0.34231744031604944, &#39;d&#39;: 0.10313318400000002, &#39;b&#39;: 0.05440514528395063, &#39;C&#39;: 0.14861466569218112, &#39;a&#39;: 0.2935894016, &#39;A&#39;: 0.624860067292181, &#39;B&#39;: 0.3257059134156379}
-10 {&#39;c&#39;: 0.37453107587687245, &#39;d&#39;: 0.12458704896000004, &#39;b&#39;: 0.06514118268312759, &#39;C&#39;: 0.13253792435094652, &#39;a&#39;: 0.3150852096, &#39;A&#39;: 0.6087204113909463, &#39;B&#39;: 0.29349780121810704}
-11 {&#39;c&#39;: 0.35520289454037857, &#39;d&#39;: 0.11171472998400003, &#39;b&#39;: 0.05869956024362141, &#39;C&#39;: 0.14970977315116601, &#39;a&#39;: 0.3021877248, &#39;A&#39;: 0.6259090374071659, &#39;B&#39;: 0.3278568031376681}
-12 {&#39;c&#39;: 0.3758188848508664, &#39;d&#39;: 0.12545526988800004, &#39;b&#39;: 0.06557136062753362, &#39;C&#39;: 0.1394066638710343, &#39;a&#39;: 0.31593497559039996, &#39;A&#39;: 0.6155958617974342, &#39;B&#39;: 0.3072414019859314}
-13 {&#39;c&#39;: 0.3634492906645737, &#39;d&#39;: 0.1172109459456, &#39;b&#39;: 0.061448280397186285, &#39;C&#39;: 0.1504004772487644, &#39;a&#39;: 0.30768662511615996, &#39;A&#39;: 0.6265923595297243, &#39;B&#39;: 0.3292315559869513}
-14 {&#39;c&#39;: 0.37664344590878573, &#39;d&#39;: 0.126006502096896, &#39;b&#39;: 0.06584631119739026, &#39;C&#39;: 0.14380418922212634, &#39;a&#39;: 0.31648325500928, &#39;A&#39;: 0.6199944608903503, &#39;B&#39;: 0.3160374635863394}
-15 {&#39;c&#39;: 0.36872695276225853, &#39;d&#39;: 0.12072916840611841, &#39;b&#39;: 0.06320749271726787, &#39;C&#39;: 0.1508408530811013, &#39;a&#39;: 0.311205277073408, &#39;A&#39;: 0.6270315542460547, &#39;B&#39;: 0.3301112040427255}
-16 {&#39;c&#39;: 0.3771712037394075, &#39;d&#39;: 0.12635858204098563, &#39;b&#39;: 0.0660222408085451, &#39;C&#39;: 0.14661885476571632, &#39;a&#39;: 0.316834862506967, &#39;A&#39;: 0.6228092982326321, &#39;B&#39;: 0.3216669597688938}
-17 {&#39;c&#39;: 0.37210465315311814, &#39;d&#39;: 0.1229809338600653, &#39;b&#39;: 0.06433339195377877, &#39;C&#39;: 0.15112242048023627, &#39;a&#39;: 0.3134571112468316, &#39;A&#39;: 0.6273129326666287, &#39;B&#39;: 0.3306741581298592}
-18 {&#39;c&#39;: 0.3775089728847178, &#39;d&#39;: 0.12658379981806633, &#39;b&#39;: 0.06613483162597183, &#39;C&#39;: 0.1484202810515243, &#39;a&#39;: 0.3170600046926233, &#39;A&#39;: 0.6246107520062307, &#39;B&#39;: 0.32526983911327995}
-19 {&#39;c&#39;: 0.37426638104575805, &#39;d&#39;: 0.1244220802432657, &#39;b&#39;: 0.06505396782265599, &#39;C&#39;: 0.15130257936315128, &#39;a&#39;: 0.3148982686251483, &#39;A&#39;: 0.627493061312974, &#39;B&#39;: 0.3310344465409781}
+<pre>0 {&#39;A&#39;: 0.3999999999999999, &#39;a&#39;: 0.4, &#39;c&#39;: 0.4, &#39;B&#39;: 0.0, &#39;b&#39;: 0.0, &#39;d&#39;: 0.0, &#39;C&#39;: 0.0}
+1 {&#39;A&#39;: 0.6666666666666666, &#39;a&#39;: 0.15999999999999998, &#39;c&#39;: 0.15999999999999998, &#39;B&#39;: 0.2666666666666667, &#39;b&#39;: 0.0, &#39;d&#39;: 0.0, &#39;C&#39;: 0.10666666666666669}
+2 {&#39;A&#39;: 0.5066666666666666, &#39;a&#39;: 0.32, &#39;c&#39;: 0.3626666666666667, &#39;B&#39;: 0.10666666666666665, &#39;b&#39;: 0.053333333333333344, &#39;d&#39;: 0.09600000000000003, &#39;C&#39;: 0.04266666666666666}
+3 {&#39;A&#39;: 0.624711111111111, &#39;a&#39;: 0.22399999999999998, &#39;c&#39;: 0.24106666666666665, &#39;B&#39;: 0.3057777777777778, &#39;b&#39;: 0.02133333333333333, &#39;d&#39;: 0.03839999999999999, &#39;C&#39;: 0.13511111111111113}
+4 {&#39;A&#39;: 0.5538844444444444, &#39;a&#39;: 0.31104, &#39;c&#39;: 0.36508444444444443, &#39;B&#39;: 0.1863111111111111, &#39;b&#39;: 0.06115555555555557, &#39;d&#39;: 0.11520000000000002, &#39;C&#39;: 0.07964444444444443}
+5 {&#39;A&#39;: 0.6217718518518518, &#39;a&#39;: 0.258816, &#39;c&#39;: 0.29067377777777775, &#39;B&#39;: 0.31677629629629633, &#39;b&#39;: 0.03726222222222222, &#39;d&#39;: 0.06911999999999999, &#39;C&#39;: 0.14343585185185187}
+6 {&#39;A&#39;: 0.5810394074074073, &#39;a&#39;: 0.312064, &#39;c&#39;: 0.3694383407407408, &#39;B&#39;: 0.2384971851851852, &#39;b&#39;: 0.06335525925925926, &#39;d&#39;: 0.12072960000000002, &#39;C&#39;: 0.1051610074074074}
+7 {&#39;A&#39;: 0.6233424908641975, &#39;a&#39;: 0.2801152, &#39;c&#39;: 0.322179602962963, &#39;B&#39;: 0.322318538271605, &#39;b&#39;: 0.047699437037037044, &#39;d&#39;: 0.08976384000000001, &#39;C&#39;: 0.14680873086419757}
+8 {&#39;A&#39;: 0.5979606407901235, &#39;a&#39;: 0.313800704, &#39;c&#39;: 0.372524196345679, &#39;B&#39;: 0.27202572641975314, &#39;b&#39;: 0.06446370765432101, &#39;d&#39;: 0.12318720000000004, &#39;C&#39;: 0.12182009679012348}
+9 {&#39;A&#39;: 0.6248600672921809, &#39;a&#39;: 0.2935894016, &#39;c&#39;: 0.34231744031604944, &#39;B&#39;: 0.32570591341563787, &#39;b&#39;: 0.05440514528395063, &#39;d&#39;: 0.10313318400000002, &#39;C&#39;: 0.14861466569218107}
+10 {&#39;A&#39;: 0.6087204113909463, &#39;a&#39;: 0.31508520959999997, &#39;c&#39;: 0.3745310758768724, &#39;B&#39;: 0.29349780121810704, &#39;b&#39;: 0.06514118268312757, &#39;d&#39;: 0.12458704896, &#39;C&#39;: 0.13253792435094652}
+11 {&#39;A&#39;: 0.6259090374071659, &#39;a&#39;: 0.3021877248, &#39;c&#39;: 0.3552028945403786, &#39;B&#39;: 0.327856803137668, &#39;b&#39;: 0.05869956024362141, &#39;d&#39;: 0.11171472998400003, &#39;C&#39;: 0.14970977315116596}
+12 {&#39;A&#39;: 0.6155958617974342, &#39;a&#39;: 0.31593497559039996, &#39;c&#39;: 0.37581888485086634, &#39;B&#39;: 0.3072414019859315, &#39;b&#39;: 0.0655713606275336, &#39;d&#39;: 0.125455269888, &#39;C&#39;: 0.13940666387103434}
+13 {&#39;A&#39;: 0.6265923595297243, &#39;a&#39;: 0.30768662511615996, &#39;c&#39;: 0.3634492906645737, &#39;B&#39;: 0.32923155598695125, &#39;b&#39;: 0.0614482803971863, &#39;d&#39;: 0.11721094594560004, &#39;C&#39;: 0.15040047724876437}
+14 {&#39;A&#39;: 0.6199944608903503, &#39;a&#39;: 0.31648325500928, &#39;c&#39;: 0.37664344590878573, &#39;B&#39;: 0.3160374635863394, &#39;b&#39;: 0.06584631119739025, &#39;d&#39;: 0.126006502096896, &#39;C&#39;: 0.14380418922212634}
+15 {&#39;A&#39;: 0.6270315542460547, &#39;a&#39;: 0.311205277073408, &#39;c&#39;: 0.36872695276225853, &#39;B&#39;: 0.3301112040427255, &#39;b&#39;: 0.06320749271726787, &#39;d&#39;: 0.12072916840611841, &#39;C&#39;: 0.1508408530811013}
+16 {&#39;A&#39;: 0.6228092982326321, &#39;a&#39;: 0.316834862506967, &#39;c&#39;: 0.37717120373940755, &#39;B&#39;: 0.3216669597688938, &#39;b&#39;: 0.0660222408085451, &#39;d&#39;: 0.12635858204098563, &#39;C&#39;: 0.14661885476571632}
+17 {&#39;A&#39;: 0.6273129326666287, &#39;a&#39;: 0.3134571112468316, &#39;c&#39;: 0.37210465315311814, &#39;B&#39;: 0.33067415812985923, &#39;b&#39;: 0.06433339195377877, &#39;d&#39;: 0.1229809338600653, &#39;C&#39;: 0.15112242048023627}
+18 {&#39;A&#39;: 0.6246107520062307, &#39;a&#39;: 0.3170600046926233, &#39;c&#39;: 0.3775089728847178, &#39;B&#39;: 0.32526983911327995, &#39;b&#39;: 0.06613483162597185, &#39;d&#39;: 0.12658379981806636, &#39;C&#39;: 0.1484202810515243}
+19 {&#39;A&#39;: 0.627493061312974, &#39;a&#39;: 0.3148982686251483, &#39;c&#39;: 0.37426638104575805, &#39;B&#39;: 0.3310344465409781, &#39;b&#39;: 0.06505396782265599, &#39;d&#39;: 0.1244220802432657, &#39;C&#39;: 0.15130257936315128}
 </pre>
 </div>
 </div>
@@ -1366,12 +1410,12 @@ B b 1
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;A&#39;: 0.627493061312974,
- &#39;B&#39;: 0.3310344465409781,
- &#39;C&#39;: 0.15130257936315128,
  &#39;a&#39;: 0.3148982686251483,
- &#39;b&#39;: 0.06505396782265599,
  &#39;c&#39;: 0.37426638104575805,
- &#39;d&#39;: 0.1244220802432657}</pre>
+ &#39;B&#39;: 0.3310344465409781,
+ &#39;b&#39;: 0.06505396782265599,
+ &#39;d&#39;: 0.1244220802432657,
+ &#39;C&#39;: 0.15130257936315128}</pre>
 </div>
 
 </div>
@@ -1387,7 +1431,7 @@ B b 1
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h1 id="3.-MovieLens-Recommender">3. MovieLens Recommender<a class="anchor-link" href="#3.-MovieLens-Recommender"> </a></h1><hr>
+<h2 id="3.-MovieLens-Recommender">3. MovieLens Recommender<a class="anchor-link" href="#3.-MovieLens-Recommender"> </a></h2><hr>
 <p>MovieLens是一个电影评价的真实数据，由明尼苏达州立大学的GroupLens项目组开发。</p>
 <h3 id="&#25968;&#25454;&#19979;&#36733;">&#25968;&#25454;&#19979;&#36733;<a class="anchor-link" href="#&#25968;&#25454;&#19979;&#36733;"> </a></h3><p><a href="http://grouplens.org/datasets/movielens/1m/">http://grouplens.org/datasets/movielens/1m/</a></p>
 <blockquote><p>These files contain 1,000,209 anonymous ratings of approximately 3,900 movies 
@@ -1403,7 +1447,8 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#25968;&#25454;&#26684;&#24335;">&#25968;&#25454;&#26684;&#24335;<a class="anchor-link" href="#&#25968;&#25454;&#26684;&#24335;"> </a></h1><p>All ratings are contained in the file "ratings.dat" and are in the following format:</p>
+<p><strong>数据格式</strong></p>
+<p>All ratings are contained in the file "ratings.dat" and are in the following format:</p>
 <p>UserID::MovieID::Rating::Timestamp</p>
 <p>1::1193::5::978300760</p>
 <p>1::661::3::978302109</p>
@@ -1468,65 +1513,65 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Alice in Wonderland (1951)&#39;: 1.0,
- &#39;Army of Darkness (1993)&#39;: 3.0,
- &#39;Bad Boys (1995)&#39;: 5.0,
- &#39;Benji (1974)&#39;: 1.0,
- &#39;Brady Bunch Movie, The (1995)&#39;: 1.0,
- &#39;Braveheart (1995)&#39;: 5.0,
- &#39;Buffalo 66 (1998)&#39;: 1.0,
- &#39;Chambermaid on the Titanic, The (1998)&#39;: 1.0,
- &#39;Cowboy Way, The (1994)&#39;: 1.0,
- &#39;Cyrano de Bergerac (1990)&#39;: 4.0,
+<pre>{&#39;X-Men (2000)&#39;: 4.0,
  &#39;Dear Diary (Caro Diario) (1994)&#39;: 1.0,
- &#39;Die Hard (1988)&#39;: 3.0,
- &#39;Diebinnen (1995)&#39;: 1.0,
- &#39;Dr. No (1962)&#39;: 1.0,
- &#39;Escape from the Planet of the Apes (1971)&#39;: 1.0,
- &#39;Fast, Cheap &amp; Out of Control (1997)&#39;: 1.0,
- &#39;Faster Pussycat! Kill! Kill! (1965)&#39;: 1.0,
- &#39;From Russia with Love (1963)&#39;: 1.0,
- &#39;Fugitive, The (1993)&#39;: 5.0,
- &#39;Get Shorty (1995)&#39;: 1.0,
- &#39;Gladiator (2000)&#39;: 5.0,
- &#39;Goldfinger (1964)&#39;: 5.0,
- &#39;Good, The Bad and The Ugly, The (1966)&#39;: 4.0,
- &#39;Hunt for Red October, The (1990)&#39;: 5.0,
- &#39;Hurricane, The (1999)&#39;: 5.0,
- &#39;Indiana Jones and the Last Crusade (1989)&#39;: 4.0,
- &#39;Jaws (1975)&#39;: 5.0,
- &#39;Jurassic Park (1993)&#39;: 5.0,
- &#39;King Kong (1933)&#39;: 1.0,
- &#39;King of New York (1990)&#39;: 1.0,
+ &#39;Brady Bunch Movie, The (1995)&#39;: 1.0,
+ &#39;Terminator 2: Judgment Day (1991)&#39;: 5.0,
  &#39;Last of the Mohicans, The (1992)&#39;: 1.0,
- &#39;Lethal Weapon (1987)&#39;: 5.0,
- &#39;Longest Day, The (1962)&#39;: 1.0,
- &#39;Man with the Golden Gun, The (1974)&#39;: 5.0,
- &#39;Mask of Zorro, The (1998)&#39;: 5.0,
- &#39;Matrix, The (1999)&#39;: 5.0,
- &#34;On Her Majesty&#39;s Secret Service (1969)&#34;: 1.0,
- &#39;Out of Sight (1998)&#39;: 1.0,
- &#39;Palookaville (1996)&#39;: 1.0,
- &#39;Planet of the Apes (1968)&#39;: 1.0,
- &#39;Pope of Greenwich Village, The (1984)&#39;: 1.0,
+ &#39;Rock, The (1996)&#39;: 5.0,
+ &#39;Star Wars: Episode V - The Empire Strikes Back (1980)&#39;: 5.0,
  &#39;Princess Bride, The (1987)&#39;: 3.0,
  &#39;Raiders of the Lost Ark (1981)&#39;: 4.0,
- &#39;Rock, The (1996)&#39;: 5.0,
- &#39;Rocky (1976)&#39;: 5.0,
- &#39;Saving Private Ryan (1998)&#39;: 4.0,
- &#39;Shanghai Noon (2000)&#39;: 1.0,
- &#39;Speed (1994)&#39;: 1.0,
- &#39;Star Wars: Episode IV - A New Hope (1977)&#39;: 5.0,
- &#39;Star Wars: Episode V - The Empire Strikes Back (1980)&#39;: 5.0,
- &#39;Taking of Pelham One Two Three, The (1974)&#39;: 1.0,
- &#39;Terminator 2: Judgment Day (1991)&#39;: 5.0,
- &#39;Terminator, The (1984)&#39;: 4.0,
- &#39;Thelma &amp; Louise (1991)&#39;: 1.0,
- &#39;True Romance (1993)&#39;: 1.0,
- &#39;U-571 (2000)&#39;: 5.0,
+ &#39;Cyrano de Bergerac (1990)&#39;: 4.0,
+ &#39;Chambermaid on the Titanic, The (1998)&#39;: 1.0,
+ &#39;Diebinnen (1995)&#39;: 1.0,
+ &#39;Indiana Jones and the Last Crusade (1989)&#39;: 4.0,
+ &#39;Jaws (1975)&#39;: 5.0,
+ &#39;Longest Day, The (1962)&#39;: 1.0,
  &#39;Untouchables, The (1987)&#39;: 5.0,
+ &#39;Hunt for Red October, The (1990)&#39;: 5.0,
+ &#39;Pope of Greenwich Village, The (1984)&#39;: 1.0,
+ &#39;King Kong (1933)&#39;: 1.0,
+ &#39;Hurricane, The (1999)&#39;: 5.0,
+ &#39;Fast, Cheap &amp; Out of Control (1997)&#39;: 1.0,
  &#39;Westworld (1973)&#39;: 1.0,
- &#39;X-Men (2000)&#39;: 4.0}</pre>
+ &#39;Braveheart (1995)&#39;: 5.0,
+ &#39;Planet of the Apes (1968)&#39;: 1.0,
+ &#39;Escape from the Planet of the Apes (1971)&#39;: 1.0,
+ &#39;Thelma &amp; Louise (1991)&#39;: 1.0,
+ &#39;Bad Boys (1995)&#39;: 5.0,
+ &#39;Out of Sight (1998)&#39;: 1.0,
+ &#39;Matrix, The (1999)&#39;: 5.0,
+ &#39;Buffalo 66 (1998)&#39;: 1.0,
+ &#39;Taking of Pelham One Two Three, The (1974)&#39;: 1.0,
+ &#39;King of New York (1990)&#39;: 1.0,
+ &#39;Star Wars: Episode IV - A New Hope (1977)&#39;: 5.0,
+ &#39;Shanghai Noon (2000)&#39;: 1.0,
+ &#39;U-571 (2000)&#39;: 5.0,
+ &#39;Rocky (1976)&#39;: 5.0,
+ &#39;Get Shorty (1995)&#39;: 1.0,
+ &#34;On Her Majesty&#39;s Secret Service (1969)&#34;: 1.0,
+ &#39;Man with the Golden Gun, The (1974)&#39;: 5.0,
+ &#39;Alice in Wonderland (1951)&#39;: 1.0,
+ &#39;Die Hard (1988)&#39;: 3.0,
+ &#39;Gladiator (2000)&#39;: 5.0,
+ &#39;Cowboy Way, The (1994)&#39;: 1.0,
+ &#39;Palookaville (1996)&#39;: 1.0,
+ &#39;Speed (1994)&#39;: 1.0,
+ &#39;Fugitive, The (1993)&#39;: 5.0,
+ &#39;Lethal Weapon (1987)&#39;: 5.0,
+ &#39;Good, The Bad and The Ugly, The (1966)&#39;: 4.0,
+ &#39;Benji (1974)&#39;: 1.0,
+ &#39;Mask of Zorro, The (1998)&#39;: 5.0,
+ &#39;Goldfinger (1964)&#39;: 5.0,
+ &#39;From Russia with Love (1963)&#39;: 1.0,
+ &#39;Dr. No (1962)&#39;: 1.0,
+ &#39;Faster Pussycat! Kill! Kill! (1965)&#39;: 1.0,
+ &#39;Army of Darkness (1993)&#39;: 3.0,
+ &#39;Saving Private Ryan (1998)&#39;: 4.0,
+ &#39;Jurassic Park (1993)&#39;: 5.0,
+ &#39;True Romance (1993)&#39;: 1.0,
+ &#39;Terminator, The (1984)&#39;: 4.0}</pre>
 </div>
 
 </div>
@@ -1586,21 +1631,21 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
  (5.0, &#39;Callejón de los milagros, El (1995)&#39;),
  (5.0, &#39;Bittersweet Motel (2000)&#39;),
  (4.820460101722989, &#39;Apple, The (Sib) (1998)&#39;),
- (4.738956184936386, &#39;Lamerica (1994)&#39;),
+ (4.738956184936385, &#39;Lamerica (1994)&#39;),
  (4.681816541467396, &#39;Bells, The (1926)&#39;),
  (4.664958072522234, &#39;Hurricane Streets (1998)&#39;),
  (4.650741840804562, &#39;Sanjuro (1962)&#39;),
  (4.649974172600346, &#39;On the Ropes (1999)&#39;),
- (4.636825408739504, &#39;Shawshank Redemption, The (1994)&#39;),
- (4.627888709544556, &#39;For All Mankind (1989)&#39;),
+ (4.636825408739506, &#39;Shawshank Redemption, The (1994)&#39;),
+ (4.627888709544554, &#39;For All Mankind (1989)&#39;),
  (4.582048349280509, &#39;Midaq Alley (Callejón de los milagros, El) (1995)&#39;),
- (4.579778646871153, &#34;Schindler&#39;s List (1993)&#34;),
- (4.57519994103739,
+ (4.579778646871158, &#34;Schindler&#39;s List (1993)&#34;),
+ (4.575199941037386,
   &#39;Seven Samurai (The Magnificent Seven) (Shichinin no samurai) (1954)&#39;),
- (4.574904988403455, &#39;Godfather, The (1972)&#39;),
+ (4.574904988403462, &#39;Godfather, The (1972)&#39;),
  (4.5746840191882345, &#34;Ed&#39;s Next Move (1996)&#34;),
- (4.558519037147828, &#39;Hanging Garden, The (1997)&#39;),
- (4.527760042775589, &#39;Close Shave, A (1995)&#39;)]</pre>
+ (4.558519037147829, &#39;Hanging Garden, The (1997)&#39;),
+ (4.5277600427755935, &#39;Close Shave, A (1995)&#39;)]</pre>
 </div>
 
 </div>
@@ -1645,14 +1690,54 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 <pre>100 / 3706
 200 / 3706
 300 / 3706
-400 / 3706
-500 / 3706
-600 / 3706
-700 / 3706
-800 / 3706
-900 / 3706
-1000 / 3706
 </pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-44-1b030a012c9e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>itemsim<span class="ansi-blue-fg">=</span>calculateSimilarItems<span class="ansi-blue-fg">(</span>prefs<span class="ansi-blue-fg">,</span>n<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">50</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-31-6ed8c89c7518&gt;</span> in <span class="ansi-cyan-fg">calculateSimilarItems</span><span class="ansi-blue-fg">(prefs, n)</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span>             print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;%d / %d&#34;</span> <span class="ansi-blue-fg">%</span> <span class="ansi-blue-fg">(</span>c<span class="ansi-blue-fg">,</span>len<span class="ansi-blue-fg">(</span>itemPrefs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     13</span>         <span class="ansi-red-fg"># Find the most similar items to this one</span>
+<span class="ansi-green-fg">---&gt; 14</span><span class="ansi-red-fg">         </span>scores<span class="ansi-blue-fg">=</span>topMatches<span class="ansi-blue-fg">(</span>itemPrefs<span class="ansi-blue-fg">,</span>item<span class="ansi-blue-fg">,</span>n<span class="ansi-blue-fg">=</span>n<span class="ansi-blue-fg">,</span>similarity<span class="ansi-blue-fg">=</span>sim_distance<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     15</span>         result<span class="ansi-blue-fg">[</span>item<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">=</span>scores
+<span class="ansi-green-intense-fg ansi-bold">     16</span>     <span class="ansi-green-fg">return</span> result
+
+<span class="ansi-green-fg">&lt;ipython-input-23-294e14840428&gt;</span> in <span class="ansi-cyan-fg">topMatches</span><span class="ansi-blue-fg">(prefs, person, n, similarity)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">def</span> topMatches<span class="ansi-blue-fg">(</span>prefs<span class="ansi-blue-fg">,</span>person<span class="ansi-blue-fg">,</span>n<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">,</span>similarity<span class="ansi-blue-fg">=</span>sim_pearson<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     scores=[(similarity(prefs,person,other),other)
+<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg">         for other in prefs if other!=person]
+</span><span class="ansi-green-intense-fg ansi-bold">      6</span>     <span class="ansi-red-fg"># Sort the list so the highest scores appear at the top</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span>     scores<span class="ansi-blue-fg">.</span>sort<span class="ansi-blue-fg">(</span> <span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-23-294e14840428&gt;</span> in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-green-fg">def</span> topMatches<span class="ansi-blue-fg">(</span>prefs<span class="ansi-blue-fg">,</span>person<span class="ansi-blue-fg">,</span>n<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">,</span>similarity<span class="ansi-blue-fg">=</span>sim_pearson<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     scores=[(similarity(prefs,person,other),other)
+<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg">         for other in prefs if other!=person]
+</span><span class="ansi-green-intense-fg ansi-bold">      6</span>     <span class="ansi-red-fg"># Sort the list so the highest scores appear at the top</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span>     scores<span class="ansi-blue-fg">.</span>sort<span class="ansi-blue-fg">(</span> <span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-8-8ca56073c095&gt;</span> in <span class="ansi-cyan-fg">sim_distance</span><span class="ansi-blue-fg">(prefs, person1, person2)</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span>     sum_of_squares=np.sum([np.power(prefs[person1][item]-prefs[person2][item],2)
+<span class="ansi-green-intense-fg ansi-bold">     12</span>                            <span class="ansi-red-fg">#for item in prefs[person1] if item in prefs[person2]])</span>
+<span class="ansi-green-fg">---&gt; 13</span><span class="ansi-red-fg">                            for item in si])
+</span><span class="ansi-green-intense-fg ansi-bold">     14</span>     <span class="ansi-green-fg">return</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">/</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">+</span>np<span class="ansi-blue-fg">.</span>sqrt<span class="ansi-blue-fg">(</span>sum_of_squares<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-8-8ca56073c095&gt;</span> in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span>     sum_of_squares=np.sum([np.power(prefs[person1][item]-prefs[person2][item],2)
+<span class="ansi-green-intense-fg ansi-bold">     12</span>                            <span class="ansi-red-fg">#for item in prefs[person1] if item in prefs[person2]])</span>
+<span class="ansi-green-fg">---&gt; 13</span><span class="ansi-red-fg">                            for item in si])
+</span><span class="ansi-green-intense-fg ansi-bold">     14</span>     <span class="ansi-green-fg">return</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">/</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">+</span>np<span class="ansi-blue-fg">.</span>sqrt<span class="ansi-blue-fg">(</span>sum_of_squares<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
 </div>
 </div>
 </div>
@@ -1729,7 +1814,11 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Buiding-Recommendation-System-with-Turicreate">Buiding Recommendation System with Turicreate<a class="anchor-link" href="#Buiding-Recommendation-System-with-Turicreate"> </a></h1>
+<hr>
+<hr>
+<h1 id="Buiding-Recommendation-System-with-Turicreate">Buiding Recommendation System with Turicreate<a class="anchor-link" href="#Buiding-Recommendation-System-with-Turicreate"> </a></h1><hr>
+<hr>
+
 </div>
 </div>
 </div>
@@ -1897,7 +1986,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>    Data prepared in: 0.003196s</pre>
+<pre>    Data prepared in: 0.004622s</pre>
 </div>
 
 </div>
@@ -2097,7 +2186,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 3       | 0.390625          | 2.79772                                  |</pre>
+<pre>| 3       | 0.390625          | 2.83657                                  |</pre>
 </div>
 
 </div>
@@ -2107,7 +2196,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 4       | 0.195312          | 2.74043                                  |</pre>
+<pre>| 4       | 0.195312          | 2.74513                                  |</pre>
 </div>
 
 </div>
@@ -2117,7 +2206,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 5       | 0.0976562         | 2.79932                                  |</pre>
+<pre>| 5       | 0.0976562         | 2.80074                                  |</pre>
 </div>
 
 </div>
@@ -2127,7 +2216,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 6       | 0.0488281         | 3.00656                                  |</pre>
+<pre>| 6       | 0.0488281         | 3.00431                                  |</pre>
 </div>
 
 </div>
@@ -2137,7 +2226,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 7       | 0.0244141         | 3.28278                                  |</pre>
+<pre>| 7       | 0.0244141         | 3.28335                                  |</pre>
 </div>
 
 </div>
@@ -2157,7 +2246,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| Final   | 0.195312          | 2.74043                                  |</pre>
+<pre>| Final   | 0.195312          | 2.74513                                  |</pre>
 </div>
 
 </div>
@@ -2237,7 +2326,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 1       | 762us        | 4.11274           | 1.60028               | 0.195312    |</pre>
+<pre>| 1       | 628us        | 4.16499           | 1.66421               | 0.195312    |</pre>
 </div>
 
 </div>
@@ -2247,7 +2336,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 2       | 1.298ms      | 3.00481           | 1.39367               | 0.116134    |</pre>
+<pre>| 2       | 1.29ms       | 3.17812           | 1.43798               | 0.116134    |</pre>
 </div>
 
 </div>
@@ -2257,7 +2346,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 3       | 1.73ms       | 2.6827            | 1.23558               | 0.0856819   |</pre>
+<pre>| 3       | 2.021ms      | 2.6823            | 1.24864               | 0.0856819   |</pre>
 </div>
 
 </div>
@@ -2267,7 +2356,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 4       | 2.257ms      | 2.49202           | 1.17326               | 0.0580668   |</pre>
+<pre>| 4       | 2.607ms      | 2.49669           | 1.15702               | 0.0580668   |</pre>
 </div>
 
 </div>
@@ -2277,7 +2366,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 5       | 2.757ms      | 2.4385            | 1.16425               | 0.0491185   |</pre>
+<pre>| 5       | 3.279ms      | 2.42692           | 1.15987               | 0.0491185   |</pre>
 </div>
 
 </div>
@@ -2287,7 +2376,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 10      | 5.116ms      | 2.28964           | 1.08345               | 0.029206    |</pre>
+<pre>| 10      | 14.955ms     | 2.28822           | 1.08066               | 0.029206    |</pre>
 </div>
 
 </div>
@@ -2297,50 +2386,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 25      | 12.067ms     | 2.20318           | 1.06674               | 0.0146899   |</pre>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div style="max-height:1000px;max-width:1500px;overflow:auto;"><table frame="box" rules="cols">
-    <tr>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">user_id</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">item_id</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">score</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">rank</th>
-    </tr>
-    <tr>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">0</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">d</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1.2718666195869446</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
-    </tr>
-    <tr>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">c</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">4.015937566757202</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
-    </tr>
-    <tr>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">d</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">3.1318363547325134</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">2</td>
-    </tr>
-    <tr>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">2</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">a</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">2.478732317686081</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
-    </tr>
-</table>
-[4 rows x 4 columns]<br/>
-</div>
+<pre>| 25      | 36.588ms     | 2.20359           | 1.07144               | 0.0146899   |</pre>
 </div>
 
 </div>
@@ -2380,7 +2426,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>       Final objective value: 2.79567</pre>
+<pre>       Final objective value: 2.79173</pre>
 </div>
 
 </div>
@@ -2390,7 +2436,50 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>       Final training RMSE: 1.03992</pre>
+<pre>       Final training RMSE: 1.04408</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div style="max-height:1000px;max-width:1500px;overflow:auto;"><table frame="box" rules="cols">
+    <tr>
+        <th style="padding-left: 1em; padding-right: 1em; text-align: center">user_id</th>
+        <th style="padding-left: 1em; padding-right: 1em; text-align: center">item_id</th>
+        <th style="padding-left: 1em; padding-right: 1em; text-align: center">score</th>
+        <th style="padding-left: 1em; padding-right: 1em; text-align: center">rank</th>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">0</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">d</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1.2694321870803833</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">c</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">3.9875572323799133</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">d</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">3.1200567483901978</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">2</td>
+    </tr>
+    <tr>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">2</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">a</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">2.483269453048706</td>
+        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">1</td>
+    </tr>
+</table>
+[4 rows x 4 columns]<br/>
+</div>
 </div>
 
 </div>
@@ -2419,8 +2508,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#train_file = &#39;http://s3.amazonaws.com/dato-datasets/millionsong/10000.txt&#39;</span>
-<span class="n">train_file</span> <span class="o">=</span> <span class="s1">&#39;../data/ratings.dat&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_file</span> <span class="o">=</span> <span class="s1">&#39;../data/ratings.dat&#39;</span>
 <span class="n">sf</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">SFrame</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">train_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                         <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">sf</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;X1&#39;</span><span class="p">:</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;X2&#39;</span><span class="p">:</span><span class="s1">&#39;course_id&#39;</span><span class="p">,</span> <span class="s1">&#39;X3&#39;</span><span class="p">:</span><span class="s1">&#39;rating&#39;</span><span class="p">})</span>
@@ -2449,7 +2537,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<html>                 <body>                     <iframe style="border:0;margin:0" width="1000" height="1200" srcdoc='<html lang="en">                         <head>                             <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.8/vega.js"></script>                             <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>                             <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.5.1/vega-tooltip.min.js"></script>                             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.5.1/vega-tooltip.min.css">                             <style>                             .vega-actions > a{                                 color:white;                                 text-decoration: none;                                 font-family: "Arial";                                 cursor:pointer;                                 padding:5px;                                 background:#AAAAAA;                                 border-radius:4px;                                 padding-left:10px;                                 padding-right:10px;                                 margin-right:5px;                             }                             .vega-actions{                                 margin-top:20px;                                 text-align:center                             }                            .vega-actions > a{                                 background:#999999;                            }                             </style>                         </head>                         <body>                             <div id="vis">                             </div>                             <script>                                 var vega_json = "{\"metadata\": {\"bubbleOpts\": {\"showAllFields\": false, \"fields\": [{\"field\": \"left\"}, {\"field\": \"right\"}, {\"field\": \"count\"}, {\"field\": \"label\"}]}}, \"config\": {\"axis\": {\"labelPadding\": 10, \"labelFont\": \"HelveticaNeue-Light, Arial\", \"titleColor\": \"#595959\", \"titleFont\": \"HelveticaNeue-Light, Arial\", \"titleFontWeight\": \"normal\", \"labelFontSize\": 7, \"titleFontSize\": 12, \"titlePadding\": 9, \"labelColor\": \"#595959\"}, \"axisY\": {\"minExtent\": 30}, \"style\": {\"rect\": {\"stroke\": \"rgba(200, 200, 200, 0.5)\"}, \"group-title\": {\"fontWeight\": \"normal\", \"fontSize\": 20, \"fill\": \"#595959\", \"font\": \"HelveticaNeue-Light, Arial\"}}}, \"width\": 800, \"padding\": 8, \"data\": [{\"name\": \"pts_store\"}, {\"name\": \"source_2\", \"values\": [{\"num_unique\": 2017, \"num_row\": 2773, \"max\": 2017.0, \"stdev\": 555.490133, \"median\": 1103.0, \"a\": 0, \"min\": 1.0, \"title\": \"user_id\", \"type\": \"integer\", \"numeric\": [{\"left\": -30, \"count\": 152, \"right\": 74}, {\"left\": 74, \"count\": 105, \"right\": 178}, {\"left\": 178, \"count\": 107, \"right\": 282}, {\"left\": 282, \"count\": 107, \"right\": 386}, {\"left\": 386, \"count\": 108, \"right\": 490}, {\"left\": 490, \"count\": 128, \"right\": 594}, {\"left\": 594, \"count\": 146, \"right\": 698}, {\"left\": 698, \"count\": 155, \"right\": 802}, {\"left\": 802, \"count\": 151, \"right\": 906}, {\"left\": 906, \"count\": 107, \"right\": 1010}, {\"left\": 1010, \"count\": 136, \"right\": 1114}, {\"left\": 1114, \"count\": 272, \"right\": 1218}, {\"left\": 1218, \"count\": 192, \"right\": 1322}, {\"left\": 1322, \"count\": 149, \"right\": 1426}, {\"left\": 1426, \"count\": 154, \"right\": 1530}, {\"left\": 1530, \"count\": 186, \"right\": 1634}, {\"left\": 1634, \"count\": 118, \"right\": 1738}, {\"left\": 1738, \"count\": 122, \"right\": 1842}, {\"left\": 1842, \"count\": 106, \"right\": 1946}, {\"left\": 1946, \"count\": 72, \"right\": 2050}, {\"stop\": 2050, \"step\": 104, \"start\": -30}], \"num_missing\": 0, \"mean\": 1020.098089, \"categorical\": []}, {\"num_unique\": 214, \"num_row\": 2773, \"max\": 214.0, \"stdev\": 60.457737, \"median\": 14.0, \"a\": 1, \"min\": 1.0, \"title\": \"course_id\", \"type\": \"integer\", \"numeric\": [{\"left\": -2, \"count\": 1223, \"right\": 9}, {\"left\": 9, \"count\": 316, \"right\": 20}, {\"left\": 20, \"count\": 134, \"right\": 31}, {\"left\": 31, \"count\": 154, \"right\": 42}, {\"left\": 42, \"count\": 93, \"right\": 53}, {\"left\": 53, \"count\": 87, \"right\": 64}, {\"left\": 64, \"count\": 37, \"right\": 75}, {\"left\": 75, \"count\": 11, \"right\": 86}, {\"left\": 86, \"count\": 83, \"right\": 97}, {\"left\": 97, \"count\": 32, \"right\": 108}, {\"left\": 108, \"count\": 134, \"right\": 119}, {\"left\": 119, \"count\": 38, \"right\": 130}, {\"left\": 130, \"count\": 91, \"right\": 141}, {\"left\": 141, \"count\": 87, \"right\": 152}, {\"left\": 152, \"count\": 14, \"right\": 163}, {\"left\": 163, \"count\": 69, \"right\": 174}, {\"left\": 174, \"count\": 50, \"right\": 185}, {\"left\": 185, \"count\": 68, \"right\": 196}, {\"left\": 196, \"count\": 33, \"right\": 207}, {\"left\": 207, \"count\": 19, \"right\": 218}, {\"stop\": 218, \"step\": 11, \"start\": -2}], \"num_missing\": 0, \"mean\": 46.83736, \"categorical\": []}, {\"num_unique\": 10, \"num_row\": 2773, \"max\": 5.0, \"stdev\": 0.946545, \"median\": 5.0, \"a\": 2, \"min\": 0.5, \"title\": \"rating\", \"type\": \"float\", \"numeric\": [{\"left\": 0.4554, \"count\": 30, \"right\": 0.6858}, {\"left\": 0.6858, \"count\": 0, \"right\": 0.9162}, {\"left\": 0.9162, \"count\": 43, \"right\": 1.1466}, {\"left\": 1.1466, \"count\": 0, \"right\": 1.377}, {\"left\": 1.377, \"count\": 23, \"right\": 1.6074}, {\"left\": 1.6074, \"count\": 0, \"right\": 1.8378}, {\"left\": 1.8378, \"count\": 53, \"right\": 2.0682}, {\"left\": 2.0682, \"count\": 0, \"right\": 2.2986}, {\"left\": 2.2986, \"count\": 35, \"right\": 2.529}, {\"left\": 2.529, \"count\": 0, \"right\": 2.7594}, {\"left\": 2.7594, \"count\": 0, \"right\": 2.9898}, {\"left\": 2.9898, \"count\": 80, \"right\": 3.2202}, {\"left\": 3.2202, \"count\": 0, \"right\": 3.4506}, {\"left\": 3.4506, \"count\": 94, \"right\": 3.681}, {\"left\": 3.681, \"count\": 0, \"right\": 3.9114}, {\"left\": 3.9114, \"count\": 285, \"right\": 4.1418}, {\"left\": 4.1418, \"count\": 0, \"right\": 4.3722}, {\"left\": 4.3722, \"count\": 313, \"right\": 4.6026}, {\"left\": 4.6026, \"count\": 0, \"right\": 4.833}, {\"left\": 4.833, \"count\": 1817, \"right\": 5.0634}, {\"stop\": 5.0634, \"step\": 0.2304, \"start\": 0.4554}], \"num_missing\": 0, \"mean\": 4.503606, \"categorical\": []}]}, {\"transform\": [{\"type\": \"formula\", \"expr\": \"20\", \"as\": \"c_x_axis_back\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+66\", \"as\": \"c_main_background\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+43\", \"as\": \"c_top_bar\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+59\", \"as\": \"c_top_title\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+58\", \"as\": \"c_top_type\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+178\", \"as\": \"c_rule\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+106\", \"as\": \"c_num_rows\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+130\", \"as\": \"c_num_unique\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+154\", \"as\": \"c_missing\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+105\", \"as\": \"c_num_rows_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+130\", \"as\": \"c_num_unique_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+154\", \"as\": \"c_missing_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+195\", \"as\": \"c_frequent_items\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+218\", \"as\": \"c_first_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+235\", \"as\": \"c_second_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+252\", \"as\": \"c_third_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+269\", \"as\": \"c_fourth_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+286\", \"as\": \"c_fifth_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+200\", \"as\": \"c_mean\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+220\", \"as\": \"c_min\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+240\", \"as\": \"c_max\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+260\", \"as\": \"c_median\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+280\", \"as\": \"c_stdev\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+198\", \"as\": \"c_mean_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+218\", \"as\": \"c_min_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+238\", \"as\": \"c_max_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+258\", \"as\": \"c_median_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+278\", \"as\": \"c_stdev_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+106\", \"as\": \"graph_offset\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+132\", \"as\": \"graph_offset_categorical\"}, {\"type\": \"formula\", \"expr\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?false:true\", \"as\": \"c_clip_val\"}, {\"type\": \"formula\", \"expr\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?250:0\", \"as\": \"c_width_numeric_val\"}, {\"type\": \"formula\", \"expr\": \"(toString(datum[\\\"type\\\"]) == \\\"str\\\")?false:true\", \"as\": \"c_clip_val_cat\"}, {\"type\": \"formula\", \"expr\": \"(toString(datum[\\\"type\\\"]) == \\\"str\\\")?250:0\", \"as\": \"c_width_numeric_val_cat\"}], \"name\": \"data_2\", \"source\": \"source_2\"}], \"height\": 980, \"$schema\": \"https://vega.github.io/schema/vega/v4.json\", \"marks\": [{\"type\": \"group\", \"encode\": {\"enter\": {\"strokeWidth\": {\"value\": 0}, \"clip\": {\"value\": 0}, \"fill\": {\"value\": \"#ffffff\"}, \"width\": {\"value\": 734}, \"y\": {\"value\": 0}, \"fillOpacity\": {\"value\": 0}, \"stroke\": {\"value\": \"#000000\"}, \"height\": {\"value\": 366}, \"x\": {\"value\": 0}}}, \"marks\": [{\"type\": \"group\", \"encode\": {\"enter\": {\"strokeWidth\": {\"value\": 0}, \"clip\": {\"value\": 0}, \"fill\": {\"value\": \"#ffffff\"}, \"width\": {\"value\": 734}, \"y\": {\"value\": 0}, \"fillOpacity\": {\"value\": 0}, \"stroke\": {\"value\": \"#000000\"}, \"height\": {\"value\": 366}, \"x\": {\"value\": 0}}}, \"axes\": [], \"scales\": [], \"marks\": [{\"type\": \"rect\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_main_background\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]\"}}, \"enter\": {\"strokeWidth\": {\"value\": 0.5}, \"fill\": {\"value\": \"#FEFEFE\"}, \"width\": {\"value\": 700}, \"y\": {\"value\": 66}, \"fillOpacity\": {\"value\": 1}, \"stroke\": {\"value\": \"#DEDEDE\"}, \"height\": {\"value\": 250}, \"x\": {\"value\": 33}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"rect\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_top_bar\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]\"}}, \"enter\": {\"strokeWidth\": {\"value\": 0.5}, \"fill\": {\"value\": \"#F5F5F5\"}, \"width\": {\"value\": 700}, \"y\": {\"value\": 43}, \"fillOpacity\": {\"value\": 1}, \"stroke\": {\"value\": \"#DEDEDE\"}, \"height\": {\"value\": 30}, \"x\": {\"value\": 33}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_top_type\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+687\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#595859\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 58}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"&apos;&apos;+datum[\\\"type\\\"]\"}, \"x\": {\"value\": 720}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 12}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_top_title\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+11\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#9B9B9B\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 59}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"&apos;&apos;+datum[\\\"title\\\"]\"}, \"x\": {\"value\": 44}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 15}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"rule\", \"encode\": {\"update\": {\"x2\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+687\"}, \"y\": {\"field\": \"c_rule\"}, \"y2\": {\"field\": \"c_rule\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"strokeWidth\": {\"value\": 1}, \"y2\": {\"value\": 178}, \"x2\": {\"value\": 720}, \"y\": {\"value\": 178}, \"strokeCap\": {\"value\": \"butt\"}, \"stroke\": {\"value\": \"#EDEDEB\"}, \"x\": {\"value\": 500}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_num_rows\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 106}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"value\": \"Num. Rows:\"}, \"x\": {\"value\": 500}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 12}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_num_unique\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 130}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"value\": \"Num. Unique:\"}, \"x\": {\"value\": 500}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 12}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_missing\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 154}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"value\": \"Missing:\"}, \"x\": {\"value\": 500}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 12}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_num_rows_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#5A5A5A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 105}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"toString(format(datum[\\\"num_row\\\"], \\\",\\\"))\"}, \"x\": {\"value\": 700}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 12}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_num_unique_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#5A5A5A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 130}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"toString(format(datum[\\\"num_unique\\\"], \\\",\\\"))\"}, \"x\": {\"value\": 700}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 12}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_missing_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#5A5A5A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 154}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"toString(format(datum[\\\"num_missing\\\"], \\\",\\\"))\"}, \"x\": {\"value\": 700}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 12}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_frequent_items\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"bold\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"str\\\")? \\\"Frequent Items\\\":\\\"\\\"\"}, \"x\": {\"value\": 500}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_first_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 1) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][0][\\\"label\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 520}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_second_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 2) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][1][\\\"label\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 520}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_third_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 3) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][2][\\\"label\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 520}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_fourth_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 4) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][3][\\\"label\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 520}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_fifth_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 5) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][4][\\\"label\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 520}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_first_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 1) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][0][\\\"count\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_second_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 2) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][1][\\\"count\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_third_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 3) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][2][\\\"count\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_fourth_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 4) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][3][\\\"count\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_fifth_item\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 5) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][4][\\\"count\\\"]):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_mean\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 200}, \"fontWeight\": {\"value\": \"bold\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"Mean:\\\":\\\"\\\"\"}, \"x\": {\"value\": 500}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_min\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 220}, \"fontWeight\": {\"value\": \"bold\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"Min:\\\":\\\"\\\"\"}, \"x\": {\"value\": 500}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_max\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 240}, \"fontWeight\": {\"value\": \"bold\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"Max:\\\":\\\"\\\"\"}, \"x\": {\"value\": 500}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_median\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 260}, \"fontWeight\": {\"value\": \"bold\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"Median:\\\":\\\"\\\"\"}, \"x\": {\"value\": 500}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_stdev\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 280}, \"fontWeight\": {\"value\": \"bold\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"St. Dev:\\\":\\\"\\\"\"}, \"x\": {\"value\": 500}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"left\"}, \"fontSize\": {\"value\": 11}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_mean_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 198}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"mean\\\"], \\\",\\\")):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_min_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 218}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"min\\\"], \\\",\\\")):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_max_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 238}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"max\\\"], \\\",\\\")):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_median_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 258}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"median\\\"], \\\",\\\")):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"type\": \"text\", \"encode\": {\"update\": {\"y\": {\"field\": \"c_stdev_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}}, \"enter\": {\"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"offset\": 0, \"value\": 0}, \"y\": {\"value\": 278}, \"fontWeight\": {\"value\": \"normal\"}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"stdev\\\"], \\\",\\\")):\\\"\\\"\"}, \"x\": {\"value\": 700}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"align\": {\"value\": \"right\"}, \"fontSize\": {\"value\": 10}, \"dy\": {\"offset\": 0, \"value\": 0}, \"angle\": {\"value\": 0}}}, \"from\": {\"data\": \"data_2\"}}, {\"marks\": [{\"name\": \"marks\", \"encode\": {\"hover\": {\"fill\": {\"value\": \"#7EC2F3\"}}, \"update\": {\"x2\": {\"scale\": \"x\", \"field\": \"right\"}, \"y\": {\"scale\": \"y\", \"field\": \"count\"}, \"y2\": {\"scale\": \"y\", \"value\": 0}, \"x\": {\"scale\": \"x\", \"field\": \"left\"}, \"fill\": {\"value\": \"#108EE9\"}}}, \"style\": [\"rect\"], \"from\": {\"data\": \"new_data\"}, \"type\": \"rect\"}], \"type\": \"group\", \"axes\": [{\"zindex\": 1, \"scale\": \"x\", \"orient\": \"bottom\", \"labelOverlap\": true, \"tickCount\": {\"signal\": \"ceil(width/40)\"}, \"title\": \"Values\"}, {\"labels\": false, \"scale\": \"x\", \"orient\": \"bottom\", \"grid\": true, \"gridScale\": \"y\", \"zindex\": 0, \"maxExtent\": 0, \"tickCount\": {\"signal\": \"ceil(width/40)\"}, \"ticks\": false, \"minExtent\": 0, \"domain\": false}, {\"zindex\": 1, \"scale\": \"y\", \"orient\": \"left\", \"labelOverlap\": true, \"tickCount\": {\"signal\": \"ceil(height/40)\"}, \"title\": \"Count\"}, {\"labels\": false, \"scale\": \"y\", \"orient\": \"left\", \"grid\": true, \"gridScale\": \"x\", \"zindex\": 0, \"maxExtent\": 0, \"tickCount\": {\"signal\": \"ceil(height/40)\"}, \"ticks\": false, \"minExtent\": 0, \"domain\": false}], \"style\": \"cell\", \"from\": {\"facet\": {\"name\": \"new_data\", \"data\": \"data_2\", \"field\": \"numeric\"}}, \"encode\": {\"update\": {\"clip\": {\"field\": \"c_clip_val\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+87\"}, \"width\": {\"field\": \"c_width_numeric_val\"}}, \"enter\": {\"strokeWidth\": {\"value\": 0}, \"fill\": {\"value\": \"#ffffff\"}, \"width\": {\"value\": 250}, \"y\": {\"field\": \"graph_offset\"}, \"fillOpacity\": {\"value\": 0}, \"stroke\": {\"value\": \"#000000\"}, \"height\": {\"value\": 150}, \"x\": {\"value\": 120}}}, \"scales\": [{\"type\": \"linear\", \"range\": [0, {\"signal\": \"width\"}], \"name\": \"x\", \"domain\": {\"fields\": [\"left\", \"right\"], \"data\": \"new_data\", \"sort\": true}, \"zero\": true, \"nice\": true}, {\"type\": \"linear\", \"range\": [{\"signal\": \"height\"}, 0], \"name\": \"y\", \"domain\": {\"data\": \"new_data\", \"field\": \"count\"}, \"zero\": true, \"nice\": true}], \"signals\": [{\"name\": \"width\", \"update\": \"250\"}, {\"name\": \"height\", \"update\": \"150\"}]}, {\"type\": \"group\", \"axes\": [{\"zindex\": 1, \"scale\": \"x\", \"orient\": \"top\", \"labelOverlap\": true, \"tickCount\": {\"signal\": \"ceil(width/40)\"}, \"title\": \"Count\"}, {\"labels\": false, \"scale\": \"x\", \"orient\": \"top\", \"grid\": true, \"gridScale\": \"y\", \"zindex\": 0, \"maxExtent\": 0, \"tickCount\": {\"signal\": \"ceil(width/40)\"}, \"ticks\": false, \"minExtent\": 0, \"domain\": false}, {\"scale\": \"y\", \"orient\": \"left\", \"title\": \"Label\", \"labelOverlap\": true, \"zindex\": 1}], \"style\": \"cell\", \"from\": {\"facet\": {\"name\": \"data_5\", \"data\": \"data_2\", \"field\": \"categorical\"}}, \"scales\": [{\"type\": \"linear\", \"range\": [0, 250], \"name\": \"x\", \"domain\": {\"data\": \"data_5\", \"field\": \"count\"}, \"zero\": true, \"nice\": true}, {\"paddingInner\": 0.1, \"type\": \"band\", \"paddingOuter\": 0.05, \"range\": [150, 0], \"name\": \"y\", \"domain\": {\"data\": \"data_5\", \"field\": \"label\", \"sort\": {\"field\": \"label_idx\", \"order\": \"descending\", \"op\": \"mean\"}}}], \"encode\": {\"update\": {\"clip\": {\"field\": \"c_clip_val_cat\"}, \"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+137\"}, \"width\": {\"field\": \"c_width_numeric_val_cat\"}}, \"enter\": {\"strokeWidth\": {\"value\": 0}, \"fill\": {\"value\": \"#ffffff\"}, \"width\": {\"value\": 250}, \"y\": {\"field\": \"graph_offset_categorical\"}, \"fillOpacity\": {\"value\": 0}, \"stroke\": {\"value\": \"#000000\"}, \"height\": {\"value\": 150}, \"x\": {\"value\": 170}}}, \"marks\": [{\"name\": \"marks\", \"encode\": {\"hover\": {\"fill\": {\"value\": \"#7EC2F3\"}}, \"update\": {\"x2\": {\"scale\": \"x\", \"value\": 0}, \"y\": {\"scale\": \"y\", \"field\": \"label\"}, \"height\": {\"scale\": \"y\", \"band\": true}, \"x\": {\"scale\": \"x\", \"field\": \"count\"}, \"fill\": {\"value\": \"#108EE9\"}}}, \"style\": [\"bar\"], \"from\": {\"data\": \"data_5\"}, \"type\": \"rect\"}], \"signals\": [{\"name\": \"unit\", \"on\": [{\"events\": \"mousemove\", \"update\": \"isTuple(group()) ? group() : unit\"}], \"value\": {}}, {\"name\": \"pts\", \"update\": \"data(\\\"pts_store\\\").length &amp;&amp; {count: data(\\\"pts_store\\\")[0].values[0]}\"}, {\"name\": \"pts_tuple\", \"on\": [{\"events\": [{\"type\": \"click\", \"source\": \"scope\"}], \"force\": true, \"update\": \"datum &amp;&amp; item().mark.marktype !== &apos;group&apos; ? {unit: \\\"\\\", encodings: [\\\"x\\\"], fields: [\\\"count\\\"], values: [datum[\\\"count\\\"]]} : null\"}], \"value\": {}}, {\"name\": \"pts_modify\", \"on\": [{\"events\": {\"signal\": \"pts_tuple\"}, \"update\": \"modify(\\\"pts_store\\\", pts_tuple, true)\"}]}]}]}]}]}";                                 var vega_json_parsed = JSON.parse(vega_json);                                 var toolTipOpts = {                                     showAllFields: true                                 };                                 if(vega_json_parsed["metadata"] != null){                                     if(vega_json_parsed["metadata"]["bubbleOpts"] != null){                                         toolTipOpts = vega_json_parsed["metadata"]["bubbleOpts"];                                     };                                 };                                 vegaEmbed("#vis", vega_json_parsed).then(function (result) {                                     vegaTooltip.vega(result.view, toolTipOpts);                                  });                             </script>                         </body>                     </html>' src="demo_iframe_srcdoc.htm">                         <p>Your browser does not support iframes.</p>                     </iframe>                 </body>             </html>
+<html>                 <body>                     <iframe style="border:0;margin:0" width="1000" height="1200" srcdoc='<html lang="en">                         <head>                             <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/5.4.0/vega.js"></script>                             <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/4.0.0/vega-embed.js"></script>                             <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.5.1/vega-tooltip.min.js"></script>                             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.5.1/vega-tooltip.min.css">                             <style>                             .vega-actions > a{                                 color:white;                                 text-decoration: none;                                 font-family: "Arial";                                 cursor:pointer;                                 padding:5px;                                 background:#AAAAAA;                                 border-radius:4px;                                 padding-left:10px;                                 padding-right:10px;                                 margin-right:5px;                             }                             .vega-actions{                                 margin-top:20px;                                 text-align:center                             }                            .vega-actions > a{                                 background:#999999;                            }                             </style>                         </head>                         <body>                             <div id="vis">                             </div>                             <script>                                 var vega_json = "{\"$schema\": \"https://vega.github.io/schema/vega/v4.json\", \"metadata\": {\"bubbleOpts\": {\"showAllFields\": false, \"fields\": [{\"field\": \"left\"}, {\"field\": \"right\"}, {\"field\": \"count\"}, {\"field\": \"label\"}]}}, \"width\": 800, \"height\": 980, \"padding\": 8, \"data\": [{\"name\": \"pts_store\"}, {\"name\": \"source_2\", \"values\": [{\"a\": 0, \"title\": \"user_id\", \"num_row\": 2773, \"type\": \"integer\", \"num_unique\": 2017, \"num_missing\": 0, \"mean\": 1020.098089, \"min\": 1.0, \"max\": 2017.0, \"median\": 1103.0, \"stdev\": 555.490133, \"numeric\": [{\"left\": -30, \"right\": 74, \"count\": 152}, {\"left\": 74, \"right\": 178, \"count\": 105}, {\"left\": 178, \"right\": 282, \"count\": 107}, {\"left\": 282, \"right\": 386, \"count\": 107}, {\"left\": 386, \"right\": 490, \"count\": 108}, {\"left\": 490, \"right\": 594, \"count\": 128}, {\"left\": 594, \"right\": 698, \"count\": 146}, {\"left\": 698, \"right\": 802, \"count\": 155}, {\"left\": 802, \"right\": 906, \"count\": 151}, {\"left\": 906, \"right\": 1010, \"count\": 107}, {\"left\": 1010, \"right\": 1114, \"count\": 136}, {\"left\": 1114, \"right\": 1218, \"count\": 272}, {\"left\": 1218, \"right\": 1322, \"count\": 192}, {\"left\": 1322, \"right\": 1426, \"count\": 149}, {\"left\": 1426, \"right\": 1530, \"count\": 154}, {\"left\": 1530, \"right\": 1634, \"count\": 186}, {\"left\": 1634, \"right\": 1738, \"count\": 118}, {\"left\": 1738, \"right\": 1842, \"count\": 122}, {\"left\": 1842, \"right\": 1946, \"count\": 106}, {\"left\": 1946, \"right\": 2050, \"count\": 72}, {\"start\": -30, \"stop\": 2050, \"step\": 104}], \"categorical\": []}, {\"a\": 1, \"title\": \"course_id\", \"num_row\": 2773, \"type\": \"integer\", \"num_unique\": 214, \"num_missing\": 0, \"mean\": 46.83736, \"min\": 1.0, \"max\": 214.0, \"median\": 14.0, \"stdev\": 60.457737, \"numeric\": [{\"left\": -2, \"right\": 9, \"count\": 1223}, {\"left\": 9, \"right\": 20, \"count\": 316}, {\"left\": 20, \"right\": 31, \"count\": 134}, {\"left\": 31, \"right\": 42, \"count\": 154}, {\"left\": 42, \"right\": 53, \"count\": 93}, {\"left\": 53, \"right\": 64, \"count\": 87}, {\"left\": 64, \"right\": 75, \"count\": 37}, {\"left\": 75, \"right\": 86, \"count\": 11}, {\"left\": 86, \"right\": 97, \"count\": 83}, {\"left\": 97, \"right\": 108, \"count\": 32}, {\"left\": 108, \"right\": 119, \"count\": 134}, {\"left\": 119, \"right\": 130, \"count\": 38}, {\"left\": 130, \"right\": 141, \"count\": 91}, {\"left\": 141, \"right\": 152, \"count\": 87}, {\"left\": 152, \"right\": 163, \"count\": 14}, {\"left\": 163, \"right\": 174, \"count\": 69}, {\"left\": 174, \"right\": 185, \"count\": 50}, {\"left\": 185, \"right\": 196, \"count\": 68}, {\"left\": 196, \"right\": 207, \"count\": 33}, {\"left\": 207, \"right\": 218, \"count\": 19}, {\"start\": -2, \"stop\": 218, \"step\": 11}], \"categorical\": []}, {\"a\": 2, \"title\": \"rating\", \"num_row\": 2773, \"type\": \"float\", \"num_unique\": 10, \"num_missing\": 0, \"mean\": 4.503606, \"min\": 0.5, \"max\": 5.0, \"median\": 5.0, \"stdev\": 0.946545, \"numeric\": [{\"left\": 0.4554, \"right\": 0.6858, \"count\": 30}, {\"left\": 0.6858, \"right\": 0.9162, \"count\": 0}, {\"left\": 0.9162, \"right\": 1.1466, \"count\": 43}, {\"left\": 1.1466, \"right\": 1.377, \"count\": 0}, {\"left\": 1.377, \"right\": 1.6074, \"count\": 23}, {\"left\": 1.6074, \"right\": 1.8378, \"count\": 0}, {\"left\": 1.8378, \"right\": 2.0682, \"count\": 53}, {\"left\": 2.0682, \"right\": 2.2986, \"count\": 0}, {\"left\": 2.2986, \"right\": 2.529, \"count\": 35}, {\"left\": 2.529, \"right\": 2.7594, \"count\": 0}, {\"left\": 2.7594, \"right\": 2.9898, \"count\": 0}, {\"left\": 2.9898, \"right\": 3.2202, \"count\": 80}, {\"left\": 3.2202, \"right\": 3.4506, \"count\": 0}, {\"left\": 3.4506, \"right\": 3.681, \"count\": 94}, {\"left\": 3.681, \"right\": 3.9114, \"count\": 0}, {\"left\": 3.9114, \"right\": 4.1418, \"count\": 285}, {\"left\": 4.1418, \"right\": 4.3722, \"count\": 0}, {\"left\": 4.3722, \"right\": 4.6026, \"count\": 313}, {\"left\": 4.6026, \"right\": 4.833, \"count\": 0}, {\"left\": 4.833, \"right\": 5.0634, \"count\": 1817}, {\"start\": 0.4554, \"stop\": 5.0634, \"step\": 0.2304}], \"categorical\": []}]}, {\"name\": \"data_2\", \"source\": \"source_2\", \"transform\": [{\"type\": \"formula\", \"expr\": \"20\", \"as\": \"c_x_axis_back\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+66\", \"as\": \"c_main_background\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+43\", \"as\": \"c_top_bar\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+59\", \"as\": \"c_top_title\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+58\", \"as\": \"c_top_type\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+178\", \"as\": \"c_rule\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+106\", \"as\": \"c_num_rows\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+130\", \"as\": \"c_num_unique\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+154\", \"as\": \"c_missing\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+105\", \"as\": \"c_num_rows_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+130\", \"as\": \"c_num_unique_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+154\", \"as\": \"c_missing_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+195\", \"as\": \"c_frequent_items\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+218\", \"as\": \"c_first_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+235\", \"as\": \"c_second_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+252\", \"as\": \"c_third_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+269\", \"as\": \"c_fourth_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+286\", \"as\": \"c_fifth_item\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+200\", \"as\": \"c_mean\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+220\", \"as\": \"c_min\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+240\", \"as\": \"c_max\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+260\", \"as\": \"c_median\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+280\", \"as\": \"c_stdev\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+198\", \"as\": \"c_mean_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+218\", \"as\": \"c_min_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+238\", \"as\": \"c_max_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+258\", \"as\": \"c_median_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+278\", \"as\": \"c_stdev_val\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+106\", \"as\": \"graph_offset\"}, {\"type\": \"formula\", \"expr\": \"toNumber(datum[\\\"a\\\"])*300+132\", \"as\": \"graph_offset_categorical\"}, {\"type\": \"formula\", \"expr\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?false:true\", \"as\": \"c_clip_val\"}, {\"type\": \"formula\", \"expr\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?250:0\", \"as\": \"c_width_numeric_val\"}, {\"type\": \"formula\", \"expr\": \"(toString(datum[\\\"type\\\"]) == \\\"str\\\")?false:true\", \"as\": \"c_clip_val_cat\"}, {\"type\": \"formula\", \"expr\": \"(toString(datum[\\\"type\\\"]) == \\\"str\\\")?250:0\", \"as\": \"c_width_numeric_val_cat\"}]}], \"marks\": [{\"encode\": {\"enter\": {\"x\": {\"value\": 0}, \"width\": {\"value\": 734}, \"y\": {\"value\": 0}, \"height\": {\"value\": 366}, \"clip\": {\"value\": 0}, \"fill\": {\"value\": \"#ffffff\"}, \"fillOpacity\": {\"value\": 0}, \"stroke\": {\"value\": \"#000000\"}, \"strokeWidth\": {\"value\": 0}}}, \"marks\": [{\"encode\": {\"enter\": {\"x\": {\"value\": 0}, \"width\": {\"value\": 734}, \"y\": {\"value\": 0}, \"height\": {\"value\": 366}, \"clip\": {\"value\": 0}, \"fill\": {\"value\": \"#ffffff\"}, \"fillOpacity\": {\"value\": 0}, \"stroke\": {\"value\": \"#000000\"}, \"strokeWidth\": {\"value\": 0}}}, \"scales\": [], \"axes\": [], \"marks\": [{\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 33}, \"width\": {\"value\": 700}, \"y\": {\"value\": 66}, \"height\": {\"value\": 250}, \"fill\": {\"value\": \"#FEFEFE\"}, \"fillOpacity\": {\"value\": 1}, \"stroke\": {\"value\": \"#DEDEDE\"}, \"strokeWidth\": {\"value\": 0.5}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]\"}, \"y\": {\"field\": \"c_main_background\"}}}, \"type\": \"rect\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 33}, \"width\": {\"value\": 700}, \"y\": {\"value\": 43}, \"height\": {\"value\": 30}, \"fill\": {\"value\": \"#F5F5F5\"}, \"fillOpacity\": {\"value\": 1}, \"stroke\": {\"value\": \"#DEDEDE\"}, \"strokeWidth\": {\"value\": 0.5}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]\"}, \"y\": {\"field\": \"c_top_bar\"}}}, \"type\": \"rect\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 720}, \"y\": {\"value\": 58}, \"text\": {\"signal\": \"&apos;&apos;+datum[\\\"type\\\"]\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 12}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#595859\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+687\"}, \"y\": {\"field\": \"c_top_type\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 44}, \"y\": {\"value\": 59}, \"text\": {\"signal\": \"&apos;&apos;+datum[\\\"title\\\"]\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 15}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#9B9B9B\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+11\"}, \"y\": {\"field\": \"c_top_title\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 178}, \"stroke\": {\"value\": \"#EDEDEB\"}, \"strokeWidth\": {\"value\": 1}, \"strokeCap\": {\"value\": \"butt\"}, \"x2\": {\"value\": 720}, \"y2\": {\"value\": 178}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"x2\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+687\"}, \"y\": {\"field\": \"c_rule\"}, \"y2\": {\"field\": \"c_rule\"}}}, \"type\": \"rule\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 106}, \"text\": {\"value\": \"Num. Rows:\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 12}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_num_rows\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 130}, \"text\": {\"value\": \"Num. Unique:\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 12}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_num_unique\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 154}, \"text\": {\"value\": \"Missing:\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 12}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_missing\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 105}, \"text\": {\"signal\": \"toString(format(datum[\\\"num_row\\\"], \\\",\\\"))\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 12}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#5A5A5A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_num_rows_val\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 130}, \"text\": {\"signal\": \"toString(format(datum[\\\"num_unique\\\"], \\\",\\\"))\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 12}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#5A5A5A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_num_unique_val\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 154}, \"text\": {\"signal\": \"toString(format(datum[\\\"num_missing\\\"], \\\",\\\"))\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 12}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#5A5A5A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_missing_val\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"str\\\")? \\\"Frequent Items\\\":\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"bold\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_frequent_items\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 520}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 1) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][0][\\\"label\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}, \"y\": {\"field\": \"c_first_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 520}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 2) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][1][\\\"label\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}, \"y\": {\"field\": \"c_second_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 520}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 3) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][2][\\\"label\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}, \"y\": {\"field\": \"c_third_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 520}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 4) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][3][\\\"label\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}, \"y\": {\"field\": \"c_fourth_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 520}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 5) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][4][\\\"label\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+487\"}, \"y\": {\"field\": \"c_fifth_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 1) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][0][\\\"count\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_first_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 2) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][1][\\\"count\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_second_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 3) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][2][\\\"count\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_third_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 4) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][3][\\\"count\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_fourth_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"((datum[\\\"categorical\\\"].length >= 5) &amp;&amp; (toString(datum[\\\"type\\\"]) == \\\"str\\\"))? toString(datum[\\\"categorical\\\"][4][\\\"count\\\"]):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#7A7A7A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_fifth_item\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 200}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"Mean:\\\":\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"clip\": {\"value\": true}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"bold\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_mean\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 220}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"Min:\\\":\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"bold\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_min\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 240}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"Max:\\\":\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"bold\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_max\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 260}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"Median:\\\":\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"bold\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_median\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 500}, \"y\": {\"value\": 280}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")? \\\"St. Dev:\\\":\\\"\\\"\"}, \"align\": {\"value\": \"left\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 11}, \"fontWeight\": {\"value\": \"bold\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#4A4A4A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+467\"}, \"y\": {\"field\": \"c_stdev\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 198}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"mean\\\"], \\\",\\\")):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_mean_val\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 218}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"min\\\"], \\\",\\\")):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_min_val\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 238}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"max\\\"], \\\",\\\")):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_max_val\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 258}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"median\\\"], \\\",\\\")):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_median_val\"}}}, \"type\": \"text\"}, {\"from\": {\"data\": \"data_2\"}, \"encode\": {\"enter\": {\"x\": {\"value\": 700}, \"y\": {\"value\": 278}, \"text\": {\"signal\": \"(toString(datum[\\\"type\\\"]) == \\\"integer\\\" || toString(datum[\\\"type\\\"]) == \\\"float\\\")?toString(format(datum[\\\"stdev\\\"], \\\",\\\")):\\\"\\\"\"}, \"align\": {\"value\": \"right\"}, \"baseline\": {\"value\": \"middle\"}, \"dx\": {\"value\": 0, \"offset\": 0}, \"dy\": {\"value\": 0, \"offset\": 0}, \"angle\": {\"value\": 0}, \"font\": {\"value\": \"AvenirNext-Medium\"}, \"fontSize\": {\"value\": 10}, \"fontWeight\": {\"value\": \"normal\"}, \"fontStyle\": {\"value\": \"normal\"}, \"fill\": {\"value\": \"#6A6A6A\"}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+667\"}, \"y\": {\"field\": \"c_stdev_val\"}}}, \"type\": \"text\"}, {\"from\": {\"facet\": {\"name\": \"new_data\", \"data\": \"data_2\", \"field\": \"numeric\"}}, \"encode\": {\"enter\": {\"x\": {\"value\": 120}, \"width\": {\"value\": 250}, \"y\": {\"field\": \"graph_offset\"}, \"height\": {\"value\": 150}, \"fill\": {\"value\": \"#ffffff\"}, \"fillOpacity\": {\"value\": 0}, \"stroke\": {\"value\": \"#000000\"}, \"strokeWidth\": {\"value\": 0}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+87\"}, \"clip\": {\"field\": \"c_clip_val\"}, \"width\": {\"field\": \"c_width_numeric_val\"}}}, \"type\": \"group\", \"scales\": [{\"name\": \"x\", \"type\": \"linear\", \"domain\": {\"data\": \"new_data\", \"fields\": [\"left\", \"right\"], \"sort\": true}, \"range\": [0, {\"signal\": \"width\"}], \"nice\": true, \"zero\": true}, {\"name\": \"y\", \"type\": \"linear\", \"domain\": {\"data\": \"new_data\", \"field\": \"count\"}, \"range\": [{\"signal\": \"height\"}, 0], \"nice\": true, \"zero\": true}], \"axes\": [{\"title\": \"Values\", \"scale\": \"x\", \"labelOverlap\": true, \"orient\": \"bottom\", \"tickCount\": {\"signal\": \"ceil(width/40)\"}, \"zindex\": 1}, {\"scale\": \"x\", \"domain\": false, \"grid\": true, \"labels\": false, \"maxExtent\": 0, \"minExtent\": 0, \"orient\": \"bottom\", \"tickCount\": {\"signal\": \"ceil(width/40)\"}, \"ticks\": false, \"zindex\": 0, \"gridScale\": \"y\"}, {\"title\": \"Count\", \"scale\": \"y\", \"labelOverlap\": true, \"orient\": \"left\", \"tickCount\": {\"signal\": \"ceil(height/40)\"}, \"zindex\": 1}, {\"scale\": \"y\", \"domain\": false, \"grid\": true, \"labels\": false, \"maxExtent\": 0, \"minExtent\": 0, \"orient\": \"left\", \"tickCount\": {\"signal\": \"ceil(height/40)\"}, \"ticks\": false, \"zindex\": 0, \"gridScale\": \"x\"}], \"style\": \"cell\", \"signals\": [{\"name\": \"width\", \"update\": \"250\"}, {\"name\": \"height\", \"update\": \"150\"}], \"marks\": [{\"name\": \"marks\", \"type\": \"rect\", \"style\": [\"rect\"], \"from\": {\"data\": \"new_data\"}, \"encode\": {\"hover\": {\"fill\": {\"value\": \"#7EC2F3\"}}, \"update\": {\"x\": {\"scale\": \"x\", \"field\": \"left\"}, \"x2\": {\"scale\": \"x\", \"field\": \"right\"}, \"y\": {\"scale\": \"y\", \"field\": \"count\"}, \"y2\": {\"scale\": \"y\", \"value\": 0}, \"fill\": {\"value\": \"#108EE9\"}}}}]}, {\"from\": {\"facet\": {\"name\": \"data_5\", \"data\": \"data_2\", \"field\": \"categorical\"}}, \"encode\": {\"enter\": {\"x\": {\"value\": 170}, \"width\": {\"value\": 250}, \"y\": {\"field\": \"graph_offset_categorical\"}, \"height\": {\"value\": 150}, \"fill\": {\"value\": \"#ffffff\"}, \"fillOpacity\": {\"value\": 0}, \"stroke\": {\"value\": \"#000000\"}, \"strokeWidth\": {\"value\": 0}}, \"update\": {\"x\": {\"signal\": \"datum[\\\"c_x_axis_back\\\"]+137\"}, \"clip\": {\"field\": \"c_clip_val_cat\"}, \"width\": {\"field\": \"c_width_numeric_val_cat\"}}}, \"type\": \"group\", \"style\": \"cell\", \"signals\": [{\"name\": \"unit\", \"value\": {}, \"on\": [{\"events\": \"mousemove\", \"update\": \"isTuple(group()) ? group() : unit\"}]}, {\"name\": \"pts\", \"update\": \"data(\\\"pts_store\\\").length &amp;&amp; {count: data(\\\"pts_store\\\")[0].values[0]}\"}, {\"name\": \"pts_tuple\", \"value\": {}, \"on\": [{\"events\": [{\"source\": \"scope\", \"type\": \"click\"}], \"update\": \"datum &amp;&amp; item().mark.marktype !== &apos;group&apos; ? {unit: \\\"\\\", encodings: [\\\"x\\\"], fields: [\\\"count\\\"], values: [datum[\\\"count\\\"]]} : null\", \"force\": true}]}, {\"name\": \"pts_modify\", \"on\": [{\"events\": {\"signal\": \"pts_tuple\"}, \"update\": \"modify(\\\"pts_store\\\", pts_tuple, true)\"}]}], \"marks\": [{\"name\": \"marks\", \"type\": \"rect\", \"style\": [\"bar\"], \"from\": {\"data\": \"data_5\"}, \"encode\": {\"hover\": {\"fill\": {\"value\": \"#7EC2F3\"}}, \"update\": {\"x\": {\"scale\": \"x\", \"field\": \"count\"}, \"x2\": {\"scale\": \"x\", \"value\": 0}, \"y\": {\"scale\": \"y\", \"field\": \"label\"}, \"height\": {\"scale\": \"y\", \"band\": true}, \"fill\": {\"value\": \"#108EE9\"}}}}], \"scales\": [{\"name\": \"x\", \"type\": \"linear\", \"domain\": {\"data\": \"data_5\", \"field\": \"count\"}, \"range\": [0, 250], \"nice\": true, \"zero\": true}, {\"name\": \"y\", \"type\": \"band\", \"domain\": {\"data\": \"data_5\", \"field\": \"label\", \"sort\": {\"op\": \"mean\", \"field\": \"label_idx\", \"order\": \"descending\"}}, \"range\": [150, 0], \"paddingInner\": 0.1, \"paddingOuter\": 0.05}], \"axes\": [{\"orient\": \"top\", \"scale\": \"x\", \"labelOverlap\": true, \"tickCount\": {\"signal\": \"ceil(width/40)\"}, \"title\": \"Count\", \"zindex\": 1}, {\"orient\": \"top\", \"scale\": \"x\", \"domain\": false, \"grid\": true, \"labels\": false, \"maxExtent\": 0, \"minExtent\": 0, \"tickCount\": {\"signal\": \"ceil(width/40)\"}, \"ticks\": false, \"zindex\": 0, \"gridScale\": \"y\"}, {\"scale\": \"y\", \"labelOverlap\": true, \"orient\": \"left\", \"title\": \"Label\", \"zindex\": 1}]}], \"type\": \"group\"}], \"type\": \"group\"}], \"config\": {\"axis\": {\"labelFont\": \"HelveticaNeue-Light, Arial\", \"labelFontSize\": 7, \"labelPadding\": 10, \"labelColor\": \"#595959\", \"titleFont\": \"HelveticaNeue-Light, Arial\", \"titleFontWeight\": \"normal\", \"titlePadding\": 9, \"titleFontSize\": 12, \"titleColor\": \"#595959\"}, \"axisY\": {\"minExtent\": 30}, \"style\": {\"rect\": {\"stroke\": \"rgba(200, 200, 200, 0.5)\"}, \"group-title\": {\"fontSize\": 20, \"font\": \"HelveticaNeue-Light, Arial\", \"fontWeight\": \"normal\", \"fill\": \"#595959\"}}}}";                                 var vega_json_parsed = JSON.parse(vega_json);                                 var toolTipOpts = {                                     showAllFields: true                                 };                                 if(vega_json_parsed["metadata"] != null){                                     if(vega_json_parsed["metadata"]["bubbleOpts"] != null){                                         toolTipOpts = vega_json_parsed["metadata"]["bubbleOpts"];                                     };                                 };                                 vegaEmbed("#vis", vega_json_parsed).then(function (result) {                                     vegaTooltip.vega(result.view, toolTipOpts);                                  });                             </script>                         </body>                     </html>' src="demo_iframe_srcdoc.htm">                         <p>Your browser does not support iframes.</p>                     </iframe>                 </body>             </html>
 </div>
 
 </div>
@@ -2583,7 +2671,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Popularity-model">Popularity model<a class="anchor-link" href="#Popularity-model"> </a></h1>
+<h3 id="Popularity-model">Popularity model<a class="anchor-link" href="#Popularity-model"> </a></h3>
 </div>
 </div>
 </div>
@@ -2643,7 +2731,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>    Data prepared in: 0.006547s</pre>
+<pre>    Data prepared in: 0.024186s</pre>
 </div>
 
 </div>
@@ -2668,7 +2756,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Item-similarity-Model">Item similarity Model<a class="anchor-link" href="#Item-similarity-Model"> </a></h1>
+<h3 id="Item-similarity-Model">Item similarity Model<a class="anchor-link" href="#Item-similarity-Model"> </a></h3>
 </div>
 </div>
 </div>
@@ -2742,7 +2830,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>    Data prepared in: 0.006935s</pre>
+<pre>    Data prepared in: 0.021186s</pre>
 </div>
 
 </div>
@@ -2802,7 +2890,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 2.388ms                        | 60.5       |</pre>
+<pre>| 3.805ms                        | 60.5       |</pre>
 </div>
 
 </div>
@@ -2812,7 +2900,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 2.607ms                        | 100        |</pre>
+<pre>| 23.105ms                       | 100        |</pre>
 </div>
 
 </div>
@@ -2882,7 +2970,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 3.247ms                             | 0                | 0               |</pre>
+<pre>| 26.4ms                              | 0                | 0               |</pre>
 </div>
 
 </div>
@@ -2892,7 +2980,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 6.225ms                             | 100              | 201             |</pre>
+<pre>| 32.479ms                            | 100              | 201             |</pre>
 </div>
 
 </div>
@@ -2932,7 +3020,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>Finished training in 0.008353s</pre>
+<pre>Finished training in 0.037491s</pre>
 </div>
 
 </div>
@@ -2947,7 +3035,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Factorization-Recommender-Model">Factorization Recommender Model<a class="anchor-link" href="#Factorization-Recommender-Model"> </a></h1><p>Create a FactorizationRecommender that learns latent factors for each user and item and uses them to make rating predictions. This includes both standard matrix factorization as well as factorization machines models (in the situation where side data is available for users and/or items). <a href="https://dato.com/products/create/docs/generated/graphlab.recommender.factorization_recommender.create.html#graphlab.recommender.factorization_recommender.create">link</a></p>
+<h3 id="Factorization-Recommender-Model">Factorization Recommender Model<a class="anchor-link" href="#Factorization-Recommender-Model"> </a></h3><p>Create a FactorizationRecommender that learns latent factors for each user and item and uses them to make rating predictions. This includes both standard matrix factorization as well as factorization machines models (in the situation where side data is available for users and/or items). <a href="https://dato.com/products/create/docs/generated/graphlab.recommender.factorization_recommender.create.html#graphlab.recommender.factorization_recommender.create">link</a></p>
 
 </div>
 </div>
@@ -2998,7 +3086,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>    Data prepared in: 0.006938s</pre>
+<pre>    Data prepared in: 0.00781s</pre>
 </div>
 
 </div>
@@ -3188,7 +3276,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 3       | 0.390625          | 0.131214                                 |</pre>
+<pre>| 3       | 0.390625          | 0.122277                                 |</pre>
 </div>
 
 </div>
@@ -3198,7 +3286,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 4       | 0.195312          | 0.168634                                 |</pre>
+<pre>| 4       | 0.195312          | 0.172024                                 |</pre>
 </div>
 
 </div>
@@ -3208,7 +3296,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 5       | 0.0976562         | 0.237488                                 |</pre>
+<pre>| 5       | 0.0976562         | 0.235897                                 |</pre>
 </div>
 
 </div>
@@ -3218,7 +3306,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 6       | 0.0488281         | 0.338842                                 |</pre>
+<pre>| 6       | 0.0488281         | 0.338391                                 |</pre>
 </div>
 
 </div>
@@ -3238,7 +3326,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| Final   | 0.390625          | 0.131214                                 |</pre>
+<pre>| Final   | 0.390625          | 0.122277                                 |</pre>
 </div>
 
 </div>
@@ -3298,7 +3386,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| Initial | 61us         | 0.891401          | 0.94414               |             |</pre>
+<pre>| Initial | 238us        | 0.891401          | 0.94414               |             |</pre>
 </div>
 
 </div>
@@ -3318,7 +3406,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 1       | 31.222ms     | 0.904366          | 0.950979              | 0.390625    |</pre>
+<pre>| 1       | 285.573ms    | 0.879224          | 0.937667              | 0.390625    |</pre>
 </div>
 
 </div>
@@ -3328,7 +3416,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 2       | 63.351ms     | 0.493281          | 0.702338              | 0.232267    |</pre>
+<pre>| 2       | 352.797ms    | 0.511761          | 0.715374              | 0.232267    |</pre>
 </div>
 
 </div>
@@ -3338,7 +3426,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 3       | 100.4ms      | 0.273931          | 0.523383              | 0.171364    |</pre>
+<pre>| 3       | 444.885ms    | 0.296781          | 0.544775              | 0.171364    |</pre>
 </div>
 
 </div>
@@ -3348,7 +3436,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 4       | 143.322ms    | 0.20113           | 0.448475              | 0.116134    |</pre>
+<pre>| 4       | 535.596ms    | 0.215641          | 0.464371              | 0.138107    |</pre>
 </div>
 
 </div>
@@ -3358,7 +3446,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 5       | 174.795ms    | 0.150903          | 0.388462              | 0.098237    |</pre>
+<pre>| 5       | 594.038ms    | 0.156399          | 0.395472              | 0.116824    |</pre>
 </div>
 
 </div>
@@ -3368,7 +3456,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 10      | 318.538ms    | 0.0530298         | 0.230279              | 0.0584121   |</pre>
+<pre>| 10      | 1.10s        | 0.0319218         | 0.178663              | 0.069464    |</pre>
 </div>
 
 </div>
@@ -3378,7 +3466,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>| 50      | 1.50s        | 0.00183493        | 0.04281               | 0.0174693   |</pre>
+<pre>| 50      | 4.83s        | 0.000601022       | 0.0244708             | 0.0207746   |</pre>
 </div>
 
 </div>
@@ -3418,7 +3506,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>       Final objective value: 0.00162513</pre>
+<pre>       Final objective value: 0.000520035</pre>
 </div>
 
 </div>
@@ -3428,7 +3516,7 @@ made by 6,040 MovieLens users who joined MovieLens in 2000.</p>
 
 
 <div class="output_html rendered_html output_subarea ">
-<pre>       Final training RMSE: 0.0402852</pre>
+<pre>       Final training RMSE: 0.0227559</pre>
 </div>
 
 </div>
@@ -3492,26 +3580,26 @@ Precision and recall summary statistics by cutoff
 | cutoff |     mean_precision    |      mean_recall      |
 +--------+-----------------------+-----------------------+
 |   1    |          0.0          |          0.0          |
-|   2    |          0.0          |          0.0          |
-|   3    |          0.0          |          0.0          |
-|   4    |          0.0          |          0.0          |
-|   5    |          0.0          |          0.0          |
-|   6    | 0.0006775067750677507 | 0.0020325203252032527 |
-|   7    | 0.0005807200929152149 | 0.0020325203252032527 |
-|   8    | 0.0010162601626016261 |  0.006097560975609755 |
-|   9    | 0.0009033423667570006 |  0.006097560975609755 |
-|   10   | 0.0008130081300813011 |  0.006097560975609755 |
+|   2    | 0.0020325203252032514 | 0.0020325203252032514 |
+|   3    | 0.0013550135501355016 | 0.0020325203252032522 |
+|   4    | 0.0010162601626016257 | 0.0020325203252032514 |
+|   5    | 0.0008130081300813005 | 0.0020325203252032522 |
+|   6    | 0.0006775067750677507 |  0.002032520325203251 |
+|   7    | 0.0005807200929152149 | 0.0020325203252032522 |
+|   8    | 0.0010162601626016261 |  0.003048780487804878 |
+|   9    | 0.0009033423667570004 |  0.003048780487804878 |
+|   10   | 0.0008130081300813008 |  0.003048780487804878 |
 +--------+-----------------------+-----------------------+
 [10 rows x 3 columns]
 
 
-Overall RMSE: 0.7309854474588884
+Overall RMSE: 0.7914933576079455
 
 Per User RMSE (best)
 +---------+------+-------+
 | user_id | rmse | count |
 +---------+------+-------+
-|   1621  | 0.0  |   1   |
+|   1491  | 0.0  |   1   |
 +---------+------+-------+
 [1 rows x 3 columns]
 
@@ -3520,7 +3608,7 @@ Per User RMSE (worst)
 +---------+-------------------+-------+
 | user_id |        rmse       | count |
 +---------+-------------------+-------+
-|   2009  | 3.006811989100817 |   1   |
+|   1615  | 4.166666666666667 |   1   |
 +---------+-------------------+-------+
 [1 rows x 3 columns]
 
@@ -3529,17 +3617,17 @@ Per Item RMSE (best)
 +-----------+------+-------+
 | course_id | rmse | count |
 +-----------+------+-------+
-|     8     | 0.0  |   1   |
+|    100    | 0.0  |   1   |
 +-----------+------+-------+
 [1 rows x 3 columns]
 
 
 Per Item RMSE (worst)
-+-----------+--------------------+-------+
-| course_id |        rmse        | count |
-+-----------+--------------------+-------+
-|    144    | 3.0954212400029215 |   3   |
-+-----------+--------------------+-------+
++-----------+-------------------+-------+
+| course_id |        rmse       | count |
++-----------+-------------------+-------+
+|    207    | 3.006811989100817 |   1   |
++-----------+-------------------+-------+
 [1 rows x 3 columns]
 
 PROGRESS: Evaluate model M1
@@ -3549,27 +3637,27 @@ Precision and recall summary statistics by cutoff
 | cutoff |    mean_precision    |     mean_recall      |
 +--------+----------------------+----------------------+
 |   1    | 0.004065040650406504 | 0.004065040650406504 |
-|   2    | 0.006097560975609755 | 0.010162601626016263 |
-|   3    | 0.005420054200542005 | 0.011178861788617888 |
-|   4    | 0.007113821138211382 | 0.018292682926829285 |
-|   5    | 0.008130081300813007 | 0.026422764227642268 |
-|   6    | 0.007452574525745257 | 0.03048780487804879  |
-|   7    | 0.00696864111498258  | 0.03455284552845529  |
-|   8    | 0.007113821138211383 |  0.0426829268292683  |
-|   9    | 0.006775067750677503 | 0.04471544715447155  |
-|   10   | 0.006097560975609756 | 0.04471544715447156  |
+|   2    | 0.004065040650406503 | 0.008130081300813006 |
+|   3    | 0.004065040650406504 | 0.012195121951219513 |
+|   4    | 0.006097560975609756 | 0.02032520325203252  |
+|   5    | 0.006504065040650404 | 0.026422764227642278 |
+|   6    | 0.007452574525745261 | 0.038617886178861804 |
+|   7    | 0.007549361207897791 |  0.0467479674796748  |
+|   8    | 0.006605691056910572 | 0.04674796747967479  |
+|   9    | 0.006775067750677508 | 0.052845528455284556 |
+|   10   | 0.006097560975609756 | 0.052845528455284556 |
 +--------+----------------------+----------------------+
 [10 rows x 3 columns]
 
 
-Overall RMSE: 4.586134473539705
+Overall RMSE: 4.563058442299027
 
 Per User RMSE (best)
-+---------+------+-------+
-| user_id | rmse | count |
-+---------+------+-------+
-|   1300  | 0.5  |   1   |
-+---------+------+-------+
++---------+--------------------+-------+
+| user_id |        rmse        | count |
++---------+--------------------+-------+
+|   1615  | 0.4626693296432495 |   1   |
++---------+--------------------+-------+
 [1 rows x 3 columns]
 
 
@@ -3583,11 +3671,11 @@ Per User RMSE (worst)
 
 
 Per Item RMSE (best)
-+-----------+------+-------+
-| course_id | rmse | count |
-+-----------+------+-------+
-|    200    | 0.5  |   1   |
-+-----------+------+-------+
++-----------+--------------------+-------+
+| course_id |        rmse        | count |
++-----------+--------------------+-------+
+|    212    | 0.9862414979934693 |   1   |
++-----------+--------------------+-------+
 [1 rows x 3 columns]
 
 
@@ -3595,7 +3683,7 @@ Per Item RMSE (worst)
 +-----------+------+-------+
 | course_id | rmse | count |
 +-----------+------+-------+
-|     43    | 5.0  |   1   |
+|     30    | 5.0  |   1   |
 +-----------+------+-------+
 [1 rows x 3 columns]
 
@@ -3606,45 +3694,45 @@ Precision and recall summary statistics by cutoff
 | cutoff |     mean_precision    |      mean_recall      |
 +--------+-----------------------+-----------------------+
 |   1    |          0.0          |          0.0          |
-|   2    | 0.0020325203252032522 | 0.0010162601626016261 |
-|   3    |  0.002710027100271004 |  0.005081300813008129 |
-|   4    |  0.003048780487804878 |  0.009146341463414632 |
-|   5    | 0.0024390243902439033 |  0.009146341463414632 |
-|   6    | 0.0020325203252032527 |  0.009146341463414632 |
-|   7    |  0.001742160278745646 |  0.009146341463414632 |
-|   8    |  0.001524390243902439 |  0.009146341463414632 |
-|   9    | 0.0013550135501355005 |  0.009146341463414632 |
-|   10   | 0.0016260162601626018 |  0.013211382113821135 |
+|   2    | 0.0020325203252032527 | 0.0010162601626016263 |
+|   3    | 0.0013550135501355016 | 0.0010162601626016263 |
+|   4    | 0.0020325203252032527 | 0.0023712737127371277 |
+|   5    |  0.002439024390243902 |  0.006436314363143631 |
+|   6    | 0.0020325203252032522 |  0.00643631436314363  |
+|   7    | 0.0017421602787456444 |  0.00643631436314363  |
+|   8    |  0.002540650406504065 |  0.014566395663956639 |
+|   9    | 0.0022583559168925034 |  0.01456639566395664  |
+|   10   | 0.0020325203252032527 |  0.014566395663956644 |
 +--------+-----------------------+-----------------------+
 [10 rows x 3 columns]
 
 
-Overall RMSE: 0.8346975060578289
+Overall RMSE: 0.85318587520692
 
 Per User RMSE (best)
 +---------+-----------------------+-------+
 | user_id |          rmse         | count |
 +---------+-----------------------+-------+
-|   1156  | 0.0025112800279867287 |   1   |
+|   1755  | 0.0029666259439427023 |   1   |
 +---------+-----------------------+-------+
 [1 rows x 3 columns]
 
 
 Per User RMSE (worst)
-+---------+--------------------+-------+
-| user_id |        rmse        | count |
-+---------+--------------------+-------+
-|   1646  | 3.3541036468019474 |   1   |
-+---------+--------------------+-------+
++---------+-------------------+-------+
+| user_id |        rmse       | count |
++---------+-------------------+-------+
+|   1615  | 4.466020835193037 |   1   |
++---------+-------------------+-------+
 [1 rows x 3 columns]
 
 
 Per Item RMSE (best)
-+-----------+---------------------+-------+
-| course_id |         rmse        | count |
-+-----------+---------------------+-------+
-|    129    | 0.00681198910081271 |   1   |
-+-----------+---------------------+-------+
++-----------+-----------------------+-------+
+| course_id |          rmse         | count |
++-----------+-----------------------+-------+
+|    125    | 0.0029666259439427023 |   1   |
++-----------+-----------------------+-------+
 [1 rows x 3 columns]
 
 
@@ -3652,7 +3740,7 @@ Per Item RMSE (worst)
 +-----------+--------------------+-------+
 | course_id |        rmse        | count |
 +-----------+--------------------+-------+
-|    144    | 3.5404041983447554 |   3   |
+|    192    | 4.0101849712451685 |   1   |
 +-----------+--------------------+-------+
 [1 rows x 3 columns]
 
