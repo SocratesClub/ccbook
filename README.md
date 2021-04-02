@@ -6,7 +6,7 @@
 
 王成军
 
-在线浏览链接见：https://computational-class.github.io/ccbook/
+在线浏览链接见：https://chengjun.github.io/mybook/
 
 ## 起源
 
